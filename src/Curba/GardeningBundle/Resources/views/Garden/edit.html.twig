@@ -1,0 +1,26 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block body_header %}
+
+{% endblock %}
+
+{% block body_content %}
+
+<p>plants={{ plants|escape|replace({',': '%2C'}) }}</p>
+<p>zoneTypes={{ zoneTypes|escape|replace({',': '%2C'}) }}</p>  
+<p>regions={{ regions|escape|replace({',': '%2C'}) }}</p>
+<p>crops={{ crops|escape|replace({',': '%2C'}) }}</p>
+<p>crops={{ crops }}</p>
+<p>zones={{ zones|escape|replace({',': '%2C'}) }}</p>
+<p>zones={{ zones }}</p>
+<p>garden={{ garden|escape|replace({',': '%2C'}) }}</p>
+<p>garden={{ garden }}</p>
+
+{% endblock %}
+
+{% block body_lateral %}
+{% endblock %}
+
+{% block body_footer %}
+Main
+{% endblock %}

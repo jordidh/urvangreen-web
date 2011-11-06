@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Gardening{% endblock %}</title>
+        <meta name="description" content="{% block metadesc %}The gardening web site. Build, plan and enjoy your garden.{% endblock %}" />
+
+        {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+                
+     <style type="text/css">
+    html, body {
+	    height: 100%;
+	    overflow: auto;
+    }
+    body {
+	    padding: 0;
+	    margin: 0;
+    }
+    #silverlightControlHost {
+	    height: 100%;
+    }
+    </style>       
+    <script type="text/javascript">
+        function onSilverlightError(sender, args) {
+        
+            var appSource = "";
+            if (sender != null && sender != 0) {
+                appSource = sender.getHost().Source;
+            } 
+            var errorType = args.ErrorType;
+            var iErrorCode = args.ErrorCode;
+            
+            var errMsg = "Unhandled Error in Silverlight 2 Application " +  appSource + "\n" ;
+
+            errMsg += "Code: "+ iErrorCode + "    \n";
+            errMsg += "Category: " + errorType + "       \n";
+            errMsg += "Message: " + args.ErrorMessage + "     \n";
+
+            if (errorType == "ParserError")
+            {
+                errMsg += "File: " + args.xamlFile + "     \n";
+                errMsg += "Line: " + args.lineNumber + "     \n";
+                errMsg += "Position: " + args.charPosition + "     \n";
+            }
+            else if (errorType == "RuntimeError")
+            {           
+                if (args.lineNumber != 0)
+                {
+                    errMsg += "Line: " + args.lineNumber + "     \n";
+                    errMsg += "Position: " +  args.charPosition + "     \n";
+                }
+                errMsg += "MethodName: " + args.methodName + "     \n";
+            }
+
+            throw new Error(errMsg);
+        }
+    </script>
+
+    </head>
+    <body id="{% block pageid '' %}">
+        <header>
+            <div class="container_16">
+                <div id="horitzontal" class="grid_10">
+                    {% image '@CurbaGardeningBundle/Resources/public/images/title3.png' %}
+                        <img src="{{ asset_url }}" alt="Urvan green title"/>
+                    {% endimage %}
+                </div>
+                <div id="horitzontal" class="grid_6">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="user_info" href="{{ path('main') }}">My gardening</a>
+                        <a class="user_info" href="{{ path('profile') }}">My profile</a>
+                        <a class="user_info" href="/logout">Logout</a>
+                    {% endif %}
+                </div>
+
+                {% block header %}{% endblock %}
+            </div>
+        </header>
+            
+        <div class="container_16">
+            {% block body %}{% endblock %}
+        </div>
+
+        <footer>
+            <div class="container_16">
+                {% block footer %}{% endblock %}
+            </div>
+        </footer>
+
+        {% block javascripts %}{% endblock %}
+    </body>    
+</html>

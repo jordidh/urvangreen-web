@@ -1,0 +1,325 @@
+{% extends "CurbaWeatherBundle::layout.html.twig" %}
+  
+{% block body_header %}
+    <h1>
+    {% if index == 1 %}
+            Out data: Temperature + Humidity + Rain
+    {% elseif index == 2 %}
+            In data: Temperature + Humidity
+    {% elseif index == 3 %}
+            Wind
+    {% elseif index == 4 %}
+            Bar
+    {% else %}
+            Rain
+    {% endif %}
+    </h1>
+{% endblock %}
+
+{% block body_content %}
+<div id="container" style="height: 500px"></div>
+{% endblock %}
+
+{% block body_lateral %}
+<ul>
+    <li><a href="{{ path('main') }}">Main</a></li>
+
+    <li><a href="{{ path('station_detailed_chart', { 'id': station.id, 'index':'1' }) }}">Out data</a></li>
+    <li><a href="{{ path('station_detailed_chart', { 'id': station.id, 'index':'2' }) }}">In data</a></li>
+    <li><a href="{{ path('station_detailed_chart', { 'id': station.id, 'index':'3' }) }}">Wind</a></li>
+    <li><a href="{{ path('station_detailed_chart', { 'id': station.id, 'index':'4' }) }}">Bar</a></li>
+    <li><a href="{{ path('station_detailed_chart', { 'id': station.id, 'index':'5' }) }}">Rain</a></li>
+</ul>
+{% endblock %}
+
+{% block body_footer %}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+            var seriesOptions = [],
+                yAxisOptions = [],
+                colors = Highcharts.getOptions().colors;
+
+            var data1 = [], data2 = [], data3 = [];
+            var x;
+            var time = [];
+            var time1 = [];
+            var time2 = [];
+
+            {% if index == 1 %}
+                {% for d in detailedData %}
+                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{d.getTemperatureOut()}})]);
+                    data2.push([x, parseFloat({{d.getHumidityOut()}})]);
+                    data3.push([x, parseFloat({{d.getRain()}})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
+                        name: 'Humidity',
+                        data: data2,
+                        yAxis: 0//1
+                };
+                seriesOptions[1] = {
+                        name: 'Temperature',
+                        data: data1,
+                        yAxis: 0
+                };
+                seriesOptions[2] = {
+                        type: 'column',
+                        name: 'Rain',
+                        data: data3,
+                        yAxis: 0//2
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Temperature',
+                                style: { color: colors[1] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[1]
+                };
+                yAxisOptions[1] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Humidity',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+                yAxisOptions[2] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Rain',
+                                style: { color: colors[2] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[2]
+                }; 
+                
+            {% elseif index == 2 %}
+                {% for d in detailedData %}
+                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{d.getTemperatureIn()}})]);
+                    data2.push([x, parseFloat({{d.getHumidityIn()}})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
+                        name: 'Humidity',
+                        data: data2,
+                        yAxis: 0//1
+                };
+                seriesOptions[1] = {
+                        name: 'Temperature',
+                        data: data1,
+                        yAxis: 0
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Temperature',
+                                style: { color: colors[1] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[1]
+                };
+                yAxisOptions[1] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Humidity',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+
+            {% elseif index == 3 %}
+                {% for d in detailedData %}
+                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{ d.getWindDirection() }})]);
+                    data2.push([x, parseFloat({{ d.getWindSpeed() }})]);
+                    data3.push([x, parseFloat({{ d.getWindGust() }})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
+                        name: 'Wind direction',
+                        data: data2,
+                        yAxis: 0
+                };
+                seriesOptions[1] = {
+                        name: 'Wind speed',
+                        data: data1,
+                        yAxis: 0
+                };
+                seriesOptions[2] = {
+                        name: 'Wind gust',
+                        data: data3,
+                        yAxis: 0
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Wind direction',
+                                style: { color: colors[1] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[1]
+                };
+                yAxisOptions[1] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Wind speed',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+                yAxisOptions[2] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Wind gust',
+                                style: { color: colors[2] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[2]
+                };
+                
+            {% elseif index == 4 %}
+                {% for d in detailedData %}
+                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{ d.getBar() }})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
+                        name: 'Bar',
+                        data: data1,
+                        yAxis: 0
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Bar',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+
+            {% else %}
+                {% for d in detailedData %}
+                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{ d.getRain() }})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
+                        name: 'Rain',
+                        data: data1,
+                        yAxis: 0
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Rain',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+            {% endif %}
+            
+
+            //Create the chart
+            chart = new Highcharts.StockChart({
+                chart: {
+                    renderTo: 'container',
+                    alignTicks: false
+                },
+
+                rangeSelector: {
+                    selected: 1
+                },
+
+                title: {
+                    text: null
+                },
+
+                xAxis: {
+                    type: 'datetime',
+                    maxZoom: 14 * 24 * 3600000, // fourteen days
+                    title: { text: null }
+                },
+                yAxis: yAxisOptions,
+
+                series: seriesOptions
+           });
+       });
+    </script>
+
+    {% javascripts
+        '@CurbaWeatherBundle/Resources/public/js/*'
+        '@CurbaWeatherBundle/Resources/public/js/highstock.js'
+        '@CurbaWeatherBundle/Resources/public/js/modules/exporting.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

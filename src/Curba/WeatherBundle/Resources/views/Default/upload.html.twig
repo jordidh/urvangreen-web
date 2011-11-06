@@ -1,0 +1,22 @@
+{% extends "CurbaWeatherBundle::layout.html.twig" %}
+
+{% block body %}
+<p>{{ aux }}</p>
+
+<h1>Upload station data</h1>
+
+<form action="{{ path('station_upload', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit">Upload</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('main') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

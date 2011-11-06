@@ -1,0 +1,49 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets '@CurbaWeatherBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+        
+{% block header %}
+(header) Pàgina de gestió d'estacions meteorològiques
+
+
+{% endblock %}
+
+{% block body %}
+    <div class="container_16">
+        {% block body_header %}{% endblock %}
+    </div>
+
+    <article id="content">
+        <section id="principal" class="grid_12">
+            {% block body_content %}{% endblock %}
+        </section>
+        <section id="lateral" class="grid_4">
+            {% block body_lateral %}
+            {% endblock %}
+        </section>
+    </article>
+
+    <div class="container_16">
+        {% block body_footer %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+<div id="horitzontal" class="grid_5">
+    <a href="{{ path('license') }}">License</a>
+</div>
+<div id="horitzontal" class="grid_6">
+    <a href="{{ path('copyright') }}">Copyright</a>
+</div>
+<div id="horitzontal" class="grid_5">
+    <a href="{{ path('about') }}">About</a>
+</div>
+<div id="horitzontal" class="grid_6">
+    <a href="../logout">Logout</a>
+</div>
+{% endblock %}
+

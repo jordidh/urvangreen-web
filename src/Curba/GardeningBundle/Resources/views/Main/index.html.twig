@@ -1,0 +1,48 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block body_header %}
+    {% if app.session.flash('notice') %}
+        <div class="notice">
+            <p>{{ app.session.flash('notice') }}</p>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block body_content %}
+    <h1>User gardens</h1>
+    <ul>
+      {% for garden in gardens %}
+        <li>Garden {{ garden.name }} 
+            <a href="{{ path('garden_edit', { 'id': garden.id }) }}">start to work</a> |
+            <a href="{{ path('garden_index', { 'id': garden.id }) }}">information</a></li>
+      {% endfor %}
+      <li><a href="{{ path('garden_new') }}">Create a new garden</a></li>
+    </ul>
+    <h1>User stations</h1>
+    <ul>
+      {% for station in stations %}
+        <li>Station {{ station.name }} 
+            <a href="{{ path('station_edit', { 'id': station.id }) }}">(configura)</a> 
+            <a href="{{ path('station_upload', { 'id': station.id }) }}">(upload)</a> 
+            <a href="{{ path('station_chart', { 'id': station.id, 'index': 1 }) }}">(Weather day calculed data)</a> 
+            <a href="{{ path('station_detailed_chart', { 'id': station.id, 'index': 1 }) }}">(Weather data)</a> 
+            <a href="{{ path('station_edit', { 'id': station.id }) }}">(Mensual text)</a> 
+      {% endfor %}
+      <li><a href="{{ path('station_new') }}">Create a new station</a></li>
+    </ul>
+{% endblock %}
+
+{% block body_lateral %}
+    <br/>
+    <a href="{{ path('default') }}">Begining</a>
+    <br/>
+    <a href="{{ path('profile') }}">User profile</a>
+    <br/>
+    <a href="{{ path('comp_plant') }}">Compatibility plant table</a>
+    <br/>
+    <a href="{{ path('crop_period') }}">Crop period table</a>
+{% endblock %}
+
+{% block body_footer %}
+
+{% endblock %}

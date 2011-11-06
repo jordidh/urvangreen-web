@@ -1,0 +1,291 @@
+{% extends "CurbaWeatherBundle::layout.html.twig" %}
+    
+{% block body_header %}
+    <h1>
+    {% if index == 1 %}
+            Temperature
+    {% elseif index == 2 %}
+            Humidity
+    {% elseif index == 3 %}
+            Wind
+    {% else %}
+            Rain
+    {% endif %}
+    </h1>
+{% endblock %}
+
+{% block body_content %}
+<div id="container" style="height: 500px"></div>
+{% endblock %}
+
+{% block body_lateral %}
+<ul>
+    <li><a href="{{ path('main') }}">Main</a></li>
+
+    <li><a href="{{ path('station_chart', { 'id': station.id, 'index':'1' }) }}">Temperature</a></li>
+    <li><a href="{{ path('station_chart', { 'id': station.id, 'index':'2' }) }}">Humidity</a></li>
+    <li><a href="{{ path('station_chart', { 'id': station.id, 'index':'3' }) }}">Wind</a></li>
+    <li><a href="{{ path('station_chart', { 'id': station.id, 'index':'4' }) }}">Rain</a></li>
+</ul>
+{% endblock %}
+
+{% block body_footer %}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+            var seriesOptions = [],
+                yAxisOptions = [],
+                colors = Highcharts.getOptions().colors;
+
+            var data1 = [], data2 = [], data3 = [];
+            var x;
+
+            {% if index == 1 %}
+                {% for d in data %}
+                    x = Date.UTC({{ d[0] }}, {{ d[1] }}, {{ d[2] }}, 10, 0);
+                    data1.push([x, parseFloat({{d[3]}})]);
+                    data2.push([x, parseFloat({{d[4]}})]);
+                    data3.push([x, parseFloat({{d[5]}})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
+                        name: 'Minimum',
+                        data: data2,
+                        yAxis: 0
+                };
+                seriesOptions[1] = {
+                        name: 'Maximum',
+                        data: data1,
+                        yAxis: 0
+                };
+                seriesOptions[2] = {
+                        name: 'Average',
+                        data: data3,
+                        yAxis: 0
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Maximum',
+                                style: { color: colors[1] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[1]
+                };
+                yAxisOptions[1] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Minimum',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+                yAxisOptions[2] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Average',
+                                style: { color: colors[2] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[2]
+                }; 
+                
+            {% elseif index == 2 %}
+                {% for d in data %}
+                    x = Date.UTC({{ d[0] }}, {{ d[1] }}, {{ d[2] }}, 10, 0);
+                    data1.push([x, parseFloat({{d[6]}})]);
+                    data2.push([x, parseFloat({{d[7]}})]);
+                    data3.push([x, parseFloat({{d[8]}})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
+                        name: 'Minimum',
+                        data: data2,
+                        yAxis: 0
+                };
+                seriesOptions[1] = {
+                        name: 'Maximum',
+                        data: data1,
+                        yAxis: 0
+                };
+                seriesOptions[2] = {
+                        name: 'Average',
+                        data: data3,
+                        yAxis: 0
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Maximum',
+                                style: { color: colors[1] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[1]
+                };
+                yAxisOptions[1] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Minimum',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+                yAxisOptions[2] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Average',
+                                style: { color: colors[2] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[2]
+                };
+            {% elseif index == 3 %}
+                {% for d in data %}
+                    x = Date.UTC({{ d[0] }}, {{ d[1] }}, {{ d[2] }}, 10, 0);
+                    data1.push([x, parseFloat({{d[9]}})]);
+                    data2.push([x, parseFloat({{d[10]}})]);
+                    data3.push([x, parseFloat({{d[11]}})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
+                        name: 'Minimum',
+                        data: data2,
+                        yAxis: 0
+                };
+                seriesOptions[1] = {
+                        name: 'Maximum',
+                        data: data1,
+                        yAxis: 0
+                };
+                seriesOptions[2] = {
+                        name: 'Average',
+                        data: data3,
+                        yAxis: 0
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Maximum',
+                                style: { color: colors[1] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[1]
+                };
+                yAxisOptions[1] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Minimum',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+                yAxisOptions[2] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 0,
+                        opposite: true,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Average',
+                                style: { color: colors[2] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[2]
+                };
+                
+            {% else %}
+                {% for d in data %}
+                    x = Date.UTC({{ d[0] }}, {{ d[1] }}, {{ d[2] }}, 0, 0);
+                    data1.push([x, parseFloat({{d[12]}})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
+                        type: 'column',
+                        name: 'Rain',
+                        data: data1,
+                        yAxis: 0
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Rain',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+            {% endif %}
+            
+
+            //Create the chart
+            chart = new Highcharts.StockChart({
+                chart: {
+                    renderTo: 'container',
+                    alignTicks: false
+                },
+
+                rangeSelector: {
+                    selected: 1
+                },
+
+                title: {
+                    text: null
+                },
+
+                xAxis: {
+                    type: 'datetime',
+                    maxZoom: 14 * 24 * 3600000, // fourteen days
+                    title: { text: null }
+                },
+                yAxis: yAxisOptions,
+
+                series: seriesOptions
+           });
+       });
+    </script>
+
+    {% javascripts
+        '@CurbaWeatherBundle/Resources/public/js/*'
+        '@CurbaWeatherBundle/Resources/public/js/highstock.js'
+        '@CurbaWeatherBundle/Resources/public/js/modules/exporting.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

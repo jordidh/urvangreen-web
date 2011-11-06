@@ -1,0 +1,26 @@
+{% extends "CurbaWeatherBundle::layout.html.twig" %}
+
+{% block body_header %}
+Main
+{% endblock %}
+
+{% block body_content %}
+<h1>User stations</h1>
+<ul>
+  {% for station in stations %}
+    <li>
+        <p>Station {{ station.name }} <a href="{{ path('station_edit', { 'id': station.id }) }}">(modify)</a></p>
+    </li>
+  {% endfor %}
+  <li><a href="{{ path('station_new') }}">Create a new station</a></li>
+</ul>
+{% endblock %}
+
+{% block body_lateral %}
+<br/>
+<a href="{{ path('main') }}">Main</a>
+{% endblock %}
+
+{% block body_footer %}
+Main
+{% endblock %}

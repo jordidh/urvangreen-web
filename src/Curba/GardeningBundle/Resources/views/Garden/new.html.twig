@@ -1,0 +1,23 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block body_header %}
+Main
+{% endblock %}
+
+{% block body_content %}
+<h1>New garden</h1>
+<form action="{{ path('garden_new') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
+{% endblock %}
+
+{% block body_lateral %}
+<br/>
+<a href="{{ path('main') }}">Main</a>
+{% endblock %}
+
+{% block body_footer %}
+Main
+{% endblock %}

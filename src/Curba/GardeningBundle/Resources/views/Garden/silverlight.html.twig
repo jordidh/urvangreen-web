@@ -1,0 +1,33 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block body_content %}
+    <!-- Runtime errors from Silverlight will be displayed here.
+	This will contain debugging information and should be removed or hidden when debugging is completed -->
+    <div id='errorLocation' style="font-size: small;color: Gray;"></div>
+
+    <div id="silverlightControlHost">
+		<object data="data:application/x-silverlight," type="application/x-silverlight-2" width="100%" height="100%">
+			<param name="source" value="/silverlight/GardenEditor2.xap"/>
+			<param name="onerror" value="onSilverlightError" />
+			<param name="background" value="white" />
+			<param name="minRuntimeVersion" value="2.0.31005.0" />
+			<param name="autoUpgrade" value="true" />
+                        <param name="initParams" value="plants={{ plants|escape|replace({',': '%2C'}) }},zoneTypes={{ zoneTypes|escape|replace({',': '%2C'}) }},regions={{ regions|escape|replace({',': '%2C'}) }},crops={{ crops|escape|replace({',': '%2C'}) }},zones={{ zones|escape|replace({',': '%2C'}) }},garden={{ garden|escape|replace({',': '%2C'}) }},gardenTypes={{ gardenTypes|escape|replace({',': '%2C'}) }}" />
+			<a href="http://go.microsoft.com/fwlink/?LinkID=124807" style="text-decoration: none;">
+     			<img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style: none"/>
+			</a>
+		</object>
+		<iframe style='visibility:hidden;height:0;width:0;border:0px'></iframe>
+    </div>
+{% endblock %}
+    
+{% block body_lateral %}
+    <br/>
+    <a href="{{ path('main') }}">Main</a>
+    <br/>
+    <a href="{{ path('profile') }}">User profile</a>
+    <br/>
+    <a href="{{ path('comp_plant') }}">Compatibility plant table</a>
+    <br/>
+    <a href="{{ path('crop_period') }}">Crop period table</a>
+{% endblock %}

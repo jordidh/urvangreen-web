@@ -1,0 +1,43 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block body_header %}
+{% endblock %}
+
+{% block body_content %}
+    <h1>Garden {{ garden.name }}</h1>
+    {% for zone in zonesAndCropsAndActions %}
+        <h2>Zone {{ zone[0] }}</h2>
+
+        <table class="plant">
+            <tr>
+                <th class="plant">Crop</th>
+                <th class="plant">Plantation date</th>
+                <th class="plant">Num. plants</th>
+                <th class="plant">Do</th>
+            </tr>
+            {% for crop in zone[1] %}
+            <tr>
+                <th>{{ crop[0] }}</th>
+                <td>{{ crop[0].getInitialRealDate()|date("F jS Y") }}</td>
+                <td>{{ crop[0].getNumPlants() }}</td>
+                <td>
+                    <a href="{{ path('garden_harvest', { 'id': crop[0].id }) }}">Harvest</a> |
+                    <a href="{{ path('main') }}">Watering</a> |
+                    <a href="{{ path('main') }}">Prune</a> |
+                    <a href="{{ path('main') }}">Finish</a>
+                </td>
+            </tr>
+                {{ crop|length }}
+            {% endfor %}
+        </table> 
+
+    {% endfor %}        
+{% endblock %}
+
+{% block body_lateral %}
+<br/>
+<a href="{{ path('main') }}">Main</a>
+{% endblock %}
+
+{% block body_footer %}
+{% endblock %}

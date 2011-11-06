@@ -1,0 +1,45 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_USER:        ROLE_USER_INACTIVE
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        main:
+            providers: [user_db]
+        user_db:
+            entity: { class: Curba\SecurityBundle\Entity\User, property: email }
+    encoders:
+#        Symfony\Component\Security\Core\User\User:
+#            algorithm:  sha1
+#            iterations: 1
+#            encode_as_base64: false
+        Curba\SecurityBundle\Entity\User: sha512
+        
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous:  ~
+            form_login:
+                login_path:  /login/en
+                check_path:  /check
+                #always_use_default_target_path: true
+                #default_target_path:    /
+            logout:
+                path:   /logout
+                target: /
+    access_denied_url: /denied
+    
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/public        , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/gardeningapi  , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/checkmail     , roles: ROLE_USER_INACTIVE }
+        - { path: ^/gardening     , roles: ROLE_USER }
+        - { path: ^/register      , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin         , roles: ROLE_ADMIN }
+        - { path: ^/profile       , roles: ROLE_USER }

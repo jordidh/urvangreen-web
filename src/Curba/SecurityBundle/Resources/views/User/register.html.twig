@@ -1,0 +1,79 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block title %}Registro{% endblock %}
+{% block metadesc %}Regístrate y participa en DeSymfony{% endblock %}
+{% block pageid 'register' %}
+
+{% block body_content %}
+
+<h1>Registro</h1>
+
+{% if( app.session.flash('notice') ) %}
+<div class="notice">
+    <p>{{ app.session.flash('notice') }}</p>
+</div>
+{% endif %}
+
+{{ form_errors(form) }}
+
+<form action="{{ path('register') }}" method="post" {{ form_enctype(form) }}>
+
+    {{ form_errors(form.firstName) }}
+    <p>
+        {{ form_label(form.firstName) }}
+        {{ form_widget(form.firstName) }}
+    </p>
+
+    {{ form_errors(form.lastName) }}
+    <p>
+        {{ form_label(form.lastName) }}
+        {{ form_widget(form.lastName) }}
+    </p>
+
+    {{ form_errors(form.email) }}
+    <p>
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+    </p>
+    
+    <div class="grid_6 alpha">
+        {{ form_errors(form.password.first) }}
+        <p>
+            {{ form_label(form.password.first, 'Password') }}
+            {{ form_widget(form.password.first) }}
+        </p>
+    </div>
+    
+    <div class="grid_6 omega">
+        {{ form_errors(form.password.second) }}
+        <p>
+            {{ form_label(form.password.second, 'Repeat password') }}
+            {{ form_widget(form.password.second) }}
+        </p>
+    </div>
+    {{ form_errors(form._token) }}
+    {{ form_widget(form._token) }}
+
+    <input type="submit" value="Regístrate" />
+</form>
+{% endblock %}
+
+{% block body_lateral %}
+<div class="usuario">
+<p>¿Ya estás registrado? <a href="{{ path('login') }}">Haz login</a></p>
+</div>
+
+<h3>Ventajas de asistir a las jornadas</h3>
+<ul>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+</ul>
+
+<h3>Preguntas frecuentes</h3>
+<ul>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+    <li>Lorem ipsum et dolor</li>
+</ul>
+{% endblock %}

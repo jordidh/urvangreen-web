@@ -1,0 +1,26 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block title %}About{% endblock %}
+{% block metadesc %}about gardening{% endblock %}
+{% block pageid 'about' %}
+
+{% block body_content %}
+<h1>About</h1>
+
+<h2>About gardening</h2>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+{% endblock %}
+
+{% block body_lateral %}
+    <div>
+        <a href="{{ path('default') }}">Begining</a>
+    </div>
+    </br>
+    <div>
+        <h3>¿Echas en falta algún tema?</h3>
+        <p>Accede a la sección <a href="#"><em>Call for papers</em></a> y envíanos tu propuesta</p>
+    </div>
+{% endblock %}

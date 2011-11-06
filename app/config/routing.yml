@@ -1,0 +1,49 @@
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal
+
+
+
+# import routes from a controller class
+gardening:
+    resource: "@CurbaGardeningBundle/Controller/DefaultController.php"
+    type:     annotation
+    
+# import routes from a controller class
+garden:
+    resource: "@CurbaGardeningBundle/Controller/GardenController.php"
+    type:     annotation
+
+# import routes from a controller class
+garden_api:
+    resource: "@CurbaGardeningBundle/Controller/GardenApiController.php"
+    type:     annotation
+
+# import routes from a controller class
+static:
+    resource: "@CurbaGardeningBundle/Controller/StaticController.php"
+    type:     annotation
+
+# import routes from a controller class
+main:
+    resource: "@CurbaGardeningBundle/Controller/MainController.php"
+    type:     annotation
+
+# import routes from a controller class
+security:
+    resource: "@CurbaSecurityBundle/Controller/UserController.php"
+    type:     annotation
+
+# import routes from a controller class
+weather:
+    resource: "@CurbaWeatherBundle/Controller/DefaultController.php"
+    type:     annotation
+
+# import routes from a controller class
+weather_stationtype:
+    resource: "@CurbaWeatherBundle/Controller/StationTypeController.php"
+    type:     annotation
+
+login_check:
+    pattern: /check

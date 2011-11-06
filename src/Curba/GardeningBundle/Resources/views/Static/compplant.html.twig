@@ -1,0 +1,103 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block body_header %}
+Compatibility plant table
+{% endblock %}
+
+{% block body_content %}
+<small>
+<table>
+  <body>
+    <tr>
+      <th></th>
+      {% for plantB in plants %}
+        <th title="{{ plantB.Name }} ({{ plantB.ScientificName }})">
+          {{ plantB.Id }}
+        </th>
+      {% endfor %}
+    </tr>
+    {% for plantA in plants %}
+      <tr>
+        <th title="{{ plantA.Name }} ({{ plantA.ScientificName }})">
+          {% if plantA.Name %}
+            {{ plantA.name | truncate(8) }}
+          {% else %}
+            {{ plantA.ScientificName | truncate(8) }}
+          {% endif %}
+        </th>
+        {% for plantB in plants %}
+          <td
+            {#
+            {{ plantArray[plantA.Id][plantB.Id] }}
+            #}
+            {% if (plantArray[plantA.Id][plantB.Id]) %}
+              {% if (plantArray[plantA.Id][plantB.Id].Compatibility < 25) %}
+                title="No compatibility">
+                {% image '@CurbaGardeningBundle/Resources/public/images/CompBad.png' %}
+                    <img id="img_small" src="{{ asset_url }}" alt="-"/>
+                {% endimage %}
+              {% elseif (plantArray[plantA.Id][plantB.Id].Compatibility <= 50) %}
+                title="Average compatibility">
+                {% image '@CurbaGardeningBundle/Resources/public/images/CompAverage.png' %}
+                    <img id="img_small" src="{{ asset_url }}" alt="="/>
+                {% endimage %}
+              {% elseif (plantArray[plantA.Id][plantB.Id].Compatibility <= 75) %}
+                title="Good compatibility">
+                {% image '@CurbaGardeningBundle/Resources/public/images/CompGood.png' %}
+                    <img id="img_small" src="{{ asset_url }}" alt="+"/>
+                {% endimage %}
+              {% else %}  
+                title="Very good compatibility">
+                {% image '@CurbaGardeningBundle/Resources/public/images/CompVeryGood.png' %}
+                    <img id="img_small" src="{{ asset_url }}" alt="++"/>
+                {% endimage %}
+              {% endif %}
+            {% else %}
+              title="No information">
+            {% endif %}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </body>
+</table>
+</small>
+{% endblock %}
+
+{% block body_lateral %}
+Compatibility plant table
+<br/>
+<a href="{{ path('main') }}">Main</a>
+<br/>
+<a href="{{ path('profile') }}">User profile</a>
+{% endblock %}
+
+{% block body_footer %}
+<h2>Legend</h2>
+<ul>
+    <li>
+        No compatibility:
+        {% image '@CurbaGardeningBundle/Resources/public/images/CompBad.png' %}
+            <img id="img_small" src="{{ asset_url }}" alt="-"/>
+        {% endimage %}
+    </li>
+    <li>
+        Average compatibility:
+        {% image '@CurbaGardeningBundle/Resources/public/images/CompAverage.png' %}
+            <img id="img_small" src="{{ asset_url }}" alt="="/>
+        {% endimage %}
+    </li>
+    <li>
+        Good compatibility:
+        {% image '@CurbaGardeningBundle/Resources/public/images/CompGood.png' %}
+            <img id="img_small" src="{{ asset_url }}" alt="+"/>
+        {% endimage %}
+    </li>
+    <li>
+        Very good compatibility:
+        {% image '@CurbaGardeningBundle/Resources/public/images/CompVeryGood.png' %}
+            <img id="img_small" src="{{ asset_url }}" alt="++"/>
+        {% endimage %}
+    </li>
+</ul>
+{% endblock %}
