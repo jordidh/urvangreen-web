@@ -28,31 +28,31 @@ Crop period table
                         {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod0.png' %}
                             <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
                         {% endimage %}
-                    {% elseif (cropPeriod[i].Id == 1) %}
+                    {% elseif (cropPeriod[0].id == 1) %}
                         {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod1.png' %}
                             <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
                         {% endimage %}
-                    {% elseif (cropPeriod[i].Id == 2) %}
+                    {% elseif (cropPeriod[0].id == 2) %}
                         {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod2.png' %}
                             <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
                         {% endimage %}
-                    {% elseif (cropPeriod[i].Id == 3) %}
+                    {% elseif (cropPeriod[0].id == 3) %}
                         {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod3.png' %}
                             <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
                         {% endimage %}
-                    {% elseif (cropPeriod[i].Id == 4) %}
+                    {% elseif (cropPeriod[0].id == 4) %}
                         {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod4.png' %}
                             <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
                         {% endimage %}
-                    {% elseif (cropPeriod[i].Id == 5) %}
+                    {% elseif (cropPeriod[0].id == 5) %}
                         {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod5.png' %}
                             <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
                         {% endimage %}
-                    {% elseif (cropPeriod[i].Id == 6) %}
+                    {% elseif (cropPeriod[0].id == 6) %}
                         {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod6.png' %}
                             <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
                         {% endimage %}
-                    {% elseif (cropPeriod[i].Id == 7) %}
+                    {% elseif (cropPeriod[0].id == 7) %}
                         {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod7.png' %}
                             <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
                         {% endimage %}
@@ -82,6 +82,7 @@ Crop period table
 {% endblock %}
 
 {% block body_footer %}
+<!--
 <h2>Legend</h2>
 <ul>
     <li>
@@ -125,4 +126,5 @@ Crop period table
         {% endimage %}
     <li>
 </ul>
+-->
 {% endblock %}

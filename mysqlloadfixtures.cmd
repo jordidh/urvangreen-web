@@ -9,7 +9,7 @@
 
 
 # Restore
-mysql -u root -p hort < ./hort.fixtures.sql
+mysql -u root -p=1qaz2wsx hort < ./hort.fixtures.sql
 
 
 # Restore from a compressed file for Linux

@@ -47,7 +47,7 @@ class Garden
      * @ORM\Column(type="datetime", name="deleted_at", nullable=true)
      */
     private $deletedAt;
-
+    
     /**
      * @ORM\Column(name="latitude", type="decimal", nullable=false)
      */
@@ -89,6 +89,13 @@ class Garden
      * @ORM\JoinColumn(name="garden_type_id", referencedColumnName="id")
      */
     private $garden_type;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="GardenPrivacyType")
+     * @ORM\JoinColumn(name="privacy_type_id", referencedColumnName="id")
+     */
+    private $privacy_type;
+
 
     public function __construct()
     {
@@ -366,6 +373,26 @@ class Garden
     public function getGardenType()
     {
         return $this->garden_type;
+    }
+    
+    /**
+     * Set privacy_type
+     *
+     * @param Curba\GardeningBundle\Entity\GardenPrivacyType $privacyType
+     */
+    public function setPrivacyType(\Curba\GardeningBundle\Entity\GardenPrivacyType $privacyType)
+    {
+        $this->privacy_type = $privacyType;
+    }
+
+    /**
+     * Get privacy_type
+     *
+     * @return Curba\GardeningBundle\Entity\GardenPrivacyType 
+     */
+    public function getPrivacyType()
+    {
+        return $this->privacy_type;
     }
     
     public function __toString()

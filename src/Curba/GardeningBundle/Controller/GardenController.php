@@ -59,7 +59,6 @@ class GardenController extends Controller
         return array(
             'garden' => $garden,
             'zonesAndCropsAndActions' => $zonesAndCropsAndActions,
-            'actions' => $currentActions,
         );
     }
     

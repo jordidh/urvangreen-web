@@ -102,6 +102,7 @@ class StaticController extends Controller
         
         $cropPeriodRepository = $em->getRepository('CurbaGardeningBundle:CropPeriod');
         
+        //Array with 3 dimensions: Plant id, CropPeriodType id [1 - 7], Month [1-12] = active or not (0 or 1)
         $cropPeriodArray = array();
         
         foreach($plants as $plant)

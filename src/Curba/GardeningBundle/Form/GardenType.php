@@ -26,6 +26,7 @@ class GardenType extends AbstractType
                 return $repositori->createQueryBuilder('p')->orderBy('p.name', 'ASC');
             },
         ));
+        $builder->add('privacy_type');
     }
 
     public function getDefaultOptions(array $options)

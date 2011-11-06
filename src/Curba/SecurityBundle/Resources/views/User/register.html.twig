@@ -51,6 +51,18 @@
             {{ form_widget(form.password.second) }}
         </p>
     </div>
+    
+    <textarea rows="4" cols="60" readonly="yes">
+    At W3Schools you will find all the Web-building tutorials you need, from basic HTML to advanced XML, SQL, ASP, and PHP. 
+    At W3Schools you will find all the Web-building tutorials you need, from basic HTML to advanced XML, SQL, ASP, and PHP.
+    </textarea> 
+    
+    {{ form_errors(form.userLicenseAccepted) }}
+    <p>
+        {{ form_label(form.userLicenseAccepted) }}
+        {{ form_widget(form.userLicenseAccepted) }}
+    </p>
+    
     {{ form_errors(form._token) }}
     {{ form_widget(form._token) }}
 

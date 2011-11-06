@@ -98,8 +98,8 @@ class User implements UserInterface, \Serializable
     protected $password;
 
     /**
-    * @ORM\Column(type="boolean")
-    */
+     * @ORM\Column(type="boolean")
+     */
     protected $isAdministrator;
     
     /**
@@ -118,15 +118,20 @@ class User implements UserInterface, \Serializable
     private $stations;
 
     /**
-    * @ORM\Column(type="string")
-    */
+     * @ORM\Column(type="string")
+     */
     protected $activationToken;
     
     /**
-    * @ORM\Column(type="boolean")
-    */
+     * @ORM\Column(type="boolean")
+     */
     protected $isActive;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $userLicenseAccepted;
+    
     
     public function __construct()
     {
@@ -136,6 +141,7 @@ class User implements UserInterface, \Serializable
         $this->rights = new \Doctrine\Common\Collections\ArrayCollection();
         $this->gardens = new \Doctrine\Common\Collections\ArrayCollection();
         $this->stations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userLicenseAccepted = false;
     }
     
     private function rand_string( $length ) 
@@ -305,6 +311,26 @@ class User implements UserInterface, \Serializable
     }
     
     /**
+     * Set userLicenseAccepted
+     *
+     * @param boolean $userLicenseAccepted
+     */
+    public function setUserLicenseAccepted($userLicenseAccepted)
+    {
+        $this->userLicenseAccepted = $userLicenseAccepted;
+    }
+
+    /**
+     * Get userLicenseAccepted
+     *
+     * @return boolean $userLicenseAccepted
+     */
+    public function getUserLicenseAccepted()
+    {
+        return $this->userLicenseAccepted;
+    }
+    
+    /**
      * Set ActivationToken
      *
      * @param string $activationToken
@@ -312,6 +338,14 @@ class User implements UserInterface, \Serializable
     public function setActivationToken($activationToken)
     {
         $this->activationToken = $activationToken;
+    }
+    
+    /**
+     * @Assert\True(message = "You must check the licence acceptation")
+     */
+    public function isActivationTokenAccepted()
+    {
+        return $this->activationToken == true;
     }
 
     /**
