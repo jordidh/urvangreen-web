@@ -54,7 +54,7 @@ class GardenController extends Controller
             $zonesAndCropsAndActions[] = $zone;
         }
         
-        var_dump($currentActions);
+        //var_dump($currentActions);
         
         return array(
             'garden' => $garden,

@@ -27,7 +27,14 @@
                     <a href="{{ path('main') }}">Finish</a>
                 </td>
             </tr>
-                {{ crop|length }}
+                {% for action in crop[1] %}
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td>{{ action.getCreatedAt()|date("F jS Y") }} {{ action.getActionType() }} {{ action.description }}: {{ action.quantityB }} {{ action.quantityA }}</td>
+                </tr>
+                {% endfor %}
             {% endfor %}
         </table> 
 

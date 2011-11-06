@@ -160,7 +160,7 @@ class ActionType implements \Gedmo\Translatable\Translatable
      *
      * @param Curba\GardeningBundle\Entity\Action $actions
      */
-    public function addActions(\Curba\GardeningBundle\Entity\Actions $actions)
+    public function addActions(\Curba\GardeningBundle\Entity\Action $actions)
     {
         $this->actions[] = $actions;
     }
