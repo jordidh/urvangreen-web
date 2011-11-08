@@ -75,6 +75,19 @@
     target=/bundles/Stof/DoctrineExtensionsBundle
     version=1.0.0
 
+[JMSAopBundle]
+    git=https://github.com/schmittjoh/JMSAopBundle.git
+    target=/bundles/JMS/AopBundle
+
 [JMSSecurityExtraBundle]
     git=https://github.com/schmittjoh/JMSSecurityExtraBundle.git
     target=/bundles/JMS/SecurityExtraBundle
+    version=origin/1.0.x
+
+[IvoryGoogleMapBundle]
+    git=http://github.com/egeloen/IvoryGoogleMapBundle.git
+    target=/bundles/Ivory/GoogleMapBundle
+
+[CG]
+    git=https://github.com/schmittjoh/cg-library.git
+    target=/cg-library

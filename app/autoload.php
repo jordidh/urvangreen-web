@@ -17,6 +17,9 @@ $loader->registerNamespaces(array(
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'Stof'             => __DIR__.'/../vendor/bundles',
     'Gedmo'            => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib',
+    'Ivory'            => __DIR__.'/../vendor/bundles',
+    'JMS'              => __DIR__.'/../vendor/bundles',
+    'CG'               => __DIR__.'/../vendor/cg-library/src',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

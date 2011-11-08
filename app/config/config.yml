@@ -63,7 +63,9 @@ stof_doctrine_extensions:
     orm:
         default:
             translatable: true
-
+jms_aop:
+    cache_dir: %kernel.cache_dir%/jms_aop
+    
 services:
  twig.extension.text:
      class: Twig_Extensions_Extension_Text
@@ -78,3 +80,4 @@ services:
      arguments: [ @session ]
      tags:
        - { name: monolog.processor, method: processRecord }
+       

@@ -6,8 +6,80 @@ Main
 
 {% block body_content %}
 <h1>New garden</h1>
+
+{{ form_errors(form) }}
+
 <form action="{{ path('garden_new') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    {# form_widget(form) #}
+
+    {{ form_errors(form.name) }}
+    <p>
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+    </p>
+
+    {{ form_errors(form.description) }}
+    <p>
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description) }}
+    </p>
+
+    <div class="grid_6 alpha">
+        {{ form_errors(form.latitude) }}
+        <p>
+            {{ form_label(form.latitude) }}
+            {{ form_widget(form.latitude) }}
+        </p>
+    </div>
+    
+    <div class="grid_6 omega">
+        {{ form_errors(form.longitude) }}
+        <p>
+            {{ form_label(form.longitude) }}
+            {{ form_widget(form.longitude) }}
+        </p>
+    </div>
+
+    {{ google_map_container(map) }}
+    {{ google_map_js(map) }}
+    {{ google_map_css(map) }}
+
+    <div class="grid_6 alpha">
+        {{ form_errors(form.width) }}
+        <p>
+            {{ form_label(form.width) }}
+            {{ form_widget(form.width) }}
+        </p>
+    </div>
+
+    <div class="grid_6 alpha">
+        {{ form_errors(form.height) }}
+        <p>
+            {{ form_label(form.height) }}
+            {{ form_widget(form.height) }}
+        </p>
+    </div>
+
+    {{ form_errors(form.garden_type) }}
+    <p>
+        {{ form_label(form.garden_type) }}
+        {{ form_widget(form.garden_type) }}
+    </p>
+
+    {{ form_errors(form.region) }}
+    <p>
+        {{ form_label(form.region) }}
+        {{ form_widget(form.region) }}
+    </p>
+
+    {{ form_errors(form.privacy_type) }}
+    <p>
+        {{ form_label(form.privacy_type) }}
+        {{ form_widget(form.privacy_type) }}
+    </p>
+    
+    {{ form_errors(form._token) }}
+    {{ form_widget(form._token) }}
 
     <input type="submit" />
 </form>

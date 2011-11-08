@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Curba\GardeningBundle\Entity\Action;
 use Curba\GardeningBundle\Form\ActionType;
 
+use Ivory\GoogleMapBundle\Model\MapTypeId;
+use Ivory\GoogleMapBundle\Model\Overlays\Animation;
+
 class GardenController extends Controller
 {
     /**
@@ -104,8 +107,65 @@ class GardenController extends Controller
             }
         }
         
+        // Requests the ivory google map service
+        $map = $this->get('ivory_google_map.map');
+        // Disable the auto zoom flag
+        $map->setAutoZoom(false);
+        // Sets the center
+        $map->setCenter(39.571822, 2.653198, true);
+        // Sets the zoom
+        $map->setMapOption('zoom', 3);
+        
+        // Sets your map type
+        $map->setMapOption('mapTypeId', MapTypeId::HYBRID);
+        //$map->setMapOption('mapTypeId', MapTypeId::ROADMAP);
+        //$map->setMapOption('mapTypeId', MapTypeId::SATELLITE);
+        //$map->setMapOption('mapTypeId', MapTypeId::TERRAIN);
+        
+        $map->setStylesheetOption('width', '600px');
+        $map->setStylesheetOption('height', '300px');
+        
+        // Requests the ivory google map marker service
+        $marker = $this->get('ivory_google_map.marker');
+        
+        // Configure your marker options
+        $marker->setPrefixJavascriptVariable('marker_');
+        $marker->setPosition(39.571822, 2.653198, true);
+        $marker->setAnimation(Animation::DROP);
+        //$marker->setAnimation(Animation::BOUNCE);
+
+        $marker->setOption('clickable', true);
+        $marker->setOption('flat', true);
+
+        // Add your marker to the map
+        $map->addMarker($marker);
+
+        $handle = 'function(event){
+            '.$marker->getJavascriptVariable().'.setPosition(event.latLng);
+            document.getElementById("garden_latitude").value = event.latLng.lat().toFixed(6);
+            document.getElementById("garden_longitude").value = event.latLng.lng().toFixed(6);
+            }';
+        $instance = $map->getJavascriptVariable();
+        
+        // Requests the ivory google map event service
+        $event = $this->get('ivory_google_map.event');
+
+        // Configure your event
+        $event->setInstance($instance);
+        $event->setEventName('click');
+        $event->setHandle($handle);
+
+        // It can only be used with a DOM event
+        // By default, the capture flag is false
+        $event->setCapture(true);
+
+        // Add a DOM event
+        $map->getEventManager()->addDomEvent($event);
+
+        
         return $this->render('CurbaGardeningBundle:Garden:new.html.twig', array(
             'form' => $form->createView(),
+            'map' => $map,
         ));
     }
     
@@ -114,6 +174,106 @@ class GardenController extends Controller
      * @Template()
      */
     public function editAction()
+    {
+        $request = $this->get('request');
+        $id = $request->get('id');
+        
+        $em = $this->get('doctrine')->getEntityManager();
+        
+        // create a task and give it some dummy data for this example
+        $gardenRepository = $em->getRepository('CurbaGardeningBundle:Garden');
+        $garden = $gardenRepository->find($id);
+        if (!$garden) { throw $this->createNotFoundException('No garden found for id '.$id);  }
+
+        $form = $this->createForm(new GardenType(), $garden);
+        
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+
+            if ($form->isValid()) {
+                // Save the garden and the relation user-garden
+                $user = $this->get('security.context')->getToken()->getUser();
+                
+                $em = $this->get('doctrine')->getEntityManager();
+                
+                $em->persist($garden);
+   
+                $em->flush();
+                
+                //$request->getSession()->setFlash('notice', 'Garden created successfully');
+
+                return $this->redirect($this->generateUrl('main'));
+            }
+        }
+        
+        // Requests the ivory google map service
+        $map = $this->get('ivory_google_map.map');
+        // Disable the auto zoom flag
+        $map->setAutoZoom(false);
+        // Sets the center
+        $map->setCenter($garden->getLatitude(), $garden->getLongitude(), true);
+        // Sets the zoom
+        $map->setMapOption('zoom', 12);
+        
+        // Sets your map type
+        $map->setMapOption('mapTypeId', MapTypeId::HYBRID);
+        //$map->setMapOption('mapTypeId', MapTypeId::ROADMAP);
+        //$map->setMapOption('mapTypeId', MapTypeId::SATELLITE);
+        //$map->setMapOption('mapTypeId', MapTypeId::TERRAIN);
+        
+        $map->setStylesheetOption('width', '600px');
+        $map->setStylesheetOption('height', '300px');
+        
+        // Requests the ivory google map marker service
+        $marker = $this->get('ivory_google_map.marker');
+        
+        // Configure your marker options
+        $marker->setPrefixJavascriptVariable('marker_');
+        $marker->setPosition($garden->getLatitude(), $garden->getLongitude(), true);
+        $marker->setAnimation(Animation::DROP);
+        //$marker->setAnimation(Animation::BOUNCE);
+
+        $marker->setOption('clickable', true);
+        $marker->setOption('flat', true);
+
+        // Add your marker to the map
+        $map->addMarker($marker);
+
+        $handle = 'function(event){
+            '.$marker->getJavascriptVariable().'.setPosition(event.latLng);
+            document.getElementById("garden_latitude").value = event.latLng.lat().toFixed(6);
+            document.getElementById("garden_longitude").value = event.latLng.lng().toFixed(6);
+            }';
+        $instance = $map->getJavascriptVariable();
+        
+        // Requests the ivory google map event service
+        $event = $this->get('ivory_google_map.event');
+
+        // Configure your event
+        $event->setInstance($instance);
+        $event->setEventName('click');
+        $event->setHandle($handle);
+
+        // It can only be used with a DOM event
+        // By default, the capture flag is false
+        $event->setCapture(true);
+
+        // Add a DOM event
+        $map->getEventManager()->addDomEvent($event);
+        
+        
+        return $this->render('CurbaGardeningBundle:Garden:edit.html.twig', array(
+            'form' => $form->createView(),
+            'garden' => $garden,
+            'map' => $map,
+        ));
+    }
+    
+    /**
+     * @Route("/gardening/garden/silverlight/{_locale}", requirements={"_locale" = "ca|en|es"}, name="garden_silverlight")
+     * @Template()
+     */
+    public function silverlightAction()
     {
         $request = $this->get('request');
         $id = $request->get('id');
@@ -202,7 +362,7 @@ class GardenController extends Controller
          */
         
     }
-    
+
     /**
      * @Route("/gardening/garden/harvest/{_locale}", requirements={"_locale" = "ca|en|es"}, name="garden_harvest")
      * @Template()
