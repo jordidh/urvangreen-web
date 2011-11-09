@@ -63,6 +63,12 @@
         {{ form_widget(form.userLicenseAccepted) }}
     </p>
     
+    {{ form_errors(form.locale) }}
+    <p>
+        {{ form_label(form.locale) }}
+        {{ form_widget(form.locale) }}
+    </p>
+
     {{ form_errors(form._token) }}
     {{ form_widget(form._token) }}
 

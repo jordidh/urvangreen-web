@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Entity()
  * @UniqueEntity(fields="email")
+ * @ORM\Entity(repositoryClass="Curba\SecurityBundle\Entity\UserRepository")
  */
 class User implements UserInterface, \Serializable
 {
@@ -132,6 +133,21 @@ class User implements UserInterface, \Serializable
      */
     protected $userLicenseAccepted;
     
+    /**
+     * @ORM\Column(type="datetime", name="created_at")
+     */
+    private $createdAt;
+    
+    /**
+     * @ORM\Column(type="datetime", name="deleted_at", nullable=true)
+     */
+    private $deletedAt;
+    
+    /**
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string")
+     */
+    protected $locale;
     
     public function __construct()
     {
@@ -142,6 +158,8 @@ class User implements UserInterface, \Serializable
         $this->gardens = new \Doctrine\Common\Collections\ArrayCollection();
         $this->stations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->userLicenseAccepted = false;
+        $this->createdAt = new \DateTime();
+        $this->deletedAt = null;
     }
     
     private function rand_string( $length ) 
@@ -457,5 +475,65 @@ class User implements UserInterface, \Serializable
     public function getStations()
     {
         return $this->stations;
+    }
+    
+    /**
+     * Set createdAt
+     *
+     * @param datetime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return datetime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+    
+    /**
+     * Set deletedAt
+     *
+     * @param datetime $deletedAt
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return datetime 
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+    
+    /**
+     * Get Locale
+     *
+     * @return string $locale
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * Set Locale
+     *
+     * @param string $locale
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

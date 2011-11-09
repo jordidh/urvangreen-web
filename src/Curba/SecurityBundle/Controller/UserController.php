@@ -56,17 +56,7 @@ class UserController extends Controller
                 // Mensaje para notificar al usuario que todo ha salido bien
                 $session = $this->get('request')->getSession();
                 $session->setFlash('notice', 'Thanks for register in Gardening, you must activate your account, check your email');
-/*
-$factory = $this->get('security.encoder_factory');
-$user = new \Curba\SecurityBundle\Entity\User();
-$user->setFirstName('jordi');
-$user->setLastName('dalmau');
-$user->setEmail('jordi@dalmauheras.cat');
 
-$encoder = $factory->getEncoder($user);
-$password = $encoder->encodePassword('1qaz2wsx', $user->getSalt());
-$user->setPassword($password);
-*/
                 // Obtenemos el usuario
                 $user = $form->getData();
                 
@@ -85,6 +75,8 @@ $user->setPassword($password);
                 $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
                 $this->get('security.context')->setToken($token);
 
+                $this->get('session')->setLocale($user->getLocale());
+                
                 return $this->redirect($this->generateUrl('check_mail'));
             }
         }
@@ -149,15 +141,16 @@ $user->setPassword($password);
     public function checkmailAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
-        $locale = $this->get('session')->getLocale();
-        
+        //$locale = $this->get('session')->getLocale();
+        $this->get('session')->setLocale($user->getLocale());
+     
         $message = \Swift_Message::newInstance()
             ->setSubject('Hort registration activation email')
             ->setFrom('hort@hort.com')
             ->setTo($user->getEmail())
             //->setBody($this->renderView('HelloBundle:Hello:email.txt.twig', array('name' => $name)))
             ->setBody("<html><body><h1>Follow the link to activate your account</h1>".
-                    "<p><A href=\"http://www.hort.com/app_dev.php/activateUser/".$locale."/".$user->getId()."/".$user->getActivationToken()."\">Click me to activate your account<A></p></body></html>",
+                    "<p><A href=\"http://www.hort.com/app_dev.php/activateUser/".$user->getLocale()."/".$user->getId()."/".$user->getActivationToken()."\">Click me to activate your account<A></p></body></html>",
                     "text/html")
             ;
         $this->get('mailer')->send($message);

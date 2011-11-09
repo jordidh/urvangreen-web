@@ -14,6 +14,10 @@ class UserType extends AbstractType
         $builder->add('email', 'email');
         $builder->add('password', 'repeated', array('type' => 'password'));
         $builder->add('userLicenseAccepted');
+        $builder->add('locale', 'choice', array(
+            'choices'   => array('ca' => 'Català', 'es' => 'Español', 'en' => 'English'),
+            'required'  => true,
+        ));
     }
 
     public function getDefaultOptions(array $options)

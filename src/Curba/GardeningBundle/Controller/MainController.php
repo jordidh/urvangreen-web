@@ -14,7 +14,8 @@ class MainController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->get('security.context')->getToken()->getUser();   
+        $user = $this->get('security.context')->getToken()->getUser();
+        $this->get('session')->setLocale($user->getLocale());
         $em = $this->get('doctrine')->getEntityManager();
         
         //Get all the gardens from the user logged
