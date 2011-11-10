@@ -20,6 +20,7 @@ $loader->registerNamespaces(array(
     'Ivory'            => __DIR__.'/../vendor/bundles',
     'JMS'              => __DIR__.'/../vendor/bundles',
     'CG'               => __DIR__.'/../vendor/cg-library/src',
+    'OldSound'         => __DIR__.'/../vendor/bundles',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
@@ -31,6 +32,11 @@ if (!function_exists('intl_get_error_code')) {
     require_once __DIR__.'/../vendor/symfony/src/Symfony/Component/Locale/Resources/stubs/functions.php';
 
     $loader->registerPrefixFallbacks(array(__DIR__.'/../vendor/symfony/src/Symfony/Component/Locale/Resources/stubs'));
+}
+
+// for OldSound RabbitMQ
+if (strpos($class, 'AMQPConnection') === 0) {
+    require_once __DIR__.'/../vendor/php-amqplib/amqp.inc';
 }
 
 $loader->registerNamespaceFallbacks(array(

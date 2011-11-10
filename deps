@@ -91,3 +91,10 @@
 [CG]
     git=https://github.com/schmittjoh/cg-library.git
     target=/cg-library
+
+[RabbitMqBundle]
+    git=http://github.com/videlalvaro/RabbitMqBundle.git
+    target=/bundles/OldSound/RabbitMqBundle
+
+[php-amqplib]
+    git=http://github.com/tnc/php-amqplib.git

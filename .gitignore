@@ -1,6 +1,6 @@
 ## generic files to ignore
 *~
-*.lock
+#*.lock
 *.DS_Store
 *.swp
 *.out
@@ -11,8 +11,10 @@ nbproject/
 *.tmproj
 
 # Symfony files to ignore
+web/bundles/
+app/bootstrap*
 app/cache/*
 app/logs/*
 vendor/
-web/bundles/
 app/config/parameters.ini
+

@@ -81,3 +81,21 @@ services:
      tags:
        - { name: monolog.processor, method: processRecord }
        
+old_sound_rabbit_mq:
+    connections:
+        default:
+            host:      'localhost'
+            port:      5672
+            user:      'guest'
+            password:  'guest'
+            vhost:     '/'
+#    producers:
+#        upload_picture:
+#            connection: default
+#            exchange_options: {name: 'upload-picture', type: direct}
+#    consumers:
+#        upload_picture:
+#            connection: default
+#            exchange_options: {name: 'upload-picture', type: direct}
+#            queue_options:    {name: 'upload-picture'}
+#            callback:         upload_picture_service
