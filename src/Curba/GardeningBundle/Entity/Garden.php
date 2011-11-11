@@ -49,12 +49,12 @@ class Garden
     private $deletedAt;
     
     /**
-     * @ORM\Column(name="latitude", type="decimal", nullable=false)
+     * @ORM\Column(name="latitude", type="decimal", length=10, scale=6, nullable=false)
      */
     private $latitude;
 
     /**
-     * @ORM\Column(name="longitude", type="decimal", nullable=false)
+     * @ORM\Column(name="longitude", type="decimal", length=10, scale=6, nullable=false)
      */
     private $longitude;
 

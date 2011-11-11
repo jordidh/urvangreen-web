@@ -1,18 +1,47 @@
 {% extends "CurbaGardeningBundle::layout.html.twig" %}
 
-{% block body_header %}
-Main
-{% endblock %}
+{% block title %}Perfil{% endblock %}
+{% block metadesc %}Edición del perfil del usuario{% endblock %}
+{% block pageid 'profile' %}
 
 {% block body_content %}
-Main
+
+<h1>Registro</h1>
+
+{% if( app.session.flash('notice') ) %}
+<div class="notice">
+    <p>{{ app.session.flash('notice') }}</p>
+</div>
+{% endif %}
+
+{{ form_errors(form) }}
+
+<form action="{{ path('profile') }}" method="post" {{ form_enctype(form) }}>
+
+    {{ form_errors(form.firstName) }}
+    <p>
+        {{ form_label(form.firstName) }}
+        {{ form_widget(form.firstName) }}
+    </p>
+
+    {{ form_errors(form.lastName) }}
+    <p>
+        {{ form_label(form.lastName) }}
+        {{ form_widget(form.lastName) }}
+    </p>
+
+    {{ form_errors(form.locale) }}
+    <p>
+        {{ form_label(form.locale) }}
+        {{ form_widget(form.locale) }}
+    </p>
+
+    {{ form_errors(form._token) }}
+    {{ form_widget(form._token) }}
+
+    <input type="submit" value="Guarda" />
+</form>
 {% endblock %}
 
 {% block body_lateral %}
-<br/>
-<a href="{{ path('main') }}">Main</a>
-{% endblock %}
-
-{% block body_footer %}
-Main
 {% endblock %}

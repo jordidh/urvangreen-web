@@ -51,9 +51,9 @@ class DeleteInactiveUsersCommand extends ContainerAwareCommand
         //Delete the users
         foreach($usersToDelete as $userToDelete)
         {
-            $this->em->remove($userToDelete);
-            $this->em->flush();
-            $output->writeln('<info>Delete user</info>');
+            $em->remove($userToDelete);
+            $em->flush();
+            $output->writeln('<info>Deleted user '.$userToDelete->getEmail().'</info>');
         }
         
         if ($sendLastAlert)
@@ -70,13 +70,13 @@ class DeleteInactiveUsersCommand extends ContainerAwareCommand
                 ->setFrom('hort@hort.com')
                 ->setTo($userToSendAlert->getEmail())
                 //->setBody($this->renderView('HelloBundle:Hello:email.txt.twig', array('name' => $name)))
-                ->setBody("<html><body><h1>Follow the link to activate your account</h1>".
+                ->setBody("<html><body><h1>Your user is still inactive and will be deleted shortly. If you want join urvangarden follow the link to activate your account</h1>".
                         "<p><A href=\"http://www.hort.com/app_dev.php/activateUser/".$locale."/".$userToSendAlert->getId()."/".$userToSendAlert->getActivationToken()."\">Click me to activate your account<A></p></body></html>",
                         "text/html")
                 ;
-                $this->get('mailer')->send($message);
+                $this->getContainer()->get('mailer')->send($message);
                 
-                $output->writeln('<info>Sent email to user</info>');
+                $output->writeln('<info>Sent email to user'.$userToSendAlert->getEmail().'</info>');
             }
         }
         

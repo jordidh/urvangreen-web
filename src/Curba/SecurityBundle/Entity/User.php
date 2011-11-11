@@ -47,8 +47,14 @@ class User implements UserInterface, \Serializable
 
     public function getUsername()
     {
+        //return $this->username;
         return $this->email;
     }
+    
+    //public function setUsername($username)
+    //{
+    //    $this->username = $username;
+    //}
 
     public function eraseCredentials()
     {
@@ -84,11 +90,16 @@ class User implements UserInterface, \Serializable
     protected $lastName;
 
     /**
-    * @ORM\Column(type="string")
+    * @ORM\Column(name="email", type="string", length=255, unique=true)
     * @Assert\NotBlank()
     * @Assert\Email()
     */
     protected $email;
+    
+    /**
+     * ORM\Column(name="username", type="string", length=255, unique=true)
+     */
+    //protected $username;
 
     /**
     * @ORM\Column(type="string")

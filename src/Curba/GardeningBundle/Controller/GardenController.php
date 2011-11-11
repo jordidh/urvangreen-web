@@ -192,7 +192,11 @@ class GardenController extends Controller
 
             if ($form->isValid()) {
                 // Save the garden and the relation user-garden
-                $user = $this->get('security.context')->getToken()->getUser();
+                //$user = $this->get('security.context')->getToken()->getUser();
+                
+                $garden = $form->getData();
+                
+                $garden->setLatitude(23.123456);
                 
                 $em = $this->get('doctrine')->getEntityManager();
                 

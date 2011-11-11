@@ -3,6 +3,7 @@ namespace Curba\GardeningBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\Extension\Core\DataTransformer\NumberToLocalizedStringTransformer;
 
 class GardenType extends AbstractType
 {
@@ -10,8 +11,14 @@ class GardenType extends AbstractType
     {
         $builder->add('name');
         $builder->add('description');
-        $builder->add('latitude');
-        $builder->add('longitude');
+        $builder->add('latitude', 'number', array(
+            'rounding_mode' => NumberToLocalizedStringTransformer::ROUND_DOWN,
+            'precision' => 6,
+        ));
+        $builder->add('longitude', 'number', array(
+            'rounding_mode' => NumberToLocalizedStringTransformer::ROUND_DOWN,
+            'precision' => 6,
+        ));
         $builder->add('width');
         $builder->add('height');
         $builder->add('garden_type', 'entity', array(

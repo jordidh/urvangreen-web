@@ -60,6 +60,9 @@ class UserController extends Controller
                 // Obtenemos el usuario
                 $user = $form->getData();
                 
+                //Set the username, initially it will be the email
+                //$user->setUsername($user->getEmail());
+                
                 // Codificamos el password
                 $factory = $this->get('security.encoder_factory');
                 $codificador = $factory->getEncoder($user);
@@ -131,7 +134,40 @@ class UserController extends Controller
      */
     public function profileAction()
     {
-        return array();
+        $em = $this->get('doctrine')->getEntityManager();
+        //$user = $this->get('security.context')->getToken()->getUser();
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        if (!$user) { throw $this->createNotFoundException('No user logged has found');  }
+        
+        $form = $this->get('form.factory')->create(new ProfileType(), $user);
+
+        $request = $this->get('request');
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+
+            if ($form->isValid()) {
+
+                // Mensaje para notificar al usuario que todo ha salido bien
+                $session = $this->get('request')->getSession();
+                $session->setFlash('notice', 'Thanks for register in Gardening, you must activate your account, check your email');
+
+                // Obtenemos el usuario
+                $user = $form->getData();
+                
+                //$user2 = $this->get('security.context')->getToken()->getUser();
+                //if (!$user2) { throw $this->createNotFoundException('No user logged has found');  }
+                
+                //$user2->setFirstName($user->getFirstName());
+                //$user2->setLastName($user->getLastName());
+                //$user2->setLocale($user->getLocale());
+                
+                // Guardamos el objeto en base de datos
+                $em->persist($user);
+                $em->flush();
+            }
+        }
+        return $this->render('CurbaSecurityBundle:User:profile.html.twig', array('form' => $form->createView()));
     }
     
     /**
