@@ -105,7 +105,6 @@ class User implements UserInterface, \Serializable
     * @ORM\Column(type="string")
     * @Assert\NotBlank()
     * @Assert\MinLength(5)
-    * @Assert\MaxLength(10)
     */
     protected $password;
 
