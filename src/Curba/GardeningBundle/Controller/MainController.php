@@ -16,7 +16,7 @@ class MainController extends Controller
     {
         $em = $this->get('doctrine')->getEntityManager();
 
-        //$user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.context')->getToken()->getUser();
         //$language = $user->getLocale();
         //print_r($language);
         
