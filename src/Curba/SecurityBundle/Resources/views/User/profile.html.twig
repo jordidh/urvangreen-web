@@ -44,4 +44,7 @@
 {% endblock %}
 
 {% block body_lateral %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a class="user_info" href="{{ path('main', {'_locale': locale }) }}">Main</a>
+    {% endif %}
 {% endblock %}

@@ -160,7 +160,14 @@ class UserController extends Controller
                 $session->setFlash('notice', 'User profile modified successfully');
             }
         }
-        return $this->render('CurbaSecurityBundle:User:profile.html.twig', array('form' => $form->createView()));
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        $language = $user->getLocale();
+            
+        return $this->render('CurbaSecurityBundle:User:profile.html.twig', array(
+            'form'      => $form->createView(),
+            'locale'    => $language,
+        ));
     }
     
     /**

@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% block body_content %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a class="user_info" href="{{ path('main', {'_locale': locale }) }}">My gardening</a>
+        <a class="user_info" href="{{ path('profile', {'_locale': locale }) }}">My profile</a>
+    {% endif %}
+
+    </br>
+    
     <div>
         <p>
             Urvan Green, amb v, és una pàgina web que ofereix un hort Virtual (d'aquí la v) per tal de poder gestionar el teu hort Real.
@@ -48,6 +55,7 @@
     <a href="{{ path('register') }}">Sign Up!</a>
     <p>It's free and always will be.</p>
 </div>
+
 {% endblock %}
 
 {% block body_footer %}

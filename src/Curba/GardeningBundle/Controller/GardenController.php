@@ -196,7 +196,12 @@ class GardenController extends Controller
                 
                 $garden = $form->getData();
                 
-                $garden->setLatitude(23.123456);
+                $garden->setLongitude($_POST["garden"]["longitude"]);
+                $garden->setLatitude($_POST["garden"]["latitude"]);
+                
+                //print_r($garden->getLongitude());
+                //print_r($_POST);
+                //exit;       
                 
                 $em = $this->get('doctrine')->getEntityManager();
                 
