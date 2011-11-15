@@ -13,9 +13,12 @@ class StationType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('station_type')
-            ->add('longitude')
-            ->add('latitude')
+            ->add('pointX')
+            ->add('pointY')
             ->add('barCorrection')
+            ->add('humidityCorrection')
+            ->add('temperatureCorrection')
+            ->add('rainCorrection')
             //->add('file')
         ;
     }

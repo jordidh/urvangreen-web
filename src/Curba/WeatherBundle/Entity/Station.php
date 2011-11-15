@@ -5,6 +5,7 @@ namespace Curba\WeatherBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Curba\GardeningBundle\Entity\Garden;
 
 
 /**
@@ -46,19 +47,34 @@ class Station
     private $description;
 
     /**
-     * @ORM\Column(type="decimal", scale=6)
+     * @ORM\Column(name="point_x", type="bigint", nullable=false)
      */
-    private $longitude;
+    private $pointX;
 
     /**
-     * @ORM\Column(type="decimal", scale=6)
+     * @ORM\Column(name="point_y", type="bigint", nullable=false)
      */
-    private $latitude;
+    private $pointY;
 
     /**
      * @ORM\Column(type="decimal", scale=2)
      */
     private $barCorrection;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    private $humidityCorrection;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    private $temperatureCorrection;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    private $rainCorrection;
 
     /**
      * @ORM\Column(type="datetime", name="created_at")
@@ -86,6 +102,11 @@ class Station
      */
     private $datas;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="\Curba\GardeningBundle\Entity\Garden")
+     * @ORM\JoinColumn(name="garden_id", referencedColumnName="id")
+     */
+    private $garden;
 
     public function __construct()
     {
@@ -165,43 +186,43 @@ class Station
     }
 
     /**
-     * Set longitude
+     * Set pointX
      *
-     * @param decimal $longitude
+     * @param bigint $pointX
      */
-    public function setLongitude($longitude)
+    public function setPointX($pointX)
     {
-        $this->longitude = $longitude;
+        $this->pointX = $pointX;
     }
 
     /**
-     * Get longitude
+     * Get pointX
      *
-     * @return decimal 
+     * @return bigint 
      */
-    public function getLongitude()
+    public function getPointX()
     {
-        return $this->longitude;
+        return $this->pointX;
     }
 
     /**
-     * Set latitude
+     * Set pointY
      *
-     * @param decimal $latitude
+     * @param bigint $pointY
      */
-    public function setLatitude($latitude)
+    public function setPointY($pointY)
     {
-        $this->latitude = $latitude;
+        $this->pointY = $pointY;
     }
 
     /**
-     * Get latitude
+     * Get pointY
      *
-     * @return decimal 
+     * @return bigint 
      */
-    public function getLatitude()
+    public function getPointY()
     {
-        return $this->latitude;
+        return $this->pointY;
     }
 
     /**
@@ -224,6 +245,86 @@ class Station
         return $this->barCorrection;
     }
 
+    /**
+     * Set humidityCorrection
+     *
+     * @param decimal $humidityCorrection
+     */
+    public function setHumidityCorrection($humidityCorrection)
+    {
+        $this->humidityCorrection = $humidityCorrection;
+    }
+
+    /**
+     * Get humidityCorrection
+     *
+     * @return decimal 
+     */
+    public function getHumidityCorrection()
+    {
+        return $this->humidityCorrection;
+    }
+
+    /**
+     * Set temperatureCorrection
+     *
+     * @param decimal $temperatureCorrection
+     */
+    public function setTemperatureCorrection($temperatureCorrection)
+    {
+        $this->temperatureCorrection = $temperatureCorrection;
+    }
+
+    /**
+     * Get temperatureCorrection
+     *
+     * @return decimal 
+     */
+    public function getTemperatureCorrection()
+    {
+        return $this->temperatureCorrection;
+    }
+
+    /**
+     * Set rainCorrection
+     *
+     * @param decimal $rainCorrection
+     */
+    public function setRainCorrection($rainCorrection)
+    {
+        $this->rainCorrection = $rainCorrection;
+    }
+
+    /**
+     * Get rainCorrection
+     *
+     * @return decimal 
+     */
+    public function getRainCorrection()
+    {
+        return $this->rainCorrection;
+    }
+
+    /**
+     * Set garden
+     *
+     * @param Curba\GardeningBundle\Entity\Garden $garden
+     */
+    public function setGarden(\Curba\GardeningBundle\Entity\Garden $garden)
+    {
+        $this->garden = $garden;
+    }
+
+    /**
+     * Get garden
+     *
+     * @return Curba\GardeningBundle\Entity\Garden 
+     */
+    public function getGarden()
+    {
+        return $this->garden;
+    }
+    
     /**
      * Set createdAt
      *

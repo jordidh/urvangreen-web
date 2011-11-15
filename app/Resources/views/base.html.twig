@@ -84,7 +84,17 @@
 
         <footer>
             <div class="container_16">
-                {% block footer %}{% endblock %}
+                {% block footer %}
+                    <div id="horitzontal" class="grid_5">
+                        <a href="{{ path('license') }}">License</a>
+                    </div>
+                    <div id="horitzontal" class="grid_6">
+                        <a href="{{ path('copyright') }}">Copyright</a>
+                    </div>
+                    <div id="horitzontal" class="grid_5">
+                        <a href="{{ path('about') }}">About</a>
+                    </div>
+                {% endblock %}
             </div>
         </footer>
 

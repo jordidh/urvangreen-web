@@ -6,22 +6,21 @@
 
 {% block body_content %}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a class="user_info" href="{{ path('main', {'_locale': locale }) }}">My gardening</a>
-        <a class="user_info" href="{{ path('profile', {'_locale': locale }) }}">My profile</a>
+        <div>
+            <a class="grid_5" href="{{ path('main', {'_locale': locale }) }}">{% trans %}garden.gotomygarden{% endtrans %}</a>
+        </div>
+        <div>
+            <a class="grid_5" href="{{ path('profile', {'_locale': locale }) }}">{% trans %}garden.gotomyprofile{% endtrans %}</a>
+        </div>
+        </br>
     {% endif %}
 
-    </br>
-    
     <div>
         <p>
-            Urvan Green, amb v, és una pàgina web que ofereix un hort Virtual (d'aquí la v) per tal de poder gestionar el teu hort Real.
-            Planifica, dissenya, comparteix, estalvia temps, calcula el rendiment i millora el teu hort urbà dia a dia. aquesta pàgina t'avisarà quan plantar, que plantar, quines plagues hi pot patir, com combatre-les reduïnt al màxim l'ús de productes fitosanitaris.
+            {% trans %}garden.overview{% endtrans %}
             </br>
-            Dissenya, planifica, controla el teu hort urbà!</br>
-            Consulta dades meteorològiques.</br>
-            Crea llistes de tasques.</br>
-            Alarmes.</br>
-            Planificar el teu hort mai ha sigut tan fàcil.</br>
+            {% trans %}garden.funcionality{% endtrans %}
+            </br>
         </p>
     </div>
 

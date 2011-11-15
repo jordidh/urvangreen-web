@@ -15,22 +15,24 @@
         <li>Garden {{ garden.name }} 
             <a href="{{ path('garden_silverlight', { 'id': garden.id }) }}">start to work</a> |
             <a href="{{ path('garden_index', { 'id': garden.id }) }}">information</a> | 
-            <a href="{{ path('garden_edit', { 'id': garden.id }) }}">modify</a>
+            <a href="{{ path('garden_edit', { 'id': garden.id }) }}">modify</a> |
+            <a href="{{ path('station_new') }}">Create a new station</a>
+            <ul>
+              {% for station in stations %}
+                {% if station.garden.id == garden.id %}
+                <li>Station {{ station.name }} 
+                    <a href="{{ path('station_edit', { 'id': station.id }) }}">(configura)</a> 
+                    <a href="{{ path('station_upload', { 'id': station.id }) }}">(upload)</a> 
+                    <a href="{{ path('station_chart', { 'id': station.id, 'index': 1 }) }}">(Weather day calculed data)</a> 
+                    <a href="{{ path('station_detailed_chart', { 'id': station.id, 'index': 1 }) }}">(Weather data)</a> 
+                    <a href="{{ path('station_summary', { 'id': station.id }) }}">(Month summary)</a> 
+                {% endif %}
+              {% endfor %}
+              <li><a href="{{ path('station_new', { 'id': garden.id }) }}">Create a new station</a></li>
+            </ul>
         </li>
       {% endfor %}
       <li><a href="{{ path('garden_new') }}">Create a new garden</a></li>
-    </ul>
-    <h1>User stations</h1>
-    <ul>
-      {% for station in stations %}
-        <li>Station {{ station.name }} 
-            <a href="{{ path('station_edit', { 'id': station.id }) }}">(configura)</a> 
-            <a href="{{ path('station_upload', { 'id': station.id }) }}">(upload)</a> 
-            <a href="{{ path('station_chart', { 'id': station.id, 'index': 1 }) }}">(Weather day calculed data)</a> 
-            <a href="{{ path('station_detailed_chart', { 'id': station.id, 'index': 1 }) }}">(Weather data)</a> 
-            <a href="{{ path('station_edit', { 'id': station.id }) }}">(Mensual text)</a> 
-      {% endfor %}
-      <li><a href="{{ path('station_new') }}">Create a new station</a></li>
     </ul>
 {% endblock %}
 

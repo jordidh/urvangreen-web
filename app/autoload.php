@@ -35,9 +35,9 @@ if (!function_exists('intl_get_error_code')) {
 }
 
 // for OldSound RabbitMQ
-if (strpos($class, 'AMQPConnection') === 0) {
-    require_once __DIR__.'/../vendor/php-amqplib/amqp.inc';
-}
+//if (strpos($class, 'AMQPConnection') === 0) {
+//    require_once __DIR__.'/../vendor/php-amqplib/amqp.inc';
+//}
 
 $loader->registerNamespaceFallbacks(array(
     __DIR__.'/../src',

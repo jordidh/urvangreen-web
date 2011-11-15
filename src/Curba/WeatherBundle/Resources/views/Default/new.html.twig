@@ -3,7 +3,7 @@
 {% block body %}
 <h1>Station creation</h1>
 
-<form action="{{ path('station_create') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('station_create', { 'id': garden }) }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
         <button type="submit">Create</button>

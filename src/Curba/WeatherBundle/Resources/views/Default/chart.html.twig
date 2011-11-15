@@ -1,5 +1,5 @@
 {% extends "CurbaWeatherBundle::layout.html.twig" %}
-    
+
 {% block body_header %}
     <h1>
     {% if index == 1 %}
@@ -11,10 +11,16 @@
     {% else %}
             Rain
     {% endif %}
+    year {{ year }}
     </h1>
 {% endblock %}
 
 {% block body_content %}
+<form action="{{ path('station_chart', { 'id': station.id, 'index':index }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <button type="submit">Change</button>
+</form>
+
 <div id="container" style="height: 500px"></div>
 {% endblock %}
 

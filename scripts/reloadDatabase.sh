@@ -6,4 +6,4 @@ app/console doctrine:schema:create
 app/console doctrine:fixtures:load
 app/console cache:clear
 chmod -R 777 app/cache
-mysql -u root -p hort < ./hort.fixtures.sql
+mysql -u root -p hort < ./scripts/hort.fixtures.sql

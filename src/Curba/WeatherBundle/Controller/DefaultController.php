@@ -9,6 +9,7 @@ use Curba\WeatherBundle\Entity\Station;
 use Curba\WeatherBundle\Entity\StationData;
 use Curba\SecurityBundle\Entity\UserWeatherStation;
 use Curba\WeatherBundle\Form\StationType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Default controller.
@@ -74,12 +75,16 @@ class DefaultController extends Controller
      */
     public function newAction()
     {
+        $request = $this->get('request');
+        $id = $request->get('id');
+        
         $entity = new Station();
         $form   = $this->createForm(new StationType(), $entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+            'garden' => $id
         );
     }
     
@@ -95,7 +100,6 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('CurbaWeatherBundle:Station')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Station entity.');
         }
@@ -183,6 +187,12 @@ class DefaultController extends Controller
         $entity  = new Station();
         $request = $this->getRequest();
         $form    = $this->createForm(new StationType(), $entity);
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getEntityManager();
+        $garden = $em->getRepository('CurbaGardeningBundle:Garden')->find($id);
+        if (!$garden) {
+            throw $this->createNotFoundException('Unable to find Garden entity.');
+        }
 
         if ('POST' === $request->getMethod()) {
             $form->bindRequest($request);
@@ -191,6 +201,7 @@ class DefaultController extends Controller
                 $user = $this->get('security.context')->getToken()->getUser();
                 
                 $em = $this->getDoctrine()->getEntityManager();
+                $entity->setGarden($garden);
                 $em->persist($entity);
                 $em->flush();
                 
@@ -311,9 +322,9 @@ class DefaultController extends Controller
 
                         $em->getConnection()->commit();
 
-                        echo "Memory usage before: " . (memory_get_usage() / 1024) . " KB" . PHP_EOL;
+                        //echo "Memory usage before: " . (memory_get_usage() / 1024) . " KB" . PHP_EOL;
 
-                        $aux = 'Uploading successfully '.count($fileLines);
+                        $aux = 'Uploading successfully '.count($fileLines).' Memory usage before: ' . (memory_get_usage() / 1024) . ' KB' . PHP_EOL;;
                     }
                     catch(Exception $e)
                     {
@@ -358,17 +369,35 @@ class DefaultController extends Controller
         $station = $stationRepository->find($id);
         if (!$station) { throw $this->createNotFoundException('No station found for id '.$id);  }
         
+        $year = date('Y');
+        if ($request->getMethod() == 'POST') {
+            $year = $request->get('form');
+            $year = $year['year'];
+            //print_r($_POST);
+            //exit;
+        }
+                
         //StationData
         $stationDataRepository = $em->getRepository('CurbaWeatherBundle:StationData');
-        $stationData = $stationDataRepository->getDaysStationDataBetween($id, new \DateTime('2010-12-01 10:00:00'), new \DateTime('2010-12-31 20:00:00'));
-        //$detailedStationData = $stationDataRepository->getStationDataBetween($id, new \DateTime('2010-12-01 10:00:00'), new \DateTime('2010-12-31 20:00:00'));
-        //$stationData = $stationDataRepository->getStationDataFromDay($id, new \DateTime('2010-12-18 10:00:00'));
+        $stationData = $stationDataRepository->getDaysStationDataBetween($id, new \DateTime($year.'-01-01 00:00:00'), new \DateTime($year.'-12-31 23:59:59'));
+        
+        $years = $stationDataRepository->getYearsWithData($id);
+        
+        $defaultData = array('year' => $year);
+        $form = $this->createFormBuilder($defaultData)
+            ->add('year', 'choice', array(
+                'choices' => $years,
+            ))
+            ->getForm();
         
         return array(
             'station'      => $station,
             'data'         => $stationData,
             //'detailedData' => $detailedStationData,
             'index'        => $indexToShow,
+            'year'         => $year,
+            'years'        => $years,
+            'form'         => $form->createView(),
         );
     }
     
@@ -394,17 +423,84 @@ class DefaultController extends Controller
         $station = $stationRepository->find($id);
         if (!$station) { throw $this->createNotFoundException('No station found for id '.$id);  }
         
+        $year = date('Y');
+        if ($request->getMethod() == 'POST') {
+            $year = $request->get('form');
+            $year = $year['year'];
+        }
+        
         //StationData
         $stationDataRepository = $em->getRepository('CurbaWeatherBundle:StationData');
-        //$stationData = $stationDataRepository->getDaysStationDataBetween($id, new \DateTime('2010-12-01 10:00:00'), new \DateTime('2010-12-31 20:00:00'));
-        $detailedStationData = $stationDataRepository->getStationDataBetween($id, new \DateTime('2010-12-01 10:00:00'), new \DateTime('2010-12-31 20:00:00'));
-        //$stationData = $stationDataRepository->getStationDataFromDay($id, new \DateTime('2010-12-18 10:00:00'));
+        //$detailedStationData = $stationDataRepository->findAll();
+        $detailedStationData = $stationDataRepository->getStationDataBetween($id, new \DateTime($year.'-01-01 00:00:00'), new \DateTime($year.'-12-31 23:59:59'));
+        
+        $years = $stationDataRepository->getYearsWithData($id);
+        
+        $defaultData = array('year' => $year);
+        $form = $this->createFormBuilder($defaultData)
+            ->add('year', 'choice', array(
+                'choices' => $years,
+            ))
+            ->getForm();
         
         return array(
             'station'      => $station,
             //'data'         => $stationData,
             'detailedData' => $detailedStationData,
             'index'        => $indexToShow,
+            'year'         => $year,
+            'years'        => $years,
+            'form'         => $form->createView(),
+        );
+    }
+
+    /**
+     * @Route("/station/summary/{_locale}", requirements={"_locale" = "ca|en|es"}, name="station_summary")
+     * @Template()
+     */
+    public function summaryAction()
+    {
+        $request = $this->get('request');
+        $id = $request->get('id');  //station id
+        
+        $em = $this->get('doctrine')->getEntityManager();
+        
+        //Station
+        $stationRepository = $em->getRepository('CurbaWeatherBundle:Station');
+        $station = $stationRepository->find($id);
+        if (!$station) { throw $this->createNotFoundException('No station found for id '.$id);  }
+        
+        $year = date('Y');
+        $month = date('m');
+        if ($request->getMethod() == 'POST') {
+            $form = $request->get('form');
+            $year = $form['year'];
+            $month = $form['month'];
+        }
+        $lastDay = date('d',strtotime('-1 second',strtotime('+1 month',strtotime($month.'/01/'.$year.' 00:00:00'))));
+        
+        //StationData
+        $stationDataRepository = $em->getRepository('CurbaWeatherBundle:StationData');
+        $summary = $stationDataRepository->getStationSummaryBetween($id, new \DateTime($year.'-'.$month.'-01 00:00:00'), new \DateTime($year.'-'.$month.'-'.$lastDay.' 23:59:59'));
+        
+        $years = $stationDataRepository->getYearsWithData($id);
+        $months = array( '01' => '01', '02' => '02', '03' => '03', '04' => '04', '05' => '05', '06' => '06', '07' => '07', '08' => '08', '09' => '09', '10' => '10', '11' => '11', '12' => '12');
+        $defaultData = array('year' => $year, 'month' => $month);
+        $form = $this->createFormBuilder($defaultData)
+            ->add('year', 'choice', array(
+                'choices' => $years,
+            ))
+            ->add('month', 'choice', array(
+                'choices' => $months,
+            ))
+            ->getForm();
+        
+        return array(
+            'station'      => $station,
+            'summary'      => $summary,
+            'year'         => $year,
+            'month'        => $month,
+            'form'         => $form->createView(),
         );
     }
 }
