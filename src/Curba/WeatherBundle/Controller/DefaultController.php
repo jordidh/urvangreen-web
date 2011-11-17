@@ -273,19 +273,19 @@ class DefaultController extends Controller
                     {
                         $logger->info('Start reading data fromf ile to DB');
 
-                        echo "Memory usage after: " . (memory_get_usage() / 1024) . " KB" . PHP_EOL;
+                        //echo "Memory usage after: " . (memory_get_usage() / 1024) . " KB" . PHP_EOL;
 
                         $time = microtime(true);
                         $fileContent = file_get_contents($editForm['file']->getData());
                         $time = microtime(true) - $time;
                         $logger->info('Time to read file '.$time);
-                        echo 'Time to read file '.$time;
+                        //echo 'Time to read file '.$time;
 
                         $time = microtime(true);
                         $fileLines = explode("\n", $fileContent);
                         $time = microtime(true) - $time;
                         $logger->info('Time to explode file '.$time);
-                        echo 'Time to explode file '.$time;
+                        //echo 'Time to explode file '.$time;
 
                         $time = microtime(true);
                         unset($fileLines[0]);
@@ -305,26 +305,29 @@ class DefaultController extends Controller
                             }
                             if (($i % $batchSize) == 0) {
                                 $em->flush();
-                                //$em->clear(); // Nona error
+                                $em->clear();   //We need to clear to free the memory
+                                
+                                //After clear em we need to refind the station
+                                $station = $stationRepository->find($id);
                             }
                         }
 
                         $time = microtime(true) - $time;
                         $logger->info('Time to persist data '.$time);
-                        echo 'Time to persist '.$time;
+                        //echo 'Time to persist '.$time;
 
                         $time = microtime(true);
                         $em->flush();
                         //$em->clear(); // Detaches all objects from Doctrine!
                         $time = microtime(true) - $time;
                         $logger->info('Time to flush data '.$time);
-                        echo 'Time to flush '.$time;
+                        //echo 'Time to flush '.$time;
 
                         $em->getConnection()->commit();
 
                         //echo "Memory usage before: " . (memory_get_usage() / 1024) . " KB" . PHP_EOL;
 
-                        $aux = 'Uploading successfully '.count($fileLines).' Memory usage before: ' . (memory_get_usage() / 1024) . ' KB' . PHP_EOL;;
+                        $aux = 'Uploaded successfully '.count($fileLines).' file lines. Memory usage before: ' . (memory_get_usage() / 1024) . ' KB' . PHP_EOL;
                     }
                     catch(Exception $e)
                     {
