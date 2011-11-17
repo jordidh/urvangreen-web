@@ -1,0 +1,52 @@
+{% extends "CurbaWeatherBundle::layout.html.twig" %}
+
+{% block body_header %}
+    <h1>{% trans %}weather.summary.title{% endtrans %}{{ month }}</h1>
+{% endblock %}
+
+{% block body_content %}
+<form action="{{ path('station_summary', { 'id': station.id }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <button type="submit">Change</button>
+</form>
+
+<ul>
+{% for s in summary %}
+    <li>{{ s }}</li>
+{% endfor %}
+</ul>
+    
+{% endblock %}
+
+{% block body_lateral %}
+<ul>
+    <li><a href="{{ path('main') }}">Main</a></li>
+</ul>
+{% endblock %}
+
+{% block body_footer %}
+{% endblock %}
+
+
+
+{#
+                    resum += "Temperatura màxima = " + foundRows[0]["TemperaturaExterior"].ToString() + "ºC (dia i hora " + foundRows[0]["Data"].ToString() + ")\n";
+                    resum += "Temperatura mínima = " + foundRows[foundRows.Length - 1]["TemperaturaExterior"].ToString() + "ºC (dia i hora " + foundRows[foundRows.Length - 1]["Data"].ToString() + ")\n";
+
+                resum += "Temperatura mitjana màxima = " + maximaMitjana.ToString() + "ºC\n";
+                resum += "Temperatura mitjana mínima = " + minimaMitjana.ToString() + "ºC\n";
+                double mitjana = ((maximaMitjana + minimaMitjana) / 2);
+                resum += "Temperatura mitjana del mes = " + mitjana.ToString() + "ºC\n";
+
+                resum += "Total pluja = " + pluja.ToString() + " litres\n"
+                
+                    resum += "Humitat màxima = " + foundRows[0]["HumitatExterior"].ToString() + "% (dia i hora " + foundRows[0]["Data"].ToString() + ")\n";
+                    resum += "Humitat mínima = " + foundRows[foundRows.Length - 1]["HumitatExterior"].ToString() + "% (dia i hora " + foundRows[foundRows.Length - 1]["Data"].ToString() + ")\n";
+
+                    resum += "Rafega màxima = " + foundRows[0]["Rafega"].ToString() + "km/h"
+                        + " Direcció " + foundRows[0]["Vent"].ToString()
+                        + " (dia i hora " + foundRows[0]["Data"].ToString() + ")\n";
+                    
+                    resum += "Pressió màxima = " + foundRows[0]["Pressio"].ToString() + "mb (dia i hora " + foundRows[0]["Data"].ToString() + ")\n";
+                    resum += "Pressió mínima = " + foundRows[foundRows.Length - 1]["Pressio"].ToString() + "mb (dia i hora " + foundRows[foundRows.Length - 1]["Data"].ToString() + ")\n";
+#}
