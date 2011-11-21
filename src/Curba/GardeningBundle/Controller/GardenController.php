@@ -537,6 +537,8 @@ class GardenController extends Controller
             $plant = $form['plant'];
         }
         
+        $crops = $gardenRepository->getCropsWithTotalsFinished($id, $zone, $plant);
+        
         $actions = $gardenRepository->getActionsAndCropsFinished($id, $zone, $plant);
         
         $defaultData = array('zone' => $zone, 'plant' => $plant);
@@ -571,6 +573,7 @@ class GardenController extends Controller
             'garden'       => $garden,
             'zones'        => $zones,
             'plants'       => $plants,
+            'crops'        => $crops,
             'actions'      => $actions,
             'form'         => $form->createView(),
         );

@@ -50,7 +50,7 @@ class GardenRepository extends EntityRepository
     }
     
     /**
-     * Returns all the plants used in the crops
+     * Returns an array with all the actions, crops, plants and zones for a garden
      *
      * @param $gardenId: GardenId to get all current zones
      */
@@ -74,6 +74,44 @@ class GardenRepository extends EntityRepository
         {
             $sql = $sql.' AND p.id ='.$plantId;
         }
+        
+        $sql = $sql.' ORDER BY c.initialRealDate ASC, a.createdAt ASC';
+        
+        $query = $em->createQuery($sql)->setParameter('id', $gardenId);
+
+        try {
+            return $query->getArrayResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        }
+    }
+    
+    /**
+     * Returns an array with all the crops, plants and zones for a garden
+     *
+     * @param $gardenId: GardenId to get all current zones
+     */
+    public function getCropsWithTotalsFinished($gardenId, $zoneId, $plantId)
+    {
+        $em = $this->getEntityManager();
+
+        $sql = 'SELECT z, p, c, sum(a.quantityA), sum(a.quantityB) FROM CurbaGardeningBundle:Crop c
+            JOIN c.zone z
+            JOIN c.plant p
+            JOIN c.actions a
+            WHERE z.garden = :id AND c.finalRealDate is not null';
+
+        if ($zoneId)
+        {
+            $sql = $sql.' AND z.id ='.$zoneId;
+        }
+        
+        if ($plantId)
+        {
+            $sql = $sql.' AND p.id ='.$plantId;
+        }
+        
+        $sql .= ' GROUP BY z, p, c';
         
         $sql = $sql.' ORDER BY c.initialRealDate ASC, a.createdAt ASC';
         
