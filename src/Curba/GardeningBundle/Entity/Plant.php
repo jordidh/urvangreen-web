@@ -7,10 +7,10 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Curba\GardeningBundle\Entity\Pest
+ * Curba\GardeningBundle\Entity\Plant
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Curba\GardeningBundle\Entity\PlantRepository")
  */
 class Plant implements \Gedmo\Translatable\Translatable
 {

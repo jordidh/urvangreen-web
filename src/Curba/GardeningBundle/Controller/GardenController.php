@@ -11,6 +11,7 @@ use Curba\SecurityBundle\Entity\UserGarden;
 use Symfony\Component\HttpFoundation\Request;
 use Curba\GardeningBundle\Entity\Action;
 use Curba\GardeningBundle\Form\ActionType;
+use Doctrine\ORM\EntityRepository;
 
 use Ivory\GoogleMapBundle\Model\MapTypeId;
 use Ivory\GoogleMapBundle\Model\Overlays\Animation;
@@ -408,6 +409,170 @@ class GardenController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView()
+        );
+    }
+    
+    /**
+     * @Route("/gardening/garden/watering/{_locale}", requirements={"_locale" = "ca|en|es"}, name="garden_watering")
+     * @Template()
+     */
+    public function wateringAction()
+    {
+        $request = $this->getRequest();
+        $id = $request->get('id');
+        if (!$id) { throw $this->createNotFoundException('No crop id found in request');  }
+
+        //Crop
+        $em = $this->get('doctrine')->getEntityManager();
+        $gardenRepository = $em->getRepository('CurbaGardeningBundle:Crop');
+        $crop = $gardenRepository->find($id);
+        if (!$crop) { throw $this->createNotFoundException('No crop found for id '.$id);  }
+
+        //ActionType
+        $gardenRepository = $em->getRepository('CurbaGardeningBundle:ActionType');
+        $actionType = $gardenRepository->find(2);
+        if (!$actionType) { throw $this->createNotFoundException('No ActionType found for id 2');  }
+        
+        $entity  = new Action();
+        $entity->setCrop($crop);
+        $entity->setQuantityA(0);
+        $entity->setQuantityB(0);
+        $entity->setActionType($actionType);
+        $entity->setDescription('Watering');
+        $em->persist($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('garden_index', array('id' => $crop->getZone()->getGarden()->getId())));
+    }
+    
+    /**
+     * @Route("/gardening/garden/prune/{_locale}", requirements={"_locale" = "ca|en|es"}, name="garden_prune")
+     * @Template()
+     */
+    public function pruneAction()
+    {
+        $request = $this->getRequest();
+        $id = $request->get('id');
+        if (!$id) { throw $this->createNotFoundException('No crop id found in request');  }
+
+        //Crop
+        $em = $this->get('doctrine')->getEntityManager();
+        $gardenRepository = $em->getRepository('CurbaGardeningBundle:Crop');
+        $crop = $gardenRepository->find($id);
+        if (!$crop) { throw $this->createNotFoundException('No crop found for id '.$id);  }
+
+        //ActionType
+        $gardenRepository = $em->getRepository('CurbaGardeningBundle:ActionType');
+        $actionType = $gardenRepository->find(3);
+        if (!$actionType) { throw $this->createNotFoundException('No ActionType found for id 3');  }
+        
+        $entity  = new Action();
+        $entity->setCrop($crop);
+        $entity->setQuantityA(0);
+        $entity->setQuantityB(0);
+        $entity->setActionType($actionType);
+        $entity->setDescription('Prune');
+        $em->persist($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('garden_index', array('id' => $crop->getZone()->getGarden()->getId())));
+    }
+    
+    /**
+     * @Route("/gardening/garden/finishCrop/{_locale}", requirements={"_locale" = "ca|en|es"}, name="garden_finish_crop")
+     * @Template()
+     */
+    public function finishCropAction()
+    {
+        $request = $this->getRequest();
+        $id = $request->get('id');
+        if (!$id) { throw $this->createNotFoundException('No crop id found in request');  }
+
+        //Crop
+        $em = $this->get('doctrine')->getEntityManager();
+        $gardenRepository = $em->getRepository('CurbaGardeningBundle:Crop');
+        $crop = $gardenRepository->find($id);
+        if (!$crop) { throw $this->createNotFoundException('No crop found for id '.$id);  }
+        
+        $crop->setFinalRealDate(new \DateTime());
+        $em->persist($crop);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('garden_index', array('id' => $crop->getZone()->getGarden()->getId())));
+    }
+    
+    /**
+     * @Route("/gardening/garden/history/{_locale}", requirements={"_locale" = "ca|en|es"}, name="garden_history")
+     * @Template()
+     */
+    public function historyAction()
+    {
+        $request = $this->getRequest();
+        $id = $request->get('id');
+        if (!$id) { throw $this->createNotFoundException('No garden id found in request');  }
+        $em = $this->get('doctrine')->getEntityManager();
+        $gardenRepository = $em->getRepository('CurbaGardeningBundle:Garden');
+        $garden = $gardenRepository->find($id);
+        if (!$garden) { throw $this->createNotFoundException('No garden found with id='.$id);  }
+        $zones = $garden->getZones();
+        //$plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
+        $plants = $gardenRepository->getPlantsUsed($id);
+
+        $plantArray = array();
+        foreach($plants as $p)
+        {
+            $plantArray[$p->getid()] = $p->getName();
+        }
+        $zoneArray = array();
+        foreach($zones as $z)
+        {
+            $zoneArray[$z->getid()] = $z->getName();
+        }
+        
+        $zone = null;
+        $plant = null;
+        if ($request->getMethod() == 'POST') {
+            $form = $request->get('form');
+            $zone = $form['zone'];
+            $plant = $form['plant'];
+        }
+        
+        $actions = $gardenRepository->getActionsAndCropsFinished($id, $zone, $plant);
+        
+        $defaultData = array('zone' => $zone, 'plant' => $plant);
+        $form = $this->createFormBuilder($defaultData)
+                /*
+            ->add('zone', 'entity', array(
+                'class'         => 'Curba\\GardeningBundle\\Entity\\Zone',
+                'query_builder' => function ($repositori) use ($garden) {
+                    return $repositori->createQueryBuilder('z')
+                            ->where('z.garden = :garden')
+                            ->setParameter('garden', $garden)
+                            ->orderBy('z.name', 'ASC');
+                },
+            ))
+            ->add('plant', 'choice', array(
+                'choices' => $plants,
+            ))
+                 * 
+                 */
+            ->add('plant', 'choice', array(
+                'choices' => $plantArray,
+                'required'  => false,
+            ))
+            ->add('zone', 'choice', array(
+                'choices' => $zoneArray,
+                'required'  => false,
+            ))
+            ->getForm();
+        
+                
+        return array(
+            'garden'       => $garden,
+            'zones'        => $zones,
+            'plants'       => $plants,
+            'actions'      => $actions,
+            'form'         => $form->createView(),
         );
     }
 }

@@ -1,0 +1,55 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block body_header %}
+{% endblock %}
+
+{% block body_content %}
+<h1>Garden history</h1>
+<form action="{{ path('garden_history', { 'id': garden.id }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
+
+</br>
+<h2>History</h2>
+<table class="plant">
+    <tr>
+        <th class="plant">Zone</th>
+        <th class="plant">Plantation date</th>
+        <th class="plant">Plant</th>
+        <th class="plant">Action date</th>
+        <th class="plant">Action</th>
+        <th class="plant">Description</th>
+    </tr>
+    {% for a in actions %}
+    <tr>
+        <th>{{ a['crop']['zone']['name']|json_encode() }}</th>
+        <td>{{ a['crop']['initialRealDate'].format('Y-m-d H:i:s') }}</td>
+        <td>{{ a['crop']['plant']['name']|json_encode() }}</td>
+        <td>{{ a['createdAt'].format('Y-m-d H:i:s') }}</td>
+        <td>{{ a['action_type']['name']|json_encode() }}</td>
+        <td>{{ a['description']|json_encode() }}</td>
+    </tr>
+    {% endfor %}
+</table> 
+
+{#
+Actions:
+{% for a in actions %}
+    {{ a|json_encode() }}</br>
+    
+    {% for key,value in a %}
+        -->{{ key }} - {{ value|json_encode() }}</br>
+    {% endfor %}
+{% endfor %}
+#}
+{% endblock %}
+
+{% block body_lateral %}
+<br/>
+<a href="{{ path('main') }}">Main</a>
+{% endblock %}
+
+{% block body_footer %}
+{% endblock %}

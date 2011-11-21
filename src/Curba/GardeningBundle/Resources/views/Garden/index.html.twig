@@ -18,13 +18,13 @@
             {% for crop in zone[1] %}
             <tr>
                 <th>{{ crop[0] }}</th>
-                <td>{{ crop[0].getInitialRealDate()|date("F jS Y") }}</td>
+                <td>{{ crop[0].getInitialRealDate()|date("Y-M-d") }}</td>
                 <td>{{ crop[0].getNumPlants() }}</td>
                 <td>
                     <a href="{{ path('garden_harvest', { 'id': crop[0].id }) }}">Harvest</a> |
-                    <a href="{{ path('main') }}">Watering</a> |
-                    <a href="{{ path('main') }}">Prune</a> |
-                    <a href="{{ path('main') }}">Finish</a>
+                    <a href="{{ path('garden_watering', { 'id': crop[0].id }) }}">Watering</a> |
+                    <a href="{{ path('garden_prune', { 'id': crop[0].id }) }}">Prune</a> |
+                    <a href="{{ path('garden_finish_crop', { 'id': crop[0].id }) }}">Finish</a>
                 </td>
             </tr>
                 {% for action in crop[1] %}
@@ -32,7 +32,7 @@
                     <th></th>
                     <td></td>
                     <td></td>
-                    <td>{{ action.getCreatedAt()|date("F jS Y") }} {{ action.getActionType() }} {{ action.description }}: {{ action.quantityB }} {{ action.quantityA }}</td>
+                    <td>{{ action.getCreatedAt()|date("Y-M-d H:i:s") }} {{ action.getActionType() }} {{ action.description }}: {{ action.quantityB }} {{ action.quantityA }}</td>
                 </tr>
                 {% endfor %}
             {% endfor %}

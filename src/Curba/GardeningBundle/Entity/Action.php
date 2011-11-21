@@ -244,6 +244,14 @@ class Action
     
     public function __toString()
     {
-       return $this->plant->getDescription();
+       //return $this->crop.' - '.$this->action_type.' - '.$this->plant->getDescription();
+        if ($this->action_type)
+        {
+            return $this->id;
+        }
+        else
+        {
+            return 'aaa';
+        }
     }
 }
