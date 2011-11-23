@@ -3,22 +3,22 @@
 {% block body_header %}
     <h1>
     {% if index == 1 %}
-            Temperature
+            Out data: Temperature + Humidity + Rain
     {% elseif index == 2 %}
-            Humidity
+            In data: Temperature + Humidity
     {% elseif index == 3 %}
             Wind
     {% elseif index == 4 %}
-            Rain
-    {% else %}
             Bar
+    {% else %}
+            Rain
     {% endif %}
-    year {{ year }}
+    day {{ day }}
     </h1>
 {% endblock %}
 
 {% block body_content %}
-<form action="{{ path('station_chart', { 'id': station.id, 'index':index }) }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('station_detailed_day_chart', { 'id': station.id, 'index':index }) }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <button type="submit">Change</button>
 </form>
@@ -30,18 +30,34 @@
 <ul>
     <li><a href="{{ path('main') }}">Main</a></li>
 
-    <li><a href="{{ path('station_chart', { 'id': station.id, 'index':'1' }) }}">Temperature</a></li>
-    <li><a href="{{ path('station_chart', { 'id': station.id, 'index':'2' }) }}">Humidity</a></li>
-    <li><a href="{{ path('station_chart', { 'id': station.id, 'index':'3' }) }}">Wind</a></li>
-    <li><a href="{{ path('station_chart', { 'id': station.id, 'index':'4' }) }}">Rain</a></li>
-    <li><a href="{{ path('station_chart', { 'id': station.id, 'index':'5' }) }}">Bar</a></li>
+    <li><a href="{{ path('station_detailed_day_chart', { 'id': station.id, 'index':'1' }) }}">Out data</a></li>
+    <li><a href="{{ path('station_detailed_day_chart', { 'id': station.id, 'index':'2' }) }}">In data</a></li>
+    <li><a href="{{ path('station_detailed_day_chart', { 'id': station.id, 'index':'3' }) }}">Wind</a></li>
+    <li><a href="{{ path('station_detailed_day_chart', { 'id': station.id, 'index':'4' }) }}">Bar</a></li>
+    <li><a href="{{ path('station_detailed_day_chart', { 'id': station.id, 'index':'5' }) }}">Rain</a></li>
 </ul>
 {% endblock %}
 
 {% block body_footer %}
 {% endblock %}
 
+{#
+              0  'd.id, 
+              1  d.data_time, 
+              2  d.wind_direction, 
+              3  d.wind_speed, 
+              4  d.wind_gust, 
+              5  d.humidity_in + '.$station->getHumidityCorrection().' as humidity_in, 
+              6  d.humidity_out + '.$station->getHumidityCorrection().' as humidity_out, 
+              7  d.temperature_in + '.$station->getTemperatureCorrection().' as temperature_in, 
+              8  d.temperature_out + '.$station->getTemperatureCorrection().' as tempertaure_out, 
+              9  d.bar + '.$station->getBarCorrection().' as bar, 
+              10  d.rain + '.$station->getRainCorrection().' as rain'
+#}
 {% block javascripts %}
+
+{#http://www.highcharts.com/demo/spline-plot-bands#}
+
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(function() {
@@ -52,29 +68,38 @@
 
             var data1 = [], data2 = [], data3 = [];
             var x;
+            var time = [];
+            var time1 = [];
+            var time2 = [];
 
             {% if index == 1 %}
-                {% for d in data %}
-                    x = Date.UTC({{ d[0] }}, {{ d[1] }}, {{ d[2] }}, 10, 0);
-                    data1.push([x, parseFloat({{d[3]}})]);
-                    data2.push([x, parseFloat({{d[4]}})]);
-                    data3.push([x, parseFloat({{d[5]}})]);
+                {% for d in detailedData %}
+                    {#time = "{{ d['data_time'].format('Y-m-d H:i:s') }}".split(" "); #}
+                    time = "{{ d['data_time'] }}".split(" ");
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{d['temperature_out']}})]);
+                    data2.push([x, parseFloat({{d['humidity_out']}})]);
+                    data3.push([x, parseFloat({{d['rain']}})]);
                 {% endfor %}
 
                 seriesOptions[0] = {
-                        name: 'Minimum',
+                        name: 'Humidity',
                         data: data2,
-                        yAxis: 0
+                        yAxis: 0//1
                 };
                 seriesOptions[1] = {
-                        name: 'Maximum',
+                        name: 'Temperature',
                         data: data1,
                         yAxis: 0
                 };
                 seriesOptions[2] = {
-                        name: 'Average',
+                        type: 'column',
+                        name: 'Rain',
                         data: data3,
-                        yAxis: 0
+                        yAxis: 0//2
                 };
 
                 yAxisOptions[0] = {
@@ -83,7 +108,7 @@
                         opposite: false,
                         minorGridLineWidth: 0,
                         title: {
-                                text: 'Maximum',
+                                text: 'Temperature',
                                 style: { color: colors[1] }
                         },
                         lineWidth: 2,
@@ -95,7 +120,7 @@
                         opposite: true,
                         minorGridLineWidth: 0,
                         title: {
-                                text: 'Minimum',
+                                text: 'Humidity',
                                 style: { color: colors[0] }
                         },
                         lineWidth: 2,
@@ -107,34 +132,33 @@
                         opposite: true,
                         minorGridLineWidth: 0,
                         title: {
-                                text: 'Average',
+                                text: 'Rain',
                                 style: { color: colors[2] }
                         },
                         lineWidth: 2,
                         lineColor: colors[2]
-                };
+                }; 
                 
             {% elseif index == 2 %}
-                {% for d in data %}
-                    x = Date.UTC({{ d[0] }}, {{ d[1] }}, {{ d[2] }}, 10, 0);
-                    data1.push([x, parseFloat({{d[6]}})]);
-                    data2.push([x, parseFloat({{d[7]}})]);
-                    data3.push([x, parseFloat({{d[8]}})]);
+                {% for d in detailedData %}
+                    time = "{{ d['data_time'] }}".split(" ");
+                    {#time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");#}
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{d['temperature_in']}})]);
+                    data2.push([x, parseFloat({{d['humidity_in']}})]);
                 {% endfor %}
 
                 seriesOptions[0] = {
-                        name: 'Minimum',
+                        name: 'Humidity',
                         data: data2,
-                        yAxis: 0
+                        yAxis: 0//1
                 };
                 seriesOptions[1] = {
-                        name: 'Maximum',
+                        name: 'Temperature',
                         data: data1,
-                        yAxis: 0
-                };
-                seriesOptions[2] = {
-                        name: 'Average',
-                        data: data3,
                         yAxis: 0
                 };
 
@@ -144,7 +168,7 @@
                         opposite: false,
                         minorGridLineWidth: 0,
                         title: {
-                                text: 'Maximum',
+                                text: 'Temperature',
                                 style: { color: colors[1] }
                         },
                         lineWidth: 2,
@@ -156,44 +180,38 @@
                         opposite: true,
                         minorGridLineWidth: 0,
                         title: {
-                                text: 'Minimum',
+                                text: 'Humidity',
                                 style: { color: colors[0] }
                         },
                         lineWidth: 2,
                         lineColor: colors[0]
                 };
-                yAxisOptions[2] = {
-                        alternateGridColor: null,
-                        gridLineWidth: 0,
-                        opposite: true,
-                        minorGridLineWidth: 0,
-                        title: {
-                                text: 'Average',
-                                style: { color: colors[2] }
-                        },
-                        lineWidth: 2,
-                        lineColor: colors[2]
-                };
+
             {% elseif index == 3 %}
-                {% for d in data %}
-                    x = Date.UTC({{ d[0] }}, {{ d[1] }}, {{ d[2] }}, 10, 0);
-                    data1.push([x, parseFloat({{d[9]}})]);
-                    data2.push([x, parseFloat({{d[10]}})]);
-                    data3.push([x, parseFloat({{d[11]}})]);
+                {% for d in detailedData %}
+                    time = "{{ d['data_time'] }}".split(" ");
+                    {#time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");#}
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{ d['wind_direction'] }})]);
+                    data2.push([x, parseFloat({{ d['wind_speed'] }})]);
+                    data3.push([x, parseFloat({{ d['wind_gust'] }})]);
                 {% endfor %}
 
                 seriesOptions[0] = {
-                        name: 'Minimum',
+                        name: 'Wind direction',
                         data: data2,
                         yAxis: 0
                 };
                 seriesOptions[1] = {
-                        name: 'Maximum',
+                        name: 'Wind speed',
                         data: data1,
                         yAxis: 0
                 };
                 seriesOptions[2] = {
-                        name: 'Average',
+                        name: 'Wind gust',
                         data: data3,
                         yAxis: 0
                 };
@@ -204,7 +222,7 @@
                         opposite: false,
                         minorGridLineWidth: 0,
                         title: {
-                                text: 'Maximum',
+                                text: 'Wind direction',
                                 style: { color: colors[1] }
                         },
                         lineWidth: 2,
@@ -216,7 +234,7 @@
                         opposite: true,
                         minorGridLineWidth: 0,
                         title: {
-                                text: 'Minimum',
+                                text: 'Wind speed',
                                 style: { color: colors[0] }
                         },
                         lineWidth: 2,
@@ -228,7 +246,7 @@
                         opposite: true,
                         minorGridLineWidth: 0,
                         title: {
-                                text: 'Average',
+                                text: 'Wind gust',
                                 style: { color: colors[2] }
                         },
                         lineWidth: 2,
@@ -236,13 +254,47 @@
                 };
                 
             {% elseif index == 4 %}
-                {% for d in data %}
-                    x = Date.UTC({{ d[0] }}, {{ d[1] }}, {{ d[2] }}, 0, 0);
-                    data1.push([x, parseFloat({{d[12]}})]);
+                {% for d in detailedData %}
+                    time = "{{ d['data_time'] }}".split(" ");
+                    {#time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");#}
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{ d['bar'] }})]);
                 {% endfor %}
 
                 seriesOptions[0] = {
-                        type: 'column',
+                        name: 'Bar',
+                        data: data1,
+                        yAxis: 0
+                };
+
+                yAxisOptions[0] = {
+                        alternateGridColor: null,
+                        gridLineWidth: 1,
+                        opposite: false,
+                        minorGridLineWidth: 0,
+                        title: {
+                                text: 'Bar',
+                                style: { color: colors[0] }
+                        },
+                        lineWidth: 2,
+                        lineColor: colors[0]
+                };
+
+            {% else %}
+                {% for d in detailedData %}
+                    {#time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");#}
+                    time = "{{ d['data_time'] }}".split(" ");
+                    time1 = time[0].split("-");
+                    time2 = time[1].split(":");
+                    
+                    x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
+                    data1.push([x, parseFloat({{ d['rain'] }})]);
+                {% endfor %}
+
+                seriesOptions[0] = {
                         name: 'Rain',
                         data: data1,
                         yAxis: 0
@@ -260,68 +312,6 @@
                         lineWidth: 2,
                         lineColor: colors[0]
                 };
-                
-            {% else %}
-                {% for d in data %}
-                    x = Date.UTC({{ d[0] }}, {{ d[1] }}, {{ d[2] }}, 10, 0);
-                    data1.push([x, parseFloat({{d[13]}})]);
-                    data2.push([x, parseFloat({{d[14]}})]);
-                    data3.push([x, parseFloat({{d[15]}})]);
-                {% endfor %}
-
-                seriesOptions[0] = {
-                        name: 'Minimum',
-                        data: data2,
-                        yAxis: 0
-                };
-                seriesOptions[1] = {
-                        name: 'Maximum',
-                        data: data1,
-                        yAxis: 0
-                };
-                seriesOptions[2] = {
-                        name: 'Average',
-                        data: data3,
-                        yAxis: 0
-                };
-
-                yAxisOptions[0] = {
-                        alternateGridColor: null,
-                        gridLineWidth: 1,
-                        opposite: false,
-                        minorGridLineWidth: 0,
-                        title: {
-                                text: 'Maximum',
-                                style: { color: colors[1] }
-                        },
-                        lineWidth: 2,
-                        lineColor: colors[1]
-                };
-                yAxisOptions[1] = {
-                        alternateGridColor: null,
-                        gridLineWidth: 0,
-                        opposite: true,
-                        minorGridLineWidth: 0,
-                        title: {
-                                text: 'Minimum',
-                                style: { color: colors[0] }
-                        },
-                        lineWidth: 2,
-                        lineColor: colors[0]
-                };
-                yAxisOptions[2] = {
-                        alternateGridColor: null,
-                        gridLineWidth: 0,
-                        opposite: true,
-                        minorGridLineWidth: 0,
-                        title: {
-                                text: 'Average',
-                                style: { color: colors[2] }
-                        },
-                        lineWidth: 2,
-                        lineColor: colors[2]
-                };
-                
             {% endif %}
             
 
@@ -333,7 +323,13 @@
                 },
 
                 rangeSelector: {
-                    selected: 1
+                    buttons: [
+                    {
+                        type: 'all',
+                        text: 'All'
+                    }],
+                    inputEnabled: false,
+                    selected: 0
                 },
 
                 title: {
@@ -342,8 +338,8 @@
 
                 xAxis: {
                     type: 'datetime',
-                    {#maxZoom: 14 * 24 * 3600000, // fourteen days#}
-                    maxZoom: 24 * 3600000,   //one day
+                    {#maxZoom: 1 * 24 * 3600000, // one day#}
+                    maxZoom: 3600000,   // one hour
                     title: { text: null }
                 },
                 yAxis: yAxisOptions,

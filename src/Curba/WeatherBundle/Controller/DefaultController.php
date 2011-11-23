@@ -382,7 +382,7 @@ class DefaultController extends Controller
                 
         //StationData
         $stationDataRepository = $em->getRepository('CurbaWeatherBundle:StationData');
-        $stationData = $stationDataRepository->getDaysStationDataBetween($id, new \DateTime($year.'-01-01 00:00:00'), new \DateTime($year.'-12-31 23:59:59'));
+        $stationData = $stationDataRepository->getDaysStationDataBetween($station, new \DateTime($year.'-01-01 00:00:00'), new \DateTime($year.'-12-31 23:59:59'));
         
         $years = $stationDataRepository->getYearsWithData($id);
         
@@ -427,22 +427,36 @@ class DefaultController extends Controller
         if (!$station) { throw $this->createNotFoundException('No station found for id '.$id);  }
         
         $year = date('Y');
+        $month = date('m');
         if ($request->getMethod() == 'POST') {
-            $year = $request->get('form');
-            $year = $year['year'];
+            $form = $request->get('form');
+            $year = $form['year'];
+            $month = $form['month'];
         }
+        $lastDay = date('d',strtotime('-1 second',strtotime('+1 month',strtotime($month.'/01/'.$year.' 00:00:00'))));
+        
+        //$year = date('Y');
+        //if ($request->getMethod() == 'POST') {
+        //    $year = $request->get('form');
+        //    $year = $year['year'];
+        //}
         
         //StationData
         $stationDataRepository = $em->getRepository('CurbaWeatherBundle:StationData');
         //$detailedStationData = $stationDataRepository->findAll();
-        $detailedStationData = $stationDataRepository->getStationDataBetween($id, new \DateTime($year.'-01-01 00:00:00'), new \DateTime($year.'-12-31 23:59:59'));
+        $detailedStationData = $stationDataRepository->getStationDataBetween($station, new \DateTime($year.'-'.$month.'-01 00:00:00'), new \DateTime($year.'-'.$month.'-'.$lastDay.' 23:59:59'));
         
         $years = $stationDataRepository->getYearsWithData($id);
+        $months = array( '01' => '01', '02' => '02', '03' => '03', '04' => '04', '05' => '05', '06' => '06', '07' => '07', '08' => '08', '09' => '09', '10' => '10', '11' => '11', '12' => '12');
         
-        $defaultData = array('year' => $year);
+        //$defaultData = array('year' => $year);
+        $defaultData = array('year' => $year, 'month' => $month);
         $form = $this->createFormBuilder($defaultData)
             ->add('year', 'choice', array(
                 'choices' => $years,
+            ))
+            ->add('month', 'choice', array(
+                'choices' => $months,
             ))
             ->getForm();
         
@@ -453,6 +467,7 @@ class DefaultController extends Controller
             'index'        => $indexToShow,
             'year'         => $year,
             'years'        => $years,
+            'month'        => $month,
             'form'         => $form->createView(),
         );
     }
@@ -484,7 +499,7 @@ class DefaultController extends Controller
         
         //StationData
         $stationDataRepository = $em->getRepository('CurbaWeatherBundle:StationData');
-        $summary = $stationDataRepository->getStationSummaryBetween($id, new \DateTime($year.'-'.$month.'-01 00:00:00'), new \DateTime($year.'-'.$month.'-'.$lastDay.' 23:59:59'));
+        $summary = $stationDataRepository->getStationSummaryBetween($station, new \DateTime($year.'-'.$month.'-01 00:00:00'), new \DateTime($year.'-'.$month.'-'.$lastDay.' 23:59:59'));
         
         $years = $stationDataRepository->getYearsWithData($id);
         $months = array( '01' => '01', '02' => '02', '03' => '03', '04' => '04', '05' => '05', '06' => '06', '07' => '07', '08' => '08', '09' => '09', '10' => '10', '11' => '11', '12' => '12');
@@ -503,6 +518,59 @@ class DefaultController extends Controller
             'summary'      => $summary,
             'year'         => $year,
             'month'        => $month,
+            'form'         => $form->createView(),
+        );
+    }
+    
+    /**
+     * @Route("/station/detailedDayChart/{_locale}", requirements={"_locale" = "ca|en|es"}, name="station_detailed_day_chart")
+     * @Template()
+     */
+    public function detailedDayChartAction()
+    {
+        $request = $this->get('request');
+        $id = $request->get('id');  //station id
+        
+        //1 => $temperatures (average, max, min)
+        //2 => $humidities (average, max, min)
+        //3 => $wind (average, max, min)
+        //4 => $rain
+        $indexToShow = $request->get('index');  //value to show
+        
+        $em = $this->get('doctrine')->getEntityManager();
+        
+        //Station
+        $stationRepository = $em->getRepository('CurbaWeatherBundle:Station');
+        $station = $stationRepository->find($id);
+        if (!$station) { throw $this->createNotFoundException('No station found for id '.$id);  }
+        
+        $day = date('Y-m-d');
+        if ($request->getMethod() == 'POST') {
+            $form = $request->get('form');
+            $day = $form['day']['year'].'-'.$form['day']['month'].'-'.$form['day']['day'];
+            
+            //print_r($day);
+            //exit;
+        }
+        
+        //StationData
+        $stationDataRepository = $em->getRepository('CurbaWeatherBundle:StationData');
+        //$detailedStationData = $stationDataRepository->findAll();
+        $detailedStationData = $stationDataRepository->getStationDataBetween($station, new \DateTime($day.' 00:00:00'), new \DateTime($day.' 23:59:59'));
+                
+        $defaultData = array('day' => new \DateTime($day.' 00:00:00'));
+        $form = $this->createFormBuilder($defaultData)
+            ->add('day', 'date', array(
+                'input'  => 'datetime',
+                'widget' => 'choice',
+            ))
+            ->getForm();
+        
+        return array(
+            'station'      => $station,
+            'detailedData' => $detailedStationData,
+            'index'        => $indexToShow,
+            'day'          => $day,
             'form'         => $form->createView(),
         );
     }

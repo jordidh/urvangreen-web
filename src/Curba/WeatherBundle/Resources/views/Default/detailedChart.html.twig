@@ -13,7 +13,7 @@
     {% else %}
             Rain
     {% endif %}
-    year {{ year }}
+    year {{ year }} month {{ month }}
     </h1>
 {% endblock %}
 
@@ -41,6 +41,19 @@
 {% block body_footer %}
 {% endblock %}
 
+{#
+              0  'd.id, 
+              1  d.data_time, 
+              2  d.wind_direction, 
+              3  d.wind_speed, 
+              4  d.wind_gust, 
+              5  d.humidity_in + '.$station->getHumidityCorrection().' as humidity_in, 
+              6  d.humidity_out + '.$station->getHumidityCorrection().' as humidity_out, 
+              7  d.temperature_in + '.$station->getTemperatureCorrection().' as temperature_in, 
+              8  d.temperature_out + '.$station->getTemperatureCorrection().' as tempertaure_out, 
+              9  d.bar + '.$station->getBarCorrection().' as bar, 
+              10  d.rain + '.$station->getRainCorrection().' as rain'
+#}
 {% block javascripts %}
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -58,14 +71,15 @@
 
             {% if index == 1 %}
                 {% for d in detailedData %}
-                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    {#time = "{{ d['data_time'].format('Y-m-d H:i:s') }}".split(" "); #}
+                    time = "{{ d['data_time'] }}".split(" ");
                     time1 = time[0].split("-");
                     time2 = time[1].split(":");
                     
                     x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
-                    data1.push([x, parseFloat({{d.getTemperatureOut()}})]);
-                    data2.push([x, parseFloat({{d.getHumidityOut()}})]);
-                    data3.push([x, parseFloat({{d.getRain()}})]);
+                    data1.push([x, parseFloat({{d['temperature_out']}})]);
+                    data2.push([x, parseFloat({{d['humidity_out']}})]);
+                    data3.push([x, parseFloat({{d['rain']}})]);
                 {% endfor %}
 
                 seriesOptions[0] = {
@@ -124,13 +138,14 @@
                 
             {% elseif index == 2 %}
                 {% for d in detailedData %}
-                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    time = "{{ d['data_time'] }}".split(" ");
+                    {#time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");#}
                     time1 = time[0].split("-");
                     time2 = time[1].split(":");
                     
                     x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
-                    data1.push([x, parseFloat({{d.getTemperatureIn()}})]);
-                    data2.push([x, parseFloat({{d.getHumidityIn()}})]);
+                    data1.push([x, parseFloat({{d['temperature_in']}})]);
+                    data2.push([x, parseFloat({{d['humidity_in']}})]);
                 {% endfor %}
 
                 seriesOptions[0] = {
@@ -171,14 +186,15 @@
 
             {% elseif index == 3 %}
                 {% for d in detailedData %}
-                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    time = "{{ d['data_time'] }}".split(" ");
+                    {#time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");#}
                     time1 = time[0].split("-");
                     time2 = time[1].split(":");
                     
                     x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
-                    data1.push([x, parseFloat({{ d.getWindDirection() }})]);
-                    data2.push([x, parseFloat({{ d.getWindSpeed() }})]);
-                    data3.push([x, parseFloat({{ d.getWindGust() }})]);
+                    data1.push([x, parseFloat({{ d['wind_direction'] }})]);
+                    data2.push([x, parseFloat({{ d['wind_speed'] }})]);
+                    data3.push([x, parseFloat({{ d['wind_gust'] }})]);
                 {% endfor %}
 
                 seriesOptions[0] = {
@@ -236,12 +252,13 @@
                 
             {% elseif index == 4 %}
                 {% for d in detailedData %}
-                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    time = "{{ d['data_time'] }}".split(" ");
+                    {#time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");#}
                     time1 = time[0].split("-");
                     time2 = time[1].split(":");
                     
                     x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
-                    data1.push([x, parseFloat({{ d.getBar() }})]);
+                    data1.push([x, parseFloat({{ d['bar'] }})]);
                 {% endfor %}
 
                 seriesOptions[0] = {
@@ -265,12 +282,13 @@
 
             {% else %}
                 {% for d in detailedData %}
-                    time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");
+                    {#time = "{{ d.getDataTime().format('Y-m-d H:i:s') }}".split(" ");#}
+                    time = "{{ d['data_time'] }}".split(" ");
                     time1 = time[0].split("-");
                     time2 = time[1].split(":");
                     
                     x = Date.UTC(time1[0], time1[1], time1[2], time2[0], time2[1], time2[2]);
-                    data1.push([x, parseFloat({{ d.getRain() }})]);
+                    data1.push([x, parseFloat({{ d['rain'] }})]);
                 {% endfor %}
 
                 seriesOptions[0] = {
@@ -302,7 +320,20 @@
                 },
 
                 rangeSelector: {
-                    selected: 1
+                    {#buttons: [{
+                        count: 1,
+                        type: 'minute',
+                        text: '1M'
+                    }, {
+                        count: 5,
+                        type: 'minute',
+                        text: '5M'
+                    }, {
+                        type: 'all',
+                        text: 'All'
+                    }],
+                    inputEnabled: false,#}
+                    selected: 0
                 },
 
                 title: {
@@ -311,7 +342,8 @@
 
                 xAxis: {
                     type: 'datetime',
-                    maxZoom: 14 * 24 * 3600000, // fourteen days
+                    {#maxZoom: 1 * 24 * 3600000, // one day#}
+                    maxZoom: 3600000, //one hour
                     title: { text: null }
                 },
                 yAxis: yAxisOptions,
