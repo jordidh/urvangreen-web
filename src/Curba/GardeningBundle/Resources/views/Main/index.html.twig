@@ -24,10 +24,10 @@
                 <li>Station {{ station.name }} 
                     <a href="{{ path('station_edit', { 'id': station.id }) }}">(configura)</a> 
                     <a href="{{ path('station_upload', { 'id': station.id }) }}">(upload)</a> 
-                    <a href="{{ path('station_chart', { 'id': station.id, 'index': 1 }) }}">(Weather average data)</a> 
+                    <a href="{{ path('station_chart', { 'id': station.id, 'index': 1 }) }}">(Weather day's average data)</a> 
                     <a href="{{ path('station_detailed_chart', { 'id': station.id, 'index': 1 }) }}">(Weather month data)</a> 
                     {#<a href="{{ path('station_detailed_day_chart', { 'id': station.id, 'index': 1 }) }}">(Weather day data)</a> #}
-                    <a href="{{ path('station_summary', { 'id': station.id }) }}">(Month summary)</a> 
+                    {#<a href="{{ path('station_summary', { 'id': station.id }) }}">(Month summary)</a> #}
                 {% endif %}
               {% endfor %}
               <li><a href="{{ path('station_new', { 'id': garden.id }) }}">Create a new station</a></li>

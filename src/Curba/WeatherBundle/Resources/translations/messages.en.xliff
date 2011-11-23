@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="1">
                 <source>weather.summary.title</source>
-                <target>Weather summary from month </target>
+                <target>Weather summary far month </target>
             </trans-unit>
             <trans-unit id="2">
                 <source>garden.funcionality</source>
@@ -17,6 +17,14 @@
             <trans-unit id="4">
                 <source>garden.gotomyprofile</source>
                 <target>Entra al meu perfil...</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>weather.graphic.month.title</source>
+                <target>Graphic for month </target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>weather.graphic.title</source>
+                <target>Detailed graphic of year </target>
             </trans-unit>
         </body>
     </file>

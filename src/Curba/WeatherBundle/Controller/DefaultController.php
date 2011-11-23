@@ -445,6 +445,7 @@ class DefaultController extends Controller
         $stationDataRepository = $em->getRepository('CurbaWeatherBundle:StationData');
         //$detailedStationData = $stationDataRepository->findAll();
         $detailedStationData = $stationDataRepository->getStationDataBetween($station, new \DateTime($year.'-'.$month.'-01 00:00:00'), new \DateTime($year.'-'.$month.'-'.$lastDay.' 23:59:59'));
+        $summary = $stationDataRepository->getStationSummaryBetween($station, new \DateTime($year.'-'.$month.'-01 00:00:00'), new \DateTime($year.'-'.$month.'-'.$lastDay.' 23:59:59'));
         
         $years = $stationDataRepository->getYearsWithData($id);
         $months = array( '01' => '01', '02' => '02', '03' => '03', '04' => '04', '05' => '05', '06' => '06', '07' => '07', '08' => '08', '09' => '09', '10' => '10', '11' => '11', '12' => '12');
@@ -462,7 +463,7 @@ class DefaultController extends Controller
         
         return array(
             'station'      => $station,
-            //'data'         => $stationData,
+            'summary'      => $summary,
             'detailedData' => $detailedStationData,
             'index'        => $indexToShow,
             'year'         => $year,

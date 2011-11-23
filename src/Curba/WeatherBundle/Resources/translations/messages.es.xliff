@@ -18,6 +18,14 @@
                 <source>garden.gotomyprofile</source>
                 <target>Entra al meu perfil...</target>
             </trans-unit>
+            <trans-unit id="5">
+                <source>weather.graphic.month.title</source>
+                <target>Gráfica del mes </target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>weather.graphic.title</source>
+                <target>Gráfica detallada del año </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

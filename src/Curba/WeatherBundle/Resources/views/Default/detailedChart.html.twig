@@ -23,7 +23,19 @@
     <button type="submit">Change</button>
 </form>
 
+</br>
+
+<h2>{% trans %}weather.graphic.month.title{% endtrans %}{{ month }}</h2>
 <div id="container" style="height: 500px"></div>
+
+</br>
+
+<h2>{% trans %}weather.summary.title{% endtrans %}{{ month }}</h2>
+<ul>
+{% for s in summary %}
+    <li>{{ s }}</li>
+{% endfor %}
+</ul>
 {% endblock %}
 
 {% block body_lateral %}

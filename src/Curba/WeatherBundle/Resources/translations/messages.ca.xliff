@@ -16,7 +16,15 @@
             </trans-unit>
             <trans-unit id="4">
                 <source>garden.gotomyprofile</source>
-                <target>Entra al meu perfil</target>
+                <target>Entra al meu perfil...</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>weather.graphic.month.title</source>
+                <target>Gràfica del mes </target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>weather.graphic.title</source>
+                <target>Gràfica detallada de l'any </target>
             </trans-unit>
         </body>
     </file>
