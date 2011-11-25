@@ -33,15 +33,21 @@ Crops:</br>
         <th class="plant">Plant</th>
         <th class="plant">Total Quantity A</th>
         <th class="plant">Total Quantity B</th>
+        <th class="plant">Total plants</th>
+        <th class="plant">Total area</th>
+        <th class="plant">Productivity</th>
     </tr>
     {% for c in crops %}
     <tr>
-        <th>{{ c[0]['zone']['name']|json_encode() }}</th>
+        <th>{{ c[0]['zone']['name'] }}</th>
         <td>{{ c[0]['initialRealDate'].format('Y-m-d H:i:s') }}</td>
         <td>{{ c[0]['finalRealDate'].format('Y-m-d H:i:s') }}</td>
-        <td>{{ c[0]['plant']['name']|json_encode() }}</td>
-        <td>{{ c[1]|json_encode() }}</td>
-        <td>{{ c[2]|json_encode() }}</td>
+        <td>{{ c[0]['plant']['name'] }}</td>
+        <td>{{ c[1] }}</td>
+        <td>{{ c[2] }}</td>
+        <td>{{ c[0]['numPlants'] }}</td>
+        <td>{{ c[0]['plant']['widthSpacing'] * c[0]['plant']['heightSpacing'] / 1000000 }}m2</td>
+        <td>Planned:{{ c[0]['plant']['productivity'] }}kg/m2 Real:{{ c[1] / c[0]['plant']['widthSpacing'] / c[0]['plant']['heightSpacing'] * 1000000 }}kg/m2</td>
     </tr>
     {% endfor %}
 </table>
@@ -61,14 +67,14 @@ Crops:</br>
     </tr>
     {% for a in actions %}
     <tr>
-        <th>{{ a['crop']['zone']['name']|json_encode() }}</th>
+        <th>{{ a['crop']['zone']['name'] }}</th>
         <td>{{ a['crop']['initialRealDate'].format('Y-m-d H:i:s') }}</td>
-        <td>{{ a['crop']['plant']['name']|json_encode() }}</td>
+        <td>{{ a['crop']['plant']['name'] }}</td>
         <td>{{ a['createdAt'].format('Y-m-d H:i:s') }}</td>
-        <td>{{ a['action_type']['name']|json_encode() }}</td>
-        <td>{{ a['description']|json_encode() }}</td>
-        <td>{{ a['quantityA']|json_encode() }}</td>
-        <td>{{ a['quantityB']|json_encode() }}</td>
+        <td>{{ a['action_type']['name'] }}</td>
+        <td>{{ a['description'] }}</td>
+        <td>{{ a['quantityA'] }}</td>
+        <td>{{ a['quantityB'] }}</td>
     </tr>
     {% endfor %}
 </table> 

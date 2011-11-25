@@ -41,6 +41,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     private $scientificName;
 
     /**
+     * Productivity in kg * m2
      * @ORM\Column(type="integer", nullable=false)
      */
     private $productivity;
