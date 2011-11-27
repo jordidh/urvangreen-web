@@ -95,7 +95,7 @@ class GardenRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
 
-        $sql = 'SELECT z, p, c, sum(a.quantityA), sum(a.quantityB)
+        $sql = 'SELECT z, p, c, sum(a.quantityA), sum(a.quantityB), DATE_DIFF(c.finalRealDate, c.initialRealDate)
             FROM CurbaGardeningBundle:Crop c
             JOIN c.zone z
             JOIN c.plant p

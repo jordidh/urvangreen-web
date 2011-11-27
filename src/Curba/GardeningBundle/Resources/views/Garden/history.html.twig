@@ -28,8 +28,10 @@ Crops:</br>
 <table class="plant">
     <tr>
         <th class="plant">Zone</th>
-        <th class="plant">Plantation date</th>
+        <th class="plant">Plantation begin</th>
         <th class="plant">Plantation end</th>
+        <th class="plant">Duration</th>
+        <th class="plant">Ideal duration</th>
         <th class="plant">Plant</th>
         <th class="plant">Total Quantity A</th>
         <th class="plant">Total Quantity B</th>
@@ -42,6 +44,8 @@ Crops:</br>
         <th>{{ c[0]['zone']['name'] }}</th>
         <td>{{ c[0]['initialRealDate'].format('Y-m-d H:i:s') }}</td>
         <td>{{ c[0]['finalRealDate'].format('Y-m-d H:i:s') }}</td>
+        <td>{{ c[3] }}</td>
+        <td></td>
         <td>{{ c[0]['plant']['name'] }}</td>
         <td>{{ c[1] }}</td>
         <td>{{ c[2] }}</td>
