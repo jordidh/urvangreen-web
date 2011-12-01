@@ -71,11 +71,11 @@
     version=1.0.0
 
 [JMSAopBundle]
-    git=https://github.com/schmittjoh/JMSAopBundle.git
+    git=git://github.com/schmittjoh/JMSAopBundle.git
     target=/bundles/JMS/AopBundle
 
 [JMSSecurityExtraBundle]
-    git=https://github.com/schmittjoh/JMSSecurityExtraBundle.git
+    git=git://github.com/schmittjoh/JMSSecurityExtraBundle.git
     target=/bundles/JMS/SecurityExtraBundle
     version=origin/1.0.x
 
@@ -84,7 +84,7 @@
     target=/bundles/Ivory/GoogleMapBundle
 
 [CG]
-    git=https://github.com/schmittjoh/cg-library.git
+    git=git://github.com/schmittjoh/cg-library.git
     target=/cg-library
 
 [RabbitMqBundle]
