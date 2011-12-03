@@ -24,5 +24,5 @@ assetic:
 
 swiftmailer:
     transport: gmail
-    username:  jordi.dh@gmail.com
+    username:  jordi.dalmau@urvangreen.com
     password:  p$g3m4lh0rt
