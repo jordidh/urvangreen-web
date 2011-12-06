@@ -53,6 +53,11 @@ class Crop
     private $pointY;
 
     /**
+     * @ORM\Column(name="rotation_angle", type="bigint", nullable=false)
+     */
+    private $rotationAngle;
+
+    /**
      * @ORM\Column(name="num_plants", type="bigint", nullable=false)
      */
     private $numPlants;
@@ -226,6 +231,26 @@ class Crop
     public function getPointY()
     {
         return $this->pointY;
+    }
+    
+    /**
+     * Set rotationAngle
+     *
+     * @param bigint $rotationAngle
+     */
+    public function setRotationAngle($rotationAngle)
+    {
+        $this->rotationAngle = $rotationAngle;
+    }
+
+    /**
+     * Get rotationAngle
+     *
+     * @return bigint 
+     */
+    public function getRotationAngle()
+    {
+        return $this->rotationAngle;
     }
 
     /**

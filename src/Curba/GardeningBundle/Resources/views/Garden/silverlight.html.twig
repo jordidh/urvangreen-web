@@ -3,6 +3,7 @@
 {% block body_content %}
     <!-- Runtime errors from Silverlight will be displayed here.
 	This will contain debugging information and should be removed or hidden when debugging is completed -->
+    {#
     <div id='errorLocation' style="font-size: small;color: Gray;"></div>
 
     <div id="silverlightControlHost">
@@ -19,6 +20,19 @@
 		</object>
 		<iframe style='visibility:hidden;height:0;width:0;border:0px'></iframe>
     </div>
+    #}
+    
+    {# Ajax editor #}
+    <div id="ajaxGardenEditor" width="300" height="600"></div>
+    {# Parameters to ajax garden editor in input hidden #}
+    <input id="parPlants" type="hidden" value="{{ plants|escape|replace({',': '%2C'}) }}" />
+    <input id="parZoneTypes" type="hidden" value="{{ zoneTypes|escape|replace({',': '%2C'}) }}" />
+    <input id="parRegions" type="hidden" value="{{ regions|escape|replace({',': '%2C'}) }}" />
+    <input id="parCrops" type="hidden" value="{{ crops|escape|replace({',': '%2C'}) }}" />
+    <input id="parZones" type="hidden" value="{{ zones|escape|replace({',': '%2C'}) }}" />
+    <input id="parGarden" type="hidden" value="{{ garden|escape|replace({',': '%2C'}) }}" />
+    <input id="parGardenTypes" type="hidden" value="{{ gardenTypes|escape|replace({',': '%2C'}) }}" />
+    
 {% endblock %}
     
 {% block body_lateral %}

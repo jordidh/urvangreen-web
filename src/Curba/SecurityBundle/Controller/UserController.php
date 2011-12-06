@@ -186,7 +186,7 @@ class UserController extends Controller
             ->setTo($user->getEmail())
             //->setBody($this->renderView('HelloBundle:Hello:email.txt.twig', array('name' => $name)))
             ->setBody("<html><body><h1>Follow the link to activate your account</h1>".
-                    "<p><A href=\"http://www.hort.com/app_dev.php/activateUser/".$user->getLocale()."/".$user->getId()."/".$user->getActivationToken()."\">Click me to activate your account<A></p></body></html>",
+                    "<p><A href=\"http://www.urvangreen.com/activateUser/".$user->getLocale()."/".$user->getId()."/".$user->getActivationToken()."\">Click me to activate your account<A></p></body></html>",
                     "text/html")
             ;
         $this->get('mailer')->send($message);

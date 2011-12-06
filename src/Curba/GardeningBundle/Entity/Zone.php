@@ -52,6 +52,11 @@ class Zone
      * @ORM\Column(name="final_point_y", type="bigint", nullable=false)
      */
     private $finalPointY;
+    
+    /**
+     * @ORM\Column(name="rotation_angle", type="bigint", nullable=false)
+     */
+    private $rotationAngle;
 
     /**
      * @ORM\Column(name="depth", type="bigint", nullable=false)
@@ -99,7 +104,27 @@ class Zone
     }
 
     /**
-     * Get id
+     * Get id/**
+     * Set rotationAngle
+     *
+     * @param bigint $rotationAngle
+     */
+    public function setRotationAngle($rotationAngle)
+    {
+        $this->rotationAngle = $rotationAngle;
+    }
+
+    /**
+     * Get rotationAngle
+     *
+     * @return bigint 
+     */
+    public function getRotationAngle()
+    {
+        return $this->rotationAngle;
+    }
+    
+    /**
      *
      * @return integer 
      */
@@ -226,6 +251,26 @@ class Zone
     public function getFinalPointY()
     {
         return $this->finalPointY;
+    }
+    
+    /**
+     * Set rotationAngle
+     *
+     * @param bigint $rotationAngle
+     */
+    public function setRotationAngle($rotationAngle)
+    {
+        $this->rotationAngle = $rotationAngle;
+    }
+
+    /**
+     * Get rotationAngle
+     *
+     * @return bigint 
+     */
+    public function getRotationAngle()
+    {
+        return $this->rotationAngle;
     }
 
     /**
