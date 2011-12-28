@@ -59,12 +59,12 @@ class Garden
     private $longitude;
 
     /**
-     * @ORM\Column(name="width", type="bigint", nullable=false)
+     * @ORM\Column(name="width", type="integer", nullable=false)
      */
     private $width;
 
     /**
-     * @ORM\Column(name="height", type="bigint", nullable=false)
+     * @ORM\Column(name="height", type="integer", nullable=false)
      */
     private $height;
 
@@ -258,7 +258,7 @@ class Garden
     /**
      * Set width
      *
-     * @param bigint $width
+     * @param integer $width
      */
     public function setWidth($width)
     {
@@ -268,7 +268,7 @@ class Garden
     /**
      * Get width
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getWidth()
     {
@@ -278,7 +278,7 @@ class Garden
     /**
      * Set height
      *
-     * @param bigint $height
+     * @param integer $height
      */
     public function setHeight($height)
     {
@@ -288,7 +288,7 @@ class Garden
     /**
      * Get height
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getHeight()
     {

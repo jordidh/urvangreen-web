@@ -184,4 +184,13 @@ class ActionType implements \Gedmo\Translatable\Translatable
     {
         $this->locale = $locale;
     }
+    
+    public function asArray()
+    {
+        return array(
+            'id'   => $this->getId(),
+            'name' => $this->getName(),
+            'description' => $this->getDescription()
+        );
+    }
 }

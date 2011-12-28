@@ -43,22 +43,22 @@ class Crop
     private $finalPlannedDate;
 
     /**
-     * @ORM\Column(name="point_x", type="bigint", nullable=false)
+     * @ORM\Column(name="point_x", type="integer", nullable=false)
      */
     private $pointX;
 
     /**
-     * @ORM\Column(name="point_y", type="bigint", nullable=false)
+     * @ORM\Column(name="point_y", type="integer", nullable=false)
      */
     private $pointY;
 
     /**
-     * @ORM\Column(name="rotation_angle", type="bigint", nullable=false)
+     * @ORM\Column(name="rotation_angle", type="float", nullable=false)
      */
     private $rotationAngle;
 
     /**
-     * @ORM\Column(name="num_plants", type="bigint", nullable=false)
+     * @ORM\Column(name="num_plants", type="smallint", nullable=false)
      */
     private $numPlants;
 
@@ -196,7 +196,7 @@ class Crop
     /**
      * Set pointX
      *
-     * @param bigint $pointX
+     * @param integer $pointX
      */
     public function setPointX($pointX)
     {
@@ -206,7 +206,7 @@ class Crop
     /**
      * Get pointX
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getPointX()
     {
@@ -216,7 +216,7 @@ class Crop
     /**
      * Set pointY
      *
-     * @param bigint $pointY
+     * @param integer $pointY
      */
     public function setPointY($pointY)
     {
@@ -226,7 +226,7 @@ class Crop
     /**
      * Get pointY
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getPointY()
     {
@@ -236,7 +236,7 @@ class Crop
     /**
      * Set rotationAngle
      *
-     * @param bigint $rotationAngle
+     * @param float $rotationAngle
      */
     public function setRotationAngle($rotationAngle)
     {
@@ -246,7 +246,7 @@ class Crop
     /**
      * Get rotationAngle
      *
-     * @return bigint 
+     * @return float 
      */
     public function getRotationAngle()
     {
@@ -256,7 +256,7 @@ class Crop
     /**
      * Set numPlants
      *
-     * @param bigint $numPlants
+     * @param smallint $numPlants
      */
     public function setNumPlants($numPlants)
     {
@@ -266,7 +266,7 @@ class Crop
     /**
      * Get numPlants
      *
-     * @return bigint 
+     * @return smallint
      */
     public function getNumPlants()
     {

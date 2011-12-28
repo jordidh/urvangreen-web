@@ -34,32 +34,32 @@ class Zone
     private $description;
 
     /**
-     * @ORM\Column(name="initial_point_x", type="bigint", nullable=false)
+     * @ORM\Column(name="initial_point_x", type="integer", nullable=false)
      */
     private $initialPointX;
 
     /**
-     * @ORM\Column(name="initial_point_y", type="bigint", nullable=false)
+     * @ORM\Column(name="initial_point_y", type="integer", nullable=false)
      */
     private $initialPointY;
 
     /**
-     * @ORM\Column(name="final_point_x", type="bigint", nullable=false)
+     * @ORM\Column(name="final_point_x", type="integer", nullable=false)
      */
     private $finalPointX;
 
     /**
-     * @ORM\Column(name="final_point_y", type="bigint", nullable=false)
+     * @ORM\Column(name="final_point_y", type="integer", nullable=false)
      */
     private $finalPointY;
     
     /**
-     * @ORM\Column(name="rotation_angle", type="bigint", nullable=false)
+     * @ORM\Column(name="rotation_angle", type="float", nullable=false)
      */
     private $rotationAngle;
 
     /**
-     * @ORM\Column(name="depth", type="bigint", nullable=false)
+     * @ORM\Column(name="depth", type="integer", nullable=false)
      */
     private $depth;
 
@@ -107,7 +107,7 @@ class Zone
      * Get id/**
      * Set rotationAngle
      *
-     * @param bigint $rotationAngle
+     * @param float $rotationAngle
      */
     public function setRotationAngle($rotationAngle)
     {
@@ -117,7 +117,7 @@ class Zone
     /**
      * Get rotationAngle
      *
-     * @return bigint 
+     * @return float 
      */
     public function getRotationAngle()
     {
@@ -176,7 +176,7 @@ class Zone
     /**
      * Set initialPointX
      *
-     * @param bigint $initialPointX
+     * @param integer $initialPointX
      */
     public function setInitialPointX($initialPointX)
     {
@@ -186,7 +186,7 @@ class Zone
     /**
      * Get initialPointX
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getInitialPointX()
     {
@@ -196,7 +196,7 @@ class Zone
     /**
      * Set initialPointY
      *
-     * @param bigint $initialPointY
+     * @param integer $initialPointY
      */
     public function setInitialPointY($initialPointY)
     {
@@ -206,7 +206,7 @@ class Zone
     /**
      * Get initialPointY
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getInitialPointY()
     {
@@ -216,7 +216,7 @@ class Zone
     /**
      * Set finalPointX
      *
-     * @param bigint $finalPointX
+     * @param integer $finalPointX
      */
     public function setFinalPointX($finalPointX)
     {
@@ -226,7 +226,7 @@ class Zone
     /**
      * Get finalPointX
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getFinalPointX()
     {
@@ -236,7 +236,7 @@ class Zone
     /**
      * Set finalPointY
      *
-     * @param bigint $finalPointY
+     * @param integer $finalPointY
      */
     public function setFinalPointY($finalPointY)
     {
@@ -246,7 +246,7 @@ class Zone
     /**
      * Get finalPointY
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getFinalPointY()
     {
@@ -254,29 +254,9 @@ class Zone
     }
     
     /**
-     * Set rotationAngle
-     *
-     * @param bigint $rotationAngle
-     */
-    public function setRotationAngle($rotationAngle)
-    {
-        $this->rotationAngle = $rotationAngle;
-    }
-
-    /**
-     * Get rotationAngle
-     *
-     * @return bigint 
-     */
-    public function getRotationAngle()
-    {
-        return $this->rotationAngle;
-    }
-
-    /**
      * Set depth
      *
-     * @param bigint $depth
+     * @param integer $depth
      */
     public function setDepth($depth)
     {
@@ -286,7 +266,7 @@ class Zone
     /**
      * Get depth
      *
-     * @return bigint 
+     * @return integer 
      */
     public function getDepth()
     {

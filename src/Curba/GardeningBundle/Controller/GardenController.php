@@ -374,6 +374,98 @@ class GardenController extends Controller
     }
 
     /**
+     * @Route("/gardening/garden/editor/{_locale}", requirements={"_locale" = "ca|en|es"}, name="garden_editor")
+     * @Template()
+     */
+    public function editorAction()
+    {
+        $request = $this->get('request');
+        $id = $request->get('id');
+        
+        $em = $this->get('doctrine')->getEntityManager();
+        
+        //Garden
+        $gardenRepository = $em->getRepository('CurbaGardeningBundle:Garden');
+        $garden = $gardenRepository->find($id);
+        if (!$garden) { throw $this->createNotFoundException('No garden found for id '.$id);  }
+        $gardenJson = $garden->asArray();
+        
+        //Zones and Crops
+        $zonesJson = array();
+        $cropsJson = array();
+        
+        $zoneRepository = $em->getRepository('CurbaGardeningBundle:Zone');
+        
+        $zones = $gardenRepository->getCurrentZones($garden->getId());
+        foreach($zones as $zone)
+        {
+            $crops = $zoneRepository->getCurrentCrops($zone->getId());
+            $zonesJson[] = $zone->asArray();
+            foreach($crops as $crop)
+            {
+                $cropsJson[] = $crop->asArray();
+            }
+        }
+        
+        //Plants
+        $plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
+        $plants = $plantRepository->findAll();
+        $plantsJson = array();
+        foreach($plants as $plant)
+        {
+            $plantsJson[] = $plant->asArray();
+        }        
+        
+        //ZoneTypes
+        $zoneTypeRepository = $em->getRepository('CurbaGardeningBundle:ZoneType');
+        $zoneTypes = $zoneTypeRepository->findAll();
+        $zoneTypesJson = array();
+        foreach($zoneTypes as $zoneType)
+        {
+            $zoneTypesJson[] = $zoneType->asArray();
+        }
+        
+        //Regions
+        $regionRepository = $em->getRepository('CurbaGardeningBundle:Region');
+        $regions = $regionRepository->findAll();
+        $regionsJson = array();
+        foreach($regions as $region)
+        {
+            $regionsJson[] = $region->asArray();
+        }
+        
+        //GardenTypes
+        $gardenTypeRepository = $em->getRepository('CurbaGardeningBundle:GardenType');
+        $gardenTypes = $gardenTypeRepository->findAll();
+        $gardenTypesJson = array();
+        foreach($gardenTypes as $gardenType)
+        {
+            $gardenTypesJson[] = $gardenType->asArray();
+        }
+        
+        //ActionTypes
+        $actionTypeRepository = $em->getRepository('CurbaGardeningBundle:ActionType');
+        $actionTypes = $actionTypeRepository->findAll();
+        $actionTypesJson = array();
+        foreach($actionTypes as $actionType)
+        {
+            $actionTypesJson[] = $actionType->asArray();
+        }
+        
+        //We use json_encode with JSON_NUMERIC_CHECK to parse floats and integers as numbers and not as strings 
+        return $this->render('CurbaGardeningBundle:Garden:editor.html.twig', array(
+            'plants'        => json_encode($plantsJson),
+            'zoneTypes'     => json_encode($zoneTypesJson),
+            'regions'       => json_encode($regionsJson),
+            'crops'         => json_encode($cropsJson),
+            'zones'         => json_encode($zonesJson),
+            'garden'        => json_encode($gardenJson, JSON_NUMERIC_CHECK),
+            'gardenTypes'   => json_encode($gardenTypesJson),
+            'actionTypes'   => json_encode($actionTypesJson),
+        ));
+    }
+    
+    /**
      * @Route("/gardening/garden/harvest/{_locale}", requirements={"_locale" = "ca|en|es"}, name="garden_harvest")
      * @Template()
      */

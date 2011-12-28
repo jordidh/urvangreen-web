@@ -18,7 +18,7 @@ class ActionTypeFixtures extends AbstractFixture implements OrderedFixtureInterf
 
         $fix2 = new ActionType();
         $fix2->setName('Watering');
-        $fix2->setDescription('Watering a crop');
+        $fix2->setDescription('Watering');
         $fix2->setTranslatableLocale('en');
         $manager->persist($fix2);
 

@@ -1,0 +1,50 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block head_javascripts %}
+    <!--                                           -->
+    <!-- This script loads your compiled module.   -->
+    <!-- If you add any GWT meta tags, they must   -->
+    <!-- be added before this line.                -->
+    <!--                                           -->
+    <script type="text/javascript" language="javascript" src="/js/graphics02/graphics02.nocache.js"></script>
+{% endblock %}
+
+{% block body_content %}
+        
+    <!-- OPTIONAL: include this if you want history support -->
+    <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
+    
+    <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+    <noscript>
+      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+      </div>
+    </noscript>
+    
+    
+    {# Ajax editor #}
+    <div id="ajaxGardenControls"></div>
+    <div id="ajaxGardenEditor" width="300" height="600"></div>
+    {# Parameters to ajax garden editor in input hidden #}
+    <input id="parPlants" type="hidden" value="{{ plants|replace({',': '%2C'}) }}" />
+    <input id="parZoneTypes" type="hidden" value="{{ zoneTypes|replace({',': '%2C'}) }}" />
+    <input id="parRegions" type="hidden" value="{{ regions|replace({',': '%2C'}) }}" />
+    <input id="parCrops" type="hidden" value="{{ crops|replace({',': '%2C'}) }}" />
+    <input id="parZones" type="hidden" value="{{ zones|replace({',': '%2C'}) }}" />
+    <input id="parGarden" type="hidden" value="{{ garden|replace({',': '%2C'}) }}" />
+    <input id="parGardenTypes" type="hidden" value="{{ gardenTypes|replace({',': '%2C'}) }}" />
+    <input id="parActionTypes" type="hidden" value="{{ actionTypes|replace({',': '%2C'}) }}" />
+
+{% endblock %}
+    
+{% block body_lateral %}
+    <br/>
+    <a href="{{ path('main') }}">Main</a>
+    <br/>
+    <a href="{{ path('profile') }}">User profile</a>
+    <br/>
+    <a href="{{ path('comp_plant') }}">Compatibility plant table</a>
+    <br/>
+    <a href="{{ path('crop_period') }}">Crop period table</a>
+{% endblock %}
