@@ -192,13 +192,19 @@ class GardenApiController extends Controller
      */
     public function postGardenAction($format)
     {
+        $logger = $this->get('logger');
+        $logger->info("postGardenAction");
+
         $request = $this->getRequest();
-        $jsonData = $request->getContent();
      
         try
         {
+            $jsonData = urldecode($request->getContent());
+            $logger->info("5: ".urldecode($request->getContent()));
             //Decode the string received
-            $array = json_decode($request->getContent());
+            $array = json_decode($jsonData);
+            $logger->info("6: ".json_last_error());
+            
             $garden = get_object_vars($array[0]);
             $zonesArray = array();
             foreach($array[1] as $zone)
@@ -226,7 +232,8 @@ class GardenApiController extends Controller
             if ($user)
             {
                 //Create or update the garden
-                //{"description":"Hort de prova","gardenTypeId":1,"height":600,"id":-1,"latitude":0,"longitude":0,"name":"Hort","regionId":1,"width":800}
+                //silverlight{"description":"Hort de prova","gardenTypeId":1,"height":600,"id":-1,"latitude":0,"longitude":0,"name":"Hort","regionId":1,"width":800}
+                //gwt{ "id": 1, "region_id": 1, "garden_type_id": 2, "name": "Set the garden name", "description": "Write a short description", "latitude": 43.123, "longitude": 5.00023, "width": 2000, "height": 2000}
                 $gardenObj = $gardenRepository->find($garden['id']);
                 if ($gardenObj)
                 {
@@ -240,8 +247,8 @@ class GardenApiController extends Controller
                 }
                 $gardenObj->setName($garden['name']);
                 $gardenObj->setDescription($garden['description']);
-                $gardenObj->setRegion($regionRepository->find($garden['regionId']));
-                $gardenObj->setGardenType($gardenTypeRepository->find($garden['gardenTypeId']));
+                $gardenObj->setRegion($regionRepository->find($garden['region_id']));
+                $gardenObj->setGardenType($gardenTypeRepository->find($garden['garden_type_id']));
                 $gardenObj->setHeight($garden['height']);
                 $gardenObj->setWidth($garden['width']);
                 $gardenObj->setLatitude($garden['latitude']);
@@ -257,7 +264,7 @@ class GardenApiController extends Controller
                 $em->persist($userGarden);
                 $em->flush();
 */
-                //Delete the zones present in the DB not returned by the GardenEditor
+                //Delete the zones present in the DB but not returned by the GardenEditor
                 foreach($gardenObj->getZones() as $zoneToDelete)
                 {
                     //Delete the crops present in the DB not returned by the GardenEditor
@@ -302,7 +309,8 @@ class GardenApiController extends Controller
                 
 
                 //Create or update zones
-                //[{"__type":"ServerZone:#GardenEditor2","depth":20,"description":"z","finalPointX":393,"finalPointY":335,"gardenId":0,"id":-1,"initialPointX":193,"initialPointY":135,"name":"z","zoneTypeId":1}]
+                //silverlight[{"__type":"ServerZone:#GardenEditor2","depth":20,"description":"z","finalPointX":393,"finalPointY":335,"gardenId":0,"id":-1,"initialPointX":193,"initialPointY":135,"name":"z","zoneTypeId":1}]
+                //gwt{ "id": 1, "garden_id": 1, "zone_type_id": 1, "name": "a", "description": "a", "initial_point_x": 1, "initial_point_y": 1, "final_point_x": 500, "final_point_y": 500, "depth": 200}
                 foreach($zonesArray as $zone)
                 {
                     $zoneObj = $zoneRepository->find($zone['id']);
@@ -319,20 +327,22 @@ class GardenApiController extends Controller
                     $zoneObj->setName($zone['name']);
                     $zoneObj->setDescription($zone['description']);
                     $zoneObj->setGarden($gardenObj);
-                    $zoneObj->setZoneType($zoneTypeRepository->find($zone['zoneTypeId']));
-                    $zoneObj->setInitialPointX($zone['initialPointX']);
-                    $zoneObj->setInitialPointY($zone['initialPointY']);
-                    $zoneObj->setFinalPointX($zone['finalPointX']);
-                    $zoneObj->setFinalPointY($zone['finalPointY']);
+                    $zoneObj->setZoneType($zoneTypeRepository->find($zone['zone_type_id']));
+                    $zoneObj->setInitialPointX($zone['initial_point_x']);
+                    $zoneObj->setInitialPointY($zone['initial_point_y']);
+                    $zoneObj->setFinalPointX($zone['final_point_x']);
+                    $zoneObj->setFinalPointY($zone['final_point_y']);
                     $zoneObj->setDepth($zone['depth']);
+                    $zoneObj->setRotationAngle(0);
                     $em->persist($zoneObj);
                     $em->flush();
 
                     //Create, update or delete crops
-                    //[{"__type":"ServerCrop:#GardenEditor2","id":-1,"numPlants":1,"plantId":1,"pointX":254,"pointY":193,"zoneId":0}]
+                    //silverlight[{"__type":"ServerCrop:#GardenEditor2","id":-1,"numPlants":1,"plantId":1,"pointX":254,"pointY":193,"zoneId":0}]
+                    //gwt{ "id": 1, "zone_id": 1, "plant_id": 2, "initial_real_date": "null", "initial_planned_date": "null", "final_real_date": "null", "final_planned_date": "null", "point_x": 50, "point_y": 50, "num_plants": 1}
                     foreach($cropsArray as $crop)
                     {
-                        if ($crop['zoneId'] == $zone['id'])
+                        if ($crop['zone_id'] == $zone['id'])
                         {
                             $cropObj = $cropRepository->find($crop['id']);
                             if ($cropObj)
@@ -346,13 +356,14 @@ class GardenApiController extends Controller
                                 $cropObj = new Crop();
                             }
                             $cropObj->setZone($zoneObj);
-                            $cropObj->setPointX($crop['pointX']);
-                            $cropObj->setPointY($crop['pointY']);
-                            $cropObj->setNumPlants($crop['numPlants']);
-                            $cropObj->setPlant($plantRepository->find($crop['plantId']));
+                            $cropObj->setPointX($crop['point_x']);
+                            $cropObj->setPointY($crop['point_y']);
+                            $cropObj->setNumPlants($crop['num_plants']);
+                            $cropObj->setPlant($plantRepository->find($crop['plant_id']));
                             //$cropObj->setInitialCropPeriod($initialCropPeriod);
                             $cropObj->setInitialPlannedDate(new \DateTime());
                             $cropObj->setInitialRealDate(new \DateTime());
+                            $cropObj->setRotationAngle(0);
                             //$cropObj->setFinalPlannedDate($finalPlannedDate);
                             //$cropObj->setFinalRealDate($finalRealDate);
                             $em->persist($cropObj);
