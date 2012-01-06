@@ -198,7 +198,8 @@ class User implements UserInterface, \Serializable
     public function serialize()
     {
         return serialize(array(
-            $this->getEmail()
+            $this->getEmail(), 
+            $this->getId(),
         ));
     }
 
@@ -206,6 +207,7 @@ class User implements UserInterface, \Serializable
     {
         $arr = unserialize($serialized);
         $this->setEmail($arr[0]);
+        $this->setId($arr[1]);
     }
 
     /**
@@ -218,6 +220,16 @@ class User implements UserInterface, \Serializable
         return $this->id;
     }
 
+    /**
+     * Set id
+     *
+     * @param integer $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    
     /**
      * Set nombre
      *
