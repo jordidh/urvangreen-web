@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             new JMS\AopBundle\JMSAopBundle(),
             new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
+            new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
