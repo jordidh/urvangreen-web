@@ -25,7 +25,7 @@
     
     {# Ajax editor #}
     <div id="ajaxGardenControls"></div>
-    <div id="ajaxGardenEditor" width="300" height="600"></div>
+    <div id="ajaxGardenEditor" width="300" height="600" onmousedown="return false;"></div>
     {# Parameters to ajax garden editor in input hidden #}
     <input id="parPlants" type="hidden" value="{{ plants|replace({',': '%2C'}) }}" />
     <input id="parZoneTypes" type="hidden" value="{{ zoneTypes|replace({',': '%2C'}) }}" />
