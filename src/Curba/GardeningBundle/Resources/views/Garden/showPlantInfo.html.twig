@@ -1,0 +1,128 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block body_header %}
+Plant {{ plant.Name }}
+{% endblock %}
+
+{% block body_content %}
+  <h1>{{ plant.Name }} ({{ plant.ScientificName }}) - {{ plant.Id }}</h1>
+  <small>
+  <table>
+    <body>
+      <tr>
+        <th></th>
+        {% for i in 1..12 %}
+          <th>{{ i }}</th>
+        {% endfor %}
+      </tr>
+      {% if cropPeriodArray|length > 1 %}
+          {% for cropPeriod in cropPeriodArray[plant.Id] %}
+            <tr>
+              {% for i in 0..12 %}
+                {% if i == 0 %}
+                  <th>{{ cropPeriod[0] }}</th>
+                {% else %}
+                  <td title="Crop Period {{ cropPeriod[i] }}">
+                    {% if (cropPeriod[i] == 0) %}
+                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod0.png' %}
+                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                        {% endimage %}
+                    {% elseif (cropPeriod[0].id == 1) %}
+                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod1.png' %}
+                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                        {% endimage %}
+                    {% elseif (cropPeriod[0].id == 2) %}
+                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod2.png' %}
+                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                        {% endimage %}
+                    {% elseif (cropPeriod[0].id == 3) %}
+                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod3.png' %}
+                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                        {% endimage %}
+                    {% elseif (cropPeriod[0].id == 4) %}
+                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod4.png' %}
+                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                        {% endimage %}
+                    {% elseif (cropPeriod[0].id == 5) %}
+                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod5.png' %}
+                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                        {% endimage %}
+                    {% elseif (cropPeriod[0].id == 6) %}
+                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod6.png' %}
+                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                        {% endimage %}
+                    {% elseif (cropPeriod[0].id == 7) %}
+                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod7.png' %}
+                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                        {% endimage %}
+                    {% else %}
+                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriodUnknown.png' %}
+                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                        {% endimage %}
+                    {% endif %}
+                  </td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+      {% endif %}
+    </body>
+  </table>
+</small>
+{% endblock %}
+
+{% block body_lateral %}
+Crop period table
+<br/>
+<a href="{{ path('main') }}">Main</a>
+<br/>
+<a href="{{ path('profile') }}">User profile</a>
+{% endblock %}
+
+{% block body_footer %}
+<!--
+<h2>Legend</h2>
+<ul>
+    <li>
+        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod0.png' %}
+            <img id="img_long" src="{{ asset_url }}" alt="Crop period"/>
+        {% endimage %}
+    <li>
+    </li>
+        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod1.png' %}
+            <img id="img_long" src="{{ asset_url }}" alt="Crop period"/>
+        {% endimage %}
+    <li>
+    </li>
+        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod2.png' %}
+            <img id="img_long" src="{{ asset_url }}" alt="Crop period"/>
+        {% endimage %}
+    <li>
+    </li>
+        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod3.png' %}
+            <img id="img_long" src="{{ asset_url }}" alt="Crop period"/>
+        {% endimage %}
+    <li>
+    </li>
+        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod4.png' %}
+            <img id="img_long" src="{{ asset_url }}" alt="Crop period"/>
+        {% endimage %}
+    <li>
+    </li>
+        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod5.png' %}
+            <img id="img_long" src="{{ asset_url }}" alt="Crop period"/>
+        {% endimage %}
+    <li>
+    </li>
+        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod6.png' %}
+            <img id="img_long" src="{{ asset_url }}" alt="Crop period"/>
+        {% endimage %}
+    <li>
+    </li>
+        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod7.png' %}
+            <img id="img_long" src="{{ asset_url }}" alt="Crop period"/>
+        {% endimage %}
+    <li>
+</ul>
+-->
+{% endblock %}

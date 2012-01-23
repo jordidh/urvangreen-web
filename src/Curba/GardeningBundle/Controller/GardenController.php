@@ -670,4 +670,72 @@ class GardenController extends Controller
             'form'         => $form->createView(),
         );
     }
+    
+    /**
+     * @Route("/gardening/garden/showPlantInfo/{_locale}", requirements={"_locale" = "ca|en|es"}, name="show_plant_info")
+     * @Template()
+     */
+    public function showPlantInfoAction()
+    {
+        $request = $this->getRequest();
+        $id = $request->get('id');
+        if (!$id) { throw $this->createNotFoundException('No plant id found in request');  }
+
+        //Get the plant
+        $em = $this->get('doctrine')->getEntityManager();
+        $plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
+        $plant = $plantRepository->find($id);
+        if (!$plant) {
+            throw $this->createNotFoundException('No plant found for id '.$id);
+        }
+        
+        //Get the crop periods
+        $cropPeriodRepository = $em->getRepository('CurbaGardeningBundle:CropPeriod');
+        
+        //Array with 3 dimensions: Plant id, CropPeriodType id [1 - 7], Month [1-12] = active or not (0 or 1)
+        $cropPeriodArray = array();
+        
+        $cropPeriods = $cropPeriodRepository->findAllFrom($plant->getId());
+        foreach($cropPeriods as $cropPeriod)
+        {
+            //Initialize the array for a specific CropPeriodType
+            if (!isset($cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()]))
+            {
+                $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][0] = $cropPeriod->getCropPeriodType();
+                for ($i = 1; $i <= 12; $i++)
+                {
+                    $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][$i] = 0;
+                }
+            }
+
+            //Set the values
+            $initialMonth = $cropPeriod->getInitialDate()->format('n');
+            $finalMonth = $cropPeriod->getFinalDate()->format('n');
+            if ($initialMonth < $finalMonth)
+            {
+                for ($i = 1; $i <= 12; $i++)
+                {
+                    if ($i >= $initialMonth && $i <= $finalMonth)
+                    {
+                        $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][$i] = 1;
+                    }
+                }
+            }
+            else
+            {
+                for ($i = 1; $i <= 12; $i++)
+                {
+                    if ($i >= $initialMonth || $i <= $finalMonth)
+                    {
+                        $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][$i] = 1;
+                    }
+                }                    
+            }
+        }
+
+        return array(
+            'plant' => $plant,
+            'cropPeriodArray' => $cropPeriodArray,
+        );
+    }
 }
