@@ -58,8 +58,6 @@ class GardenController extends Controller
             $zonesAndCropsAndActions[] = $zone;
         }
         
-        //var_dump($currentActions);
-        
         return array(
             'garden' => $garden,
             'zonesAndCropsAndActions' => $zonesAndCropsAndActions,
@@ -677,16 +675,24 @@ class GardenController extends Controller
      */
     public function showPlantInfoAction()
     {
+        //Get the plant id
         $request = $this->getRequest();
-        $id = $request->get('id');
+        $id = null;
+        if ($request->getMethod() == 'POST') {
+            $form = $request->get('form');
+            $id = $form['plant'];
+        }
         if (!$id) { throw $this->createNotFoundException('No plant id found in request');  }
-
+        
+//  var_dump($id);
+//  exit;
+        
         //Get the plant
         $em = $this->get('doctrine')->getEntityManager();
         $plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
         $plant = $plantRepository->find($id);
         if (!$plant) {
-            throw $this->createNotFoundException('No plant found for id '.$id);
+            throw $this->createNotFoundException('No plant found for id='.$id);
         }
         
         //Get the crop periods
@@ -732,7 +738,7 @@ class GardenController extends Controller
                 }                    
             }
         }
-
+        
         return array(
             'plant' => $plant,
             'cropPeriodArray' => $cropPeriodArray,

@@ -52,5 +52,9 @@
 
 {% block body_footer %}
     <br/>
-    <a href="{{ path('show_plant_info', { 'id': 1 }) }}">Plant 1</a>
+    <form action="{{ path('show_plant_info') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+
+        <input type="submit" />
+    </form>
 {% endblock %}

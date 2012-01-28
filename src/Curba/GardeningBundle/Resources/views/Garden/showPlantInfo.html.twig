@@ -5,7 +5,90 @@ Plant {{ plant.Name }}
 {% endblock %}
 
 {% block body_content %}
-  <h1>{{ plant.Name }} ({{ plant.ScientificName }}) - {{ plant.Id }}</h1>
+  <h1>{{ plant.Name }}</h1>
+  
+  <h2>Scientific name</h2>
+  <p>{{ plant.ScientificName }}</p>
+  
+  <h2>Family name</h2>
+  <p>{{ plant.PlantFamily.Name }} ({{ plant.PlantFamily.ScientificName }}): {{ plant.PlantFamily.Description }}</p>
+  
+  <h2>Description</h2>
+  <p>{{ plant.Description }}</p>
+  
+  <h2>Pests</h2>
+  <ul>
+  {% for pest in plant.pests %}
+          <li>{{ pest.Name }}</li>
+  {% endfor %}
+  </ul>
+
+  <h2>Cares</h2>
+  <ul>
+  {% for care in plant.plantCare %}
+          <li>{{ care.Name }}</li>
+  {% endfor %}
+  </ul>
+  
+  <h2>Technical specifications</h2>
+  <table class="plant">
+      <body>
+          <tr>
+            <th class="plant">Life cicle:</th>
+            <td>{{ plant.lifeCicleType }}</td>
+          </tr>
+          <tr>
+            <th class="plant">Productivity:</th>
+            <td>{{ plant.productivity }}kg/m2</td>
+          </tr>
+          <tr>
+            <th class="plant">Minimum space required:</th>
+            <td>{{ plant.widthSpacing }}mm x {{ plant.heightSpacing }}mm x {{ plant.rootDepth }}mm root depth x {{ plant.plantHeight }}mm plant height</td>
+          </tr>
+          <tr>
+            <th class="plant">Seed depth:</th>
+            <td>{{ plant.seedDepth }}mm</td>
+          </tr>
+          <tr>
+            <th class="plant">Minimum soil volume required:</th>
+            <td>{{ plant.soilVolume }} liters</td>
+          </tr>
+          <tr>
+            <th class="plant">Soil:</th>
+            <td>{{ plant.soilType }}</td>
+          </tr>
+          <tr>
+            <th class="plant">Soil pH:</th>
+            <td>{{ plant.phMinimum }} - {{ plant.phMaximum }}</td>
+          </tr>
+          <tr>
+            <th class="plant">Fertilizer:</th>
+            <td>{{ plant.fertilizerType }}</td>
+          </tr>
+          <tr>
+            <th class="plant">Climate:</th>
+            <td>{{ plant.climateType }}</td>
+          </tr>
+          <tr>
+            <th class="plant">Temperature range:</th>
+            <td>{{ plant.temperatureMinimum }} ºC - {{ plant.temperatureMaximum }} ºC</td>
+          </tr>
+          <tr>
+            <th class="plant">Frost resistance:</th>
+            <td>{{ plant.frostResistanceType }}</td>
+          </tr>
+          <tr>
+            <th class="plant">Irrigation:</th>
+            <td>{{ plant.irrigationType }}</td>
+          </tr>
+          <tr>
+            <th class="plant">Salinity tolerance:</th>
+            <td>{{ plant.salinityToleranceType }}</td>
+          </tr>
+      </body>
+  </table>
+  
+  <h2>Crop period</h2>
   <small>
   <table>
     <body>
@@ -15,7 +98,7 @@ Plant {{ plant.Name }}
           <th>{{ i }}</th>
         {% endfor %}
       </tr>
-      {% if cropPeriodArray|length > 1 %}
+      {% if cropPeriodArray|length > 0 %}
           {% for cropPeriod in cropPeriodArray[plant.Id] %}
             <tr>
               {% for i in 0..12 %}

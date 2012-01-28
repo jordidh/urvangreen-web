@@ -37,9 +37,25 @@ class MainController extends Controller
         //Get all the users that are friends and his last activity
         
         
+        //Create the form to show plant card 
+        $plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
+        $plants = $plantRepository->findAll();
+        $plantArray = array();
+        foreach($plants as $p)
+        {
+            $plantArray[$p->getid()] = $p->getName();
+        }
+        $form = $this->createFormBuilder()
+                ->add('plant', 'choice', array(
+                'choices' => $plantArray,
+                'required'  => true,
+            ))
+            ->getForm();
+        
         return array(
-            'gardens' => $gardens,
-            'stations' => $stations,
+            'gardens'   => $gardens,
+            'stations'  => $stations,
+            'form'      => $form->createView(),
         );
     }
 }
