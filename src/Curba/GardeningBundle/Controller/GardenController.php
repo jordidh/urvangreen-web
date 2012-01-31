@@ -675,73 +675,157 @@ class GardenController extends Controller
      */
     public function showPlantInfoAction()
     {
+        $id = null;
+
         //Get the plant id
         $request = $this->getRequest();
-        $id = null;
-        if ($request->getMethod() == 'POST') {
-            $form = $request->get('form');
-            $id = $form['plant'];
+        $id = $request->get('id');
+        
+        //If the plant id is not in the url search the id in the post variables
+        if (!$id)
+        {
+            if ($request->getMethod() == 'POST') {
+                $form = $request->get('form');
+                $id = $form['plant'];
+            }
         }
-        if (!$id) { throw $this->createNotFoundException('No plant id found in request');  }
         
-//  var_dump($id);
-//  exit;
+        //if (!$id) { throw $this->createNotFoundException('No plant id found in request');  }
+
+        $plant = null;
+        $cropPeriodArray = null;
         
-        //Get the plant
         $em = $this->get('doctrine')->getEntityManager();
         $plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
-        $plant = $plantRepository->find($id);
-        if (!$plant) {
-            throw $this->createNotFoundException('No plant found for id='.$id);
-        }
-        
-        //Get the crop periods
-        $cropPeriodRepository = $em->getRepository('CurbaGardeningBundle:CropPeriod');
-        
-        //Array with 3 dimensions: Plant id, CropPeriodType id [1 - 7], Month [1-12] = active or not (0 or 1)
-        $cropPeriodArray = array();
-        
-        $cropPeriods = $cropPeriodRepository->findAllFrom($plant->getId());
-        foreach($cropPeriods as $cropPeriod)
+
+        if ($id)
         {
-            //Initialize the array for a specific CropPeriodType
-            if (!isset($cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()]))
-            {
-                $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][0] = $cropPeriod->getCropPeriodType();
-                for ($i = 1; $i <= 12; $i++)
-                {
-                    $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][$i] = 0;
-                }
+            //Get the plant
+            $plant = $plantRepository->find($id);
+            if (!$plant) {
+                throw $this->createNotFoundException('No plant found for id='.$id);
             }
 
-            //Set the values
-            $initialMonth = $cropPeriod->getInitialDate()->format('n');
-            $finalMonth = $cropPeriod->getFinalDate()->format('n');
-            if ($initialMonth < $finalMonth)
+            //Get the crop periods
+            $cropPeriodRepository = $em->getRepository('CurbaGardeningBundle:CropPeriod');
+
+            //Array with 3 dimensions: Plant id, CropPeriodType id [1 - 7], Month [1-12] = active or not (0 or 1)
+            $cropPeriodArray = array();
+
+            $cropPeriods = $cropPeriodRepository->findAllFrom($plant->getId());
+            foreach($cropPeriods as $cropPeriod)
             {
-                for ($i = 1; $i <= 12; $i++)
+                //Initialize the array for a specific CropPeriodType
+                if (!isset($cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()]))
                 {
-                    if ($i >= $initialMonth && $i <= $finalMonth)
+                    $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][0] = $cropPeriod->getCropPeriodType();
+                    for ($i = 1; $i <= 12; $i++)
                     {
-                        $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][$i] = 1;
+                        $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][$i] = 0;
                     }
                 }
-            }
-            else
-            {
-                for ($i = 1; $i <= 12; $i++)
+
+                //Set the values
+                $initialMonth = $cropPeriod->getInitialDate()->format('n');
+                $finalMonth = $cropPeriod->getFinalDate()->format('n');
+                if ($initialMonth < $finalMonth)
                 {
-                    if ($i >= $initialMonth || $i <= $finalMonth)
+                    for ($i = 1; $i <= 12; $i++)
                     {
-                        $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][$i] = 1;
+                        if ($i >= $initialMonth && $i <= $finalMonth)
+                        {
+                            $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][$i] = 1;
+                        }
                     }
-                }                    
+                }
+                else
+                {
+                    for ($i = 1; $i <= 12; $i++)
+                    {
+                        if ($i >= $initialMonth || $i <= $finalMonth)
+                        {
+                            $cropPeriodArray[$plant->getId()][$cropPeriod->getCropPeriodType()->getId()][$i] = 1;
+                        }
+                    }                    
+                }
             }
         }
+        
+        //Create the form to show plant card 
+        //$plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
+        $plants = $plantRepository->findAll();
+        $plantArray = array();
+        foreach($plants as $p)
+        {
+            $plantArray[$p->getid()] = $p->getName();
+        }
+        $form = $this->createFormBuilder()
+                ->add('plant', 'choice', array(
+                'choices' => $plantArray,
+                'required'  => true,
+            ))
+            ->getForm();
         
         return array(
             'plant' => $plant,
             'cropPeriodArray' => $cropPeriodArray,
+            'form'      => $form->createView(),
+        );
+    }
+    
+    /**
+     * @Route("/gardening/garden/showPlantFamilyInfo/{_locale}", requirements={"_locale" = "ca|en|es"}, name="show_plant_family_info")
+     * @Template()
+     */
+    public function showPlantFamilyInfoAction()
+    {
+        $id = null;
+
+        //Get the plant family id
+        $request = $this->getRequest();
+        $id = $request->get('id');
+        
+        //If the plant family id is not in the url search the id in the post variables
+        if (!$id)
+        {
+            if ($request->getMethod() == 'POST') {
+                $form = $request->get('form');
+                $id = $form['family'];
+            }
+        }
+        
+        //if (!$id) { throw $this->createNotFoundException('No plant id found in request');  }
+
+        $em = $this->get('doctrine')->getEntityManager();
+        $plantFamilyRepository = $em->getRepository('CurbaGardeningBundle:PlantFamily');
+
+        if ($id)
+        {
+            //Get the plant family
+            $family = $plantFamilyRepository->find($id);
+            if (!$family) {
+                throw $this->createNotFoundException('No plant family found for id='.$id);
+            }
+        }
+        
+        //Create the form to show plant family card 
+        //$plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
+        $families = $plantFamilyRepository->findAll();
+        $familyArray = array();
+        foreach($families as $f)
+        {
+            $familyArray[$f->getId()] = $f->getName();
+        }
+        $form = $this->createFormBuilder()
+                ->add('family', 'choice', array(
+                'choices' => $familyArray,
+                'required'  => true,
+            ))
+            ->getForm();
+        
+        return array(
+            'family' => $family,
+            'form'   => $form->createView(),
         );
     }
 }

@@ -131,6 +131,138 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         $manager->persist($fix12);
 
         $manager->flush();
+        
+        
+        //Translate to ca
+        $fix1->setName('All');
+        $fix1->setDescription('All');
+        $fix1->setTranslatableLocale('ca'); // change locale
+        $manager->persist($fix1);
+
+        $fix2->setName('Julivert');
+        $fix2->setDescription('Julivert');
+        $fix2->setTranslatableLocale('ca'); // change locale
+        $manager->persist($fix2);
+        
+        $fix3->setName('Labiades');
+        $fix3->setDescription('Chard');
+        $fix3->setTranslatableLocale('ca');
+        $manager->persist($fix3);
+        
+        $fix4->setName('Solanàcies');
+        $fix4->setDescription('Chard');
+        $fix4->setTranslatableLocale('ca');
+        $manager->persist($fix4);
+        
+        $fix5->setName('Convolvulàcies');
+        $fix5->setDescription('Chard');
+        $fix5->setTranslatableLocale('ca');
+        $manager->persist($fix5);
+        
+        $fix6->setName('Cucurbitàcies');
+        $fix6->setDescription('Chard');
+        $fix6->setTranslatableLocale('ca');
+        $manager->persist($fix6);
+        
+        $fix7->setName('Lleguminoses');
+        $fix7->setDescription('Chard');
+        $fix7->setTranslatableLocale('ca');
+        $manager->persist($fix7);
+        
+        $fix8->setName('Gramínies');
+        $fix8->setDescription('Chard');
+        $fix8->setTranslatableLocale('ca');
+        $manager->persist($fix8);
+        
+        $fix9->setName('Valerianàcies');
+        $fix9->setDescription('Chard');
+        $fix9->setTranslatableLocale('ca');
+        $manager->persist($fix9);
+        
+        $fix10->setName('Quenopodiàcies');
+        $fix10->setDescription('Chard');
+        $fix10->setTranslatableLocale('ca');
+        $manager->persist($fix10);
+        
+        $fix11->setName('Crucíferes');
+        $fix11->setDescription('Chard');
+        $fix11->setTranslatableLocale('ca');
+        $manager->persist($fix11);
+        
+        $fix12->setName('Crucíferes');
+        $fix12->setDescription('Chard');
+        $fix12->setTranslatableLocale('ca');
+        $manager->persist($fix12);
+
+        
+        $manager->flush();
+        
+        
+                
+        //Translate to es
+        $fix1->setName('Umbrel·líferes');
+        $fix1->setDescription('All');
+        $fix1->setTranslatableLocale('es');
+        $manager->persist($fix1);
+
+        $fix2->setName('Liliàcies');
+        $fix2->setDescription('Julivert');
+        $fix2->setTranslatableLocale('es');
+        $manager->persist($fix2);
+        
+        $fix3->setName('Labiadas');
+        $fix3->setDescription('Chard');
+        $fix3->setTranslatableLocale('es');
+        $manager->persist($fix3);
+        
+        $fix4->setName('Solanácias');
+        $fix4->setDescription('Chard');
+        $fix4->setTranslatableLocale('es');
+        $manager->persist($fix4);
+        
+        $fix5->setName('Convolvulácias');
+        $fix5->setDescription('Chard');
+        $fix5->setTranslatableLocale('es');
+        $manager->persist($fix5); 
+        
+        $fix6->setName('Cucurbitácias');
+        $fix6->setDescription('Chard');
+        $fix6->setTranslatableLocale('es');
+        $manager->persist($fix6);
+
+        $fix7->setName('Leguminosas');
+        $fix7->setDescription('Chard');
+        $fix7->setTranslatableLocale('es');
+        $manager->persist($fix7);
+        
+        $fix8->setName('Gramínias');
+        $fix8->setDescription('Chard');
+        $fix8->setTranslatableLocale('es');
+        $manager->persist($fix8); 
+        
+        $fix9->setName('Valerianácias');
+        $fix9->setDescription('Chard');
+        $fix9->setTranslatableLocale('es');
+        $manager->persist($fix9);
+        
+        $fix10->setName('Quenopodiácias');
+        $fix10->setDescription('Chard');
+        $fix10->setTranslatableLocale('es');
+        $manager->persist($fix10); 
+        
+        $fix11->setName('Compuestas');
+        $fix11->setDescription('Chard');
+        $fix11->setTranslatableLocale('es');
+        $manager->persist($fix11); 
+        
+        $fix12->setName('Crucíferas');
+        $fix12->setDescription('Chard');
+        $fix12->setTranslatableLocale('es');
+        $manager->persist($fix12); 
+
+        $manager->flush();
+        
+        
 
         //Reference to make a relation with StationFixtures
         $this->addReference('plant-family-1', $fix1);

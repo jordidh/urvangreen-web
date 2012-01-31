@@ -36,6 +36,45 @@ class ActionTypeFixtures extends AbstractFixture implements OrderedFixtureInterf
 */
         $manager->flush();
 
+
+        //Translate to ca
+        $fix1->setName('Collita');
+        $fix1->setDescription('Collita');
+        $fix1->setTranslatableLocale('ca');
+        $manager->persist($fix1);
+
+        $fix2->setName('Reg');
+        $fix2->setDescription('Reg');
+        $fix2->setTranslatableLocale('ca');
+        $manager->persist($fix2);
+
+        $fix3->setName('Poda');
+        $fix3->setDescription('Poda');
+        $fix3->setTranslatableLocale('ca');
+        $manager->persist($fix3);
+
+        $manager->flush();
+
+
+        //Translate to es
+        $fix1->setName('Cosecha');
+        $fix1->setDescription('Cosecha');
+        $fix1->setTranslatableLocale('es');
+        $manager->persist($fix1);
+
+        $fix2->setName('Riego');
+        $fix2->setDescription('Riego');
+        $fix2->setTranslatableLocale('es');
+        $manager->persist($fix2);
+
+        $fix3->setName('Poda');
+        $fix3->setDescription('Poda');
+        $fix3->setTranslatableLocale('es');
+        $manager->persist($fix3);
+
+        $manager->flush();
+
+        
         //Reference to make a relation with StationFixtures
         $this->addReference('action-type-1', $fix1);
         $this->addReference('action-type-2', $fix2);

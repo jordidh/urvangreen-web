@@ -1,165 +1,174 @@
 {% extends "CurbaGardeningBundle::layout.html.twig" %}
 
 {% block body_header %}
-Plant {{ plant.Name }}
 {% endblock %}
 
 {% block body_content %}
-  <h1>{{ plant.Name }}</h1>
-  
-  <h2>Scientific name</h2>
-  <p>{{ plant.ScientificName }}</p>
-  
-  <h2>Family name</h2>
-  <p>{{ plant.PlantFamily.Name }} ({{ plant.PlantFamily.ScientificName }}): {{ plant.PlantFamily.Description }}</p>
-  
-  <h2>Description</h2>
-  <p>{{ plant.Description }}</p>
-  
-  <h2>Pests</h2>
-  <ul>
-  {% for pest in plant.pests %}
-          <li>{{ pest.Name }}</li>
-  {% endfor %}
-  </ul>
+    
+  {% if plant %}
 
-  <h2>Cares</h2>
-  <ul>
-  {% for care in plant.plantCare %}
-          <li>{{ care.Name }}</li>
-  {% endfor %}
-  </ul>
-  
-  <h2>Technical specifications</h2>
-  <table class="plant">
-      <body>
+      <h1>{{ plant.Name }}</h1>
+
+      <h2>Scientific name</h2>
+      <p>{{ plant.ScientificName }}</p>
+
+      <h2>Family name</h2>
+      
+      <p><a href="{{ path('show_plant_family_info', {'id': plant.PlantFamily.getId()} ) }}">{{ plant.PlantFamily.Name }}</a> ({{ plant.PlantFamily.ScientificName }}): {{ plant.PlantFamily.Description }}</p>
+
+      <h2>Description</h2>
+      <p>{{ plant.Description }}</p>
+
+      <h2>Pests</h2>
+      <ul>
+      {% for pest in plant.pests %}
+           <li>{{ pest.Name }}</li>
+      {% endfor %}
+      </ul>
+
+      <h2>Cares</h2>
+      <ul>
+      {% for care in plant.plantCare %}
+           <li>{{ care.Name }}</li>
+      {% endfor %}
+      </ul>
+
+      <h2>Technical specifications</h2>
+      <table class="plant">
+          <body>
+              <tr>
+                <th class="plant">Life cicle:</th>
+                <td>{{ plant.lifeCicleType }}</td>
+              </tr>
+              <tr>
+                <th class="plant">Productivity:</th>
+                <td>{{ plant.productivity }}kg/m2</td>
+              </tr>
+              <tr>
+                <th class="plant">Minimum space required:</th>
+                <td>{{ plant.widthSpacing }}mm x {{ plant.heightSpacing }}mm x {{ plant.rootDepth }}mm root depth x {{ plant.plantHeight }}mm plant height</td>
+              </tr>
+              <tr>
+                <th class="plant">Seed depth:</th>
+                <td>{{ plant.seedDepth }}mm</td>
+              </tr>
+              <tr>
+                <th class="plant">Minimum soil volume required:</th>
+                <td>{{ plant.soilVolume }} liters</td>
+              </tr>
+              <tr>
+                <th class="plant">Soil:</th>
+                <td>{{ plant.soilType }}</td>
+              </tr>
+              <tr>
+                <th class="plant">Soil pH:</th>
+                <td>{{ plant.phMinimum }} - {{ plant.phMaximum }}</td>
+              </tr>
+              <tr>
+                <th class="plant">Fertilizer:</th>
+                <td>{{ plant.fertilizerType }}</td>
+              </tr>
+              <tr>
+                <th class="plant">Climate:</th>
+                <td>{{ plant.climateType }}</td>
+              </tr>
+              <tr>
+                <th class="plant">Temperature range:</th>
+                <td>{{ plant.temperatureMinimum }} ºC - {{ plant.temperatureMaximum }} ºC</td>
+              </tr>
+              <tr>
+                <th class="plant">Frost resistance:</th>
+                <td>{{ plant.frostResistanceType }}</td>
+              </tr>
+              <tr>
+                <th class="plant">Irrigation:</th>
+                <td>{{ plant.irrigationType }}</td>
+              </tr>
+              <tr>
+                <th class="plant">Salinity tolerance:</th>
+                <td>{{ plant.salinityToleranceType }}</td>
+              </tr>
+          </body>
+      </table>
+
+      <h2>Crop period</h2>
+      <small>
+      <table>
+        <body>
           <tr>
-            <th class="plant">Life cicle:</th>
-            <td>{{ plant.lifeCicleType }}</td>
+            <th></th>
+            {% for i in 1..12 %}
+              <th>{{ i }}</th>
+            {% endfor %}
           </tr>
-          <tr>
-            <th class="plant">Productivity:</th>
-            <td>{{ plant.productivity }}kg/m2</td>
-          </tr>
-          <tr>
-            <th class="plant">Minimum space required:</th>
-            <td>{{ plant.widthSpacing }}mm x {{ plant.heightSpacing }}mm x {{ plant.rootDepth }}mm root depth x {{ plant.plantHeight }}mm plant height</td>
-          </tr>
-          <tr>
-            <th class="plant">Seed depth:</th>
-            <td>{{ plant.seedDepth }}mm</td>
-          </tr>
-          <tr>
-            <th class="plant">Minimum soil volume required:</th>
-            <td>{{ plant.soilVolume }} liters</td>
-          </tr>
-          <tr>
-            <th class="plant">Soil:</th>
-            <td>{{ plant.soilType }}</td>
-          </tr>
-          <tr>
-            <th class="plant">Soil pH:</th>
-            <td>{{ plant.phMinimum }} - {{ plant.phMaximum }}</td>
-          </tr>
-          <tr>
-            <th class="plant">Fertilizer:</th>
-            <td>{{ plant.fertilizerType }}</td>
-          </tr>
-          <tr>
-            <th class="plant">Climate:</th>
-            <td>{{ plant.climateType }}</td>
-          </tr>
-          <tr>
-            <th class="plant">Temperature range:</th>
-            <td>{{ plant.temperatureMinimum }} ºC - {{ plant.temperatureMaximum }} ºC</td>
-          </tr>
-          <tr>
-            <th class="plant">Frost resistance:</th>
-            <td>{{ plant.frostResistanceType }}</td>
-          </tr>
-          <tr>
-            <th class="plant">Irrigation:</th>
-            <td>{{ plant.irrigationType }}</td>
-          </tr>
-          <tr>
-            <th class="plant">Salinity tolerance:</th>
-            <td>{{ plant.salinityToleranceType }}</td>
-          </tr>
-      </body>
-  </table>
-  
-  <h2>Crop period</h2>
-  <small>
-  <table>
-    <body>
-      <tr>
-        <th></th>
-        {% for i in 1..12 %}
-          <th>{{ i }}</th>
-        {% endfor %}
-      </tr>
-      {% if cropPeriodArray|length > 0 %}
-          {% for cropPeriod in cropPeriodArray[plant.Id] %}
-            <tr>
-              {% for i in 0..12 %}
-                {% if i == 0 %}
-                  <th>{{ cropPeriod[0] }}</th>
-                {% else %}
-                  <td title="Crop Period {{ cropPeriod[i] }}">
-                    {% if (cropPeriod[i] == 0) %}
-                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod0.png' %}
-                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
-                        {% endimage %}
-                    {% elseif (cropPeriod[0].id == 1) %}
-                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod1.png' %}
-                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
-                        {% endimage %}
-                    {% elseif (cropPeriod[0].id == 2) %}
-                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod2.png' %}
-                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
-                        {% endimage %}
-                    {% elseif (cropPeriod[0].id == 3) %}
-                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod3.png' %}
-                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
-                        {% endimage %}
-                    {% elseif (cropPeriod[0].id == 4) %}
-                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod4.png' %}
-                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
-                        {% endimage %}
-                    {% elseif (cropPeriod[0].id == 5) %}
-                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod5.png' %}
-                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
-                        {% endimage %}
-                    {% elseif (cropPeriod[0].id == 6) %}
-                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod6.png' %}
-                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
-                        {% endimage %}
-                    {% elseif (cropPeriod[0].id == 7) %}
-                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod7.png' %}
-                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
-                        {% endimage %}
+          {% if cropPeriodArray|length > 0 %}
+              {% for cropPeriod in cropPeriodArray[plant.Id] %}
+                <tr>
+                  {% for i in 0..12 %}
+                    {% if i == 0 %}
+                      <th>{{ cropPeriod[0] }}</th>
                     {% else %}
-                        {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriodUnknown.png' %}
-                            <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
-                        {% endimage %}
+                      <td title="Crop Period {{ cropPeriod[i] }}">
+                        {% if (cropPeriod[i] == 0) %}
+                            {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod0.png' %}
+                                <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                            {% endimage %}
+                        {% elseif (cropPeriod[0].id == 1) %}
+                            {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod1.png' %}
+                                <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                            {% endimage %}
+                        {% elseif (cropPeriod[0].id == 2) %}
+                            {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod2.png' %}
+                                <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                            {% endimage %}
+                        {% elseif (cropPeriod[0].id == 3) %}
+                            {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod3.png' %}
+                                <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                            {% endimage %}
+                        {% elseif (cropPeriod[0].id == 4) %}
+                            {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod4.png' %}
+                                <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                            {% endimage %}
+                        {% elseif (cropPeriod[0].id == 5) %}
+                            {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod5.png' %}
+                                <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                            {% endimage %}
+                        {% elseif (cropPeriod[0].id == 6) %}
+                            {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod6.png' %}
+                                <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                            {% endimage %}
+                        {% elseif (cropPeriod[0].id == 7) %}
+                            {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriod7.png' %}
+                                <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                            {% endimage %}
+                        {% else %}
+                            {% image '@CurbaGardeningBundle/Resources/public/images/CropPeriodUnknown.png' %}
+                                <img id="img_long" src="{{ asset_url }}" alt="Crop period {{ cropPeriod[i] }}"/>
+                            {% endimage %}
+                        {% endif %}
+                      </td>
                     {% endif %}
-                  </td>
-                {% endif %}
+                  {% endfor %}
+                </tr>
               {% endfor %}
-            </tr>
-          {% endfor %}
-      {% endif %}
-    </body>
-  </table>
-</small>
+          {% endif %}
+        </body>
+      </table>
+      </small>
+    {% else %}
+        Select a plant!
+    {% endif %}
 {% endblock %}
 
 {% block body_lateral %}
-Crop period table
-<br/>
-<a href="{{ path('main') }}">Main</a>
-<br/>
-<a href="{{ path('profile') }}">User profile</a>
+    <a href="{{ path('main') }}">Main</a>
+    <br/>
+    <a href="{{ path('profile') }}">User profile</a>
+    <br/>
+    <form action="{{ path('show_plant_info') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
 {% endblock %}
 
 {% block body_footer %}

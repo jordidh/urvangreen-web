@@ -29,11 +29,6 @@ class FrostResistanceTypeFixtures extends AbstractFixture implements OrderedFixt
         $manager->persist($fix3);
 
         $manager->flush();
-
-        //Reference to make a relation with StationFixtures
-        $this->addReference('frost-resistance-type-1', $fix1);
-        $this->addReference('frost-resistance-type-2', $fix2);
-        $this->addReference('frost-resistance-type-3', $fix3);
         
         //Translate to ca
         $fix1->setName('Cap');
@@ -52,6 +47,32 @@ class FrostResistanceTypeFixtures extends AbstractFixture implements OrderedFixt
         $manager->persist($fix3);
 
         $manager->flush();
+
+
+        //Translate to es
+        $fix1->setName('Ninguna');
+        $fix1->setDescription('Ninguna resistencia al frio');
+        $fix1->setTranslatableLocale('es');
+        $manager->persist($fix1);
+
+        $fix2->setName('Normal');
+        $fix2->setDescription('Normal');
+        $fix2->setTranslatableLocale('es');
+        $manager->persist($fix2);
+
+        $fix3->setName('Alta');
+        $fix3->setDescription('Alta resistencia al frio');
+        $fix3->setTranslatableLocale('es');
+        $manager->persist($fix3);
+
+        $manager->flush();
+
+        
+        //Reference to make a relation with StationFixtures
+        $this->addReference('frost-resistance-type-1', $fix1);
+        $this->addReference('frost-resistance-type-2', $fix2);
+        $this->addReference('frost-resistance-type-3', $fix3);
+
     }
     
     public function getOrder()

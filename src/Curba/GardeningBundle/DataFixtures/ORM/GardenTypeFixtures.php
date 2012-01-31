@@ -48,6 +48,26 @@ class GardenTypeFixtures extends AbstractFixture implements OrderedFixtureInterf
         $manager->persist($fix3);
 
         $manager->flush();
+        
+        
+        //Translate to es
+        $fix1->setName('Huerto a tierra');
+        $fix1->setDescription('Huerto a tierra');
+        $fix1->setTranslatableLocale('es');
+        $manager->persist($fix1);
+
+        $fix2->setName('Balcón');
+        $fix2->setDescription('Balcón');
+        $fix2->setTranslatableLocale('es');
+        $manager->persist($fix2);
+
+        $fix3->setName('Terraza');
+        $fix3->setDescription('Terraza');
+        $fix3->setTranslatableLocale('es');
+        $manager->persist($fix3);
+
+        $manager->flush();
+
     }
     
     public function getOrder()

@@ -29,12 +29,7 @@ class ClimateTypeFixtures extends AbstractFixture implements OrderedFixtureInter
         $manager->persist($fix3);
 
         $manager->flush();
-        
-        //Reference to make a relation with StationFixtures
-        $this->addReference('climate-type-1', $fix1);
-        $this->addReference('climate-type-2', $fix2);
-        $this->addReference('climate-type-3', $fix3);
-        
+                
         // translate to ca
         $fix1->setName('Càlid');
         $fix1->setDescription('Càlid');
@@ -52,6 +47,32 @@ class ClimateTypeFixtures extends AbstractFixture implements OrderedFixtureInter
         $manager->persist($fix3);
 
         $manager->flush();
+
+        
+        // translate to es
+        $fix1->setName('Calido');
+        $fix1->setDescription('Calido');
+        $fix1->setTranslatableLocale('es'); // change locale
+        $manager->persist($fix1);
+        
+        $fix2->setName('Temperado');
+        $fix2->setDescription('Temperado');
+        $fix2->setTranslatableLocale('es'); // change locale
+        $manager->persist($fix2);
+
+        $fix3->setName('Frio');
+        $fix3->setDescription('Frio');
+        $fix3->setTranslatableLocale('es'); // change locale
+        $manager->persist($fix3);
+
+        $manager->flush();
+
+        
+        //Reference to make a relation with StationFixtures
+        $this->addReference('climate-type-1', $fix1);
+        $this->addReference('climate-type-2', $fix2);
+        $this->addReference('climate-type-3', $fix3);
+
     }
     
     public function getOrder()

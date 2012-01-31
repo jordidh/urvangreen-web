@@ -52,10 +52,26 @@ class MainController extends Controller
             ))
             ->getForm();
         
+        //Create the form to show plant family card 
+        $plantFamilyRepository = $em->getRepository('CurbaGardeningBundle:PlantFamily');
+        $families = $plantFamilyRepository->findAll();
+        $familyArray = array();
+        foreach($families as $f)
+        {
+            $familyArray[$f->getId()] = $f->getName();
+        }
+        $formFamily = $this->createFormBuilder()
+                ->add('family', 'choice', array(
+                'choices' => $familyArray,
+                'required'  => true,
+            ))
+            ->getForm();
+        
         return array(
             'gardens'   => $gardens,
             'stations'  => $stations,
             'form'      => $form->createView(),
+            'formFamily'=> $formFamily->createView(),
         );
     }
 }

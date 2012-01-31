@@ -1,0 +1,42 @@
+{% extends "CurbaGardeningBundle::layout.html.twig" %}
+
+{% block body_header %}
+{% endblock %}
+
+{% block body_content %}
+    
+  {% if family %}
+
+      <h1>{{ family.Name }}</h1>
+
+      <h2>Scientific name</h2>
+      <p>{{ family.ScientificName }}</p>
+
+      <h2>Description</h2>
+      <p>{{ family.Description }}</p>
+
+      <h2>Family plants</h2>
+      <ul>          
+      {% for plant in family.Plants %}
+              <li>{{ plant.Name }}</li>
+      {% endfor %}
+      </ul>
+
+    {% else %}
+        Select a family!
+    {% endif %}
+{% endblock %}
+
+{% block body_lateral %}
+    <a href="{{ path('main') }}">Main</a>
+    <br/>
+    <a href="{{ path('profile') }}">User profile</a>
+    <br/>
+    <form action="{{ path('show_plant_family_info') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+{% endblock %}
+
+{% block body_footer %}
+{% endblock %}

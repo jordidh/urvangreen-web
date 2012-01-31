@@ -31,7 +31,7 @@ class PlantFamily implements \Gedmo\Translatable\Translatable
 
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length="255", nullable=true)
+     * @ORM\Column(type="string", length="1000", nullable=true)
      */
     private $description;
 
@@ -51,7 +51,7 @@ class PlantFamily implements \Gedmo\Translatable\Translatable
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="Plant", mappedBy="plant_family")
+     * @ORM\OneToMany(targetEntity="Plant", mappedBy="plantFamily")
      */
     private $plants;
     

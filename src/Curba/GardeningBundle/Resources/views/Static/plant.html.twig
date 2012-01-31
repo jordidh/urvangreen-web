@@ -6,26 +6,22 @@ Plants table
 
 {% block body_content %}
 <small>
-    
+
 {% for plant in plants %}
     <h2>{{ plant.ScientificName }}</h2>
     <table class="plant">
       <body>
         <tr>
-          <th class="plant">Id</th>
-          <td>{{ plant.Id }}</td>
-        </tr>
-        <tr>
           <th class="plant">Name</th>
           <td>{{ plant.Name }}</td>
         </tr>
         <tr>
-          <th class="plant">Description</th>
-          <td>{{ plant.Description }}</td>
-        </tr>
-        <tr>
           <th class="plant">Scientific name</th>
           <td>{{ plant.ScientificName }}</td>
+        </tr>
+        <tr>
+          <th class="plant">PlantFamily</th>
+          <td>{{ plant.PlantFamily }}</td>
         </tr>
         <tr>
           <th class="plant">Productivity</th>
@@ -40,36 +36,12 @@ Plants table
           <td>{{ plant.SoilVolume }}</td>
         </tr>
         <tr>
-          <th class="plant">RootDepth</th>
-          <td>{{ plant.RootDepth }}</td>
-        </tr>
-        <tr>
-          <th class="plant">PlantHeight</th>
-          <td>{{ plant.PlantHeight }}</td>
-        </tr>
-        <tr>
-          <th class="plant">SeedDepth</th>
-          <td>{{ plant.SeedDepth }}</td>
-        </tr>
-        <tr>
-          <th class="plant">Ph</th>
-          <td>Minimum:{{ plant.PhMinimum }}, maximum:{{ plant.PhMaximum }}</td>
-        </tr>
-        <tr>
-          <th class="plant">Temperature</th>
-          <td>Minimum:{{ plant.TemperatureMinimum }}, maximum:{{ plant.TemperatureMaximum }}</td>
-        </tr>
-        <tr>
           <th class="plant">FertilizerType</th>
           <td>{{ plant.FertilizerType }}</td>
         </tr>
         <tr>
           <th class="plant">LifeCicleType</th>
           <td>{{ plant.LifeCicleType }}</td>
-        </tr>
-        <tr>
-          <th class="plant">PlantFamily</th>
-          <td>{{ plant.PlantFamily }}</td>
         </tr>
         <tr>
           <th class="plant">ClimateType</th>
@@ -84,12 +56,7 @@ Plants table
           <td>{{ plant.IrrigationType }}</td>
         </tr>
         <tr>
-          <th class="plant">FrostResistanceType</th>
-          <td>{{ plant.FrostResistanceType }}</td>
-        </tr>
-        <tr>
-          <th class="plant">SalinityToleranceType</th>
-          <td>{{ plant.SalinityToleranceType }}</td>
+            <td><a href="{{ path('show_plant_info', {'id': plant.getId()} ) }}">Read more ...</a></td>
         </tr>
       </body>
     </table>
@@ -99,13 +66,16 @@ Plants table
 {% endblock %}
 
 {% block body_lateral %}
-Compatibility plant table
 <br/>
 <a href="{{ path('main') }}">Main</a>
 <br/>
 <a href="{{ path('profile') }}">User profile</a>
+<br/>
+<form action="{{ path('plant') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="submit" />
+</form>
 {% endblock %}
 
 {% block body_footer %}
-Compatibility plant table
 {% endblock %}

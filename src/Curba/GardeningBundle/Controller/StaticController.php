@@ -50,12 +50,48 @@ class StaticController extends Controller
      */
     public function plantAction()
     {
+        //Get the plant id
+        $request = $this->getRequest();
+        $id = null;
+        if ($request->getMethod() == 'POST') {
+            $form = $request->get('form');
+            $id = $form['plant'];
+        }
+        
         $em = $this->get('doctrine')->getEntityManager();
-
         $plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
         $plants = $plantRepository->findAll();
+                        
+        //Create the form to show plant card 
+        $plantArray = array();
+        foreach($plants as $p)
+        {
+            $plantArray[$p->getid()] = $p->getName();
+        }
+        $form = $this->createFormBuilder()
+                ->add('plant', 'choice', array(
+                'choices' => $plantArray,
+                'required'  => true,
+            ))
+            ->getForm();
+        
+        if ($id)
+        {
+            $plants = array();
+            $plants[0] = $plantRepository->find($id);
+            if (!$plants) {
+                throw $this->createNotFoundException('No plant found for id='.$id);
+            }
+        }
+        else
+        {
+            $plants = $plantRepository->findAll();
+        }
+
+        
         return array(
             'plants' => $plants,
+            'form'      => $form->createView(),
         );
     }
     

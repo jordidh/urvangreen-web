@@ -31,7 +31,7 @@ class Plant implements \Gedmo\Translatable\Translatable
 
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length="255", nullable=true)
+     * @ORM\Column(type="string", length="1000", nullable=true)
      */
     private $description;
     
@@ -42,7 +42,7 @@ class Plant implements \Gedmo\Translatable\Translatable
 
     /**
      * Productivity in kg * m2
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="decimal", length=10, scale=2, nullable=false)
      */
     private $productivity;
 
@@ -77,22 +77,22 @@ class Plant implements \Gedmo\Translatable\Translatable
     private $seedDepth;
 
     /**
-     * @ORM\Column(type="integer", name="ph_minimum", nullable=false)
+     * @ORM\Column(type="decimal", length=10, scale=2, name="ph_minimum", nullable=false)
      */
     private $phMinimum;
 
     /**
-     * @ORM\Column(type="integer", name="ph_maximum", nullable=false)
+     * @ORM\Column(type="decimal", length=10, scale=2, name="ph_maximum", nullable=false)
      */
     private $phMaximum;
 
     /**
-     * @ORM\Column(type="integer", name="temperature_minimum", nullable=false)
+     * @ORM\Column(type="decimal", length=10, scale=2, name="temperature_minimum", nullable=false)
      */
     private $temperatureMinimum;
 
     /**
-     * @ORM\Column(type="integer", name="temperature_maximum", nullable=false)
+     * @ORM\Column(type="decimal", length=10, scale=2, name="temperature_maximum", nullable=false)
      */
     private $temperatureMaximum;
 
@@ -271,7 +271,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Set productivity
      *
-     * @param integer $productivity
+     * @param decimal $productivity
      */
     public function setProductivity($productivity)
     {
@@ -281,7 +281,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Get productivity
      *
-     * @return integer 
+     * @return decimal 
      */
     public function getProductivity()
     {
@@ -411,7 +411,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Set phMinimum
      *
-     * @param integer $phMinimum
+     * @param decimal $phMinimum
      */
     public function setPhMinimum($phMinimum)
     {
@@ -421,7 +421,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Get phMinimum
      *
-     * @return integer 
+     * @return decimal 
      */
     public function getPhMinimum()
     {
@@ -431,7 +431,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Set phMaximum
      *
-     * @param integer $phMaximum
+     * @param decimal $phMaximum
      */
     public function setPhMaximum($phMaximum)
     {
@@ -441,7 +441,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Get phMaximum
      *
-     * @return integer 
+     * @return decimal 
      */
     public function getPhMaximum()
     {
@@ -451,7 +451,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Set temperatureMinimum
      *
-     * @param integer $temperatureMinimum
+     * @param decimal $temperatureMinimum
      */
     public function setTemperatureMinimum($temperatureMinimum)
     {
@@ -461,7 +461,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Get temperatureMinimum
      *
-     * @return integer 
+     * @return decimal 
      */
     public function getTemperatureMinimum()
     {
@@ -471,7 +471,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Set temperatureMaximum
      *
-     * @param integer $temperatureMaximum
+     * @param decimal $temperatureMaximum
      */
     public function setTemperatureMaximum($temperatureMaximum)
     {
@@ -481,7 +481,7 @@ class Plant implements \Gedmo\Translatable\Translatable
     /**
      * Get temperatureMaximum
      *
-     * @return integer 
+     * @return decimal 
      */
     public function getTemperatureMaximum()
     {

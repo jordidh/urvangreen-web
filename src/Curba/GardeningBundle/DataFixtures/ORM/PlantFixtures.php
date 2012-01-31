@@ -40,12 +40,6 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix1->setFrostResistanceType($manager->merge($this->getReference('frost-resistance-type-2')));
         $fix1->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix1->setTranslatableLocale('en');
-        
-        //$repository->translate($fix1, 'name', 'ca', 'All')
-        //           ->translate($fix1, 'description', 'ca', 'All')
-        //           ->translate($fix1, 'name', 'es', 'Ajo')
-        //           ->translate($fix1, 'description', 'es', 'Ajo');
-        
         $manager->persist($fix1);
 
         //(2,'Petroselinum sativum',1,1,100,50,5,2,2,2,2,2,0,0,0,0,0,0,0,1,2,'2010-10-31 18:36:10','2010-11-21 18:28:18'),
@@ -197,7 +191,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix6->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix6->setTranslatableLocale('en');
         $manager->persist($fix6);
-
+        
         //(7,'Cucurbita pepo',6,20,1000,600,40,3,1,3,3,3,0,0,0,0,0,0,0,1,2,'2010-11-20 20:00:33','2010-11-20 20:00:33'),
         //(7,'Carbassó','','ca','carbasso'),
         //(7,'Zucchini','','en','zucchini'),
@@ -227,7 +221,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix7->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix7->setTranslatableLocale('en');
         $manager->persist($fix7);
-
+        
         //(8,'Cucurbita ',6,10,1200,600,60,3,1,3,2,1,0,0,0,0,0,0,0,1,2,'2010-11-20 20:05:20','2010-11-20 20:05:20'),
         //(8,'Carbassa','','ca','carbassa'),
         //(8,'Pumkin','','en','pumkin'),
@@ -377,7 +371,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix12->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix12->setTranslatableLocale('en');
         $manager->persist($fix12);
-
+        
         //(13,'Capsicum annuum',4,10,500,400,15,3,1,2,2,1,0,0,0,0,0,0,0,1,2,'2010-11-20 20:44:32','2010-11-20 20:44:32'),
         //(13,'Pebrot','','ca','pebrot'),
         //(13,'Pepper','','en','pepper'),
@@ -407,7 +401,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix13->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix13->setTranslatableLocale('en');
         $manager->persist($fix13);
-
+        
         //(14,'Valerianella locusta',9,2,200,200,1,2,3,3,2,1,0,0,0,0,0,0,0,2,2,'2010-11-20 20:48:46','2010-11-20 20:48:46'),
         //(14,'Herba dels canonges','','ca','herba-dels-canonges'),
         //(14,'Herb of the canons','','en','herb-of-the-canons'),
@@ -437,7 +431,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix14->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix14->setTranslatableLocale('en');
         $manager->persist($fix14);
-
+        
         //(15,'Citrullus vulgaris',6,8,1000,500,40,2,1,3,2,1,0,0,0,0,0,0,0,1,2,'2010-11-20 20:51:23','2010-11-20 20:51:23'),
         //(15,'Sindria','','ca','sindria'),
         //(15,'Watermelon','','en','watermelon'),
@@ -467,7 +461,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix15->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix15->setTranslatableLocale('en');
         $manager->persist($fix15);
-
+        
         //(16,'Lycopersicum esculentum',4,20,500,300,20,3,1,2,2,1,0,0,0,0,0,0,0,1,2,'2010-11-20 20:57:18','2010-11-20 20:57:18'),
         //(16,'Tomàquet','','ca','tomaquet'),
         //(16,'Tomato','','en','tomato'),
@@ -497,7 +491,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix16->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix16->setTranslatableLocale('en');
         $manager->persist($fix16);
-
+        
         //(17,'Beta vulgaris',10,15,400,300,25,2,2,2,2,2,0,0,0,0,0,0,0,2,2,'2010-11-20 21:00:41','2010-11-20 21:00:41'),
         //(17,'Bleda','','ca','bleda'),
         //(17,'Chard','','en','chard'),
@@ -527,7 +521,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix17->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix17->setTranslatableLocale('en');
         $manager->persist($fix17);
-
+        
         //(18,'Apium graveolens',1,12,400,300,10,2,2,2,3,2,0,0,0,0,0,0,0,2,2,'2010-11-20 21:02:46','2010-11-20 21:02:46'),
         //(18,'Api','','ca','api'),
         //(18,'Apium','','en','apium'),
@@ -557,7 +551,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix18->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix18->setTranslatableLocale('en');
         $manager->persist($fix18);
-
+        
         //(19,'Spinacia oleracea',10,15,200,120,25,2,2,2,3,1,0,0,0,0,0,0,0,1,2,'2010-11-20 21:04:43','2010-11-20 21:04:43'),
         //(19,'Espinacs','','ca','espinacs'),
         //(19,'Spinach','','en','spinach'),
@@ -587,7 +581,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix19->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix19->setTranslatableLocale('en');
         $manager->persist($fix19);
-
+        
         //(20,'Lactuca sativa',11,8,300,200,3,2,2,2,2,1,0,0,0,0,0,0,0,2,2,'2010-11-21 18:15:13','2010-11-21 18:15:13'),
         //(20,'Enciam','','ca','enciam'),
         //(20,'Lettuce','','en','lettuce'),
@@ -617,7 +611,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix20->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix20->setTranslatableLocale('en');
         $manager->persist($fix20);
-
+        
         //(21,'Solanum tuberosum',4,3,700,300,10,2,2,2,3,1,0,0,0,0,0,0,0,1,2,'2010-11-21 18:23:08','2010-11-21 18:23:08'),
         //(21,'Patates','','ca','patates'),
         //(21,'Potatoes','','en','potatoes'),
@@ -647,7 +641,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix21->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix21->setTranslatableLocale('en');
         $manager->persist($fix21);
-
+        
         //(22,'Raphanus sativus',12,2,100,50,1,2,2,2,2,1,0,0,0,0,0,0,0,3,2,'2010-11-21 18:34:25','2010-11-21 18:34:25'),
         //(22,'Rave','','ca','rave'),
         //(22,'Radish','','en','radish'),
@@ -677,7 +671,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix22->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix22->setTranslatableLocale('en');
         $manager->persist($fix22);
-
+        
         //(23,'Beta vulgaris ',10,4,300,200,4,2,2,2,2,2,0,0,0,0,0,0,0,2,2,'2010-11-21 18:38:16','2010-11-21 18:38:16'),
         //(23,'Remolatxa','','ca','remolatxa'),
         //(23,'Beet','','en','beet'),
@@ -707,7 +701,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix23->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix23->setTranslatableLocale('en');
         $manager->persist($fix23);
-
+        
         //(24,'Eruca vesicaria',12,3,100,100,1,2,2,2,1,1,0,0,0,0,0,0,0,2,2,'2010-11-21 18:47:37','2010-11-21 18:47:37'),
         //(24,'Ruca','','ca','ruca'),
         //(24,'Ruca?','','en','ruca'),
@@ -737,7 +731,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix24->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix24->setTranslatableLocale('en');
         $manager->persist($fix24);
-
+        
         //(25,'Daucus carota',1,5,200,50,2,2,2,2,2,2,0,0,0,0,0,0,0,2,2,'2010-11-21 18:49:25','2010-11-21 18:49:25'),
         //(25,'Pastanaga','','ca','pastanaga'),
         //(25,'Carrot','','en','carrot'),
@@ -767,7 +761,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix25->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix25->setTranslatableLocale('en');
         $manager->persist($fix25);
-
+        
         //(26,'Allium cepa',2,15,200,100,3,2,2,2,2,2,0,0,0,0,0,0,0,2,2,'2010-11-21 18:56:36','2010-11-21 18:56:36'),
         //(26,'Ceba','','ca','ceba'),
         //(26,'Onion','','en','onion'),
@@ -797,7 +791,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix26->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix26->setTranslatableLocale('en');
         $manager->persist($fix26);
-
+        
         //(27,'Brassica napus',12,5,150,150,3,2,3,2,2,2,0,0,0,0,0,0,0,2,2,'2010-11-21 18:59:42','2010-11-21 18:59:42'),
         //(27,'Nap','','ca','nap'),
         //(27,'Nap?','','en','nap'),
@@ -827,7 +821,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix27->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix27->setTranslatableLocale('en');
         $manager->persist($fix27);
-
+        
         //(28,'Brassica oleracea capitata',12,8,600,400,25,2,2,2,2,2,0,0,0,0,0,0,0,2,2,'2010-11-21 19:05:31','2010-11-21 19:05:31'),
         //(28,'Col de Cabdell','','ca','col-de-cabdell'),
         //(28,'Cabbage','','en','cabbage'),
@@ -857,7 +851,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix28->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix28->setTranslatableLocale('en');
         $manager->persist($fix28);
-
+        
         //(29,'Brassica oleracea botrytis',12,5,600,400,15,2,3,2,2,1,0,0,0,0,0,0,0,2,2,'2010-11-21 19:12:40','2010-11-21 19:12:40'),
         //(29,'Coliflors','','ca','coliflors'),
         //(29,'Cauliflower','','en','cauliflower'),
@@ -887,7 +881,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix29->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix29->setTranslatableLocale('en');
         $manager->persist($fix29);
-
+        
         //(30,'Cichorium endivia',11,5,400,300,4,2,3,2,2,4,0,0,0,0,0,0,0,3,2,'2010-11-21 19:17:32','2010-11-21 19:17:32'),
         //(30,'Escaroles','','ca','escaroles'),
         //(30,'Endives','','en','endives'),
@@ -917,7 +911,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix30->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix30->setTranslatableLocale('en');
         $manager->persist($fix30);
-
+        
         //(31,'Pisum sativum',7,1,500,400,5,2,3,2,1,1,0,0,0,0,0,0,0,2,2,'2010-11-21 19:19:32','2010-11-21 19:19:32'),
         //(31,'Pèsol','','ca','pesol'),
         //(31,'Pea','','en','pea'),
@@ -977,19 +971,337 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix32->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix32->setTranslatableLocale('en');
         $manager->persist($fix32);
-
+        
         $manager->flush();
+        
+        
         
         //Translate to ca
         $fix1->setName('All');
         $fix1->setDescription('All');
         $fix1->setTranslatableLocale('ca'); // change locale
         $manager->persist($fix1);
-        
+
         $fix2->setName('Julivert');
         $fix2->setDescription('Julivert');
         $fix2->setTranslatableLocale('ca'); // change locale
         $manager->persist($fix2);
+        
+        $fix3->setName('Porro');
+        $fix3->setDescription('Chard');
+        $fix3->setTranslatableLocale('ca');
+        $manager->persist($fix3);
+        
+        $fix4->setName('Alfàbrega');
+        $fix4->setDescription('Chard');
+        $fix4->setTranslatableLocale('ca');
+        $manager->persist($fix4);
+        
+        $fix5->setName('Albergínia');
+        $fix5->setDescription('Chard');
+        $fix5->setTranslatableLocale('ca');
+        $manager->persist($fix5);
+        
+        $fix6->setName('Moniato');
+        $fix6->setDescription('Chard');
+        $fix6->setTranslatableLocale('ca');
+        $manager->persist($fix6);
+        
+        $fix7->setName('Carbassó');
+        $fix7->setDescription('Chard');
+        $fix7->setTranslatableLocale('ca');
+        $manager->persist($fix7);
+        
+        $fix8->setName('Carbassa');
+        $fix8->setDescription('Chard');
+        $fix8->setTranslatableLocale('ca');
+        $manager->persist($fix8);
+        
+        $fix9->setName('Mongeta');
+        $fix9->setDescription('Chard');
+        $fix9->setTranslatableLocale('ca');
+        $manager->persist($fix9);
+        
+        $fix10->setName('Blat-de-moro');
+        $fix10->setDescription('Chard');
+        $fix10->setTranslatableLocale('ca');
+        $manager->persist($fix10);
+        
+        $fix11->setName('Meló');
+        $fix11->setDescription('Chard');
+        $fix11->setTranslatableLocale('ca');
+        $manager->persist($fix11);
+        
+        $fix12->setName('Cogombre');
+        $fix12->setDescription('Chard');
+        $fix12->setTranslatableLocale('ca');
+        $manager->persist($fix12);
+        
+        $fix13->setName('Pebrot');
+        $fix13->setDescription('Chard');
+        $fix13->setTranslatableLocale('ca');
+        $manager->persist($fix13);
+        
+        $fix14->setName('Herva dels canonges');
+        $fix14->setDescription('Chard');
+        $fix14->setTranslatableLocale('ca');
+        $manager->persist($fix14);
+        
+        $fix15->setName('Sindria');
+        $fix15->setDescription('Chard');
+        $fix15->setTranslatableLocale('ca');
+        $manager->persist($fix15);
+        
+        $fix16->setName('Tomàquet');
+        $fix16->setDescription('Chard');
+        $fix16->setTranslatableLocale('ca');
+        $manager->persist($fix16);
+        
+        $fix17->setName('Bleda');
+        $fix17->setDescription('Chard');
+        $fix17->setTranslatableLocale('ca');
+        $manager->persist($fix17);
+        
+        $fix18->setName('Àpi');
+        $fix18->setDescription('Chard');
+        $fix18->setTranslatableLocale('ca');
+        $manager->persist($fix18);
+        
+        $fix19->setName('Espinacs');
+        $fix19->setDescription('Chard');
+        $fix19->setTranslatableLocale('ca');
+        $manager->persist($fix19);
+        
+        $fix20->setName('Enciam');
+        $fix20->setDescription('Chard');
+        $fix20->setTranslatableLocale('ca');
+        $manager->persist($fix20);
+        
+        $fix21->setName('Patata');
+        $fix21->setDescription('Chard');
+        $fix21->setTranslatableLocale('ca');
+        $manager->persist($fix21);
+        
+        $fix22->setName('Rave');
+        $fix22->setDescription('Chard');
+        $fix22->setTranslatableLocale('ca');
+        $manager->persist($fix22);
+        
+        $fix23->setName('Remolatxa');
+        $fix23->setDescription('Chard');
+        $fix23->setTranslatableLocale('ca');
+        $manager->persist($fix23);
+        
+        $fix24->setName('Ruca');
+        $fix24->setDescription('Chard');
+        $fix24->setTranslatableLocale('ca');
+        $manager->persist($fix24);
+        
+        $fix25->setName('Pastanaga');
+        $fix25->setDescription('Chard');
+        $fix25->setTranslatableLocale('ca');
+        $manager->persist($fix25);
+        
+        $fix26->setName('Ceba');
+        $fix26->setDescription('Chard');
+        $fix26->setTranslatableLocale('ca');
+        $manager->persist($fix26);
+        
+        $fix27->setName('Nap');
+        $fix27->setDescription('Chard');
+        $fix27->setTranslatableLocale('ca');
+        $manager->persist($fix27);
+        
+        $fix28->setName('Col de cabdell');
+        $fix28->setDescription('Chard');
+        $fix28->setTranslatableLocale('ca');
+        $manager->persist($fix28);
+        
+        $fix29->setName('Coliflor');
+        $fix29->setDescription('Chard');
+        $fix29->setTranslatableLocale('ca');
+        $manager->persist($fix29);
+        
+        $fix30->setName('Endivia');
+        $fix30->setDescription('Chard');
+        $fix30->setTranslatableLocale('ca');
+        $manager->persist($fix30);
+        
+        $fix31->setName('Pèsol');
+        $fix31->setDescription('Chard');
+        $fix31->setTranslatableLocale('ca');
+        $manager->persist($fix31);
+
+        $fix32->setName('Fava');
+        $fix32->setDescription('Chard');
+        $fix32->setTranslatableLocale('ca');
+        $manager->persist($fix32);
+
+        $manager->flush();
+        
+        
+                
+        //Translate to es
+        $fix1->setName('Ajo');
+        $fix1->setDescription('All');
+        $fix1->setTranslatableLocale('es');
+        $manager->persist($fix1);
+
+        $fix2->setName('Perejil');
+        $fix2->setDescription('Julivert');
+        $fix2->setTranslatableLocale('es');
+        $manager->persist($fix2);
+        
+        $fix3->setName('Puerro');
+        $fix3->setDescription('Chard');
+        $fix3->setTranslatableLocale('es');
+        $manager->persist($fix3);
+        
+        $fix4->setName('Albahaca');
+        $fix4->setDescription('Chard');
+        $fix4->setTranslatableLocale('es');
+        $manager->persist($fix4);
+        
+        $fix5->setName('Berenjena');
+        $fix5->setDescription('Chard');
+        $fix5->setTranslatableLocale('es');
+        $manager->persist($fix5); 
+        
+        $fix6->setName('Boniato');
+        $fix6->setDescription('Chard');
+        $fix6->setTranslatableLocale('es');
+        $manager->persist($fix6);
+
+        $fix7->setName('Calabacín');
+        $fix7->setDescription('Chard');
+        $fix7->setTranslatableLocale('es');
+        $manager->persist($fix7);
+        
+        $fix8->setName('Calabaza');
+        $fix8->setDescription('Chard');
+        $fix8->setTranslatableLocale('es');
+        $manager->persist($fix8); 
+        
+        $fix9->setName('Alubia');
+        $fix9->setDescription('Chard');
+        $fix9->setTranslatableLocale('es');
+        $manager->persist($fix9);
+        
+        $fix10->setName('Maiz');
+        $fix10->setDescription('Chard');
+        $fix10->setTranslatableLocale('es');
+        $manager->persist($fix10); 
+        
+        $fix11->setName('Melón');
+        $fix11->setDescription('Chard');
+        $fix11->setTranslatableLocale('es');
+        $manager->persist($fix11); 
+        
+        $fix12->setName('Pepino');
+        $fix12->setDescription('Chard');
+        $fix12->setTranslatableLocale('es');
+        $manager->persist($fix12); 
+
+        $fix13->setName('Pimiento');
+        $fix13->setDescription('Chard');
+        $fix13->setTranslatableLocale('es');
+        $manager->persist($fix13); 
+
+        $fix14->setName('Canonigos');
+        $fix14->setDescription('Chard');
+        $fix14->setTranslatableLocale('es');
+        $manager->persist($fix14); 
+
+        $fix15->setName('Sandia');
+        $fix15->setDescription('Chard');
+        $fix15->setTranslatableLocale('es');
+        $manager->persist($fix15); 
+
+        $fix16->setName('Tomate');
+        $fix16->setDescription('Chard');
+        $fix16->setTranslatableLocale('es');
+        $manager->persist($fix16);
+
+        $fix17->setName('Acelga');
+        $fix17->setDescription('Chard');
+        $fix17->setTranslatableLocale('es');
+        $manager->persist($fix17);
+
+        $fix18->setName('Apio');
+        $fix18->setDescription('Chard');
+        $fix18->setTranslatableLocale('es');
+        $manager->persist($fix18);
+
+        $fix19->setName('Espinacas');
+        $fix19->setDescription('Chard');
+        $fix19->setTranslatableLocale('es');
+        $manager->persist($fix19);
+
+        $fix20->setName('Lechuga');
+        $fix20->setDescription('Chard');
+        $fix20->setTranslatableLocale('es');
+        $manager->persist($fix20);
+
+        $fix21->setName('Patata');
+        $fix21->setDescription('Chard');
+        $fix21->setTranslatableLocale('es');
+        $manager->persist($fix21);
+
+        $fix22->setName('Rabano');
+        $fix22->setDescription('Chard');
+        $fix22->setTranslatableLocale('es');
+        $manager->persist($fix22);
+
+        $fix23->setName('Remolacha');
+        $fix23->setDescription('Chard');
+        $fix23->setTranslatableLocale('es');
+        $manager->persist($fix23);
+
+        $fix24->setName('Rúcula');
+        $fix24->setDescription('Chard');
+        $fix24->setTranslatableLocale('es');
+        $manager->persist($fix24);
+
+        $fix25->setName('Zanahoria');
+        $fix25->setDescription('Chard');
+        $fix25->setTranslatableLocale('es');
+        $manager->persist($fix25);
+
+        $fix26->setName('Cebolla');
+        $fix26->setDescription('Chard');
+        $fix26->setTranslatableLocale('es');
+        $manager->persist($fix26);
+
+        $fix27->setName('Nabo');
+        $fix27->setDescription('Chard');
+        $fix27->setTranslatableLocale('es');
+        $manager->persist($fix27);
+
+        $fix28->setName('Col');
+        $fix28->setDescription('Chard');
+        $fix28->setTranslatableLocale('es');
+        $manager->persist($fix28);
+        
+        $fix29->setName('Coliflor');
+        $fix29->setDescription('Chard');
+        $fix29->setTranslatableLocale('es');
+        $manager->persist($fix29);
+                
+        $fix30->setName('Endivia');
+        $fix30->setDescription('Chard');
+        $fix30->setTranslatableLocale('es');
+        $manager->persist($fix30);
+        
+        $fix31->setName('Garbanzo');
+        $fix31->setDescription('Chard');
+        $fix31->setTranslatableLocale('es');
+        $manager->persist($fix31);
+        
+        $fix32->setName('Haba');
+        $fix32->setDescription('Chard');
+        $fix32->setTranslatableLocale('es');
+        $manager->persist($fix32);
+
 
         $manager->flush();
     }

@@ -48,6 +48,26 @@ class GardenPrivacyTypeFixtures extends AbstractFixture implements OrderedFixtur
         $manager->persist($fix3);
 
         $manager->flush();
+        
+        
+        //Translate to ca
+        $fix1->setName('Privado');
+        $fix1->setDescription('Privado');
+        $fix1->setTranslatableLocale('es');
+        $manager->persist($fix1);
+
+        $fix2->setName('Parcialmente privado');
+        $fix2->setDescription('Parcialmente privado');
+        $fix2->setTranslatableLocale('es');
+        $manager->persist($fix2);
+
+        $fix3->setName('Público');
+        $fix3->setDescription('Público');
+        $fix3->setTranslatableLocale('es');
+        $manager->persist($fix3);
+
+        $manager->flush();
+
     }
     
     public function getOrder()

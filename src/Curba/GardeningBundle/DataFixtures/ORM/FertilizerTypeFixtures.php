@@ -30,18 +30,6 @@ class FertilizerTypeFixtures extends AbstractFixture implements OrderedFixtureIn
 
         $manager->flush();
 
-        // first load the article
-        //$fertilizerType1Ca = $manager->find('Curba\GardeningBundle\Entity\FertilizerType', $fertilizerType1->getId());
-        //$fertilizerType1Ca->setName('Poc exigent');
-        //$fertilizerType1Ca->setDescription('Poc exigent');
-        //$fertilizerType1Ca->setTranslatableLocale('ca');
-        //$manager->persist($fertilizerType1Ca);
-        //$manager->flush();
-
-        //Reference to make a relation with StationFixtures
-        $this->addReference('fertilizer-type-1', $fertilizerType1);
-        $this->addReference('fertilizer-type-2', $fertilizerType2);
-        $this->addReference('fertilizer-type-3', $fertilizerType3);
         
         //Translate to ca
         $fertilizerType1->setName('Poc exigent');
@@ -60,6 +48,32 @@ class FertilizerTypeFixtures extends AbstractFixture implements OrderedFixtureIn
         $manager->persist($fertilizerType3);
 
         $manager->flush();
+        
+        
+        //Translate to es
+        $fertilizerType1->setName('Poco exigente');
+        $fertilizerType1->setDescription('Poco exigente');
+        $fertilizerType1->setTranslatableLocale('es');
+        $manager->persist($fertilizerType1);
+
+        $fertilizerType2->setName('Normal');
+        $fertilizerType2->setDescription('Normal');
+        $fertilizerType2->setTranslatableLocale('es');
+        $manager->persist($fertilizerType2);
+
+        $fertilizerType3->setName('Exigente');
+        $fertilizerType3->setDescription('Exigente');
+        $fertilizerType3->setTranslatableLocale('es');
+        $manager->persist($fertilizerType3);
+
+        $manager->flush();
+        
+        
+        //Reference to make a relation with StationFixtures
+        $this->addReference('fertilizer-type-1', $fertilizerType1);
+        $this->addReference('fertilizer-type-2', $fertilizerType2);
+        $this->addReference('fertilizer-type-3', $fertilizerType3);
+
     }
     
     public function getOrder()

@@ -36,6 +36,55 @@ class LifeCicleTypeFixtures extends AbstractFixture implements OrderedFixtureInt
 
         $manager->flush();
 
+        
+        //Translate to ca
+        $fix1->setName('Anual');
+        $fix1->setDescription('Anual');
+        $fix1->setTranslatableLocale('ca');
+        $manager->persist($fix1);
+
+        $fix2->setName('Bianual');
+        $fix2->setDescription('Bianual');
+        $fix2->setTranslatableLocale('ca');
+        $manager->persist($fix2);
+
+        $fix3->setName('Plurianual');
+        $fix3->setDescription('Plurianual');
+        $fix3->setTranslatableLocale('ca');
+        $manager->persist($fix3);
+
+        $fix4->setName('Indefinit');
+        $fix4->setDescription('Indefinit');
+        $fix4->setTranslatableLocale('ca');
+        $manager->persist($fix4);
+
+        $manager->flush();
+
+        
+        //Translate to es
+        $fix1->setName('Anual');
+        $fix1->setDescription('Anual');
+        $fix1->setTranslatableLocale('es');
+        $manager->persist($fix1);
+
+        $fix2->setName('Bianual');
+        $fix2->setDescription('Bianual');
+        $fix2->setTranslatableLocale('es');
+        $manager->persist($fix2);
+
+        $fix3->setName('Plurianual');
+        $fix3->setDescription('Plurianual');
+        $fix3->setTranslatableLocale('es');
+        $manager->persist($fix3);
+
+        $fix4->setName('Indefinido');
+        $fix4->setDescription('Indefinido');
+        $fix4->setTranslatableLocale('es');
+        $manager->persist($fix4);
+
+        $manager->flush();
+        
+        
         //Reference to make a relation with StationFixtures
         $this->addReference('life-cicle-type-1', $fix1);
         $this->addReference('life-cicle-type-2', $fix2);

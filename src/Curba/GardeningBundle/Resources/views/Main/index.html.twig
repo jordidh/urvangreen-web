@@ -48,13 +48,17 @@
     <a href="{{ path('comp_plant') }}">Compatibility plant table</a>
     <br/>
     <a href="{{ path('crop_period') }}">Crop period table</a>
-{% endblock %}
-
-{% block body_footer %}
     <br/>
     <form action="{{ path('show_plant_info') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
-
         <input type="submit" />
     </form>
+    <br/>
+    <form action="{{ path('show_plant_family_info') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(formFamily) }}
+        <input type="submit" />
+    </form>
+{% endblock %}
+
+{% block body_footer %}
 {% endblock %}
