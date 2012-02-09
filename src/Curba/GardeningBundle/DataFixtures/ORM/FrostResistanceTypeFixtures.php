@@ -11,8 +11,8 @@ class FrostResistanceTypeFixtures extends AbstractFixture implements OrderedFixt
     public function load($manager)
     {
         $fix1 = new FrostResistanceType();
-        $fix1->setName('Nothing');
-        $fix1->setDescription('Nothing');
+        $fix1->setName('Not at all');
+        $fix1->setDescription('Not at all');
         $fix1->setTranslatableLocale('en');
         $manager->persist($fix1);
 

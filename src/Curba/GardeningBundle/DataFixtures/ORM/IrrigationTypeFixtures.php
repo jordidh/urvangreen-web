@@ -11,8 +11,8 @@ class IrrigationTypeFixtures extends AbstractFixture implements OrderedFixtureIn
     public function load($manager)
     {
         $fix1 = new IrrigationType();
-        $fix1->setName('Less exigent');
-        $fix1->setDescription('Less exigent');
+        $fix1->setName('Few');
+        $fix1->setDescription('Few');
         $fix1->setTranslatableLocale('en');
         $manager->persist($fix1);
 
@@ -23,8 +23,8 @@ class IrrigationTypeFixtures extends AbstractFixture implements OrderedFixtureIn
         $manager->persist($fix2);
 
         $fix3 = new IrrigationType();
-        $fix3->setName('Plenty');
-        $fix3->setDescription('Plenty');
+        $fix3->setName('Frequent');
+        $fix3->setDescription('Frequent');
         $fix3->setTranslatableLocale('en');
         $manager->persist($fix3);
 

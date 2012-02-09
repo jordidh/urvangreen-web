@@ -134,13 +134,13 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         
         
         //Translate to ca
-        $fix1->setName('All');
-        $fix1->setDescription('All');
+        $fix1->setName('Umbelíferas');
+        $fix1->setDescription('Umbelíferas');
         $fix1->setTranslatableLocale('ca'); // change locale
         $manager->persist($fix1);
 
-        $fix2->setName('Julivert');
-        $fix2->setDescription('Julivert');
+        $fix2->setName('Liláceas');
+        $fix2->setDescription('Liláceas');
         $fix2->setTranslatableLocale('ca'); // change locale
         $manager->persist($fix2);
         

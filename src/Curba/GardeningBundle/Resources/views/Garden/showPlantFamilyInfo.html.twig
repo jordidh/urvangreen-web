@@ -18,7 +18,7 @@
       <h2>Family plants</h2>
       <ul>          
       {% for plant in family.Plants %}
-              <li>{{ plant.Name }}</li>
+              <li><a href="{{ path('show_plant_info', {'id': plant.getId()} ) }}">{{ plant.Name }}</a></li>
       {% endfor %}
       </ul>
 
