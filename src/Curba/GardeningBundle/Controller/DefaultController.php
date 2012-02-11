@@ -16,7 +16,7 @@ class DefaultController extends Controller
      * @Template()
      */
     public function indexAction()
-    {
+    {        
         if (false === $this->get('security.context')->isGranted('ROLE_USER')) 
         {
             //Set the language from the users web browser
@@ -44,8 +44,10 @@ class DefaultController extends Controller
         } else {
             $error = $this->get('request')->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
         }
+     
+        $format = $this->getRequest()->getRequestFormat();
         
-        return $this->render('CurbaGardeningBundle:Default:index.html.twig', array(
+        return $this->render('CurbaGardeningBundle:Default:index.'.$format.'.twig', array(
             'last_username' => $this->get('request')->getSession()->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
             'locale'        => $language,

@@ -12,8 +12,9 @@
       <h2>Scientific name</h2>
       <p>{{ family.ScientificName }}</p>
 
+      {# Output description as row to render html tags #}
       <h2>Description</h2>
-      <p>{{ family.Description }}</p>
+      <p>{{ family.Description|raw }}</p>
 
       <h2>Family plants</h2>
       <ul>          

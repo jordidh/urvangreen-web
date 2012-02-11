@@ -1,0 +1,60 @@
+{% extends "CurbaGardeningBundle::layout_mobile.html.twig" %}
+
+{% block body_content %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div>
+            <a class="grid_5" href="{{ path('main', {'_locale': locale }) }}">{% trans %}garden.gotomygarden{% endtrans %}</a>
+        </div>
+        <div>
+            <a class="grid_5" href="{{ path('profile', {'_locale': locale }) }}">{% trans %}garden.gotomyprofile{% endtrans %}</a>
+        </div>
+        </br>
+    {% endif %}
+
+    <div>
+        <p>
+            {% trans %}garden.overview{% endtrans %}
+            </br>
+            {% trans %}garden.funcionality{% endtrans %}
+            </br>
+        </p>
+    </div>
+
+    <div class="usuario">
+        <form action="{{ path("login_check", {'_format': 'mhtml'}) }}" method="post" id="login" class="ui-body ui-body-a ui-corner-all">
+            <div>
+                <label for="username">Email</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            </div>
+
+            <div>
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="_password" />
+            </div>
+
+            {#<input type="submit" class="symfony-button-grey" value="LOGIN" />#}
+            <button type="submit" data-theme="b" name="submit" value="LOGIN">Submit</button>
+        </form>
+    </div>
+
+    </br>
+
+    <div class="usuario">
+        <p>Are't you registered yet?</p>
+        <a href="{{ path('register') }}">Sign Up!</a>
+        <p>It's free and always will be.</p>
+    </div>
+
+{% endblock %}
+
+{% block body_footer %}
+    </br>
+
+    <ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="d">
+        <li data-role="list-divider">Info tables</li>
+        <li><a href="{{ path('plant', {'_format': 'mhtml'}) }}">Plant tables</a></li>
+        <li><a href="{{ path('comp_plant', {'_format': 'mhtml'}) }}">Compatibility</a></li>
+        <li><a href="{{ path('crop_period', {'_format': 'mhtml'}) }}">Crop periods</a></li>
+    </ul>
+
+{% endblock %}

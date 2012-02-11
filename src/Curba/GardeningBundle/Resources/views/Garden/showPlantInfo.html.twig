@@ -16,8 +16,9 @@
       
       <p><a href="{{ path('show_plant_family_info', {'id': plant.PlantFamily.getId()} ) }}">{{ plant.PlantFamily.Name }}</a> ({{ plant.PlantFamily.ScientificName }}): {{ plant.PlantFamily.Description }}</p>
 
+      {# Output description as row to render html tags #}
       <h2>Description</h2>
-      <p>{{ plant.Description }}</p>
+      <p>{{ plant.Description|raw }}</p>
 
       <h2>Pests</h2>
       <ul>

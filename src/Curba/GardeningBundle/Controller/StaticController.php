@@ -88,11 +88,12 @@ class StaticController extends Controller
             $plants = $plantRepository->findAll();
         }
 
+        $format = $this->getRequest()->getRequestFormat();
         
-        return array(
+        return $this->render('CurbaGardeningBundle:Static:plant.'.$format.'.twig', array(
             'plants' => $plants,
             'form'      => $form->createView(),
-        );
+        ));
     }
     
     /**

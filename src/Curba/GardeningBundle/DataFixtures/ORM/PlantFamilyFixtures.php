@@ -134,13 +134,13 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         
         
         //Translate to ca
-        $fix1->setName('Umbelíferas');
-        $fix1->setDescription('Umbelíferas');
+        $fix1->setName('All');
+        $fix1->setDescription('All');
         $fix1->setTranslatableLocale('ca'); // change locale
         $manager->persist($fix1);
 
-        $fix2->setName('Liláceas');
-        $fix2->setDescription('Liláceas');
+        $fix2->setName('Julivert');
+        $fix2->setDescription('Julivert');
         $fix2->setTranslatableLocale('ca'); // change locale
         $manager->persist($fix2);
         
@@ -200,12 +200,12 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         
                 
         //Translate to es
-        $fix1->setName('Umbrel·líferes');
+        $fix1->setName('Umbelíferas');
         $fix1->setDescription('All');
         $fix1->setTranslatableLocale('es');
         $manager->persist($fix1);
 
-        $fix2->setName('Liliàcies');
+        $fix2->setName('Liliáceas');
         $fix2->setDescription('Julivert');
         $fix2->setTranslatableLocale('es');
         $manager->persist($fix2);
@@ -215,37 +215,38 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         $fix3->setTranslatableLocale('es');
         $manager->persist($fix3);
         
-        $fix4->setName('Solanácias');
+        $fix4->setName('Solanáceas');
         $fix4->setDescription('Chard');
         $fix4->setTranslatableLocale('es');
         $manager->persist($fix4);
         
-        $fix5->setName('Convolvulácias');
+        $fix5->setName('Convolvuláceas');
         $fix5->setDescription('Chard');
         $fix5->setTranslatableLocale('es');
         $manager->persist($fix5); 
         
-        $fix6->setName('Cucurbitácias');
+        $fix6->setName('Cucurbitáceas');
         $fix6->setDescription('Chard');
         $fix6->setTranslatableLocale('es');
         $manager->persist($fix6);
 
         $fix7->setName('Leguminosas');
-        $fix7->setDescription('Chard');
+        $fix7->setDescription('Son útiles para plantar nuestros propios alimentos porque proporcionan proteínas y tienen la capacidad de fijar nitrógeno en los nódulos de las raices.  Las leguminosas se alimentan con todo lo que necesitan menos el nitrógeno, fijan el del aire y lo utilizan para alimentarse. Si se pican y entierran en el huerto cuando están saludables y verdes, se descomponen rapidamente dejando el nitrógeno a las bacterias de putrefacción el cual será liberado mas tarde en el suelo. También se pueden incorporar al compost y tendrán el mismo efecto.
+<br/>Es muy habitual que sufran ataques de pulgón');
         $fix7->setTranslatableLocale('es');
         $manager->persist($fix7);
         
-        $fix8->setName('Gramínias');
+        $fix8->setName('Gramíneas');
         $fix8->setDescription('Chard');
         $fix8->setTranslatableLocale('es');
         $manager->persist($fix8); 
         
-        $fix9->setName('Valerianácias');
+        $fix9->setName('Valerianáceas');
         $fix9->setDescription('Chard');
         $fix9->setTranslatableLocale('es');
         $manager->persist($fix9);
         
-        $fix10->setName('Quenopodiácias');
+        $fix10->setName('Quenopodiáceas');
         $fix10->setDescription('Chard');
         $fix10->setTranslatableLocale('es');
         $manager->persist($fix10); 

@@ -1,0 +1,80 @@
+{% extends "CurbaGardeningBundle::layout_mobile.html.twig" %}
+
+{% block body_content %}
+    <form action="{{ path('plant', {'_format': 'mhtml'}) }}" method="post" {{ form_enctype(form) }} class="ui-body ui-body-a ui-corner-all">
+        {{ form_widget(form) }}
+        <button type="submit" data-theme="b" name="submit" value="submit-value">Submit</button>
+        {#<input type="submit" />#}
+    </form>
+
+    <small>
+    {% for plant in plants %}
+        <div data-role="collapsible">
+           <h3>{{ plant.Name }}</h3>
+            <table class="plant">
+              <body>
+                <tr>
+                  <th class="plant">Name</th>
+                  <td>{{ plant.Name }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">Scientific name</th>
+                  <td>{{ plant.ScientificName }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">PlantFamily</th>
+                  <td>{{ plant.PlantFamily }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">Productivity</th>
+                  <td>{{ plant.Productivity }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">Plant Spacing</th>
+                  <td>width: {{ plant.WidthSpacing }}, height:{{ plant.HeightSpacing }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">SoilVolume</th>
+                  <td>{{ plant.SoilVolume }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">FertilizerType</th>
+                  <td>{{ plant.FertilizerType }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">LifeCicleType</th>
+                  <td>{{ plant.LifeCicleType }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">ClimateType</th>
+                  <td>{{ plant.ClimateType }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">SoilType</th>
+                  <td>{{ plant.SoilType }}</td>
+                </tr>
+                <tr>
+                  <th class="plant">IrrigationType</th>
+                  <td>{{ plant.IrrigationType }}</td>
+                </tr>
+                <tr>
+                    <td><a href="{{ path('show_plant_info', {'id': plant.getId(), '_format': 'mhtml'} ) }}">Read more ...</a></td>
+                </tr>
+              </body>
+            </table>
+         </div>
+    {% endfor %}
+    </small>
+{% endblock %}
+
+{% block body_footer %}
+    </br>
+
+    <ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="d">
+        <li data-role="list-divider">Links</li>
+        <li><a href="{{ path('default', {'_format': 'mhtml'}) }}">Begining</a></li>
+        <li><a href="{{ path('main', {'_format': 'mhtml'}) }}">My page</a></li>
+        <li><a href="{{ path('profile', {'_format': 'mhtml'}) }}">My profile</a></li>
+    </ul>
+    
+{% endblock %}
