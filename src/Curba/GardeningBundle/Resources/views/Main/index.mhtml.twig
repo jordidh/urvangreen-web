@@ -1,0 +1,62 @@
+{% extends "CurbaGardeningBundle::layout_mobile.html.twig" %}
+
+{% block body_header %}
+    {% if app.session.flash('notice') %}
+        <div class="notice">
+            <p>{{ app.session.flash('notice') }}</p>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block body_content %}
+    <h1>User gardens</h1>
+    <ul>
+      {% for garden in gardens %}
+        <li>Garden {{ garden.name }} 
+            <a href="{{ path('garden_editor', { 'id': garden.id, '_format': 'mhtml' }) }}">start to work</a> |
+            <a href="{{ path('garden_index', { 'id': garden.id, '_format': 'mhtml' }) }}">information</a> | 
+            <a href="{{ path('garden_history', { 'id': garden.id, '_format': 'mhtml' }) }}">history</a> | 
+            <a href="{{ path('garden_edit', { 'id': garden.id, '_format': 'mhtml' }) }}">modify</a> |
+            <a href="{{ path('station_new', {'_format': 'mhtml'}) }}">Create a new station</a>
+            <ul>
+              {% for station in stations %}
+                {% if station.garden.id == garden.id %}
+                <li>Station {{ station.name }} 
+                    <a href="{{ path('station_edit', { 'id': station.id, '_format': 'mhtml' }) }}">(configura)</a> 
+                    <a href="{{ path('station_upload', { 'id': station.id, '_format': 'mhtml' }) }}">(upload)</a> 
+                    <a href="{{ path('station_chart', { 'id': station.id, 'index': 1, '_format': 'mhtml' }) }}">(Weather day's average data)</a> 
+                    <a href="{{ path('station_detailed_chart', { 'id': station.id, 'index': 1, '_format': 'mhtml' }) }}">(Weather month data)</a> 
+                    {#<a href="{{ path('station_detailed_day_chart', { 'id': station.id, 'index': 1 }) }}">(Weather day data)</a> #}
+                    {#<a href="{{ path('station_summary', { 'id': station.id }) }}">(Month summary)</a> #}
+                {% endif %}
+              {% endfor %}
+              <li><a href="{{ path('station_new', { 'id': garden.id, '_format': 'mhtml' }) }}">Create a new station</a></li>
+            </ul>
+            <a href="{{ path('garden_silverlight', { 'id': garden.id, '_format': 'mhtml' }) }}">old editor</a>
+        </li>
+      {% endfor %}
+      <li><a href="{{ path('garden_new', {'_format': 'mhtml'}) }}">Create a new garden</a></li>
+    </ul>
+{% endblock %}
+
+{% block body_footer %}
+    <br/>
+    <form action="{{ path('show_plant_info', {'_format': 'mhtml'}) }}" method="post" {{ form_enctype(form) }} class="ui-body ui-body-a ui-corner-all">
+        {{ form_widget(form) }}
+        <button type="submit" data-theme="b" name="submit" value="submit-value">Submit</button>
+    </form>
+    <br/>
+    <form action="{{ path('show_plant_family_info', {'_format': 'mhtml'}) }}" method="post" {{ form_enctype(form) }} class="ui-body ui-body-a ui-corner-all">
+        {{ form_widget(formFamily) }}
+        <button type="submit" data-theme="b" name="submit" value="submit-value">Submit</button>
+    </form>
+
+    </br>
+    <ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="d">
+        <li data-role="list-divider">Links</li>
+        <li><a href="{{ path('default', {'_format': 'mhtml'}) }}">Home</a></li>
+        <li><a href="{{ path('profile', {'_format': 'mhtml'}) }}">My profile</a></li>
+        <li><a href="{{ path('comp_plant', {'_format': 'mhtml'}) }}">Compatibility</a></li>
+        <li><a href="{{ path('crop_period', {'_format': 'mhtml'}) }}">Crop periods</a></li>
+    </ul>
+{% endblock %}

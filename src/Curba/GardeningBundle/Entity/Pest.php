@@ -31,22 +31,28 @@ class Pest implements \Gedmo\Translatable\Translatable
 
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length="255", nullable=true)
+     * @ORM\Column(type="string", length="1000", nullable=true)
      */
     private $description;
     
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length="255", nullable=true)
+     * @ORM\Column(type="string", length="1000", nullable=true)
      */
     protected $symptom;
 
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length="255", nullable=true)
+     * @ORM\Column(type="string", length="1000", nullable=true)
      */
     protected $consequence;
     
+    /**
+     * @Gedmo\Translatable
+     * @ORM\Column(type="string", length="1000", nullable=true)
+     */
+    protected $remedies;
+
     /**
      * @Gedmo\Translatable
      * @ORM\Column(type="string", length="255", name="scientific_name", nullable=true)
@@ -182,6 +188,26 @@ class Pest implements \Gedmo\Translatable\Translatable
     public function getConsequence()
     {
         return $this->consequence;
+    }
+
+    /**
+     * Set remedies
+     *
+     * @param string $remedies
+     */
+    public function setRemedies($remedies)
+    {
+        $this->remedies = $remedies;
+    }
+
+    /**
+     * Get remedies
+     *
+     * @return string 
+     */
+    public function getRemedies()
+    {
+        return $this->remedies;
     }
 
     /**

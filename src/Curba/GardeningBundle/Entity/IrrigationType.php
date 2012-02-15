@@ -36,6 +36,16 @@ class IrrigationType implements \Gedmo\Translatable\Translatable
     private $description;
 
     /**
+     * @ORM\Column(type="integer", name="irrigation_period")
+     */
+    private $irrigationPeriod;
+
+    /**
+     * @ORM\Column(type="integer", name="humidity_min_level")
+     */
+    private $humidityMinLevel;
+
+    /**
      * @ORM\Column(type="datetime", name="created_at")
      */
     private $createdAt;
@@ -113,6 +123,47 @@ class IrrigationType implements \Gedmo\Translatable\Translatable
     {
         return $this->description;
     }
+    
+    
+    /**
+     * Set irrigationPeriod
+     *
+     * @param string $irrigationPeriod
+     */
+    public function setIrrigationPeriod($irrigationPeriod)
+    {
+        $this->irrigationPeriod = $irrigationPeriod;
+    }
+
+    /**
+     * Get irrigationPeriod
+     *
+     * @return integer 
+     */
+    public function getIrrigationPeriod()
+    {
+        return $this->irrigationPeriod;
+    }
+    
+    /**
+     * Set humidityMinLevel
+     *
+     * @param integer $humidityMinLevel
+     */
+    public function setHumidityMinLevel($humidityMinLevel)
+    {
+        $this->humidityMinLevel = $humidityMinLevel;
+    }
+
+    /**
+     * Get humidityMinLevel
+     *
+     * @return integer 
+     */
+    public function getHumidityMinLevel()
+    {
+        return $this->humidityMinLevel;
+    }    
 
     /**
      * Set createdAt

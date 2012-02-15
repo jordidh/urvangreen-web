@@ -31,7 +31,7 @@ class PlantCare implements \Gedmo\Translatable\Translatable
 
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length="255", nullable=true)
+     * @ORM\Column(type="string", length="1000", nullable=true)
      */
     private $description;
     
@@ -41,9 +41,21 @@ class PlantCare implements \Gedmo\Translatable\Translatable
     private $initialDate;
 
     /**
-     * @ORM\Column(type="datetime", name="final_date")
+     * @ORM\Column(type="datetime", name="final_date", nullable=true)
      */
     private $finalDate;
+    
+    /**
+     * repeat each hours until end of period: 0 no repeat
+     * @ORM\Column(type="integer", name="final_date", nullable=true)
+     */
+    private $repeatEachHours;
+            
+    /**
+     * repetat each times maximum until end of period: 0 no repeat, -1 repeat always
+     * @ORM\Column(type="integer", name="final_date", nullable=true)
+     */
+    private $repeatMaxTimes;
 
     /**
      * @ORM\Column(type="datetime", name="created_at")
@@ -162,6 +174,46 @@ class PlantCare implements \Gedmo\Translatable\Translatable
     public function getFinalDate()
     {
         return $this->finalDate;
+    }
+    
+    /**
+     * Set repeatEachHours
+     *
+     * @param integer $repeatEachHours
+     */
+    public function setRepeatEachHours($repeatEachHours)
+    {
+        $this->repeatEachHours = $repeatEachHours;
+    }
+
+    /**
+     * Get repeatEachHours
+     *
+     * @return integer 
+     */
+    public function getRepeatEachHours()
+    {
+        return $this->repeatEachHours;
+    }
+
+    /**
+     * Set repeatMaxTimes
+     *
+     * @param integer $repeatMaxTimes
+     */
+    public function setRepeatMaxTimes($repeatMaxTimes)
+    {
+        $this->repeatMaxTimes = $repeatMaxTimes;
+    }
+
+    /**
+     * Get repeatMaxTimes
+     *
+     * @return integer 
+     */
+    public function getRepeatMaxTimes()
+    {
+        return $this->repeatMaxTimes;
     }
 
     /**

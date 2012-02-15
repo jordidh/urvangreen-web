@@ -3,10 +3,10 @@
 {% block body_content %}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <div>
-            <a class="grid_5" href="{{ path('main', {'_locale': locale }) }}">{% trans %}garden.gotomygarden{% endtrans %}</a>
+            <a class="grid_5" href="{{ path('main', {'_locale': locale, '_format': 'mhtml' }) }}">{% trans %}garden.gotomygarden{% endtrans %}</a>
         </div>
         <div>
-            <a class="grid_5" href="{{ path('profile', {'_locale': locale }) }}">{% trans %}garden.gotomyprofile{% endtrans %}</a>
+            <a class="grid_5" href="{{ path('profile', {'_locale': locale, '_format': 'mhtml' }) }}">{% trans %}garden.gotomyprofile{% endtrans %}</a>
         </div>
         </br>
     {% endif %}
