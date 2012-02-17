@@ -129,17 +129,24 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         $fix12->setScientificName('Cruciferae');
         $fix12->setTranslatableLocale('en');
         $manager->persist($fix12);
+		
+		$fix13 = new PlantFamily();
+        $fix13->setName('Rosaceae');
+        $fix13->setDescription('Crucifereds');
+        $fix13->setScientificName('Cruciferae');
+        $fix13->setTranslatableLocale('en');
+        $manager->persist($fix13);
 
         $manager->flush();
         
         
         //Translate to ca
-        $fix1->setName('All');
+        $fix1->setName('Umbelíferas');
         $fix1->setDescription('All');
         $fix1->setTranslatableLocale('ca'); // change locale
         $manager->persist($fix1);
 
-        $fix2->setName('Julivert');
+        $fix2->setName('Liláceas');
         $fix2->setDescription('Julivert');
         $fix2->setTranslatableLocale('ca'); // change locale
         $manager->persist($fix2);
@@ -194,6 +201,11 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         $fix12->setTranslatableLocale('ca');
         $manager->persist($fix12);
 
+		
+        $fix13->setName('Rosàcies');
+        $fix13->setDescription('Crucifereds');
+        $fix13->setTranslatableLocale('ca');
+        $manager->persist($fix13);
         
         $manager->flush();
         
@@ -261,6 +273,11 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         $fix12->setTranslatableLocale('es');
         $manager->persist($fix12); 
 
+		$fix13->setName('Rosáceas');
+        $fix13->setDescription('Crucifereds');
+        $fix13->setTranslatableLocale('es');
+        $manager->persist($fix13);
+		
         $manager->flush();
         
         
@@ -278,6 +295,7 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         $this->addReference('plant-family-10', $fix10);
         $this->addReference('plant-family-11', $fix11);
         $this->addReference('plant-family-12', $fix12);
+	    $this->addReference('plant-family-13', $fix13);
     }
 
     public function getOrder()

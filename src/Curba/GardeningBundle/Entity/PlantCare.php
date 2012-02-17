@@ -36,24 +36,27 @@ class PlantCare implements \Gedmo\Translatable\Translatable
     private $description;
     
     /**
-     * @ORM\Column(type="datetime", name="initial_date")
+     * days where begin the crop care relative to the initialCropPeriod: the 
+     * crop period can be Protected crop, open air crop or transplant
+     * @ORM\Column(type="integer", name="days_from_begining")
      */
-    private $initialDate;
+    private $daysFromBegining;
 
     /**
-     * @ORM\Column(type="datetime", name="final_date", nullable=true)
+     * duration of the care: 0 inmediate, null: forever
+     * @ORM\Column(type="integer", name="duration_days", nullable=true)
      */
-    private $finalDate;
+    private $durationDays;
     
     /**
      * repeat each hours until end of period: 0 no repeat
-     * @ORM\Column(type="integer", name="final_date", nullable=true)
+     * @ORM\Column(type="integer", name="repeat_each_hours", nullable=true)
      */
     private $repeatEachHours;
             
     /**
      * repetat each times maximum until end of period: 0 no repeat, -1 repeat always
-     * @ORM\Column(type="integer", name="final_date", nullable=true)
+     * @ORM\Column(type="integer", name="repeat_max_times", nullable=true)
      */
     private $repeatMaxTimes;
 
@@ -71,6 +74,13 @@ class PlantCare implements \Gedmo\Translatable\Translatable
      * @ORM\OneToMany(targetEntity="Plant", mappedBy="plant_care")
      */
     private $plants;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="CropPeriod")
+     * @ORM\JoinColumn(name="crop_period_id", referencedColumnName="id")
+     */
+    private $initial_crop_period;
+
     
     /**
      * @Gedmo\Locale
@@ -137,43 +147,43 @@ class PlantCare implements \Gedmo\Translatable\Translatable
     }
 
     /**
-     * Set initialDate
+     * Set daysFromBegining
      *
-     * @param datetime $initialDate
+     * @param integer $daysFromBegining
      */
-    public function setInitialDate($initialDate)
+    public function setDaysFromBegining($daysFromBegining)
     {
-        $this->initialDate = $initialDate;
+        $this->daysFromBegining = $daysFromBegining;
     }
 
     /**
-     * Get initialDate
+     * Get daysFromBegining
      *
-     * @return datetime 
+     * @return integer 
      */
-    public function getInitialDate()
+    public function getDaysFromBegining()
     {
-        return $this->initialDate;
+        return $this->daysFromBegining;
     }
 
     /**
-     * Set finalDate
+     * Set durationDays
      *
-     * @param datetime $finalDate
+     * @param integer $durationDays
      */
-    public function setFinalDate($finalDate)
+    public function setDurationDays($durationDays)
     {
-        $this->finalDate = $finalDate;
+        $this->durationDays = $durationDays;
     }
 
     /**
-     * Get finalDate
+     * Get durationDays
      *
-     * @return datetime 
+     * @return integer 
      */
-    public function getFinalDate()
+    public function getDurationDays()
     {
-        return $this->finalDate;
+        return $this->durationDays;
     }
     
     /**
@@ -276,6 +286,26 @@ class PlantCare implements \Gedmo\Translatable\Translatable
         return $this->plants;
     }
     
+    /**
+     * Set initial_crop_period
+     *
+     * @param Curba\GardeningBundle\Entity\CropPeriod $initialCropPeriod
+     */
+    public function setInitialCropPeriod(\Curba\GardeningBundle\Entity\CropPeriod $initialCropPeriod)
+    {
+        $this->initial_crop_period = $initialCropPeriod;
+    }
+
+    /**
+     * Get initial_crop_period
+     *
+     * @return Curba\GardeningBundle\Entity\CropPeriod 
+     */
+    public function getInitialCropPeriod()
+    {
+        return $this->initial_crop_period;
+    }
+
     public function __toString()
     {
        return $this->getName();

@@ -42,6 +42,12 @@ class CropPeriod
      * @ORM\Column(name="updated_at", type="datetime", nullable=false)
      */
     private $updatedAt;
+    
+    /**
+     * Days that a plant has in this period
+     * @ORM\Column(name="average_period_duration", type="integer", nullable=false)
+     */
+    private $averagePeriodDuration;
 
     /**
      * @ORM\ManyToOne(targetEntity="Region")
@@ -65,6 +71,11 @@ class CropPeriod
      * @ORM\OneToMany(targetEntity="Crop", mappedBy="initial_crop_period")
      */
     private $crops;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PlantCare", mappedBy="initial_crop_period")
+     */
+    private $plantCares;
 
 
 
@@ -73,6 +84,7 @@ class CropPeriod
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->crops = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->plantCares = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -124,6 +136,27 @@ class CropPeriod
     {
         return $this->finalDate;
     }
+    
+    /**
+     * Set averagePeriodDuration
+     *
+     * @param integer $averagePeriodDuration
+     */
+    public function setAveragePeriodDuration($averagePeriodDuration)
+    {
+        $this->averagePeriodDuration = $averagePeriodDuration;
+    }
+
+    /**
+     * Get averagePeriodDuration
+     *
+     * @return integer 
+     */
+    public function getAveragePeriodDuration()
+    {
+        return $this->averagePeriodDuration;
+    }
+    
 
     /**
      * Set createdAt
@@ -243,5 +276,25 @@ class CropPeriod
     public function getCrops()
     {
         return $this->crops;
+    }
+
+    /**
+     * Add plantCares
+     *
+     * @param Curba\GardeningBundle\Entity\PlantCares $plantCares
+     */
+    public function addPlantCares(\Curba\GardeningBundle\Entity\PlantCares $plantCares)
+    {
+        $this->plantCares[] = $plantCares;
+    }
+
+    /**
+     * Get plantCares
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPlantCares()
+    {
+        return $this->plantCares;
     }
 }
