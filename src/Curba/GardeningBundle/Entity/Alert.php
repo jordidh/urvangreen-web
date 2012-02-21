@@ -58,6 +58,19 @@ class Alert
      * @ORM\JoinColumn(name="garden_id", referencedColumnName="id")
      */
     private $garden;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Crop", inversedBy="alerts")
+     * @ORM\JoinColumn(name="crop_id", referencedColumnName="id")
+     */
+    private $crop;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     */
+    private $region;
+
 
     public function __construct()
     {
@@ -213,5 +226,45 @@ class Alert
     public function getGarden()
     {
         return $this->garden;
+    }
+
+    /**
+     * Set crop
+     *
+     * @param Curba\GardeningBundle\Entity\Crop $crop
+     */
+    public function setCrop(\Curba\GardeningBundle\Entity\Crop $crop)
+    {
+        $this->crop = $crop;
+    }
+
+    /**
+     * Get crop
+     *
+     * @return Curba\GardeningBundle\Entity\Crop 
+     */
+    public function getCrop()
+    {
+        return $this->crop;
+    }
+
+    /**
+     * Set region
+     *
+     * @param Curba\GardeningBundle\Entity\Region $region
+     */
+    public function setRegion(\Curba\GardeningBundle\Entity\Region $region)
+    {
+        $this->region = $region;
+    }
+
+    /**
+     * Get region
+     *
+     * @return Curba\GardeningBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }

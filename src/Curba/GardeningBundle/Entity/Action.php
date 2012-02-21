@@ -53,12 +53,13 @@ class Action
     /**
      * @ORM\Column(type="decimal")
      */
-    private $quantityA;
+    private $value;
     
     /**
-     * @ORM\Column(type="decimal")
-     */
-    private $quantityB;
+     * @ORM\ManyToOne(targetEntity="UnitsOfMeasurementType")
+     * @ORM\JoinColumn(name="value_unit_type_id", referencedColumnName="id")
+     **/
+    private $valueUnitType;
     
     /**
      * @ORM\Column(type="string", length="1000", nullable=true)
@@ -183,43 +184,43 @@ class Action
     }
     
     /**
-     * Set quantityA
+     * Set value
      *
-     * @param decimal $quantityA
+     * @param decimal $value
      */
-    public function setQuantityA($quantityA)
+    public function setValue($value)
     {
-        $this->quantityA = $quantityA;
+        $this->value = $value;
     }
 
     /**
-     * Get quantityA
+     * Get value
      *
      * @return decimal 
      */
-    public function getQuantityA()
+    public function getValue()
     {
-        return $this->quantityA;
+        return $this->value;
     }
     
     /**
-     * Set quantityB
+     * Set valueUnitType
      *
-     * @param decimal $quantityB
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurementType $valueUnitType
      */
-    public function setQuantityB($quantityB)
+    public function setValueUnitType($valueUnitType)
     {
-        $this->quantityB = $quantityB;
+        $this->valueUnitType = $valueUnitType;
     }
 
     /**
-     * Get quantityB
+     * Get valueUnitType
      *
-     * @return decimal 
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurementType $valueUnitType 
      */
-    public function getQuantityB()
+    public function getValueUnitType()
     {
-        return $this->quantityB;
+        return $this->valueUnitType;
     }
     
     /**

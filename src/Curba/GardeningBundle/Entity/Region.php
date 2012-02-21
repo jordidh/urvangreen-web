@@ -56,6 +56,36 @@ class Region implements \Gedmo\Translatable\Translatable
     private $cropPeriods;
 
     /**
+     * @ORM\OneToOne(targetEntity="UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $lengthUnit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $massUnit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $volumeUnit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $temperatureUnit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $pressionUnit;
+
+    /**
      * @Gedmo\Locale
      * Used locale to override Translation listener`s locale
      * this is not a mapped field of entity metadata, just a simple property
@@ -160,6 +190,106 @@ class Region implements \Gedmo\Translatable\Translatable
         return $this->updatedAt;
     }
 
+    /**
+     * Set lengthUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $lengthUnit
+     */
+    public function setLengthUnit($lengthUnit)
+    {
+        $this->lengthUnit = $lengthUnit;
+    }
+
+    /**
+     * Get lengthUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getLengthUnit()
+    {
+        return $this->lengthUnit;
+    }
+    
+    /**
+     * Set massUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $massUnit
+     */
+    public function setMassUnit($massUnit)
+    {
+        $this->massUnit = $massUnit;
+    }
+
+    /**
+     * Get massUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getMassUnit()
+    {
+        return $this->massUnit;
+    }
+    
+    /**
+     * Set volumeUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $volumeUnit
+     */
+    public function setVolumeUnit($volumeUnit)
+    {
+        $this->volumeUnit = $volumeUnit;
+    }
+
+    /**
+     * Get volumeUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getVolumeUnit()
+    {
+        return $this->volumeUnit;
+    }
+    
+    /**
+     * Set temperatureUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $temperatureUnit
+     */
+    public function setTemperatureUnit($temperatureUnit)
+    {
+        $this->temperatureUnit = $temperatureUnit;
+    }
+
+    /**
+     * Get temperatureUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getTemperatureUnit()
+    {
+        return $this->temperatureUnit;
+    }
+
+    /**
+     * Set pressionUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $pressionUnit
+     */
+    public function setPressionUnit($pressionUnit)
+    {
+        $this->pressionUnit = $pressionUnit;
+    }
+
+    /**
+     * Get pressionUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getPressionUnit()
+    {
+        return $this->pressionUnit;
+    }    
+    
     /**
      * Add gardens
      *

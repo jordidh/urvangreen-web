@@ -13,6 +13,11 @@ class RegionFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix1 = new Region();
         $fix1->setName('Barcelona');
         $fix1->setDescription('Barcelona metropolitan area');
+        $fix1->setLengthUnit($this->getReference('unit-2'));
+        $fix1->setMassUnit($this->getReference('unit-1'));
+        $fix1->setVolumeUnit($this->getReference('unit-3'));
+        $fix1->setTemperatureUnit($this->getReference('unit-4'));
+        $fix1->setPressionUnit($this->getReference('unit-6'));
         $fix1->setTranslatableLocale('en'); // change locale
         $manager->persist($fix1);
 
@@ -37,6 +42,6 @@ class RegionFixtures extends AbstractFixture implements OrderedFixtureInterface
     
     public function getOrder()
     {
-        return 1; // the order in which fixtures will be loaded
+        return 3; // the order in which fixtures will be loaded
     }
 }

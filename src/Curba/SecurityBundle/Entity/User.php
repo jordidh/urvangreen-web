@@ -154,6 +154,36 @@ class User implements UserInterface, \Serializable
     private $deletedAt;
     
     /**
+     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $lengthUnit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $massUnit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $volumeUnit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $temperatureUnit;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     **/
+    private $pressionUnit;
+
+    /**
      * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
@@ -537,6 +567,106 @@ class User implements UserInterface, \Serializable
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+    
+    /**
+     * Set lengthUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $lengthUnit
+     */
+    public function setLengthUnit($lengthUnit)
+    {
+        $this->lengthUnit = $lengthUnit;
+    }
+
+    /**
+     * Get lengthUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getLengthUnit()
+    {
+        return $this->lengthUnit;
+    }
+    
+    /**
+     * Set massUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $massUnit
+     */
+    public function setMassUnit($massUnit)
+    {
+        $this->massUnit = $massUnit;
+    }
+
+    /**
+     * Get massUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getMassUnit()
+    {
+        return $this->massUnit;
+    }
+    
+    /**
+     * Set volumeUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $volumeUnit
+     */
+    public function setVolumeUnit($volumeUnit)
+    {
+        $this->volumeUnit = $volumeUnit;
+    }
+
+    /**
+     * Get volumeUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getVolumeUnit()
+    {
+        return $this->volumeUnit;
+    }
+    
+    /**
+     * Set temperatureUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $temperatureUnit
+     */
+    public function setTemperatureUnit($temperatureUnit)
+    {
+        $this->temperatureUnit = $temperatureUnit;
+    }
+
+    /**
+     * Get temperatureUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getTemperatureUnit()
+    {
+        return $this->temperatureUnit;
+    }
+
+    /**
+     * Set pressionUnit
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $pressionUnit
+     */
+    public function setPressionUnit($pressionUnit)
+    {
+        $this->pressionUnit = $pressionUnit;
+    }
+
+    /**
+     * Get pressionUnit
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     */
+    public function getPressionUnit()
+    {
+        return $this->pressionUnit;
     }
     
     /**

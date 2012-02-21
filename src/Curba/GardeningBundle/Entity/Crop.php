@@ -94,6 +94,13 @@ class Crop
      * @ORM\OneToMany(targetEntity="Action", mappedBy="crop")
      */
     private $actions;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Alert", mappedBy="crop")
+     */
+    private $alerts;
+    
+
 
 
     public function __construct()
@@ -101,6 +108,7 @@ class Crop
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->actions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->alerts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -391,6 +399,27 @@ class Crop
     public function getActions()
     {
         return $this->actions;
+    }
+    
+
+    /**
+     * Add alerts
+     *
+     * @param Curba\GardeningBundle\Entity\Alert $alerts
+     */
+    public function addAlerts(\Curba\GardeningBundle\Entity\Alert $alerts)
+    {
+        $this->alerts[] = $alerts;
+    }
+
+    /**
+     * Get alerts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getAlerts()
+    {
+        return $this->alerts;
     }
     
     public function asArray()

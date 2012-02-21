@@ -16,7 +16,7 @@ Crop period table
           <th>{{ i }}</th>
         {% endfor %}
       </tr>
-      {% if cropPeriodArray|length > 1 %}
+      {% if cropPeriodArray[plant.Id] is defined %}
           {% for cropPeriod in cropPeriodArray[plant.Id] %}
             <tr>
               {% for i in 0..12 %}

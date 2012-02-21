@@ -37,7 +37,7 @@ class PlantCare implements \Gedmo\Translatable\Translatable
     
     /**
      * days where begin the crop care relative to the initialCropPeriod: the 
-     * crop period can be Protected crop, open air crop or transplant
+     * crop period can be "protected crop", "open air crop" or "transplant"
      * @ORM\Column(type="integer", name="days_from_begining")
      */
     private $daysFromBegining;
