@@ -14,7 +14,7 @@
 
       <h2>Family name</h2>
       
-      <p><a href="{{ path('show_plant_family_info', {'id': plant.PlantFamily.getId()} ) }}">{{ plant.PlantFamily.Name }}</a> ({{ plant.PlantFamily.ScientificName }}): {{ plant.PlantFamily.Description }}</p>
+      <p><a href="{{ path('show_plant_family_info', {'id': plant.PlantFamily.getId()} ) }}">{{ plant.PlantFamily.Name }}</a> ({{ plant.PlantFamily.ScientificName }}): {{ plant.PlantFamily.Description|raw|slice(0,50) }}...</p>
 
       {# Output description as row to render html tags #}
       <h2>Description</h2>
@@ -92,7 +92,7 @@
           </body>
       </table>
 
-      <h2>Crop period</h2>
+      <h2>Crop period for region of {{ region.name }}</h2>
       <small>
       <table>
         <body>

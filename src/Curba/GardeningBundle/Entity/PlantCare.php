@@ -8,6 +8,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Curba\GardeningBundle\Entity\PlantCare
+ * 
+ * A PlantCare is a pattern that allows create alerts by the command "CreateAlertsCommand".
+ * Creates an alert.
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -34,6 +37,13 @@ class PlantCare implements \Gedmo\Translatable\Translatable
      * @ORM\Column(type="string", length="1000", nullable=true)
      */
     private $description;
+    
+    /**
+     * Unidirectional
+     * @ORM\OneToOne(targetEntity="AlertType")
+     * @ORM\JoinColumn(name="alert_type_id", referencedColumnName="id")
+     */
+    private $alert_type;
     
     /**
      * days where begin the crop care relative to the initialCropPeriod: the 
@@ -76,11 +86,16 @@ class PlantCare implements \Gedmo\Translatable\Translatable
     private $plants;
     
     /**
-     * @ORM\ManyToOne(targetEntity="CropPeriod")
-     * @ORM\JoinColumn(name="crop_period_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="CropPeriodType")
+     * @ORM\JoinColumn(name="period_type_id", referencedColumnName="id")
      */
-    private $initial_crop_period;
+    private $crop_period_type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     */
+    private $region;
     
     /**
      * @Gedmo\Locale
@@ -287,23 +302,63 @@ class PlantCare implements \Gedmo\Translatable\Translatable
     }
     
     /**
-     * Set initial_crop_period
+     * Set crop_period_type
      *
-     * @param Curba\GardeningBundle\Entity\CropPeriod $initialCropPeriod
+     * @param Curba\GardeningBundle\Entity\CropPeriodType $cropPeriodType
      */
-    public function setInitialCropPeriod(\Curba\GardeningBundle\Entity\CropPeriod $initialCropPeriod)
+    public function setCropPeriodType(\Curba\GardeningBundle\Entity\CropPeriodType $cropPeriodType)
     {
-        $this->initial_crop_period = $initialCropPeriod;
+        $this->crop_period_type = $cropPeriodType;
     }
 
     /**
-     * Get initial_crop_period
+     * Get crop_period_type
      *
-     * @return Curba\GardeningBundle\Entity\CropPeriod 
+     * @return Curba\GardeningBundle\Entity\CropPeriodType
      */
-    public function getInitialCropPeriod()
+    public function getCropPeriodType()
     {
-        return $this->initial_crop_period;
+        return $this->crop_period_type;
+    }
+    
+    /**
+     * Set region
+     *
+     * @param Curba\GardeningBundle\Entity\Region $region
+     */
+    public function setRegion(\Curba\GardeningBundle\Entity\Region $region)
+    {
+        $this->region = $region;
+    }
+
+    /**
+     * Get region
+     *
+     * @return Curba\GardeningBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+    
+    /**
+     * Set alert_type
+     *
+     * @param Curba\GardeningBundle\Entity\AlertType $alertType
+     */
+    public function setAlertType(\Curba\GardeningBundle\Entity\AlertType $alertType)
+    {
+        $this->alert_type = $alertType;
+    }
+
+    /**
+     * Get alert_type
+     *
+     * @return Curba\GardeningBundle\Entity\AlertType 
+     */
+    public function getAlertType()
+    {
+        return $this->alert_type;
     }
 
     public function __toString()

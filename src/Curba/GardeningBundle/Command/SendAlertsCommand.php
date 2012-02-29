@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateAlertsCommand extends ContainerAwareCommand
+class SendAlertsCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('gardening:create_alerts')
-            ->setDescription('Creates alerts for each user')
+            ->setName('gardening:send_alerts')
+            ->setDescription('Sends alerts to each user from pending alerts uppon configuration (email, sms, etc.)')
                 ;
             //->addArgument('name', InputArgument::OPTIONAL, 'Who do you want to greet?')
             //->addOption('yell', null, InputOption::VALUE_NONE, 'If set, the task will yell in uppercase letters')
@@ -22,12 +22,9 @@ class CreateAlertsCommand extends ContainerAwareCommand
     }
 
     /*
-     * Find all the gardens
-     * For each garden find all zones and the region
-     * For each zone find all crops
-     * For each crops find the plant
-     * For each plant find the PlantCares
-     * For each PlantCare check if is needed to create an Alert
+     * Find all the alerts to send
+     * Find user configuration (which AlertTypes has to send)
+     * Send
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

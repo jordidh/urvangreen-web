@@ -9,9 +9,10 @@ class PlantRepository extends EntityRepository
     /**
      * Returns all the PlantCares for one plant that have a specific initialCropPeriod
      *
-     * @param $initialCropPeriod: plantId to get all crop periods
+     * @param $crop: crop
+     * @param $region: region of the garden
      */
-    public function getPlantCareFromCropPeriod($initialCropPeriod)
+    public function getPlantCareFromCropPeriod($crop, $region)
     {
         $em = $this->getEntityManager();
 
@@ -22,7 +23,7 @@ class PlantRepository extends EntityRepository
             ->leftJoin('p.initial_crop_period', 'cp')
             ->where('p.plant = :plant')
             ->orderBy('pt.id')
-            ->setParameter('plant', $plantId, \Doctrine\DBAL\Types\Type::INTEGER)
+            ->setParameter('plant', $crop->getPlant()->getId(), \Doctrine\DBAL\Types\Type::INTEGER)
             ->getQuery();
 /*
         return $query->getResult();

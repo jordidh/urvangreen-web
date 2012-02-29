@@ -7,6 +7,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Curba\GardeningBundle\Entity\Action
+ * 
+ * An action is the result (or a instance) of an activity initiated by a user.
+ * When a user comfirms an action creates a CropHistory.
  *
  * @ORM\Table()
  * @ORM\Entity

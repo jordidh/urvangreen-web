@@ -18,6 +18,16 @@ body {
   font: 14px/1.4 Arial, sans-serif;
 }
 
+h1 {
+  color: #177915;
+  font-size: 22px;
+}
+
+h2 {
+  /*color: #177915;*/
+  font-size: 18px;
+}
+
 .container_16 {
   margin-left: auto;
   margin-right: auto;

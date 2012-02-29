@@ -7,10 +7,7 @@
     
   {% if family %}
 
-      <h1>{{ family.Name }}</h1>
-
-      <h2>Scientific name</h2>
-      <p>{{ family.ScientificName }}</p>
+      <h1>{{ family.Name }} ({{ family.ScientificName }})</h1>
 
       {# Output description as row to render html tags #}
       <h2>Description</h2>

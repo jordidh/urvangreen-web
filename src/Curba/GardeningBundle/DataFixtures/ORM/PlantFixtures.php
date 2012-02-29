@@ -90,7 +90,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix3->setIrrigationType($manager->merge($this->getReference('irrigation-type-3')));
         $fix3->setFertilizerType($manager->merge($this->getReference('fertilizer-type-2')));
         $fix3->setLifeCicleType($manager->merge($this->getReference('life-cicle-type-2')));
-        $fix3->setRootDepth(200);
+        $fix3->setRootDepth(250);
         $fix3->setPlantHeight(450);
         $fix3->setSeedDepth(10);
         $fix3->setPhMinimum(6);
@@ -1027,24 +1027,24 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
 		$fix35 = new Plant();
         $fix35->setName('Artichoke');
         $fix35->setDescription('Cabbage');
-        $fix35->setScientificName('Fra');
-        $fix35->setPlantFamily($manager->merge($this->getReference('plant-family-13')));
-        $fix35->setProductivity(2);
-        $fix35->setWidthSpacing(400);
-        $fix35->setHeightSpacing(400);
+        $fix35->setScientificName('Cynara scolymus ');
+        $fix35->setPlantFamily($manager->merge($this->getReference('plant-family-11')));
+        $fix35->setProductivity(0);
+        $fix35->setWidthSpacing(1000);
+        $fix35->setHeightSpacing(800);
         $fix35->setSoilVolume(0);
         $fix35->setSoilType($manager->merge($this->getReference('soil-type-2')));
-        $fix35->setClimateType($manager->merge($this->getReference('climate-type-2')));
+        $fix35->setClimateType($manager->merge($this->getReference('climate-type-3')));
         $fix35->setIrrigationType($manager->merge($this->getReference('irrigation-type-3')));
-        $fix35->setFertilizerType($manager->merge($this->getReference('fertilizer-type-3')));
+        $fix35->setFertilizerType($manager->merge($this->getReference('fertilizer-type-2')));
         $fix35->setLifeCicleType($manager->merge($this->getReference('life-cicle-type-3')));
-        $fix35->setRootDepth(200);
-        $fix35->setPlantHeight(250);
+        $fix35->setRootDepth(300);
+        $fix35->setPlantHeight(1000);
         $fix35->setSeedDepth(0);
-        $fix35->setPhMinimum(6);
-        $fix35->setPhMaximum(7);
-        $fix35->setTemperatureMinimum(0);
-        $fix35->setTemperatureMaximum(35);
+        $fix35->setPhMinimum(6.5);
+        $fix35->setPhMaximum(7.5);
+        $fix35->setTemperatureMinimum(7);
+        $fix35->setTemperatureMaximum(29);
         $fix35->setFrostResistanceType($manager->merge($this->getReference('frost-resistance-type-2')));
         $fix35->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix35->setTranslatableLocale('en');
@@ -1053,24 +1053,24 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
 		$fix36 = new Plant();
         $fix36->setName('Broccoli');
         $fix36->setDescription('Cabbage');
-        $fix36->setScientificName('Fra');
-        $fix36->setPlantFamily($manager->merge($this->getReference('plant-family-13')));
-        $fix36->setProductivity(2);
-        $fix36->setWidthSpacing(400);
+        $fix36->setScientificName('Brassica oleracea ');
+        $fix36->setPlantFamily($manager->merge($this->getReference('plant-family-12')));
+        $fix36->setProductivity(0);
+        $fix36->setWidthSpacing(700);
         $fix36->setHeightSpacing(400);
         $fix36->setSoilVolume(0);
         $fix36->setSoilType($manager->merge($this->getReference('soil-type-2')));
-        $fix36->setClimateType($manager->merge($this->getReference('climate-type-2')));
+        $fix36->setClimateType($manager->merge($this->getReference('climate-type-3')));
         $fix36->setIrrigationType($manager->merge($this->getReference('irrigation-type-3')));
-        $fix36->setFertilizerType($manager->merge($this->getReference('fertilizer-type-3')));
-        $fix36->setLifeCicleType($manager->merge($this->getReference('life-cicle-type-3')));
-        $fix36->setRootDepth(200);
-        $fix36->setPlantHeight(250);
-        $fix36->setSeedDepth(0);
-        $fix36->setPhMinimum(6);
+        $fix36->setFertilizerType($manager->merge($this->getReference('fertilizer-type-2')));
+        $fix36->setLifeCicleType($manager->merge($this->getReference('life-cicle-type-2')));
+        $fix36->setRootDepth(3000);
+        $fix36->setPlantHeight(900);
+        $fix36->setSeedDepth(10);
+        $fix36->setPhMinimum(6.5);
         $fix36->setPhMaximum(7);
-        $fix36->setTemperatureMinimum(0);
-        $fix36->setTemperatureMaximum(35);
+        $fix36->setTemperatureMinimum(5);
+        $fix36->setTemperatureMaximum(24);
         $fix36->setFrostResistanceType($manager->merge($this->getReference('frost-resistance-type-2')));
         $fix36->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix36->setTranslatableLocale('en');
@@ -1079,24 +1079,24 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
 		$fix37 = new Plant();
         $fix37->setName('Calçots');
         $fix37->setDescription('Cabbage');
-        $fix37->setScientificName('Fra');
-        $fix37->setPlantFamily($manager->merge($this->getReference('plant-family-13')));
-        $fix37->setProductivity(2);
-        $fix37->setWidthSpacing(400);
-        $fix37->setHeightSpacing(400);
-        $fix37->setSoilVolume(0);
-        $fix37->setSoilType($manager->merge($this->getReference('soil-type-2')));
-        $fix37->setClimateType($manager->merge($this->getReference('climate-type-2')));
-        $fix37->setIrrigationType($manager->merge($this->getReference('irrigation-type-3')));
-        $fix37->setFertilizerType($manager->merge($this->getReference('fertilizer-type-3')));
-        $fix37->setLifeCicleType($manager->merge($this->getReference('life-cicle-type-3')));
-        $fix37->setRootDepth(200);
+        $fix37->setScientificName('Allium Cepa');
+        $fix37->setPlantFamily($manager->merge($this->getReference('plant-family-2')));
+        $fix37->setProductivity(0);
+        $fix37->setWidthSpacing(500);
+        $fix37->setHeightSpacing(300);
+        $fix37->setSoilVolume(4);
+        $fix37->setSoilType($manager->merge($this->getReference('soil-type-3')));
+        $fix37->setClimateType($manager->merge($this->getReference('climate-type-3')));
+        $fix37->setIrrigationType($manager->merge($this->getReference('irrigation-type-2')));
+        $fix37->setFertilizerType($manager->merge($this->getReference('fertilizer-type-2')));
+        $fix37->setLifeCicleType($manager->merge($this->getReference('life-cicle-type-2')));
+        $fix37->setRootDepth(250);
         $fix37->setPlantHeight(250);
         $fix37->setSeedDepth(0);
         $fix37->setPhMinimum(6);
-        $fix37->setPhMaximum(7);
-        $fix37->setTemperatureMinimum(0);
-        $fix37->setTemperatureMaximum(35);
+        $fix37->setPhMaximum(6.8);
+        $fix37->setTemperatureMinimum(5);
+        $fix37->setTemperatureMaximum(25);
         $fix37->setFrostResistanceType($manager->merge($this->getReference('frost-resistance-type-2')));
         $fix37->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix37->setTranslatableLocale('en');
@@ -1298,7 +1298,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
                 
         //Translate to es
         $fix1->setName('Ajo');
-        $fix1->setDescription('All');
+        $fix1->setDescription('Es una planta de otoño y/o invierno,  bianual aunque en los huertos se cultiva como anual, de ciclo largo y de siembra directa. <br/> Es un bulbo subterráneo formado por dientes reunidos en su base alrededor de un tallo, cubiertos por una película delgada. Sus raíces son numerosas y finas y alcanzan poca profundidad. Sus hojas verdes son planas, alargadas y plegadas. <br/> Es rico en sales minerales, azufre, encimas y vitaminas. Tiene propiedades medicinales. Es uno de los ingredientes fundamentales de la cocina mediterránea <br/> Existen variedades según el color: Blanco, Rosa o morado. <br/> Es una de las hortalizas más fáciles de cultivar, ya que requiere pocos cuidados y es muy resistente a cualquier tipo de suelo y clima. Se aconseja sembrar los dientes más grandes y con la parte plana hacia abajo. <br/> Los mejores ajos tanto en sabor como en tamaño, son los que se plantan en otoño. Para obtener unas buenas cabezas de ajo la planta debe pasar varias semanas a bajas temperaturas.  Se debe regar poco ya que el exceso de humedad puede pudrir los bulbos. <br/> El último riego, antes de recolectarlo, se debe realizar a los 15 o 20 días antes. La recolección se inicia cuando las hojas se han doblado y son de color amarillo. <br/>Es una planta pequeña que permite aprovechar espacios pequeños entre plantas más grandes y aumentar el rendimiento del huerto. Conveniente  asociarla con las fresas para que se desarrollen más sanas y dulces y con plantas que sufran ataques de pulgón para evitarlos gracias s sus propiedades insecticidas y fungicidas. ');
         $fix1->setTranslatableLocale('es');
         $manager->persist($fix1);
 
@@ -1378,12 +1378,12 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix16);
 
         $fix17->setName('Acelga');
-        $fix17->setDescription('Chard');
+        $fix17->setDescription('Es una planta de primavera y/o otoño, bianual aunque en los huertos se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de hojas verdes grandes de forma oval, amplias y jugosas. Sus tallos son blancos, planos y anchos. Toda la planta es comestible, no forma raíz o fruto comestible. <br/>  Es rica en vitamina A, C y K, sodio, calcio, hierro, magnesio, fósforo y potasio. Aporta ácido fólico. <br/> Existen variedades según la época de siembra: primavera y otoño y según sus tallos: Verde de penca blanca ancha, Verde de penca blanca alargada, Verde Bressane, Amarilla de Lyón y  Amarilla de penca blanca. <br/> Es una hortaliza muy productiva y su cultivo requiere pocos cuidados.  Es aconsejable mantener el suelo húmedo, si pasan sed se vuelven fibrosas y tienden a espigarse. Necesita un recipiente grande. <br/> Se puede recolectar la planta completa o recolectar las hojas a medida que van teniendo un buen tamaño. Es recomendable cortar las hojas con un cuchillo bien afilado para no hacerle daño a la planta. <br/> Es conveniente asociarla con plantas de ciclo corto y de raíces superficiales para evitar que compitan por los nutrientes. ');
         $fix17->setTranslatableLocale('es');
         $manager->persist($fix17);
 
         $fix18->setName('Apio');
-        $fix18->setDescription('Chard');
+        $fix18->setDescription('Es una planta de primavera y/o invierno,  bianual aunque en los huertos se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta herbácea de tallo estirado, hueco y acanalado. Sus hojas  verde amarillosas brotan en forma de corona y son lobuladas, lisas y brillantes. Las flores son blancas o blanco verdosas de cinco pétalos y están reunidas en umbelas. Es de textura crujiente. <br/> Es diurético, carminativo y depurador de la sangre. Rico en vitamina C, ácido fólico y algunos minerales (potasio, calcio, sodio). <br/> Existen variedades según el color: verdes que necesitan se le haga la práctica de blanqueo si se quieren obtener pencas blancas y variedades amarillas que no necesitan de esa práctica, necesitan menos espacio para crecer. <br/> No es muy exigente en el suelo, pero requiere buen drenaje ya que es necesario mantenemos húmedo para obtener plantas más crujientes y gustosas. Le favorecen las heladas porque la hacen más gustosa pero en algunos casos hace que desarrolle la flor más rápido. <br/> La recolección comienza cuando las plantas son firmes y compactas. Se puede cortar toda la planta o ir cosechando a medida que se va consumiendo usando un cuchillo bien afilado para evitar dañar la planta. <br/> Es recomendable asociarlo con lechugas y rábanos porque se benefician mucho. ');
         $fix18->setTranslatableLocale('es');
         $manager->persist($fix18);
 
@@ -1468,7 +1468,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix34);
 		
 		$fix35->setName('Alcachofa');
-        $fix35->setDescription('Chard');
+        $fix35->setDescription('Es una planta de primavera y/o invierno,  plurianual aunque en los huertos se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de tallos gruesos, rectos, acanalados y ramificados que superan el metro de altura. Sus hojas son grandes con los nervios centrales muy marcados, cubiertas de pelos suaves y blanquecinos que le dan un aspecto pálido. Sus flores son de tipo terminal en forma de rosetón, muy gruesas, recubiertas por escamas membranosas y carnosas en la base, que son la parte comestible de la planta. <br/> Es rica en vitamina B y hierro. Tiene propiedades diuréticas, depurativas y medicinales. <br/> Existen variedades según la forma: esférica u oval,  según el tamaño y color del capítulo: verde o violeta. <br/> Necesita pasar frío para iniciar la formación de los frutos: la flor. No resiste las heladas ni las altas temperaturas, produciendo frutos con sabor amargo y aspecto poco atractivo. <br/> La recolección es escalonada según van estando apunto las flores. ');
         $fix35->setTranslatableLocale('es');
         $manager->persist($fix35);
 		

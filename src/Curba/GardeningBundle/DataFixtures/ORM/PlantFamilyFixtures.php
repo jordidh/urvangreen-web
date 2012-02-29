@@ -191,7 +191,7 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
         $fix10->setTranslatableLocale('ca');
         $manager->persist($fix10);
         
-        $fix11->setName('Crucíferes');
+        $fix11->setName('Compostes');
         $fix11->setDescription('Chard');
         $fix11->setTranslatableLocale('ca');
         $manager->persist($fix11);
@@ -213,70 +213,70 @@ class PlantFamilyFixtures extends AbstractFixture implements OrderedFixtureInter
                 
         //Translate to es
         $fix1->setName('Umbelíferas');
-        $fix1->setDescription('All');
+        $fix1->setDescription('Es una familia bastante heterogénea, que comprende hortalizas exigentes en calor como el apio y el hinojo, y hortalizas de países fríos como la chirivía y la zanahoria. Entre las umbelíferas se encuentran las hortalizas más ricas en caroteno, como la zanahoria, y en vitamina C, como el hinojo y el perejil. <br/> A menudo presentan un tallo estirado y se caracteriza por tener flores agrupadas en tallos radiales en forma de paraguas, de color blanco o amarillo. <br/> Sus semillas germinan con gran lentitud. ');
         $fix1->setTranslatableLocale('es');
         $manager->persist($fix1);
 
         $fix2->setName('Liliáceas');
-        $fix2->setDescription('Julivert');
+        $fix2->setDescription('Compuesta por hierbas provistas de bulbos, rizomas o tubérculos.  Las hortalizas de esta familia son monocotiledóneas, es decir, no tienen una red nerviosa sino paralela la cual es utilizada por la cebolla, puerros y espárragos para almacenar los elementos nutritivos en los bulbos engrosados.  <br/> Tienen hojas largas, estrechas, flores con tres pétalos y tres sépalos que suelen ser del mismo color de los pétalos y un órgano de almacén bajo las raíces llamado bulbo.  <br/> Son poco exigentes en nitrógeno (excepto el puerro) y en calor. ');
         $fix2->setTranslatableLocale('es');
         $manager->persist($fix2);
         
         $fix3->setName('Labiadas');
-        $fix3->setDescription('Chard');
+        $fix3->setDescription('Familia de plantas y arbustos que tienen el tallo cuadrado y las hojas opuestas. Las plantas aromáticas están cubiertas por varios tipos de pelos provistos de glándulas epidérmicas que contienen aceites esenciales y emiten fragancias aromáticas.  <br/> Se caracterizan por la presencia de aromas esenciales y por tener una flor con una forma especial adaptada a la polinización de los insectos. ');
         $fix3->setTranslatableLocale('es');
         $manager->persist($fix3);
         
         $fix4->setName('Solanáceas');
-        $fix4->setDescription('Chard');
+        $fix4->setDescription('La mayoría de hortalizas de esta familia provienen de  las regiones tropicales de América central y meridional por lo que requieren un suelo muy rico, húmedo y fértil y  necesitan mucha luz y calor para prosperar. Además ninguna resiste las heladas. <br/> Tienen diversas plagas y enfermedades en común, por lo que es recomendable dejar descansar la tierra durante los 4 años de la rotación para evitar que se propaguen. <br/> La mayoría de las plantas de esta familia contiene Vitamina C y todas contienen antes de su madurez una sustancia tóxica llamada solanina. ');
         $fix4->setTranslatableLocale('es');
         $manager->persist($fix4);
         
         $fix5->setName('Convolvuláceas');
-        $fix5->setDescription('Chard');
+        $fix5->setDescription('Familia de arbustos y árboles ( la mayoría trepadoras) de hojas alternas y simples. Sus flores son muy grandes y vistosas en forma de embudo radial. <br/> Se propagan fácilmente en las zonas cálidas o tropicales del mundo. ');
         $fix5->setTranslatableLocale('es');
         $manager->persist($fix5); 
         
         $fix6->setName('Cucurbitáceas');
-        $fix6->setDescription('Chard');
+        $fix6->setDescription('Es una familia importante porque la mayoría de sus plantas son cultivadas para la alimentación humana.  Son de origen tropical por lo que les agradan las altas temperaturas del verano. Plantas de crecimiento rápido y trepadoras gracias a los zarcillos en los tallos. Las hojas son alternas de lámina simple. <br/> La mayoría de las plantas son hortalizas de fruto, exigentes en calor y  nutrientes. Tienen flores masculinas y femeninas y algunas presentan problemas de polinización. <br/> Son plantas anuales y plurianuales pero son cultivadas como anuales. ');
         $fix6->setTranslatableLocale('es');
         $manager->persist($fix6);
 
         $fix7->setName('Leguminosas');
-        $fix7->setDescription('Son útiles para plantar nuestros propios alimentos porque proporcionan proteínas y tienen la capacidad de fijar nitrógeno en los nódulos de las raices.  Las leguminosas se alimentan con todo lo que necesitan menos el nitrógeno, fijan el del aire y lo utilizan para alimentarse. Si se pican y entierran en el huerto cuando están saludables y verdes, se descomponen rapidamente dejando el nitrógeno a las bacterias de putrefacción el cual será liberado mas tarde en el suelo. También se pueden incorporar al compost y tendrán el mismo efecto.
-<br/>Es muy habitual que sufran ataques de pulgón');
+        $fix7->setDescription('Las leguminosas se alimentan con todo lo que necesitan menos el nitrógeno, fijan el del aire y lo utilizan para alimentarse. Son útiles para plantar nuestros propios alimentos porque proporcionan proteínas y tienen la capacidad de fijar nitrógeno en los nódulos de las raíces. <br/> El fruto de la mayoría de las plantas de esta familia, llamado legumbre, es una vaina dentro de la cual están las semillas. Generalmente las hojas son alternas, compuestas y estipuladas y las flores hermafroditas y muy vistosas, adaptadas a la polinización por insectos. <br/> Es muy habitual que sufran ataques de pulgón');
         $fix7->setTranslatableLocale('es');
         $manager->persist($fix7);
         
         $fix8->setName('Gramíneas');
-        $fix8->setDescription('Chard');
+        $fix8->setDescription('Familia de los cereales,  gran número de plantas forrajeras y céspedes.  Producen un tipo especial de semilla llamado "grano". Son muy diversas en cuanto a morfología y hábito de crecimiento. Se adaptan a diversas condiciones de climáticas y de suelo, no precisan demasiado riego, pero deben tener un buen drenaje. <br/> Los tallos son cilíndricos y huecos con nudos llenos (tipo caña), las hojas alternas y largas y las flores hermafroditas en espiga y granos secos. ');
         $fix8->setTranslatableLocale('es');
         $manager->persist($fix8); 
         
         $fix9->setName('Valerianáceas');
-        $fix9->setDescription('Chard');
+        $fix9->setDescription('Las plantas son generalmente hierbas con un olor desagradable. Se encuentran en casi todas las regiones del mundo. Unas especies se cultivan como planta ornamental y otras se utilizan como medicina herbaria. Se caracterizan por tener tallos erectos o ascendentes y hojas simples, opuestas y divididas. Flores hermafroditas. <br/> Los rizomas y raíces de gran número de especies contienen ácido valeriánico y esencias que son utilizadas por su acción antiespasmódica, sedante y tónica. ');
         $fix9->setTranslatableLocale('es');
         $manager->persist($fix9);
         
         $fix10->setName('Quenopodiáceas');
-        $fix10->setDescription('Chard');
+        $fix10->setDescription('Las plantas de esta familia provienen de las zonas costeras. La mayoría tienen las hojas cubiertas con una capa de cutina que limita la transpiración manteniendo la humedad. Producen sus semillas dentro de pequeños frutos que se mantienen intactos hasta germinar en el suelo,  creciendo plantas agrupadas en macizos. Son plantas fundamentalmente anemófilas, su polinización se realiza por medio del viento, con un amplio período de polinización. <br/> Sus flores son pequeñas y sus hojas alterna, simples y sin estípulas <br/> Ricas en nitratos y en ácido oxálico, por tanto, deben ser consumidas en cantidades moderadas. ');
         $fix10->setTranslatableLocale('es');
         $manager->persist($fix10); 
         
         $fix11->setName('Compuestas');
-        $fix11->setDescription('Chard');
+        $fix11->setDescription(': Esta familia es bastante heterogénea pues es la que más especies comprende, distribuidas por todo el mundo, principalmente en regiones templadas y subtropicales. Abarca plantas poco exigentes en nitrógeno (excepto la alcachofa) y en calor. En su mayoría son hierbas anuales vivaces, sin embargo podemos encontrar algunos arbustos y árboles. Son plantas de desarrollo rápido y tallo blando (excepto la alcachofa y el cardo) que se suelen cultivar como anuales. <br/> Se caracterizan por  tener flores muy pequeñas agrupadas semejando una única flor (flor compuesta), llamadas cabezuelas o capítulos. <br/> Todas las verduras de hojas que se comen en ensalada, excepto la valerianela, forman parte de este grupo. ');
         $fix11->setTranslatableLocale('es');
         $manager->persist($fix11); 
         
         $fix12->setName('Crucíferas');
-        $fix12->setDescription('Chard');
+        $fix12->setDescription('Comparten con las plantas del desierto la capacidad de necesitar poca agua ya que están adaptadas para almacenar el agua que reciben debajo de una cutícula cerosa impermeable. Son bienales, esto quiere decir que almacenan alimentos durante el primer año de vida y florecen y dan semilla durante el segundo. <br/> Les gustan los suelos ricos, húmedos, compactos y alcalinos. Necesitan poco calor, se desarrollan en zonas con clima templado. <br/> Son plantas herbáceas, raramente arbustivas, con hojas alternas sin estípulas. Las flores por lo general son hermafroditas en forma de cruz  irregular, es decir, no todos sus pétalos tienen la misma forma ni tamaño. <br/> Tienen propiedades anti cancerígenas gracias a la presencia de antioxidantes. <br/> Las crucíferas hortícolas tienen un enemigo común: las pulguillas de las crucíferas. En esta familia se encuentra gran parte de las verduras de invierno. ');
         $fix12->setTranslatableLocale('es');
         $manager->persist($fix12); 
 
 		$fix13->setName('Rosáceas');
-        $fix13->setDescription('Crucifereds');
+        $fix13->setDescription('Son una familia de plantas pertenecientes al orden de los rosales. Comprende plantas de tamaños y aspectos muy diversos como pastos, arbustos o árboles, distribuidas fundamentalmente por los países templados . Incluye la mayoría de las frutas que consumimos habitualmente (manzana, pera, fresa, melocotón) y muchas especies ornamentales, principalmente las rosas. <br/> Las flores son vistosas compuestas de 5 pétalos y hermafroditas. Los frutos son muy diversos. ');
         $fix13->setTranslatableLocale('es');
         $manager->persist($fix13);
+		
 		
         $manager->flush();
         

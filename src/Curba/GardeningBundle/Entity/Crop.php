@@ -79,12 +79,6 @@ class Crop
     private $zone;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CropPeriod")
-     * @ORM\JoinColumn(name="crop_period_id", referencedColumnName="id")
-     */
-    private $initial_crop_period;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Plant")
      * @ORM\JoinColumn(name="plant_id", referencedColumnName="id")
      */
@@ -100,6 +94,10 @@ class Crop
      */
     private $alerts;
     
+    /**
+     * @ORM\OneToMany(targetEntity="CropHistory", mappedBy="crop")
+     */
+    private $history;
 
 
 
@@ -109,6 +107,7 @@ class Crop
         $this->updatedAt = new \DateTime();
         $this->actions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->alerts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->history = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -342,26 +341,6 @@ class Crop
     }
 
     /**
-     * Set initial_crop_period
-     *
-     * @param Curba\GardeningBundle\Entity\CropPeriod $initialCropPeriod
-     */
-    public function setInitialCropPeriod(\Curba\GardeningBundle\Entity\CropPeriod $initialCropPeriod)
-    {
-        $this->initial_crop_period = $initialCropPeriod;
-    }
-
-    /**
-     * Get initial_crop_period
-     *
-     * @return Curba\GardeningBundle\Entity\CropPeriod 
-     */
-    public function getInitialCropPeriod()
-    {
-        return $this->initial_crop_period;
-    }
-
-    /**
      * Set plant
      *
      * @param Curba\GardeningBundle\Entity\Plant $plant
@@ -401,7 +380,6 @@ class Crop
         return $this->actions;
     }
     
-
     /**
      * Add alerts
      *
@@ -422,6 +400,26 @@ class Crop
         return $this->alerts;
     }
     
+    /**
+     * Add history
+     *
+     * @param Curba\GardeningBundle\Entity\CropHistory $history
+     */
+    public function addHistory(\Curba\GardeningBundle\Entity\CropHistory $history)
+    {
+        $this->history[] = $history;
+    }
+
+    /**
+     * Get history
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getHistory()
+    {
+        return $this->history;
+    }
+
     public function asArray()
     {
         $initialCropPeriodId = null;
@@ -441,7 +439,7 @@ class Crop
             'numPlants' => $this->getNumPlants(),
             'zoneId' => $this->getZone()->getId(),
             'plantId' => $this->getPlant()->getId(),
-            'initialCropPeriodId' => $initialCropPeriodId,
+            //'initialCropPeriodId' => $initialCropPeriodId,
             'createdAt' => $this->getCreatedAt(),
             'updatedAt' => $this->getUpdatedAt(),
         );
@@ -467,7 +465,7 @@ class Crop
         
         //$this->setZone($zoneRepository->find($array['zoneId']));
         //$this->setPlant($plantRepository->find($array['plantId']));
-        if ($array['initialCropPeriodId']) $this->setInitialCropPeriod($array['initialCropPeriodId']);
+        //if ($array['initialCropPeriodId']) $this->setInitialCropPeriod($array['initialCropPeriodId']);
     }
     
     public function __toString()

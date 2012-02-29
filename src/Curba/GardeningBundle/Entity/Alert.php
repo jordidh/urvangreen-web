@@ -7,7 +7,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Curba\GardeningBundle\Entity\Alert
- *
+ * 
+ * A alert is the result (instance) of the execution of a PlantCare by the command "CreateAlertsCommand".
+ * When a user confirms an alert creates a CropHistory.
+ * 
  * @ORM\Table()
  * @ORM\Entity
  */
@@ -45,7 +48,7 @@ class Alert
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $pospose;
+    private $pospone;
 
     /**
      * @ORM\ManyToOne(targetEntity="AlertType", inversedBy="alerts")
@@ -60,7 +63,7 @@ class Alert
     private $garden;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Crop", inversedBy="alerts")
+     * @ORM\ManyToOne(targetEntity="Crop")
      * @ORM\JoinColumn(name="crop_id", referencedColumnName="id")
      */
     private $crop;
@@ -169,23 +172,23 @@ class Alert
     }
 
     /**
-     * Set pospose
+     * Set pospone
      *
-     * @param datetime $pospose
+     * @param datetime $pospone
      */
-    public function setPospose($pospose)
+    public function setPospone($pospone)
     {
-        $this->pospose = $pospose;
+        $this->pospone = $pospone;
     }
 
     /**
-     * Get pospose
+     * Get pospone
      *
      * @return datetime 
      */
-    public function getPospose()
+    public function getPospone()
     {
-        return $this->pospose;
+        return $this->pospone;
     }
 
     /**

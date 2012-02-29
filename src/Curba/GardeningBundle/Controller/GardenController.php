@@ -697,6 +697,9 @@ class GardenController extends Controller
         
         $em = $this->get('doctrine')->getEntityManager();
         $plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
+        
+        $regionRepository = $em->getRepository('CurbaGardeningBundle:Region');
+        $region = $regionRepository->findOneByName('Barcelona');
 
         if ($id)
         {
@@ -712,7 +715,7 @@ class GardenController extends Controller
             //Array with 3 dimensions: Plant id, CropPeriodType id [1 - 7], Month [1-12] = active or not (0 or 1)
             $cropPeriodArray = array();
 
-            $cropPeriods = $cropPeriodRepository->findAllFrom($plant->getId());
+            $cropPeriods = $cropPeriodRepository->findAllFrom($plant->getId(), $region);
             foreach($cropPeriods as $cropPeriod)
             {
                 //Initialize the array for a specific CropPeriodType
@@ -768,6 +771,7 @@ class GardenController extends Controller
         
         return array(
             'plant' => $plant,
+            'region' => $region,
             'cropPeriodArray' => $cropPeriodArray,
             'form'      => $form->createView(),
         );

@@ -68,7 +68,7 @@ class CropHistory
 
     /**
      * Unidirectional
-     * @ORM\ManyToOne(targetEntity="Crop")
+     * @ORM\ManyToOne(targetEntity="Crop", inversedBy="history")
      * @ORM\JoinColumn(name="crop_id", referencedColumnName="id")
      */
     private $crop;
@@ -96,10 +96,11 @@ class CropHistory
     private $description;
 
     /**
+     * If is NOT NULL shows when a crop period begins
      * @ORM\ManyToOne(targetEntity="CropPeriodType")
      * @ORM\JoinColumn(name="crop_period_type_id", referencedColumnName="id")
      */
-    private $crop_period_type_begining;
+    private $crop_period_type;
 
 
     public function __construct()
@@ -317,5 +318,45 @@ class CropHistory
     public function getPlantCares()
     {
         return $this->plantCares;
+    }
+    
+    /**
+     * Set alert_type
+     *
+     * @param Curba\GardeningBundle\Entity\AlertType $alertType
+     */
+    public function setAlertType(\Curba\GardeningBundle\Entity\AlertType $alertType)
+    {
+        $this->alert_type = $alertType;
+    }
+
+    /**
+     * Get alert_type
+     *
+     * @return Curba\GardeningBundle\Entity\AlertType 
+     */
+    public function getAlertType()
+    {
+        return $this->alert_type;
+    }
+    
+    /**
+     * Set action_type
+     *
+     * @param Curba\GardeningBundle\Entity\ActionType $actionType
+     */
+    public function setActionType(\Curba\GardeningBundle\Entity\ActionType $actionType)
+    {
+        $this->action_type = $actionType;
+    }
+
+    /**
+     * Get action_type
+     *
+     * @return Curba\GardeningBundle\Entity\ActionType 
+     */
+    public function getActionType()
+    {
+        return $this->action_type;
     }
 }

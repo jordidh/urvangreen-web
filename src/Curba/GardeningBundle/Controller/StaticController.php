@@ -113,7 +113,7 @@ class StaticController extends Controller
         
         foreach($plants as $plantA)
         {
-            //$plantArray[$plant->getId()] = $compRepository->findAllFrom($plant->getId());
+            //$plantArray[$plant->getId()] = $compRepository->findAllFrom($plant->getId(), 1);
             foreach($plants as $plantB)
             {
                 $plantArray[$plantA->getId()][$plantB->getId()] = $compRepository->findCompatibility($plantA->getId(), $plantB->getId());
@@ -137,6 +137,9 @@ class StaticController extends Controller
         $plantRepository = $em->getRepository('CurbaGardeningBundle:Plant');
         $plants = $plantRepository->findAll();
         
+        $regionRepository = $em->getRepository('CurbaGardeningBundle:Region');
+        $region = $regionRepository->findOneByName('Barcelona');
+        
         $cropPeriodRepository = $em->getRepository('CurbaGardeningBundle:CropPeriod');
         
         //Array with 3 dimensions: Plant id, CropPeriodType id [1 - 7], Month [1-12] = active or not (0 or 1)
@@ -144,7 +147,7 @@ class StaticController extends Controller
         
         foreach($plants as $plant)
         {
-            $cropPeriods = $cropPeriodRepository->findAllFrom($plant->getId());
+            $cropPeriods = $cropPeriodRepository->findAllFrom($plant->getId(), $region->getId());  //Region 1
             foreach($cropPeriods as $cropPeriod)
             {
                 //Initialize the array for a specific CropPeriodType
@@ -182,12 +185,13 @@ class StaticController extends Controller
                 }
             }
             
-            //$cropPeriodArray[$plant->getId()] = $cropPeriodRepository->findAllFrom($plant->getId());
+            //$cropPeriodArray[$plant->getId()] = $cropPeriodRepository->findAllFrom($plant->getId(), 1);
             
         }
 
         return array(
             'plants' => $plants,
+            'region' => $region,
             'cropPeriodArray' => $cropPeriodArray,
         );
     }

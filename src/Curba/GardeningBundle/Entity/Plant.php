@@ -31,7 +31,7 @@ class Plant implements \Gedmo\Translatable\Translatable
 
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="string", length="1000", nullable=true)
+     * @ORM\Column(type="string", length="3000", nullable=true)
      */
     private $description;
     
