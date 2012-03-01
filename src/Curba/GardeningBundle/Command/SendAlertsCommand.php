@@ -35,37 +35,6 @@ class SendAlertsCommand extends ContainerAwareCommand
         //Get all gardens
         $gardens = $em->getRepository('CurbaGardeningBundle:Garden')->findAll();
         
-        //For each garden of the site
-        foreach($gardens as $garden)
-        {
-            //For each garden get all zones
-            foreach($garden->getZones() as $zone)
-            {
-                //For each zone get all crops
-                foreach($garden->getCrops() as $crop)
-                {
-                    //Get all plantCares
-                    $plantCares = $crop->getPlant()->getPlantCares();
-                    
-                    //For each plantCare of the crop
-                    foreach($plantCares as $plantCare)
-                    {
-                        //Check if the PlantCare can be executed (and create an alert):
-                        // Get the var CropHistoryPeriodType = the last CropHistory with the CropPeriodType different from NULL equal to PlantCare->CropPeriodType
-                        // If the CropHistoryPeriodType exists
-                        // If there isn't an Alert from the same AlertType attached to the same crop
-                        // AND the days passed from the CropHistoryPeriodType are between PlantCare->DaysFromBegining and PlantCare->DaysFromBegining + PlantCare->DurationDays
-                        // AND the last CropHistory with the same AlertType has a InstanceDate older than CropHistory->RepeatEachHours
-                        // AND the number of CropHistory with the same AlertType with a InstanceDate bigger than the CropHistoryPeriodType->InstanceDate are lower than PlantCare->RepeatMaxTimes
-
-                        
-                        
-                        
-                        
-                    }
-                }
-            }
-        }
         
 
         $output->writeln('<info>Process finished at '.date("d/m/Y H:i:s", time()).'</info>');
