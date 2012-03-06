@@ -24,6 +24,11 @@ class Plant implements \Gedmo\Translatable\Translatable
     private $id;
     
     /**
+     * @ORM\Column(type="string", length="20", unique=true)
+     */
+    private $code;
+    
+    /**
      * @Gedmo\Translatable
      * @ORM\Column(type="string", length="255", unique=true)
      */
@@ -206,6 +211,26 @@ class Plant implements \Gedmo\Translatable\Translatable
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string 
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**

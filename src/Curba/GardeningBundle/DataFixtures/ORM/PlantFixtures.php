@@ -17,6 +17,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(1,'Ajo','','es','ajo'),
         //(1,'Allium sativum',2,3,200,200,3,2,2,1,1,2,0,0,0,0,0,0,0,2,2,'0000-00-00 00:00:00','2010-12-12 18:55:52')
         $fix1 = new Plant();
+        $fix1->setCode('garlic');
         $fix1->setName('Garlic');
         $fix1->setDescription('Garlic');
         $fix1->setScientificName('Allium sativum');
@@ -47,6 +48,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(2,'Parsley','','en','parsley'),
         //(2,'Perejil','','es','perejil'),
         $fix2 = new Plant();
+        $fix2->setCode('parsley');
         $fix2->setName('Parsley');
         $fix2->setDescription('Parsley');
         $fix2->setScientificName('Petroselinum sativum');
@@ -77,6 +79,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(3,'Leek','','en','leek'),
         //(3,'Puerro','','es','puerro'),
         $fix3 = new Plant();
+        $fix3->setCode('leek');
         $fix3->setName('Leek');
         $fix3->setDescription('Leek');
         $fix3->setScientificName('Allium porrum');
@@ -107,6 +110,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(4,'Basil','','en','basil'),
         //(4,'Albahaca','','es','albahaca'),
         $fix4 = new Plant();
+        $fix4->setCode('basil');
         $fix4->setName('Basil');
         $fix4->setDescription('Basil');
         $fix4->setScientificName('Ocimum basilicum');
@@ -137,6 +141,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(5,'Eggplant','','en','eggplant'),
         //(5,'Berenjena','','es','berenjena'),
         $fix5 = new Plant();
+        $fix5->setCode('eggplant');
         $fix5->setName('Eggplant');
         $fix5->setDescription('Eggplant');
         $fix5->setScientificName('Solanum melongena');
@@ -167,6 +172,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(6,'Ipomoea batatas','','en','ipomoea-batatas'),(
         //6,'Boniato','','es','boniato'),
         $fix6 = new Plant();
+        $fix6->setCode('moniato');
         $fix6->setName('Ipomoea batatas');
         $fix6->setDescription('Ipomoea batatas');
         $fix6->setScientificName('Ipomoea batatas');
@@ -197,6 +203,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(7,'Zucchini','','en','zucchini'),
         //(7,'Calabacín','','es','calabacin'),
         $fix7 = new Plant();
+        $fix7->setCode('zucchini');
         $fix7->setName('Zucchini');
         $fix7->setDescription('Zucchini');
         $fix7->setScientificName('Cucurbita pepo');
@@ -227,6 +234,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(8,'Pumkin','','en','pumkin'),
         //(8,'Calabaza','','es','calabaza'),
         $fix8 = new Plant();
+        $fix8->setCode('pumkin');
         $fix8->setName('Pumkin');
         $fix8->setDescription('Pumkin');
         $fix8->setScientificName('Cucurbita maxima');
@@ -257,6 +265,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(9,'Bean','','en','bean'),
         //(9,'Alubias','','es','alubias'),
         $fix9 = new Plant();
+        $fix9->setCode('bean');
         $fix9->setName('Bean');
         $fix9->setDescription('Bean');
         $fix9->setScientificName('Phaseolus vulgaris');
@@ -287,6 +296,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(10,'Corn','','en','corn'),
         //(10,'Maiz','','es','maiz'),
         $fix10 = new Plant();
+        $fix10->setCode('corn');
         $fix10->setName('Corn');
         $fix10->setDescription('Corn');
         $fix10->setScientificName('Zea mays');
@@ -317,6 +327,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(11,'Melon','','en','melon'),
         //(11,'Melones','','es','melones'),
         $fix11 = new Plant();
+        $fix11->setCode('melon');
         $fix11->setName('Melon');
         $fix11->setDescription('Melon');
         $fix11->setScientificName('Cucumis melo');
@@ -347,6 +358,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(12,'Cucumber','','en','cucumber'),
         //(12,'Pepino','','es','pepino'),
         $fix12 = new Plant();
+        $fix12->setCode('cucumber');
         $fix12->setName('Cucumber');
         $fix12->setDescription('Cucumber');
         $fix12->setScientificName('Cucumis sativus');
@@ -377,6 +389,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(13,'Pepper','','en','pepper'),
         //(13,'Pimiento','','es','pimiento'),
         $fix13 = new Plant();
+        $fix13->setCode('pepper');
         $fix13->setName('Pepper');
         $fix13->setDescription('Pepper');
         $fix13->setScientificName('Capsicum annuum');
@@ -407,6 +420,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(14,'Herb of the canons','','en','herb-of-the-canons'),
         //(14,'Canonigos','','es','canonigos'),
         $fix14 = new Plant();
+        $fix14->setCode('canons');
         $fix14->setName('Herb of the canons');
         $fix14->setDescription('Herb of the canons');
         $fix14->setScientificName('Valerianella locusta');
@@ -437,6 +451,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(15,'Watermelon','','en','watermelon'),
         //(15,'Sandia','','es','sandia'),
         $fix15 = new Plant();
+        $fix15->setCode('watermelon');
         $fix15->setName('Watermelon');
         $fix15->setDescription('Watermelon');
         $fix15->setScientificName('Citrullus vulgaris');
@@ -467,6 +482,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(16,'Tomato','','en','tomato'),
         //(16,'Tomate','','es','tomate'),
         $fix16 = new Plant();
+        $fix16->setCode('tomato');
         $fix16->setName('Tomato');
         $fix16->setDescription('Tomato');
         $fix16->setScientificName('Lycopersicum esculentum');
@@ -497,6 +513,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(17,'Chard','','en','chard'),
         //(17,'Acelga','','es','acelga'),
         $fix17 = new Plant();
+        $fix17->setCode('chard');
         $fix17->setName('Chard');
         $fix17->setDescription('Chard');
         $fix17->setScientificName('Beta vulgaris');
@@ -527,6 +544,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(18,'Apium','','en','apium'),
         //(18,'Apio','','es','apio'),
         $fix18 = new Plant();
+        $fix18->setCode('apium');
         $fix18->setName('Apium');
         $fix18->setDescription('Apium');
         $fix18->setScientificName('Apium graveolens');
@@ -557,6 +575,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(19,'Spinach','','en','spinach'),
         //(19,'Espinacas','','es','espinacas'),
         $fix19 = new Plant();
+        $fix19->setCode('spinach');
         $fix19->setName('Spinach');
         $fix19->setDescription('Spinach');
         $fix19->setScientificName('Spinacia oleracea');
@@ -587,6 +606,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(20,'Lettuce','','en','lettuce'),
         //(20,'Lechuga','','es','lechuga'),
         $fix20 = new Plant();
+        $fix20->setCode('lettuce');
         $fix20->setName('Lettuce');
         $fix20->setDescription('Lettuce');
         $fix20->setScientificName('Lactuca sativa');
@@ -617,6 +637,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(21,'Potatoes','','en','potatoes'),
         //(21,'Patatas','','es','patatas'),
         $fix21 = new Plant();
+        $fix21->setCode('potatoes');
         $fix21->setName('Potatoes');
         $fix21->setDescription('Potatoes');
         $fix21->setScientificName('Solanum tuberosum');
@@ -647,6 +668,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(22,'Radish','','en','radish'),
         //(22,'Rabano','','es','rabano'),
         $fix22 = new Plant();
+        $fix22->setCode('radish');
         $fix22->setName('Radish');
         $fix22->setDescription('Radish');
         $fix22->setScientificName('Raphanus sativus');
@@ -677,6 +699,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(23,'Beet','','en','beet'),
         //(23,'Remolacha','','es','remolacha'),
         $fix23 = new Plant();
+        $fix23->setCode('beet');
         $fix23->setName('Beet');
         $fix23->setDescription('Beet');
         $fix23->setScientificName('Beta vulgaris');
@@ -707,6 +730,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(24,'Ruca?','','en','ruca'),
         //(24,'Rúcula','','es','rucula'),
         $fix24 = new Plant();
+        $fix24->setCode('ruca');
         $fix24->setName('Ruca');
         $fix24->setDescription('Ruca');
         $fix24->setScientificName('Eruca vesicaria');
@@ -737,6 +761,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(25,'Carrot','','en','carrot'),
         //(25,'Zanahoria','','es','zanahoria'),
         $fix25 = new Plant();
+        $fix25->setCode('carrot');
         $fix25->setName('Carrot');
         $fix25->setDescription('Carrot');
         $fix25->setScientificName('Daucus carota');
@@ -767,6 +792,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(26,'Onion','','en','onion'),
         //(26,'Cebolla','','es','cebolla'),
         $fix26 = new Plant();
+        $fix26->setCode('onion');
         $fix26->setName('Onion');
         $fix26->setDescription('Onion');
         $fix26->setScientificName('Allium cepa');
@@ -797,6 +823,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(27,'Nap?','','en','nap'),
         //(27,'Nabo','','es','nabo'),
         $fix27 = new Plant();
+        $fix27->setCode('nap');
         $fix27->setName('Nap');
         $fix27->setDescription('Nap');
         $fix27->setScientificName('Brassica napus');
@@ -827,6 +854,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(28,'Cabbage','','en','cabbage'),
         //(28,'Col','','es','col'),
         $fix28 = new Plant();
+        $fix28->setCode('cabbage');
         $fix28->setName('Cabbage');
         $fix28->setDescription('Cabbage');
         $fix28->setScientificName('Brassica oleracea viridis');
@@ -857,6 +885,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(29,'Cauliflower','','en','cauliflower'),
         //(29,'Coliflores','','es','coliflores'),
         $fix29 = new Plant();
+        $fix29->setCode('cauliflower');
         $fix29->setName('Cauliflower');
         $fix29->setDescription('Cauliflower');
         $fix29->setScientificName('Brassica oleracea botrytis');
@@ -887,6 +916,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(30,'Endives','','en','endives'),
         //(30,'Escarolas','','es','escarolas'),
         $fix30 = new Plant();
+        $fix30->setCode('endives');
         $fix30->setName('Endives');
         $fix30->setDescription('Endives');
         $fix30->setScientificName('Cichorium endivia');
@@ -917,6 +947,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(31,'Pea','','en','pea'),
         //(31,'Alberja o guisante','','es','alberja-o-guisante'),
         $fix31 = new Plant();
+        $fix31->setCode('pea');
         $fix31->setName('Pea');
         $fix31->setDescription('Pea');
         $fix31->setScientificName('Pisum sativum');
@@ -947,6 +978,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         //(32,'Fava?','','en','fava'),
         //(32,'Haba','','es','haba')
         $fix32 = new Plant();
+        $fix32->setCode('fava');
         $fix32->setName('Fava');
         $fix32->setDescription('Fava');
         $fix32->setScientificName('Vicia fava');
@@ -972,7 +1004,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix32->setTranslatableLocale('en');
         $manager->persist($fix32);
         
-		$fix33 = new Plant();
+	$fix33 = new Plant();
+        $fix33->setCode('brussel');
         $fix33->setName('Brussel Sprouts');
         $fix33->setDescription('Cabbage');
         $fix33->setScientificName('Brassica oleracea gemmifera ');
@@ -998,7 +1031,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix33->setTranslatableLocale('en');
         $manager->persist($fix33);
 		
-		$fix34 = new Plant();
+	$fix34 = new Plant();
+        $fix34->setCode('strawberries');
         $fix34->setName('Strawberries');
         $fix34->setDescription('Cabbage');
         $fix34->setScientificName('Fragaria vesca ');
@@ -1024,7 +1058,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix34->setTranslatableLocale('en');
         $manager->persist($fix34);
 		
-		$fix35 = new Plant();
+	$fix35 = new Plant();
+        $fix35->setCode('artichoke');
         $fix35->setName('Artichoke');
         $fix35->setDescription('Cabbage');
         $fix35->setScientificName('Cynara scolymus ');
@@ -1050,7 +1085,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix35->setTranslatableLocale('en');
         $manager->persist($fix35);
 		
-		$fix36 = new Plant();
+	$fix36 = new Plant();
+        $fix36->setCode('broccoli');
         $fix36->setName('Broccoli');
         $fix36->setDescription('Cabbage');
         $fix36->setScientificName('Brassica oleracea ');
@@ -1076,7 +1112,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix36->setTranslatableLocale('en');
         $manager->persist($fix36);
 		
-		$fix37 = new Plant();
+	$fix37 = new Plant();
+        $fix37->setCode('calçots');
         $fix37->setName('Calçots');
         $fix37->setDescription('Cabbage');
         $fix37->setScientificName('Allium Cepa');
@@ -1298,7 +1335,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
                 
         //Translate to es
         $fix1->setName('Ajo');
-        $fix1->setDescription('Es una planta de otoño y/o invierno,  bianual aunque en los huertos se cultiva como anual, de ciclo largo y de siembra directa. <br/> Es un bulbo subterráneo formado por dientes reunidos en su base alrededor de un tallo, cubiertos por una película delgada. Sus raíces son numerosas y finas y alcanzan poca profundidad. Sus hojas verdes son planas, alargadas y plegadas. <br/> Es rico en sales minerales, azufre, encimas y vitaminas. Tiene propiedades medicinales. Es uno de los ingredientes fundamentales de la cocina mediterránea <br/> Existen variedades según el color: Blanco, Rosa o morado. <br/> Es una de las hortalizas más fáciles de cultivar, ya que requiere pocos cuidados y es muy resistente a cualquier tipo de suelo y clima. Se aconseja sembrar los dientes más grandes y con la parte plana hacia abajo. <br/> Los mejores ajos tanto en sabor como en tamaño, son los que se plantan en otoño. Para obtener unas buenas cabezas de ajo la planta debe pasar varias semanas a bajas temperaturas.  Se debe regar poco ya que el exceso de humedad puede pudrir los bulbos. <br/> El último riego, antes de recolectarlo, se debe realizar a los 15 o 20 días antes. La recolección se inicia cuando las hojas se han doblado y son de color amarillo. <br/>Es una planta pequeña que permite aprovechar espacios pequeños entre plantas más grandes y aumentar el rendimiento del huerto. Conveniente  asociarla con las fresas para que se desarrollen más sanas y dulces y con plantas que sufran ataques de pulgón para evitarlos gracias s sus propiedades insecticidas y fungicidas. ');
+        $fix1->setDescription('Es una planta de otoño-invierno,  bianual aunque muchas veces se cultiva como anual, de ciclo largo y de siembra directa. <br/> Es un bulbo subterráneo formado por dientes reunidos en su base alrededor de un tallo, cubiertos por una película delgada. Sus raíces son numerosas y finas y alcanzan poca profundidad. Sus hojas verdes son planas, alargadas y plegadas. <br/> Es rico en sales minerales, azufre, encimas y vitaminas. Tiene propiedades medicinales. Es uno de los ingredientes fundamentales de la cocina mediterránea <br/> Existen variedades según el color: Blanco, Rosa o morado. <br/> Es una de las hortalizas más fáciles de cultivar, ya que requiere pocos cuidados y es muy resistente a cualquier tipo de suelo y clima. Se aconseja sembrar los dientes más grandes y con la parte plana hacia abajo. <br/> Los mejores ajos tanto en sabor como en tamaño, son los que se plantan en otoño. Para obtener unas buenas cabezas de ajo la planta debe pasar varias semanas a bajas temperaturas.  Se debe regar poco ya que el exceso de humedad puede pudrir los bulbos. <br/> El último riego, antes de recolectarlo, se debe realizar a los 15 o 20 días antes. La recolección se inicia cuando las hojas se han doblado y son de color amarillo. <br/>Es una planta pequeña que permite aprovechar espacios pequeños entre plantas más grandes y aumentar el rendimiento del huerto. Conveniente  asociarla con las fresas para que se desarrollen más sanas y dulces y con plantas que sufran ataques de pulgón para evitarlos gracias s sus propiedades insecticidas y fungicidas. ');
         $fix1->setTranslatableLocale('es');
         $manager->persist($fix1);
 
@@ -1318,22 +1355,22 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix4);
         
         $fix5->setName('Berenjena');
-        $fix5->setDescription('Chard');
+        $fix5->setDescription('Es una planta de verano,  plurianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Tiene un tallo rígido, velludo y ramificado; es frágil y se parte con facilidad por el peso de los frutos. Sus hojas verdes son grandes, alternas, ovaladas, con el envés cubierto de vellosidad blanca y en las nervaduras tienen pequeñas espinas. Sus flores en forma de estrella son de color morado y muy grandes. Su fruto comestible es alargado con la piel fina y brillante cuyo color depende de la variedad. La pulpa es blanca de textura espumosa con algunas semillas amarillas. <br/> Es rica en fibra, vitaminas, minerales (fósforo, magnesio y hierro), flavonoides y baja en calorias. Se le atribuyen propiedades diuréticas y un posible efecto anticancerígeno. Las hojas y el fruto verde tienen solanina (alcaloide tóxico) por lo que se  debe evitar el consumo de las partes verdes. <br/> Existen variedades según el color: oscuro, ralladas o de color más claro. Según la forma del fruto: largo, redondo, ovoideo. <br/> Es una planta exigente en luminosidad y volumen de tierra, tiene raíces muy potentes  que se extienden horizontalmente y puede alcanzar un tamaño muy grande. Si tiene las condiciones adecuadas es muy productiva. Es recomendable aclarar un poco la planta para favorecer la aireación ya que las hojas son muy frondosas y con la humedad se pueden desarrollar hongos. La poda favorece la formación de frutos y una maduración más rápida. <br/> El fruto se debe recolectar inmaduro, cuando es blando en la parte superior y antes de que se formen las semillas para evitar que tenga un gusto amargo. Se debe cortar no arrancar. <br/>Es recomendable asociarla con hortalizas de ciclo de cultivo corto durante las primeras semanas de plantación. Es difícil asociarla con otras hortalizas por el tamaño de la planta y las raíces.');
         $fix5->setTranslatableLocale('es');
         $manager->persist($fix5); 
         
         $fix6->setName('Boniato');
-        $fix6->setDescription('Chard');
+        $fix6->setDescription('Es una planta de verano,  plurianual aunque muchas veces se cultiva como anual, de ciclo largo y de siembra directa. <br/> Es una planta rústica, rastrera o trepadora cuya parte comestible es el tubérculo, de sabor dulce. Tiene abundantes hojas verdes en forma de corazón. Sus flores acampanadas son grandes, de color rojo por dentro y blanco por fuera. Los tubérculos pueden ser alargados o redondos con una extremidad puntiaguda. <br/> Es rica en carbohidratos, potasio y fibra. <br/> Existen variedades según el color de la pulpa: blancos y amarillos.  <br/> Es una planta sensible al frio, exigente en nutrientes y requiere bastante humedad. Tiene un crecimiento rápido e invasivo. <br/> La recolección comienza cuando las hojas empiezan a secarse. No dejar que pase el tiempo de cosecha para evitar la deformación de los tubérculos. Una vez arrancadas, se deben dejar al sol para que suelten al tierra. <br/> Es recomendable asociarla con plantas de ciclo corto debido a su rápido crecimiento.');
         $fix6->setTranslatableLocale('es');
         $manager->persist($fix6);
 
         $fix7->setName('Calabacín');
-        $fix7->setDescription('Chard');
+        $fix7->setDescription('Es una planta de verano,  anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta herbácea rastrera de crecimiento indeterminado, con hojas grandes de forma triangular, ásperas y espinosas. Presenta flores masculinas y femeninas de color amarillo, vistosas y acampanadas. El fruto es alargado o esférico cuyo color varía según la variedad pero los más comunes son verdes oscuros, la piel es lisa y muy sensible. Su carne es blanca y tiene semillas. <br/> Es rica en vitamina C, ácido fólico, hierro, potasio y zinc. Es de fácil digestión y tiene propiedades diuréticas. <br/> Existen variedades según el color del fruto: verde, amarillo o blanco. <br/> Es una planta muy productiva exigente en materia orgánica, calor y luz. Precisa riego regular. Es conveniente entutorar la  planta para mejorar la ventilación y aprovechar mejor la iluminación. Es recomendable plantar como mínimo dos plantas y forzar la polinización con un pincel. <br/> El fruto se debe recolectar inmaduro para evitar que se vuelva fibroso y crezcan demasiado las semillas. Como crecen muy rápido, es recomendable recolectarlos diariamente. De esta manera se estimulará el crecimiento de frutos nuevos. La recolección diaria de las flores masculinas (dejando algunas para la polinización) estimula la producción de flores femeninas. <br/> Debido a su gran tamaño es recomendable asociarla con hortalizas de ciclos cortos para que convivan durante el inicio del cultivo. Después de su plantación no se recomienda ninguna planta de la familia de las solanáceas.');
         $fix7->setTranslatableLocale('es');
         $manager->persist($fix7);
         
         $fix8->setName('Calabaza');
-        $fix8->setDescription('Chard');
+        $fix8->setDescription('Es una planta de verano,  anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta trepadora o rastrera de crecimiento indefinido de tallos flexibles, huecos, semicubiertos de pelillos. Las hojas en forma de corazón son lobuladas y tienen las nervaduras bien marcadas. Sus flores de color amarillo o naranja son grandes, de forma cónica y pétalos carnosos y pueden ser masculinas o femeninas. El fruto tiene diversas formas y colores según la variedad. La pulpa es densa,  de color anaranjado, textura firme y de sabor dulce. Contiene numerosas semillas lisas y ovaladas que son comestibles también. <br/> Es rica en vitamina A, otros antioxidantes, potasio y fibra. <br/> Existen variedades según la época de siembra: verano e invierno. <br/> Es una planta que crecen en cualquier tipo de suelo de calidad, siempre que mantenga la humedad y reciba mucho sol. Necesita mucho espacio para poderse desarrollar. Puede presentar problemas de polinización por lo que es recomendable forzarla con un pincel. La poda favorece el crecimiento de los frutos. <br/> El fruto se recoge en otoño cuando está maduro y con la cáscara dura y bien formada. Es recomendable dejarle un tallo de unos pocos centímetros. <br/> Como es una planta que crece mucho se puede asociar con hortalizas de ciclos cortos para que convivan al comienzo del cultivo. ');
         $fix8->setTranslatableLocale('es');
         $manager->persist($fix8); 
         
@@ -1363,7 +1400,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix13); 
 
         $fix14->setName('Canonigos');
-        $fix14->setDescription('Chard');
+        $fix14->setDescription('Es una planta de otoño-invierno,  anual, de ciclo largo y  de siembra directa. <br/> Planta herbácea de crecimiento silvestre, con pequeñas  hojas alargadas dispuestas en roseta, de color verde intenso y brillante. Las hojas son comestibles y tienen gusto ligeramente ácido. <br/> Es rica en vitamina C y ácido fólico. Tiene propiedades diuréticas, relajantes, depurativas y laxantes. <br/> Existen variedades según el tamaño de las hojas: Hoja grande y hoja pequeña. <br/> La semilla germina con dificultad, por esto es recomendable ponerla en remojo antes de sembrarla. No se adapta bien al calor ni a la falta de agua. <br/> Se recomienda recolectarla justo antes de consumirla porque es una planta delicada. <br/> Es una planta pequeña, por lo que se puede plantar en los intervalos de plantas con ciclos largos.');
         $fix14->setTranslatableLocale('es');
         $manager->persist($fix14); 
 
@@ -1378,17 +1415,17 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix16);
 
         $fix17->setName('Acelga');
-        $fix17->setDescription('Es una planta de primavera y/o otoño, bianual aunque en los huertos se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de hojas verdes grandes de forma oval, amplias y jugosas. Sus tallos son blancos, planos y anchos. Toda la planta es comestible, no forma raíz o fruto comestible. <br/>  Es rica en vitamina A, C y K, sodio, calcio, hierro, magnesio, fósforo y potasio. Aporta ácido fólico. <br/> Existen variedades según la época de siembra: primavera y otoño y según sus tallos: Verde de penca blanca ancha, Verde de penca blanca alargada, Verde Bressane, Amarilla de Lyón y  Amarilla de penca blanca. <br/> Es una hortaliza muy productiva y su cultivo requiere pocos cuidados.  Es aconsejable mantener el suelo húmedo, si pasan sed se vuelven fibrosas y tienden a espigarse. Necesita un recipiente grande. <br/> Se puede recolectar la planta completa o recolectar las hojas a medida que van teniendo un buen tamaño. Es recomendable cortar las hojas con un cuchillo bien afilado para no hacerle daño a la planta. <br/> Es conveniente asociarla con plantas de ciclo corto y de raíces superficiales para evitar que compitan por los nutrientes. ');
+        $fix17->setDescription('Es una planta de primavera-otoño, bianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de hojas verdes grandes de forma oval, amplias y jugosas. Sus tallos son blancos, planos y anchos. Toda la planta es comestible, no forma raíz o fruto comestible. <br/>  Es rica en vitamina A, C y K, sodio, calcio, hierro, magnesio, fósforo y potasio. Aporta ácido fólico. <br/> Existen variedades según la época de siembra: primavera y otoño y según sus tallos: Verde de penca blanca ancha, Verde de penca blanca alargada, Verde Bressane, Amarilla de Lyón y  Amarilla de penca blanca. <br/> Es una hortaliza muy productiva y su cultivo requiere pocos cuidados.  Es aconsejable mantener el suelo húmedo, si pasan sed se vuelven fibrosas y tienden a espigarse. Necesita un recipiente grande. <br/> Se puede recolectar la planta completa o recolectar las hojas a medida que van teniendo un buen tamaño. Es recomendable cortar las hojas con un cuchillo bien afilado para no hacerle daño a la planta. <br/> Es conveniente asociarla con plantas de ciclo corto y de raíces superficiales para evitar que compitan por los nutrientes. ');
         $fix17->setTranslatableLocale('es');
         $manager->persist($fix17);
 
         $fix18->setName('Apio');
-        $fix18->setDescription('Es una planta de primavera y/o invierno,  bianual aunque en los huertos se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta herbácea de tallo estirado, hueco y acanalado. Sus hojas  verde amarillosas brotan en forma de corona y son lobuladas, lisas y brillantes. Las flores son blancas o blanco verdosas de cinco pétalos y están reunidas en umbelas. Es de textura crujiente. <br/> Es diurético, carminativo y depurador de la sangre. Rico en vitamina C, ácido fólico y algunos minerales (potasio, calcio, sodio). <br/> Existen variedades según el color: verdes que necesitan se le haga la práctica de blanqueo si se quieren obtener pencas blancas y variedades amarillas que no necesitan de esa práctica, necesitan menos espacio para crecer. <br/> No es muy exigente en el suelo, pero requiere buen drenaje ya que es necesario mantenemos húmedo para obtener plantas más crujientes y gustosas. Le favorecen las heladas porque la hacen más gustosa pero en algunos casos hace que desarrolle la flor más rápido. <br/> La recolección comienza cuando las plantas son firmes y compactas. Se puede cortar toda la planta o ir cosechando a medida que se va consumiendo usando un cuchillo bien afilado para evitar dañar la planta. <br/> Es recomendable asociarlo con lechugas y rábanos porque se benefician mucho. ');
+        $fix18->setDescription('Es una planta de primavera-invierno,  bianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta herbácea de tallo estirado, hueco y acanalado. Sus hojas  verde amarillosas brotan en forma de corona y son lobuladas, lisas y brillantes. Las flores son blancas o blanco verdosas de cinco pétalos y están reunidas en umbelas. Es de textura crujiente. <br/> Es diurético, carminativo y depurador de la sangre. Rico en vitamina C, ácido fólico y algunos minerales (potasio, calcio, sodio). <br/> Existen variedades según el color: verdes que necesitan se le haga la práctica de blanqueo si se quieren obtener pencas blancas y variedades amarillas que no necesitan de esa práctica, necesitan menos espacio para crecer. <br/> No es muy exigente en el suelo, pero requiere buen drenaje ya que es necesario mantenemos húmedo para obtener plantas más crujientes y gustosas. Le favorecen las heladas porque la hacen más gustosa pero en algunos casos hace que desarrolle la flor más rápido. <br/> La recolección comienza cuando las plantas son firmes y compactas. Se puede cortar toda la planta o ir cosechando a medida que se va consumiendo usando un cuchillo bien afilado para evitar dañar la planta. <br/> Es recomendable asociarlo con lechugas y rábanos porque se benefician mucho. ');
         $fix18->setTranslatableLocale('es');
         $manager->persist($fix18);
 
         $fix19->setName('Espinacas');
-        $fix19->setDescription('Chard');
+        $fix19->setDescription('Es una planta de primavera- otoño,  anual, de ciclo corto y se puede hacer plantel o siembra directa. <br/> Planta que forma una roseta de hojas verdes oscuras con un tallo muy fino y de formas variables y planas o rizadas según la variedad. <br/> Es rica en vitaminas y antioxidantes. <br/> Existen variedades según la época de siembra: Espinaca de otoño, Espinaca de verano, Espinaca de invierno. <br/> Es una planta de crecimiento rápido, sencilla de cultivar y no necesita casi espacio. Las temperaturas demasiado frías hacen parar el crecimiento. El riego debe ser regular. <br/> Se puede recolectar la planta entera cuando tenga un buen tamaño o manualmente por hojas, cuando estén verdes y tiernas. La planta rebrota varias veces. <br/> Como es una planta de crecimiento rápido, es recomendable asociarla con cultivos de crecimiento lento. ');
         $fix19->setTranslatableLocale('es');
         $manager->persist($fix19);
 
@@ -1423,7 +1460,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix25);
 
         $fix26->setName('Cebolla');
-        $fix26->setDescription('Chard');
+        $fix26->setDescription('Es una planta de otoño-invierno,  bianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/>  Planta de tallo reducido de porte vertical, con hojas cilíndricas, huecas y terminadas en punta. Tiene raíces cortas y poco ramificadas. El fruto es un bulbo esférico, formado por numerosas capas gruesas y carnosas al interior, recubiertas de membranas secas, delgadas y transparentes, que son base de las hojas. <br/>  Es rica en nutrientes, vitamina B, C y E, glúcidos y fibra. <br/>  Existen muchas variedades de cebolla y presentan bulbos de diversas formas y colores. Las más conocidas son las variedades según la época de siembra: variedad de invierno y variedad de verano. <br/> Es una planta de climas templados que se adapta a diferentes clases de suelos y no necesita casi riego. Es recomendable recortar la mitad de las hojas y un centímetro de las raíces antes de trasplantar para tener un mejor enraizado. No colocar los ejemplares muy enterrados. Su sistema radical se adapta muy bien al cultivo en macetas. <br/>  Una vez los bulbos están formados y las hojas se secan y empiezan a doblarse, es aconsejable dejar de regar. Una vez recolectadas las cebollas se deben dejar secar en la tierra. <br/>  Es recomendable asociarla con la zanahoria para evitar el ataque de la mosca de la zanahoria. Debido a su porte vertical de puede intercalar con otros cultivos. ');
         $fix26->setTranslatableLocale('es');
         $manager->persist($fix26);
 
@@ -1433,52 +1470,52 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix27);
 
         $fix28->setName('Col común');
-        $fix28->setDescription('Chard');
+        $fix28->setDescription('Es una planta de invierno-primavera- otoño,  bianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta rústica de gran tamaño formada por un tallo principal del cual crecen hojas hacia fuera. Las hojas son grandes muy divididas y de consistencia carnosa que  forman un característico cogollo compacto que es la parte comestible. Las raíces son fibrosas y abundantes. <br/> Es rica en vitamina A,C y minerales.  <br/> Existen variedades según las características de las hojas: Hoja Lisa, hoja arrizada (coles de Milán) y hoja rojiza o Lombardas. <br/> Planta rústica de crecimiento lento que se desarrollan bien en casi todos los climas. Le gustan los suelos ricos en materia orgánica y húmedos, por lo que el riego debe ser regular. <br/> La recolección comienza cuando el cogollo está bien formado, compacto y tiene un buen tamaño. <br/> Es recomendable asociarla con plantas de ciclos cortos ya que es una planta de crecimiento lento. ');
         $fix28->setTranslatableLocale('es');
         $manager->persist($fix28);
         
         $fix29->setName('Coliflor');
-        $fix29->setDescription('Chard');
+        $fix29->setDescription('Es una planta de otoño- invierno,  anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Sus hojas son anchas y ligeramente erguidas, más claras y menos risadas que las del brócoli. No forma brotes laterales. El cogollo o parte comestible está formado por un conjunto de pequeños botones florales carnosos blancos y compactos. <br/> Es rico en vitamina C, B6 y K, potasio, calcio, ácido fólico y fibra. <br/> Existen variedades según la época de siembra: Coliflores invernales: color blanco, amarillo y rojo, Coliflor de otoño, Coliflor de invierno,  Coliflor de primavera. <br/> Es una planta de clima frio y riego frecuente. Es conveniente tapar el cogollo con las hojas exteriores para evitar quemaduras de sol y para prevenir que la cabeza se ponga verde y desarrolle un sabor desagradable. Cualquier interrupción (demasiado frío, calor, sequía o plantas dañadas) puede dañar el desarrollo de la parte comestible.  <br/> Se debe recolectar cuando el cogollo tiene consistencia firme y dura. No se debe dejar que madure más de lo recomendado. Cortar el fruto dejando unas hojas externas pegadas a la cabeza para protegerla. <br/> Como es una planta que crece bastante es aconsejable asociarla con plantas de ciclos más cortos. ');
         $fix29->setTranslatableLocale('es');
         $manager->persist($fix29);
                 
-        $fix30->setName('Endivia');
-        $fix30->setDescription('Chard');
+        $fix30->setName('Escarola');
+        $fix30->setDescription('Es una planta de otoño- invierno,  bianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/>  Sus hojas son rizadas y de color amarillo y verde. Están unidas por la base y divididas en segmentos estrechos con bordes muy dentados con una gruesa nervadura central.  En el centro desarrolla un corazón blanco bastante compacto que reduce el característico sabor amargo de las hojas.  <br/>  Es rica en potasio, ácido fólico, hierro, calcio, magnesio y antioxidantes. <br/>  Existen variedades según la forma de las hojas: Hoja lisa y ancha: hojas más grandes, onduladas y no tan recortadas. Hoja rizada: son más grandes  y resistentes al frío.  <br/>  Es una planta de clima frio que no tolera el exceso de calor. Su sabor amargo suele aumentar con las altas temperaturas.  Es necesario blanquearla para que el centro tome un color blanco, si se siembran muy juntas no es necesario realizarlo. <br/>  Se cosecha una vez blanqueada y se puede cortar la planta completa o cortar las hojas a medida que se vaya a consumir. Para obtener escarolas más dulces es necesario esperar que pasen días de frio antes de cosecharlas. <br/>  Es recomendable asociarla con plantas de ciclos más largos.');
         $fix30->setTranslatableLocale('es');
         $manager->persist($fix30);
         
-        $fix31->setName('Garbanzo');
-        $fix31->setDescription('Chard');
+        $fix31->setName('Guisantes');
+        $fix31->setDescription('Es una planta de otoño - invierno,  anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta trepadora de hojas verdes terminadas en zarcillos que ayudan a la planta a engancharse a los tutores.  Las flores son blancas y tienen 5 sépalos y las vainas posteriores a su fecundación. Las vainas tienen de 5 a 10 cm de largo y suelen tener de 4 a 10 semillas, tienen forma y color variable según variedades.  <br/> Es rico en vitamina A, B y C, proteínas, sales minerales, potasio, hierro, zinc, luteína y ácido fólico. <br/> Existen variedades según la época de siembra: Tempranos y tardíos.  Según el crecimiento: enanas  y de crecimiento indeterminado. Según las preferencias de consumo: Tirabeques (consumir con la vaina) y  para desgranar. <br/> Es una planta poco exigente en materia orgánica, de clima fresco y húmedo. Cuando aparezcan los primeros zarcillos es recomendable guiar la planta con unas cañas para que se enfile. <br/> Se deben usar las dos manos para recolectar los guisantes, sujetando la planta con una mano y la vaina con la otra para no dañar la planta. Cuando los guisantes son tiernos, tienen un sabor ligeramente dulce y se pueden consumir crudos. El momento ideal para la recolección es cuando las vainas están llenas,  pero no se deben dejar demasiado tiempo para que los granos no se endurezcan  Una vez terminada la recolección  es aconsejable cortar las plantas al nivel del suelo con el objetivo de dejar que las raíces se descompongan para que aporten al suelo el nitrógeno que han fijado y que sea aprovechado por los cultivos siguientes.  <br/> No es recomendable asociarla con el ajo, cebolla o puerro. Se puede asociar con plantas de ciclo corto. ');
         $fix31->setTranslatableLocale('es');
         $manager->persist($fix31);
         
         $fix32->setName('Haba');
-        $fix32->setDescription('Chard');
+        $fix32->setDescription('Es una planta de otoño- invierno,  anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/>  Planta robusta de tallo fuerte rectangular que desarrolla follaje abundante. Las hojas son compuestas, divididas en hojas más pequeñas. El fruto es una legumbre formada por una vaina carnosa de color verde, de 15 a 25 cm de largo, en cuyo interior se hallan 6 ó 7 semillas ovales, aplanadas, de color verde pálido o blanco cremoso. Las flores blancas son axilares y crecen agrupadas en racimos, tienen una mancha negra en los pétalos.  <br/> Es rica en calcio, hierro, fibra y vitaminas B1 y B2. Buena fuente de proteínas. <br/>  Existen variedades según su ciclo y tamaño. <br/> Planta rústica poco exigente que crece bien en la mayoría de las tierras.  El exceso de frio o humedad en la floración puede impedir el desarrollo de las flores y retrasar el crecimiento de las vainas. <br/>  Se pueden recolectar pequeñas y tiernas para consumir la vaina. Cuando la vaina crece y se desarrollan las semillas se extraen las habas del interior. Deben recolectarse cuando las vainas estén todavía verdes y antes de que la piel de las semillas empiece a volverse áspera. Conviene recolectarlas a medida que engrosan los granos con el objetivo de que sigan floreciendo y desarrollando frutos nuevos. <br/> Es recomendable asociarla con maíz, lechuga, espinaca y patata. Es un  buen cultivo protector para otras plantas más delicadas ya que evita que les dé el viento.');
         $fix32->setTranslatableLocale('es');
         $manager->persist($fix32);
 
 		$fix33->setName('Col de Bruselas');
-        $fix33->setDescription('Chard');
+        $fix33->setDescription('Es una planta de otoño- invierno,  bianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de gran altura formada por un tallo principal del cual nacen pequeños cogollos de forma ovalada compuestos  por un tallo corto y engrosado, que sostiene numerosas hojas lisas, pecioladas dispuestas una sobre otra, donde las hojas exteriores cubren y protegen la yema terminal y las hojas más jóvenes. <br/> Es rica en vitamina A,C y ácido fólico. <br/> Existen dos variedades híbridas y estándar. <br/> Como alcanza grandes alturas es recomendable usar tutores en lugares con mucho viento. Cuando las hojas inferiores comienzan a amarillarse es aconsejable arrancarlas. <br/> Se recolectan cuando los cogollos inferiores tienen un tamaño adecuado ya que estos maduran primero. Se pueden cosechar a medida que van madurando o si hay posibles nevadas es preferible cosechar la planta entera.');
         $fix33->setTranslatableLocale('es');
         $manager->persist($fix33);
 
 		$fix34->setName('Fresa');
-        $fix34->setDescription('Chard');
+        $fix34->setDescription('Es una planta de primavera- verano, plurianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta que tiene una roseta de base de la cual nacen  las hojas vellosas y los tallos florales. Se multiplica fácilmente por si sola a través de ramificaciones rastreras  (estolones) que produce la misma mata. Las flores son hermafroditas de color blanco, formadas por cinco pétalos. Lo que conocemos como el fruto es un receptáculo floral rojo, engrosado, de sabor dulce y carnoso donde se concentran los nutrientes del  tallo floral, siendo las pequeñas semillas que se encuentran sobre este los frutos secos. <br/> Es rica en Vitamina C, hidratos de carbono, potasio, magnesio, calcio y agua. Ayudan al organismo a depurarse, mejoran el estado de la piel y de los dientes. <br/> Existen más de mil variedades según el tamaño del fruto y la época de cultivo. <br/> Planta exigente en materia orgánica y riego. La floración es muy larga y se solapa con la producción. En balcones y terrazas se pueden sembrar en macetas con aberturas laterales para aumentar producción en poco espacio. En climas muy fríos se pueden proteger con túneles. El cultivo de fresas a través de semillas da muchos problemas. <br/> Los frutos se recolectan cuando tienen un tamaño adecuado y han madurado. <br/> Como es una planta de ciclo largo, es recomendable asociarla con plantas de ciclo corto al inicio del cultivo. El cultivo de ajos entre las fresas hace que se vuelvan más resistentes y estimula su desarrollo. ');
         $fix34->setTranslatableLocale('es');
         $manager->persist($fix34);
 		
 		$fix35->setName('Alcachofa');
-        $fix35->setDescription('Es una planta de primavera y/o invierno,  plurianual aunque en los huertos se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de tallos gruesos, rectos, acanalados y ramificados que superan el metro de altura. Sus hojas son grandes con los nervios centrales muy marcados, cubiertas de pelos suaves y blanquecinos que le dan un aspecto pálido. Sus flores son de tipo terminal en forma de rosetón, muy gruesas, recubiertas por escamas membranosas y carnosas en la base, que son la parte comestible de la planta. <br/> Es rica en vitamina B y hierro. Tiene propiedades diuréticas, depurativas y medicinales. <br/> Existen variedades según la forma: esférica u oval,  según el tamaño y color del capítulo: verde o violeta. <br/> Necesita pasar frío para iniciar la formación de los frutos: la flor. No resiste las heladas ni las altas temperaturas, produciendo frutos con sabor amargo y aspecto poco atractivo. <br/> La recolección es escalonada según van estando apunto las flores. ');
+        $fix35->setDescription('Es una planta de primavera-invierno,  plurianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de tallos gruesos, rectos, acanalados y ramificados que superan el metro de altura. Sus hojas son grandes con los nervios centrales muy marcados, cubiertas de pelos suaves y blanquecinos que le dan un aspecto pálido. Sus flores son de tipo terminal en forma de rosetón, muy gruesas, recubiertas por escamas membranosas y carnosas en la base, que son la parte comestible de la planta. <br/> Es rica en vitamina B y hierro. Tiene propiedades diuréticas, depurativas y medicinales. <br/> Existen variedades según la forma: esférica u oval,  según el tamaño y color del capítulo: verde o violeta. <br/> Necesita pasar frío para iniciar la formación de los frutos: la flor. No resiste las heladas ni las altas temperaturas, produciendo frutos con sabor amargo y aspecto poco atractivo. <br/> La recolección es escalonada según van estando apunto las flores. ');
         $fix35->setTranslatableLocale('es');
         $manager->persist($fix35);
 		
 		$fix36->setName('Brocoli');
-        $fix36->setDescription('Chard');
+        $fix36->setDescription('Es una planta de primavera, otoño-invierno,  bianual aunque muchas veces se cultiva como anual, de ciclo largo y se  puede hacer plantel o siembra directa. <br/> Planta de tallos carnosos y gruesos con hojas verdes grandes laterales, lobuladas, con el nervio central blanco y carnosas que tienen proteínas capaces de hacerles almacenar agua y nutrientes. Las flores tienen 4 pétalos en forma de cruz y son de color amarillo. Forma una cabeza de inflorescencia principal  y otras laterales de color verde oscuro. El fruto es  la inflorescencia principal que está constituida por flores agrupadas en racimos de color verde oscuro. <br/> Es rico en vitamina C, ácido fólico, potasio, calcio, fósforo, magnesio y hierro. <br/> Existen variedades según la duración del cultivo: tempranas, de media estación y tardías. <br/> Le gustan las temperaturas frescas, las altas temperaturas causan el crecimiento prematuro de las flores. El riego debe ser regular. <br/> La recolección comienza cuando las inflorescencias están firmes, compactas y de color verde oscuro. Se debe cortar con las hojas necesarias para cubrir el fruto. Si se deja madurar demasiado se vuelve blando y tiende a espigarse. <br/> Es recomendable asociarla con el tomate para evitar ataque de la mosca de la col');
         $fix36->setTranslatableLocale('es');
         $manager->persist($fix36);
 		
 		$fix37->setName('Calçots');
-        $fix37->setDescription('Chard');
+        $fix37->setDescription('Es una planta de otoño-invierno,  bianual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Es una variedad de cebolla dulce y tierna, que se va cubriendo con tierra (calzando) a medida que va creciendo con el objetivo de obtener una cebolla alargada. Sus hojas alargadas son de color verde oscuro y su base es de color blanco y es la parte comestible. <br/> Es rico en de vitaminas y minerales.  Tiene propiedades diuréticas, tonificantes, digestivas y afrodisiacas. <br/> El cultivo del calçot tiene dos fases: La primera es la siembra de una cebolla, la cual se recoge cuando ha germinado y se guarda unos meses. La segunda se realiza  cuando llega la época de plantación, septiembre, se vuelve a sembrar la cebolla y a medida que van creciendo los brotes se debe ir calzando para obtener un fruto blanco y tierno. En los huertos urbanos es recomendable  realizar el cultivo desde la segunda fase. <br/> La recolección comienza cuando los brotes tengan un buen tamaño. Una vez recolectados se separan los brotes. <br/> Es recomendable evitar asociarla con las habas y guisantes porque no son compatibles. ');
         $fix37->setTranslatableLocale('es');
         $manager->persist($fix37);
 		

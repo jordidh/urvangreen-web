@@ -430,6 +430,11 @@ footer a:hover {
     width: 32px;
 }
 
+#img_plant {
+    height: 300px;
+    width: 300px;
+}
+
 table.plant {
     border:1px solid #54ab32;
     width: 100%;
@@ -440,3 +445,19 @@ th.plant
     background-color:#54ab32;
     color:white;
 }
+
+#plant_heather {
+  /*background-color: orange;*/
+  float: left;
+  width: 50%;
+ }
+ #plant_photo {
+  /*background-color: #eadcdc;*/
+  float: right;
+  width: 50%;
+ }
+ #plant_content {
+  clear: both;
+  /*background-color: #333ccc;
+  color: #ffffff;*/
+ }

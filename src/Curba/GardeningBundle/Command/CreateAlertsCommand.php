@@ -62,10 +62,15 @@ class CreateAlertsCommand extends ContainerAwareCommand
                         // AND the last CropHistory with the same AlertType has a InstanceDate older than CropHistory->RepeatEachHours
                         // AND the number of CropHistory with the same AlertType with a InstanceDate bigger than the CropHistoryPeriodType->InstanceDate are lower than PlantCare->RepeatMaxTimes
                         $cropHistoryPeriodType = $em->getRepository('CurbaGardeningBundle:CropHistory')->findLastCropHistoryWithPeriodType($crop, $plantCare->getCropPeriodType());
-                        
-                        
-                        
-                        
+                        if ($cropHistoryPeriodType)
+                        {
+                            $alert = $em->getRepository('CurbaGardeningBundle:Alert')->find($cropHistoryPeriodType->getAlertType());
+                            
+                            if ($alert == null)
+                            {
+                                
+                            }
+                        }
                     }
                 }
             }

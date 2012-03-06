@@ -7,6 +7,7 @@
     
   {% if plant %}
 
+    <div id="plant_heather">
       <h1>{{ plant.Name }}</h1>
 
       <h2>Scientific name</h2>
@@ -15,7 +16,16 @@
       <h2>Family name</h2>
       
       <p><a href="{{ path('show_plant_family_info', {'id': plant.PlantFamily.getId()} ) }}">{{ plant.PlantFamily.Name }}</a> ({{ plant.PlantFamily.ScientificName }}): {{ plant.PlantFamily.Description|raw|slice(0,50) }}...</p>
+    </div>
+      
+    <div id="plant_photo">
+        {#<img src="plant_{{ plant.code }}.png" alt="plant image plant_{{ plant.code }}.png" height="300" width="300"/>#}
+        {% image '@CurbaGardeningBundle/Resources/public/images/plant_.png' %}
+             <img id="img_plant" src="{{ asset_url }}" alt="plant image plant_{{ plant.code }}.png"/>
+        {% endimage %}
+    </div>
 
+    <div id="plant_content">
       {# Output description as row to render html tags #}
       <h2>Description</h2>
       <p>{{ plant.Description|raw }}</p>
@@ -156,6 +166,7 @@
         </body>
       </table>
       </small>
+        </div>
     {% else %}
         Select a plant!
     {% endif %}
