@@ -45,6 +45,13 @@ class ActionType implements \Gedmo\Translatable\Translatable
      */
     private $updatedAt;
     
+        
+    /**
+     * @ORM\ManyToOne(targetEntity="UnitsOfMeasurementType")
+     * @ORM\JoinColumn(name="value_unit_type_id", referencedColumnName="id")
+     **/
+    private $valueUnitType;
+    
     /**
      * @Gedmo\Locale
      * Used locale to override Translation listener`s locale
@@ -173,6 +180,27 @@ class ActionType implements \Gedmo\Translatable\Translatable
     public function getActions()
     {
         return $this->actions;
+    }
+    
+        
+    /**
+     * Set valueUnitType
+     *
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurementType $valueUnitType
+     */
+    public function setValueUnitType($valueUnitType)
+    {
+        $this->valueUnitType = $valueUnitType;
+    }
+
+    /**
+     * Get valueUnitType
+     *
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurementType $valueUnitType 
+     */
+    public function getValueUnitType()
+    {
+        return $this->valueUnitType;
     }
     
     public function __toString()

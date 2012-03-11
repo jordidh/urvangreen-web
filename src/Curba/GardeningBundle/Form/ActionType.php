@@ -17,6 +17,10 @@ class ActionType extends AbstractType
             },
         ));
         $builder->add('crop');
+        $builder->add('pest');
+        $builder->add('value');
+        $builder->add('valueUnitType');
+        $builder->add('description');
         /*
         $builder->add('crop', 'entity', array(
             'class'         => 'Curba\\GardeningBundle\\Entity\\Crop',
@@ -25,7 +29,6 @@ class ActionType extends AbstractType
             },
         ));
         */
-        $builder->add('pest');
         /*
         $builder->add('pest', 'entity', array(
             'class'         => 'Curba\\GardeningBundle\\Entity\\Pest',
@@ -35,9 +38,6 @@ class ActionType extends AbstractType
         ));
          * 
          */
-        $builder->add('quantityA');
-        $builder->add('quantityB');
-        $builder->add('description');
     }
 
     public function getDefaultOptions(array $options)

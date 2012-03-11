@@ -59,10 +59,10 @@ class Action
     private $value;
     
     /**
-     * @ORM\ManyToOne(targetEntity="UnitsOfMeasurementType")
-     * @ORM\JoinColumn(name="value_unit_type_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="value_unit_id", referencedColumnName="id")
      **/
-    private $valueUnitType;
+    private $valueUnit;
     
     /**
      * @ORM\Column(type="string", length="1000", nullable=true)
@@ -207,23 +207,23 @@ class Action
     }
     
     /**
-     * Set valueUnitType
+     * Set valueUnit
      *
-     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurementType $valueUnitType
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $valueUnit
      */
-    public function setValueUnitType($valueUnitType)
+    public function setValueUnit($valueUnit)
     {
-        $this->valueUnitType = $valueUnitType;
+        $this->valueUnit = $valueUnit;
     }
 
     /**
-     * Get valueUnitType
+     * Get valueUnit
      *
-     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurementType $valueUnitType 
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement $valueUnit 
      */
-    public function getValueUnitType()
+    public function getValueUnit()
     {
-        return $this->valueUnitType;
+        return $this->valueUnit;
     }
     
     /**
@@ -242,6 +242,16 @@ class Action
      * @return string 
      */
     public function getDescription()
+    {
+        return $this->description;
+    }
+    
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
     {
         return $this->description;
     }

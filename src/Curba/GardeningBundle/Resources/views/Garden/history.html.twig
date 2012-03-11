@@ -33,8 +33,8 @@ Crops:</br>
         <th class="plant">Duration</th>
         <th class="plant">Ideal duration</th>
         <th class="plant">Plant</th>
-        <th class="plant">Total Quantity A</th>
-        <th class="plant">Total Quantity B</th>
+        <th class="plant">Total Quantity</th>
+        {#<th class="plant">Total Quantity B</th>#}
         <th class="plant">Total plants</th>
         <th class="plant">Total area</th>
         <th class="plant">Productivity</th>
@@ -44,11 +44,11 @@ Crops:</br>
         <th>{{ c[0]['zone']['name'] }}</th>
         <td>{{ c[0]['initialRealDate'].format('Y-m-d H:i:s') }}</td>
         <td>{{ c[0]['finalRealDate'].format('Y-m-d H:i:s') }}</td>
-        <td>{{ c[3] }}</td>
+        <td>{{ c[2] }}</td>
         <td></td>
         <td>{{ c[0]['plant']['name'] }}</td>
         <td>{{ c[1] }}</td>
-        <td>{{ c[2] }}</td>
+        {#<td>{{ c[2] }}</td>#}
         <td>{{ c[0]['numPlants'] }}</td>
         <td>{{ c[0]['plant']['widthSpacing'] * c[0]['plant']['heightSpacing'] / 1000000 }}m2</td>
         <td>Planned:{{ c[0]['plant']['productivity'] }}kg/m2 Real:{{ c[1] / c[0]['plant']['widthSpacing'] / c[0]['plant']['heightSpacing'] * 1000000 }}kg/m2</td>
@@ -66,8 +66,8 @@ Crops:</br>
         <th class="plant">Action date</th>
         <th class="plant">Action</th>
         <th class="plant">Description</th>
-        <th class="plant">Quantity A</th>
-        <th class="plant">Quantity B</th>
+        <th class="plant">Value</th>
+        {#<th class="plant">Quantity B</th>#}
     </tr>
     {% for a in actions %}
     <tr>
@@ -77,8 +77,8 @@ Crops:</br>
         <td>{{ a['createdAt'].format('Y-m-d H:i:s') }}</td>
         <td>{{ a['action_type']['name'] }}</td>
         <td>{{ a['description'] }}</td>
-        <td>{{ a['quantityA'] }}</td>
-        <td>{{ a['quantityB'] }}</td>
+        <td>{{ a['value'] }}</td>
+        {#<td>{{ a['quantityB'] }}</td>#}
     </tr>
     {% endfor %}
 </table> 

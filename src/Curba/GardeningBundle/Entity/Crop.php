@@ -422,12 +422,13 @@ class Crop
 
     public function asArray()
     {
+        /*
         $initialCropPeriodId = null;
         if ($this->getInitialCropPeriod()) 
         {
             $initialCropPeriodId = $this->getInitialCropPeriod()->getId();
         }
-        
+        */
         return array(
             'id'   => $this->getId(),
             'initialRealDate' => $this->getInitialRealDate(),
