@@ -154,33 +154,33 @@ class User implements UserInterface, \Serializable
     private $deletedAt;
     
     /**
-     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
      * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
-     **/
+     */
     private $lengthUnit;
 
     /**
-     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
      * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
-     **/
+     */
     private $massUnit;
 
     /**
-     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
      * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
-     **/
+     */
     private $volumeUnit;
 
     /**
-     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
      * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
-     **/
+     */
     private $temperatureUnit;
 
     /**
-     * @ORM\OneToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
+     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
      * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
-     **/
+     */
     private $pressionUnit;
 
     /**

@@ -713,6 +713,10 @@ class GardenController extends Controller
         $id = $request->get('id');
         if (!$id) { throw $this->createNotFoundException('No crop id found in request');  }
 
+        //Get the user
+        $user = $this->get('security.context')->getToken()->getUser();
+        if (!$user) { throw $this->createNotFoundException('No user logged has found');  }
+        
         //Crop
         $em = $this->get('doctrine')->getEntityManager();
         $cropRepository = $em->getRepository('CurbaGardeningBundle:Crop');
@@ -731,7 +735,7 @@ class GardenController extends Controller
         $entity  = new Action();
         $entity->setCrop($crop);
         $entity->setValue(0);
-        $entity->setValueUnitType($valueUnitType);
+        $entity->setValueUnit($user->getVolumeUnit());
         $entity->setActionType($actionType);
         $entity->setDescription('Watering');
         $em->persist($entity);
@@ -750,6 +754,10 @@ class GardenController extends Controller
         $id = $request->get('id');
         if (!$id) { throw $this->createNotFoundException('No crop id found in request');  }
 
+        //Get the user
+        $user = $this->get('security.context')->getToken()->getUser();
+        if (!$user) { throw $this->createNotFoundException('No user logged has found');  }
+        
         //Crop
         $em = $this->get('doctrine')->getEntityManager();
         $gardenRepository = $em->getRepository('CurbaGardeningBundle:Crop');
@@ -768,7 +776,7 @@ class GardenController extends Controller
         $entity  = new Action();
         $entity->setCrop($crop);
         $entity->setValue(0);
-        $entity->setValueUnitType($valueUnitType);
+        $entity->setValueUnit($user->getMassUnit());
         $entity->setActionType($actionType);
         $entity->setDescription('Prune');
         $em->persist($entity);

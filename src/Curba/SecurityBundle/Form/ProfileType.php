@@ -2,6 +2,7 @@
 
 namespace Curba\SecurityBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
@@ -16,6 +17,50 @@ class ProfileType extends AbstractType
             'choices'   => array('ca' => 'Català', 'es' => 'Español', 'en' => 'English'),
             'required'  => true,
         ));
+        
+        
+        
+        
+        $builder->add('lengthUnit', 'entity', array(
+            'class' => 'CurbaGardeningBundle:UnitsOfMeasurement',
+            'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                            ->where('u.unitsOfMeasurementType = 1')
+                            ->orderBy('u.name', 'ASC');
+                },
+            ));
+        $builder->add('massUnit', 'entity', array(
+            'class' => 'CurbaGardeningBundle:UnitsOfMeasurement',
+            'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                            ->where('u.unitsOfMeasurementType = 2')
+                            ->orderBy('u.name', 'ASC');
+                },
+            ));
+        $builder->add('volumeUnit', 'entity', array(
+            'class' => 'CurbaGardeningBundle:UnitsOfMeasurement',
+            'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                            ->where('u.unitsOfMeasurementType = 3')
+                            ->orderBy('u.name', 'ASC');
+                },
+            ));
+        $builder->add('temperatureUnit', 'entity', array(
+            'class' => 'CurbaGardeningBundle:UnitsOfMeasurement',
+            'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                            ->where('u.unitsOfMeasurementType = 4')
+                            ->orderBy('u.name', 'ASC');
+                },
+            ));
+        $builder->add('pressionUnit', 'entity', array(
+            'class' => 'CurbaGardeningBundle:UnitsOfMeasurement',
+            'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                            ->where('u.unitsOfMeasurementType = 5')
+                            ->orderBy('u.name', 'ASC');
+                },
+            ));
     }
 
     public function getDefaultOptions(array $options)

@@ -31,7 +31,7 @@ security:
             logout:
                 path:   /logout
                 target: /
-    access_denied_url: /denied
+    access_denied_url: /denied/en
     
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

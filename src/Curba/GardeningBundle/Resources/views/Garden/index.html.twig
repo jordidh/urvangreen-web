@@ -32,7 +32,7 @@
                     <th></th>
                     <td></td>
                     <td></td>
-                    <td>{{ action.getCreatedAt()|date("Y-M-d H:i:s") }} {{ action.getActionType() }} {{ action.description }}: {{ action.value }} {{ action.valueUnitType }}</td>
+                    <td>{{ action.getCreatedAt()|date("Y-M-d H:i:s") }} {{ action.getActionType() }} {{ action.description }}: {{ action.value }} {{ action.valueUnit }}</td>
                 </tr>
                 {% endfor %}
             {% endfor %}
@@ -46,14 +46,14 @@
     <a href="{{ path('main') }}">Main</a>
     <br/>
     <br/>
-    <form action="{{ path('garden_new_zone', { 'id': garden.id }) }}" method="post" {{ form_enctype(formZone) }}>
-        {{ form_widget(formZone) }}
-            <input type="submit" title="Create zone" value="Create zone" />
-    </form>
-    <br/>
     <form action="{{ path('garden_new_crop', { 'id': garden.id }) }}" method="post" {{ form_enctype(formCrop) }}>
         {{ form_widget(formCrop) }}
             <input type="submit" title="Create crop" value="Create crop" />
+    </form>
+    <br/>
+    <form action="{{ path('garden_new_zone', { 'id': garden.id }) }}" method="post" {{ form_enctype(formZone) }}>
+        {{ form_widget(formZone) }}
+            <input type="submit" title="Create zone" value="Create zone" />
     </form>
 {% endblock %}
 

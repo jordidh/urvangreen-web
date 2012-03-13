@@ -38,6 +38,41 @@
 
     {{ form_errors(form._token) }}
     {{ form_widget(form._token) }}
+    
+    
+    
+    {{ form_errors(form.lengthUnit) }}
+    <p>
+        {{ form_label(form.lengthUnit) }}
+        {{ form_widget(form.lengthUnit) }}
+    </p>
+
+    {{ form_errors(form.massUnit) }}
+    <p>
+        {{ form_label(form.massUnit) }}
+        {{ form_widget(form.massUnit) }}
+    </p>
+
+    {{ form_errors(form.volumeUnit) }}
+    <p>
+        {{ form_label(form.volumeUnit) }}
+        {{ form_widget(form.volumeUnit) }}
+    </p>
+
+    {{ form_errors(form.temperatureUnit) }}
+    <p>
+        {{ form_label(form.temperatureUnit) }}
+        {{ form_widget(form.temperatureUnit) }}
+    </p>
+
+    {{ form_errors(form.pressionUnit) }}
+    <p>
+        {{ form_label(form.pressionUnit) }}
+        {{ form_widget(form.pressionUnit) }}
+    </p>
+
+    
+    
 
     <input type="submit" value="Guarda" />
 </form>
