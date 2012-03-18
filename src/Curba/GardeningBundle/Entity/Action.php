@@ -54,7 +54,7 @@ class Action
     private $pest;
 
     /**
-     * @ORM\Column(type="decimal")
+     * @ORM\Column(type="decimal", length=10, scale=3)
      */
     private $value;
     

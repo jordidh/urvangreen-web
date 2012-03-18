@@ -154,32 +154,37 @@ class User implements UserInterface, \Serializable
     private $deletedAt;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
-     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     * @var integer $lengthUnit
+     *
+     * @ORM\Column(name="length_unit_id", type="integer")
      */
     private $lengthUnit;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
-     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     * @var integer $massUnit
+     *
+     * @ORM\Column(name="mass_unit_id", type="integer")
      */
     private $massUnit;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
-     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     * @var integer $volumeUnit
+     *
+     * @ORM\Column(name="volume_unit_id", type="integer")
      */
     private $volumeUnit;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
-     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     * @var integer $temperatureUnit
+     *
+     * @ORM\Column(name="temperature_unit_id", type="integer")
      */
     private $temperatureUnit;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Curba\GardeningBundle\Entity\UnitsOfMeasurement")
-     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+     * @var integer $pressionUnit
+     *
+     * @ORM\Column(name="pression_unit_id", type="integer")
      */
     private $pressionUnit;
 
@@ -572,7 +577,7 @@ class User implements UserInterface, \Serializable
     /**
      * Set lengthUnit
      *
-     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $lengthUnit
+     * @param integer $lengthUnit
      */
     public function setLengthUnit($lengthUnit)
     {
@@ -582,7 +587,7 @@ class User implements UserInterface, \Serializable
     /**
      * Get lengthUnit
      *
-     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     * @return integer 
      */
     public function getLengthUnit()
     {
@@ -592,7 +597,7 @@ class User implements UserInterface, \Serializable
     /**
      * Set massUnit
      *
-     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $massUnit
+     * @param integer $massUnit
      */
     public function setMassUnit($massUnit)
     {
@@ -602,7 +607,7 @@ class User implements UserInterface, \Serializable
     /**
      * Get massUnit
      *
-     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     * @return integer 
      */
     public function getMassUnit()
     {
@@ -612,7 +617,7 @@ class User implements UserInterface, \Serializable
     /**
      * Set volumeUnit
      *
-     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $volumeUnit
+     * @param integer $volumeUnit
      */
     public function setVolumeUnit($volumeUnit)
     {
@@ -622,7 +627,7 @@ class User implements UserInterface, \Serializable
     /**
      * Get volumeUnit
      *
-     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     * @return integer 
      */
     public function getVolumeUnit()
     {
@@ -632,7 +637,7 @@ class User implements UserInterface, \Serializable
     /**
      * Set temperatureUnit
      *
-     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $temperatureUnit
+     * @param integer $temperatureUnit
      */
     public function setTemperatureUnit($temperatureUnit)
     {
@@ -642,7 +647,7 @@ class User implements UserInterface, \Serializable
     /**
      * Get temperatureUnit
      *
-     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     * @return integer 
      */
     public function getTemperatureUnit()
     {
@@ -652,7 +657,7 @@ class User implements UserInterface, \Serializable
     /**
      * Set pressionUnit
      *
-     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $pressionUnit
+     * @param integer $pressionUnit
      */
     public function setPressionUnit($pressionUnit)
     {
@@ -662,7 +667,7 @@ class User implements UserInterface, \Serializable
     /**
      * Get pressionUnit
      *
-     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement 
+     * @return integer 
      */
     public function getPressionUnit()
     {

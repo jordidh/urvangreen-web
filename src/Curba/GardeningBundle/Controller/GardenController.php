@@ -652,14 +652,19 @@ class GardenController extends Controller
         $actionType = $actionTypeRepository->find(1);
         if (!$actionType) { throw $this->createNotFoundException('No ActionType found for id 1');  }
         
+        //Get the user
+        $user = $this->get('security.context')->getToken()->getUser();
+        if (!$user) { throw $this->createNotFoundException('No user logged has found');  }
+        
         //ValueUnitType
-        $unitsOfMeasurementTypeRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurementType');
-        $valueUnitType = $unitsOfMeasurementTypeRepository->find(2); //mass
+        $unitsOfMeasurementRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurement');
+        $valueUnit = $unitsOfMeasurementRepository->find($user->getMassUnit()); //volume
+        if (!$valueUnit) { throw $this->createNotFoundException('No ValueUnit found for id '.$user->getMassUnit());  }
         
         $entity  = new Action();
         $entity->setCrop($crop);
-        $entity->setValue(0);
-        $entity->setValueUnitType($valueUnitType);
+        $entity->setValue(0.5);
+        $entity->setValueUnit($valueUnit);
         $entity->setActionType($actionType);
         $entity->setDescription('Harvest');
         $em->persist($entity);
@@ -729,13 +734,14 @@ class GardenController extends Controller
         if (!$actionType) { throw $this->createNotFoundException('No ActionType found for id 2');  }
         
         //ValueUnitType
-        $unitsOfMeasurementTypeRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurementType');
-        $valueUnitType = $unitsOfMeasurementTypeRepository->find(3); //volume
+        $unitsOfMeasurementRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurement');
+        $valueUnit = $unitsOfMeasurementRepository->find($user->getVolumeUnit()); //volume
+        if (!$valueUnit) { throw $this->createNotFoundException('No ValueUnit found for id '.$user->getVolumeUnit());  }
         
         $entity  = new Action();
         $entity->setCrop($crop);
-        $entity->setValue(0);
-        $entity->setValueUnit($user->getVolumeUnit());
+        $entity->setValue(0.1);
+        $entity->setValueUnit($valueUnit);
         $entity->setActionType($actionType);
         $entity->setDescription('Watering');
         $em->persist($entity);
@@ -770,13 +776,14 @@ class GardenController extends Controller
         if (!$actionType) { throw $this->createNotFoundException('No ActionType found for id 3');  }
         
         //ValueUnitType
-        $unitsOfMeasurementTypeRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurementType');
-        $valueUnitType = $unitsOfMeasurementTypeRepository->find(2); //mass
+        $unitsOfMeasurementRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurement');
+        $valueUnit = $unitsOfMeasurementRepository->find($user->getMassUnit()); //mass
+        if (!$valueUnit) { throw $this->createNotFoundException('No ValueUnit found for id '.$user->getMassUnit());  }
         
         $entity  = new Action();
         $entity->setCrop($crop);
-        $entity->setValue(0);
-        $entity->setValueUnit($user->getMassUnit());
+        $entity->setValue(0.05);
+        $entity->setValueUnit($valueUnit);
         $entity->setActionType($actionType);
         $entity->setDescription('Prune');
         $em->persist($entity);

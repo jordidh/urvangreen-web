@@ -18,9 +18,41 @@ class ProfileType extends AbstractType
             'required'  => true,
         ));
         
+        /*
+         * NO FUNCIONA
+         *
+        $em = $this->getContainer()->get('doctrine')->getEntityManager();
+        $unitsRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurement');
+        $units = $unitsRepository->findAll();
+         * 
+         */
         
+        $builder->add('lengthUnit', 'choice', array(
+            'choices'   => array(2 => 'm'),
+            'required'  => true,
+        ));
         
+        $builder->add('massUnit', 'choice', array(
+            'choices'   => array(1 => 'kg'),
+            'required'  => true,
+        ));
         
+        $builder->add('volumeUnit', 'choice', array(
+            'choices'   => array(3 => 'l'),
+            'required'  => true,
+        ));
+        
+        $builder->add('temperatureUnit', 'choice', array(
+            'choices'   => array(4 => 'C', 5 => 'K'),
+            'required'  => true,
+        ));
+
+        $builder->add('pressionUnit', 'choice', array(
+            'choices'   => array(6 => 'mBa', 7 => 'Pa'),
+            'required'  => true,
+        ));
+        
+        /*
         $builder->add('lengthUnit', 'entity', array(
             'class' => 'CurbaGardeningBundle:UnitsOfMeasurement',
             'query_builder' => function(EntityRepository $er) {
@@ -61,6 +93,8 @@ class ProfileType extends AbstractType
                             ->orderBy('u.name', 'ASC');
                 },
             ));
+         * 
+         */
     }
 
     public function getDefaultOptions(array $options)
