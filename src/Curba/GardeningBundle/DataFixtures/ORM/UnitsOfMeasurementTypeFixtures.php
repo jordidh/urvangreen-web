@@ -40,6 +40,12 @@ class UnitsOfMeasurementTypeFixtures extends AbstractFixture implements OrderedF
         $fix5->setTranslatableLocale('en');
         $manager->persist($fix5);
 
+        $fix6 = new UnitsOfMeasurementType();
+        $fix6->setName('units');
+        $fix6->setDescription('basic unit');
+        $fix6->setTranslatableLocale('en');
+        $manager->persist($fix6);
+
         $manager->flush();
 
 
@@ -68,6 +74,11 @@ class UnitsOfMeasurementTypeFixtures extends AbstractFixture implements OrderedF
         $fix5->setDescription('unitats de pressió');
         $fix5->setTranslatableLocale('ca');
         $manager->persist($fix5);
+
+        $fix6->setName('unitats');
+        $fix6->setDescription('unitats');
+        $fix6->setTranslatableLocale('ca');
+        $manager->persist($fix6);
 
         $manager->flush();
 
@@ -98,6 +109,11 @@ class UnitsOfMeasurementTypeFixtures extends AbstractFixture implements OrderedF
         $fix5->setTranslatableLocale('es');
         $manager->persist($fix5);
 
+        $fix6->setName('unidades');
+        $fix6->setDescription('unidades');
+        $fix6->setTranslatableLocale('es');
+        $manager->persist($fix6);
+
         $manager->flush();
 
         $this->addReference('unit-type-length', $fix1);
@@ -105,6 +121,7 @@ class UnitsOfMeasurementTypeFixtures extends AbstractFixture implements OrderedF
         $this->addReference('unit-type-volume', $fix3);
         $this->addReference('unit-type-temperature', $fix4);
         $this->addReference('unit-type-pression', $fix5);
+        $this->addReference('unit-type-unit', $fix6);
     }
     
     public function getOrder()

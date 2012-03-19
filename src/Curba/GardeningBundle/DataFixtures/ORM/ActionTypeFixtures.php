@@ -30,13 +30,14 @@ class ActionTypeFixtures extends AbstractFixture implements OrderedFixtureInterf
         $fix3->setValueUnitType($this->getReference('unit-type-mass'));
         $fix3->setTranslatableLocale('en');
         $manager->persist($fix3);
-/*
+
         $fix4 = new ActionType();
-        $fix4->setName('');
-        $fix4->setDescription('');
+        $fix4->setName('Plant');
+        $fix4->setDescription('Plant');
+        $fix4->setValueUnitType($this->getReference('unit-type-unit'));
         $fix4->setTranslatableLocale('en');
         $manager->persist($fix4);
-*/
+
         $manager->flush();
 
 
@@ -55,6 +56,11 @@ class ActionTypeFixtures extends AbstractFixture implements OrderedFixtureInterf
         $fix3->setDescription('Poda');
         $fix3->setTranslatableLocale('ca');
         $manager->persist($fix3);
+
+        $fix4->setName('Plantació');
+        $fix4->setDescription('Plantació');
+        $fix4->setTranslatableLocale('ca');
+        $manager->persist($fix4);
 
         $manager->flush();
 
@@ -75,6 +81,11 @@ class ActionTypeFixtures extends AbstractFixture implements OrderedFixtureInterf
         $fix3->setTranslatableLocale('es');
         $manager->persist($fix3);
 
+        $fix4->setName('Plantación');
+        $fix4->setDescription('Plantación');
+        $fix4->setTranslatableLocale('es');
+        $manager->persist($fix4);
+
         $manager->flush();
 
         
@@ -82,7 +93,7 @@ class ActionTypeFixtures extends AbstractFixture implements OrderedFixtureInterf
         $this->addReference('action-type-harvest', $fix1);
         $this->addReference('action-type-watering', $fix2);
         $this->addReference('action-type-prune', $fix3);
-        //$this->addReference('action-type-4', $fix4);
+        $this->addReference('action-type-plant', $fix4);
     }
     
     public function getOrder()

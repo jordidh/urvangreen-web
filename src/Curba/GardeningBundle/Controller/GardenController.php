@@ -226,6 +226,26 @@ class GardenController extends Controller
                 $crop->setInitialPlannedDate(new \DateTime());
                 $em->persist($crop);
                 $em->flush();
+                
+                //Create the plantation action
+                //ActionType
+                $gardenRepository = $em->getRepository('CurbaGardeningBundle:ActionType');
+                $actionType = $gardenRepository->find(4);
+                if (!$actionType) { throw $this->createNotFoundException('No ActionType found for id 6');  }
+
+                //ValueUnitType
+                $unitsOfMeasurementRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurement');
+                $valueUnit = $unitsOfMeasurementRepository->find(8); //unit
+                if (!$valueUnit) { throw $this->createNotFoundException('No ValueUnit found for id Unit');  }
+
+                $entity  = new Action();
+                $entity->setCrop($crop);
+                $entity->setValue($crop->getNumPlants());
+                $entity->setValueUnit($valueUnit);
+                $entity->setActionType($actionType);
+                $entity->setDescription('Plant');
+                $em->persist($entity);
+                $em->flush();
             }
         }
         

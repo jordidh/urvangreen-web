@@ -58,6 +58,13 @@ class UnitsOfMeasurementFixtures extends AbstractFixture implements OrderedFixtu
         $fix7->setUnitsOfMeasurementType($this->getReference('unit-type-pression'));
         $fix7->setTranslatableLocale('en');
         $manager->persist($fix7);
+        
+        $fix8 = new UnitsOfMeasurement();
+        $fix8->setName('Un');
+        $fix8->setDescription('Unit');
+        $fix8->setUnitsOfMeasurementType($this->getReference('unit-type-unit'));
+        $fix8->setTranslatableLocale('en');
+        $manager->persist($fix8);
 
         $manager->flush();
 
@@ -97,6 +104,11 @@ class UnitsOfMeasurementFixtures extends AbstractFixture implements OrderedFixtu
         $fix7->setDescription('Pascals');
         $fix7->setTranslatableLocale('ca');
         $manager->persist($fix7);
+        
+        $fix8->setName('Un');
+        $fix8->setDescription('Unitat');
+        $fix8->setTranslatableLocale('ca');
+        $manager->persist($fix8);
 
         $manager->flush();
 
@@ -137,6 +149,11 @@ class UnitsOfMeasurementFixtures extends AbstractFixture implements OrderedFixtu
         $fix7->setTranslatableLocale('es');
         $manager->persist($fix7);
 
+        $fix8->setName('Un');
+        $fix8->setDescription('Unidad');
+        $fix8->setTranslatableLocale('ca');
+        $manager->persist($fix8);
+
         $manager->flush();
 
         
@@ -148,6 +165,7 @@ class UnitsOfMeasurementFixtures extends AbstractFixture implements OrderedFixtu
         $this->addReference('unit-5', $fix5);
         $this->addReference('unit-6', $fix6);
         $this->addReference('unit-7', $fix7);
+        $this->addReference('unit-8', $fix8);
         //$this->addReference('action-type-4', $fix4);
     }
     
