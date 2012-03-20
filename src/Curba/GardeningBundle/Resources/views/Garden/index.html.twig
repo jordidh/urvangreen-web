@@ -32,7 +32,7 @@
                     <th></th>
                     <td></td>
                     <td></td>
-                    <td>{{ action.getCreatedAt()|date("Y-M-d H:i:s") }} {{ action.getActionType() }} {{ action.description }}: {{ action.value }} {{ action.valueUnit }}</td>
+                    <td>{{ action.getInstanceDate()|date("Y-M-d H:i:s") }} {{ action.getActionType() }} {{ action.description }}: {{ action.value }} {{ action.valueUnit }}</td>
                 </tr>
                 {% endfor %}
             {% endfor %}

@@ -83,12 +83,7 @@ class Crop
      * @ORM\JoinColumn(name="plant_id", referencedColumnName="id")
      */
     private $plant;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Action", mappedBy="crop")
-     */
-    private $actions;
-    
+        
     /**
      * @ORM\OneToMany(targetEntity="Alert", mappedBy="crop")
      */
@@ -105,7 +100,6 @@ class Crop
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
-        $this->actions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->alerts = new \Doctrine\Common\Collections\ArrayCollection();
         $this->history = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -359,27 +353,7 @@ class Crop
     {
         return $this->plant;
     }
-    
-    /**
-     * Add actions
-     *
-     * @param Curba\GardeningBundle\Entity\Action $actions
-     */
-    public function addActions(\Curba\GardeningBundle\Entity\Action $actions)
-    {
-        $this->actions[] = $actions;
-    }
-
-    /**
-     * Get actions
-     *
-     * @return Doctrine\Common\Collections\Collection
-     */
-    public function getActions()
-    {
-        return $this->actions;
-    }
-    
+       
     /**
      * Add alerts
      *

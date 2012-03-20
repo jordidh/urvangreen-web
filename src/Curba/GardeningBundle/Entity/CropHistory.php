@@ -25,14 +25,14 @@ class CropHistory
     
     /**
      * Unidirectional
-     * @ORM\OneToOne(targetEntity="AlertType")
+     * @ORM\ManyToOne(targetEntity="AlertType")
      * @ORM\JoinColumn(name="alert_type_id", referencedColumnName="id")
      */
     private $alert_type;
     
     /**
      * Unidirectional
-     * @ORM\OneToOne(targetEntity="ActionType")
+     * @ORM\ManyToOne(targetEntity="ActionType")
      * @ORM\JoinColumn(name="action_type_id", referencedColumnName="id")
      */
     private $action_type;
@@ -54,21 +54,7 @@ class CropHistory
     private $updatedAt;
     
     /**
-     * Unidirectional
-     * @ORM\ManyToOne(targetEntity="Garden")
-     * @ORM\JoinColumn(name="garden_id", referencedColumnName="id")
-     */
-    private $garden;
-
-    /**
-     * Unidirectional
-     * @ORM\ManyToOne(targetEntity="Zone")
-     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
-     */
-    private $zone;
-
-    /**
-     * Unidirectional
+     * 
      * @ORM\ManyToOne(targetEntity="Crop", inversedBy="history")
      * @ORM\JoinColumn(name="crop_id", referencedColumnName="id")
      */
@@ -84,13 +70,14 @@ class CropHistory
     /**
      * @ORM\Column(type="decimal", length=10, scale=3)
      */
-    private $quantityA;
+    private $value;
     
     /**
-     * @ORM\Column(type="decimal", length=10, scale=3)
-     */
-    private $quantityB;
-    
+     * @ORM\ManyToOne(targetEntity="UnitsOfMeasurement")
+     * @ORM\JoinColumn(name="value_unit_id", referencedColumnName="id")
+     **/
+    private $valueUnit;
+
     /**
      * @ORM\Column(type="string", length="1000", nullable=true)
      */
@@ -121,66 +108,85 @@ class CropHistory
     }
 
     /**
-     * Set initialDate
+     * Set instanceDate
      *
-     * @param date $initialDate
+     * @param datetime $instanceDate
      */
-    public function setInitialDate($initialDate)
+    public function setInstanceDate($instanceDate)
     {
-        $this->initialDate = $initialDate;
+        $this->instanceDate = $instanceDate;
     }
 
     /**
-     * Get initialDate
+     * Get instanceDate
      *
-     * @return date 
+     * @return datetime
      */
-    public function getInitialDate()
+    public function getInstanceDate()
     {
-        return $this->initialDate;
+        return $this->instanceDate;
+    }
+   
+    /**
+     * Set value
+     *
+     * @param decimal $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
     }
 
     /**
-     * Set finalDate
+     * Get value
      *
-     * @param date $finalDate
+     * @return decimal 
      */
-    public function setFinalDate($finalDate)
+    public function getValue()
     {
-        $this->finalDate = $finalDate;
-    }
-
-    /**
-     * Get finalDate
-     *
-     * @return date 
-     */
-    public function getFinalDate()
-    {
-        return $this->finalDate;
+        return $this->value;
     }
     
     /**
-     * Set averagePeriodDuration
+     * Set valueUnit
      *
-     * @param integer $averagePeriodDuration
+     * @param Curba\GardeningBundle\Entity\UnitsOfMeasurement $valueUnit
      */
-    public function setAveragePeriodDuration($averagePeriodDuration)
+    public function setValueUnit($valueUnit)
     {
-        $this->averagePeriodDuration = $averagePeriodDuration;
+        $this->valueUnit = $valueUnit;
     }
 
     /**
-     * Get averagePeriodDuration
+     * Get valueUnit
      *
-     * @return integer 
+     * @return Curba\GardeningBundle\Entity\UnitsOfMeasurement $valueUnit 
      */
-    public function getAveragePeriodDuration()
+    public function getValueUnit()
     {
-        return $this->averagePeriodDuration;
+        return $this->valueUnit;
+    }
+        
+    /**
+     * Set description
+     *
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
     
-
     /**
      * Set createdAt
      *
@@ -222,105 +228,66 @@ class CropHistory
     }
 
     /**
-     * Set region
+     * Set pest
      *
-     * @param Curba\GardeningBundle\Entity\Region $region
+     * @param Curba\GardeningBundle\Entity\Pest $pest
      */
-    public function setRegion(\Curba\GardeningBundle\Entity\Region $region)
+    public function setPest(\Curba\GardeningBundle\Entity\Pest $pest)
     {
-        $this->region = $region;
+        $this->pest = $pest;
     }
 
     /**
-     * Get region
+     * Get pest
      *
-     * @return Curba\GardeningBundle\Entity\Region 
+     * @return Curba\GardeningBundle\Entity\Pest 
      */
-    public function getRegion()
+    public function getPest()
     {
-        return $this->region;
+        return $this->pest;
     }
 
+    /**
+     * Set crop
+     *
+     * @param Curba\GardeningBundle\Entity\Crop $crop
+     */
+    public function setCrop(\Curba\GardeningBundle\Entity\Crop $crop)
+    {
+        $this->crop = $crop;
+    }
+
+    /**
+     * Get crop
+     *
+     * @return Curba\GardeningBundle\Entity\Crop
+     */
+    public function getCrop()
+    {
+        return $this->crop;
+    }
+    
     /**
      * Set crop_period_type
      *
-     * @param Curba\GardeningBundle\Entity\CropPeriodType $cropPeriodType
+     * @param Curba\GardeningBundle\Entity\CropPeriodType $crop_period_type
      */
-    public function setCropPeriodType(\Curba\GardeningBundle\Entity\CropPeriodType $cropPeriodType)
+    public function setCropPeriodType(\Curba\GardeningBundle\Entity\CropPeriodType $crop_period_type)
     {
-        $this->crop_period_type = $cropPeriodType;
+        $this->crop_period_type = $crop_period_type;
     }
 
     /**
      * Get crop_period_type
      *
-     * @return Curba\GardeningBundle\Entity\CropPeriodType 
+     * @return Curba\GardeningBundle\Entity\Crop
      */
     public function getCropPeriodType()
     {
         return $this->crop_period_type;
     }
-
-    /**
-     * Set plant
-     *
-     * @param Curba\GardeningBundle\Entity\Plant $plant
-     */
-    public function setPlant(\Curba\GardeningBundle\Entity\Plant $plant)
-    {
-        $this->plant = $plant;
-    }
-
-    /**
-     * Get plant
-     *
-     * @return Curba\GardeningBundle\Entity\Plant 
-     */
-    public function getPlant()
-    {
-        return $this->plant;
-    }
-
-    /**
-     * Add crops
-     *
-     * @param Curba\GardeningBundle\Entity\Crop $crops
-     */
-    public function addCrops(\Curba\GardeningBundle\Entity\Crop $crops)
-    {
-        $this->crops[] = $crops;
-    }
-
-    /**
-     * Get crops
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getCrops()
-    {
-        return $this->crops;
-    }
-
-    /**
-     * Add plantCares
-     *
-     * @param Curba\GardeningBundle\Entity\PlantCares $plantCares
-     */
-    public function addPlantCares(\Curba\GardeningBundle\Entity\PlantCares $plantCares)
-    {
-        $this->plantCares[] = $plantCares;
-    }
-
-    /**
-     * Get plantCares
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getPlantCares()
-    {
-        return $this->plantCares;
-    }
     
+
     /**
      * Set alert_type
      *

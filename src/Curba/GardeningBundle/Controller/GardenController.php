@@ -9,10 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityRepository;
 use Curba\GardeningBundle\Form\GardenType;
 use Curba\GardeningBundle\Entity\Garden;
-use Curba\GardeningBundle\Entity\Action;
+//use Curba\GardeningBundle\Entity\Action;
 use Curba\GardeningBundle\Form\ActionType;
 use Curba\GardeningBundle\Entity\Zone;
 use Curba\GardeningBundle\Entity\Crop;
+use Curba\GardeningBundle\Entity\CropHistory;
 use Curba\SecurityBundle\Entity\UserGarden;
 
 use Ivory\GoogleMapBundle\Model\MapTypeId;
@@ -105,7 +106,8 @@ class GardenController extends Controller
             $currentCrops = $zoneRepository->getCurrentCrops($currentZone->getId());
             foreach ($currentCrops as $currentCrop)
             {
-                $currentActions = $currentCrop->getActions();
+                //$currentActions = $currentCrop->getActions();
+                $currentActions = $currentCrop->getHistory();
                 $crop = array();
                 $crop[] = $currentCrop;
                 $crop[] = $currentActions;
@@ -238,6 +240,7 @@ class GardenController extends Controller
                 $valueUnit = $unitsOfMeasurementRepository->find(8); //unit
                 if (!$valueUnit) { throw $this->createNotFoundException('No ValueUnit found for id Unit');  }
 
+                /*
                 $entity  = new Action();
                 $entity->setCrop($crop);
                 $entity->setValue($crop->getNumPlants());
@@ -245,6 +248,17 @@ class GardenController extends Controller
                 $entity->setActionType($actionType);
                 $entity->setDescription('Plant');
                 $em->persist($entity);
+                //$em->flush();
+                */
+                //Create a CropHistory
+                $cHistory = new CropHistory();
+                $cHistory->setActionType($actionType);
+                $cHistory->setCrop($crop);
+                $cHistory->setDescription('Plant');
+                $cHistory->setValue($crop->getNumPlants());
+                $cHistory->setValueUnit($valueUnit);
+                $cHistory->setInstanceDate(new \DateTime());
+                $em->persist($cHistory);
                 $em->flush();
             }
         }
@@ -680,7 +694,7 @@ class GardenController extends Controller
         $unitsOfMeasurementRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurement');
         $valueUnit = $unitsOfMeasurementRepository->find($user->getMassUnit()); //volume
         if (!$valueUnit) { throw $this->createNotFoundException('No ValueUnit found for id '.$user->getMassUnit());  }
-        
+        /*
         $entity  = new Action();
         $entity->setCrop($crop);
         $entity->setValue(0.5);
@@ -688,6 +702,18 @@ class GardenController extends Controller
         $entity->setActionType($actionType);
         $entity->setDescription('Harvest');
         $em->persist($entity);
+        //$em->flush();
+        */
+        
+        //Create a CropHistory
+        $cHistory = new CropHistory();
+        $cHistory->setActionType($actionType);
+        $cHistory->setCrop($crop);
+        $cHistory->setDescription('Harvest');
+        $cHistory->setValue(0.5);
+        $cHistory->setValueUnit($valueUnit);
+        $cHistory->setInstanceDate(new \DateTime());
+        $em->persist($cHistory);
         $em->flush();
 
         return $this->redirect($this->generateUrl('garden_index', array('id' => $crop->getZone()->getGarden()->getId())));
@@ -757,7 +783,7 @@ class GardenController extends Controller
         $unitsOfMeasurementRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurement');
         $valueUnit = $unitsOfMeasurementRepository->find($user->getVolumeUnit()); //volume
         if (!$valueUnit) { throw $this->createNotFoundException('No ValueUnit found for id '.$user->getVolumeUnit());  }
-        
+        /*
         $entity  = new Action();
         $entity->setCrop($crop);
         $entity->setValue(0.1);
@@ -765,6 +791,17 @@ class GardenController extends Controller
         $entity->setActionType($actionType);
         $entity->setDescription('Watering');
         $em->persist($entity);
+        //$em->flush();
+        */
+        //Create a CropHistory
+        $cHistory = new CropHistory();
+        $cHistory->setActionType($actionType);
+        $cHistory->setCrop($crop);
+        $cHistory->setDescription('Watering');
+        $cHistory->setValue(0.1);
+        $cHistory->setValueUnit($valueUnit);
+        $cHistory->setInstanceDate(new \DateTime());
+        $em->persist($cHistory);
         $em->flush();
 
         return $this->redirect($this->generateUrl('garden_index', array('id' => $crop->getZone()->getGarden()->getId())));
@@ -799,7 +836,7 @@ class GardenController extends Controller
         $unitsOfMeasurementRepository = $em->getRepository('CurbaGardeningBundle:UnitsOfMeasurement');
         $valueUnit = $unitsOfMeasurementRepository->find($user->getMassUnit()); //mass
         if (!$valueUnit) { throw $this->createNotFoundException('No ValueUnit found for id '.$user->getMassUnit());  }
-        
+        /*
         $entity  = new Action();
         $entity->setCrop($crop);
         $entity->setValue(0.05);
@@ -807,6 +844,17 @@ class GardenController extends Controller
         $entity->setActionType($actionType);
         $entity->setDescription('Prune');
         $em->persist($entity);
+        //$em->flush();
+        */
+        //Create a CropHistory
+        $cHistory = new CropHistory();
+        $cHistory->setActionType($actionType);
+        $cHistory->setCrop($crop);
+        $cHistory->setDescription('Prune');
+        $cHistory->setValue(0.05);
+        $cHistory->setValueUnit($valueUnit);
+        $cHistory->setInstanceDate(new \DateTime());
+        $em->persist($cHistory);
         $em->flush();
 
         return $this->redirect($this->generateUrl('garden_index', array('id' => $crop->getZone()->getGarden()->getId())));

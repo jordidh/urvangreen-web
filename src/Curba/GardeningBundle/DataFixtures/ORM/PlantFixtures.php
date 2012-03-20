@@ -1004,7 +1004,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix32->setTranslatableLocale('en');
         $manager->persist($fix32);
         
-	$fix33 = new Plant();
+$fix33 = new Plant();
         $fix33->setCode('brussel');
         $fix33->setName('Brussel Sprouts');
         $fix33->setDescription('Cabbage');
@@ -1030,8 +1030,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix33->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix33->setTranslatableLocale('en');
         $manager->persist($fix33);
-		
-	$fix34 = new Plant();
+
+$fix34 = new Plant();
         $fix34->setCode('strawberries');
         $fix34->setName('Strawberries');
         $fix34->setDescription('Cabbage');
@@ -1057,8 +1057,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix34->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix34->setTranslatableLocale('en');
         $manager->persist($fix34);
-		
-	$fix35 = new Plant();
+
+$fix35 = new Plant();
         $fix35->setCode('artichoke');
         $fix35->setName('Artichoke');
         $fix35->setDescription('Cabbage');
@@ -1084,8 +1084,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix35->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix35->setTranslatableLocale('en');
         $manager->persist($fix35);
-		
-	$fix36 = new Plant();
+
+$fix36 = new Plant();
         $fix36->setCode('broccoli');
         $fix36->setName('Broccoli');
         $fix36->setDescription('Cabbage');
@@ -1111,8 +1111,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix36->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix36->setTranslatableLocale('en');
         $manager->persist($fix36);
-		
-	$fix37 = new Plant();
+
+$fix37 = new Plant();
         $fix37->setCode('calçots');
         $fix37->setName('Calçots');
         $fix37->setDescription('Cabbage');
@@ -1138,7 +1138,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix37->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
         $fix37->setTranslatableLocale('en');
         $manager->persist($fix37);
-		
+
         $manager->flush();
         
         
@@ -1345,7 +1345,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix2);
         
         $fix3->setName('Puerro');
-        $fix3->setDescription('Chard');
+        $fix3->setDescription('Es una planta de primavera - otoño, bianual aunque muchas veces se cultiva como  anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta formada por hojas verdes planas, estrechas y alargadas. Sus flores son hermafroditas de color blanco rojizo y están agrupadas en umbelas. La parte comestible es el bulbo que crece bajo tierra, alargado de color blanco formado por finas membranas y terminado en un grupo de raíces pequeñas. <br/> Es rico en nutrientes y moléculas que protegen de las enfermedades cardiovasculares, vitamina C, E y fibra. Se le atribuyen propiedades diuréticas. <br/> Existen variedades según su tamaño: : Largas: puerro más fino que se siembra en otoño-invierno y Cortas: puerro más grueso que se siembra en verano. <br/> Planta rústica resistente a climas fríos. Le agradan los suelos profundos, sueltos y esponjosos. Se debe mantener una humedad constante durante su cultivo.  Para obtener bulbos gruesos y tiernos conviene regarlos regularmente y plantarlos  en zonas sombreadas los meses más calurosos. <br/> Un mes antes de su recolección es aconsejable realizar un blanqueamiento para eliminar el color verde de la base de las hojas. Se arranca la planta completa cuando adquiere un tamaño adecuado. <br/> Es recomendable asociarlo con la zanahoria ya que proporciona una protección mutua ante las puestas de mariposas cuyas orugas les dañan. Como es una planta vertical ocupa poco espacio, por lo que se puede sembrar en el borde de los bacanes o recipientes.');
         $fix3->setTranslatableLocale('es');
         $manager->persist($fix3);
         
@@ -1374,28 +1374,28 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix8->setTranslatableLocale('es');
         $manager->persist($fix8); 
         
-        $fix9->setName('Alubia');
-        $fix9->setDescription('Chard');
+        $fix9->setName('Judía');
+        $fix9->setDescription('Es una planta de verano, anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/>  Planta trepadora cuyos finos tallos verdes se enroscan en cualquier soporte cercano. Sus hojas son compuestas. La flor es de color blanco y el fruto se encuentra en las vainas planas y alargadas, terminadas en punta. Al interior de las vainas se encuentran las semillas, entre 4 y 6 según la variedad. La vaina es comestible mientras la planta es verde, al madurar se endurece y los frutos serán muy grandes. El aspecto exterior de las vainas y de los frutos cambia según la variedad.  <br/>  Es rica en proteínas, fibra, vitaminas A,C,E y minerales. <br/>  Existen variedades según su crecimiento: Arbustivas o mata baja: tienen velocidad de crecimiento y desarrollo de vainas más rápido y ciclo de producción más corto y  trepadoras: tienen un ciclo más largo. Según el fruto:  largas o cortas, redondas o aplanadas, blancas, amarillas, verdes, pintas, moradas, violetas, negras. <br/>  Planta de clima cálido poco resistente a las heladas. Debido al tamaño de sus semillas tardan mucho en germinar, es recomendable remojarlas antes de sembrarlas para acelerar el proceso. Durante su cultivo conviene mantener húmeda la tierra para evitar los ataques de araña roja y obtener judías mas tiernas y jugosas. El riego es muy importante, si es poco y padecen sed pueden volverse duras y fibrosas; si es excesivo puede causar la caída de las flores. <br/>  Es uno de los cultivos más generosos, además se puede aprovechar el fruto cuando es tierno y cuando ya ha madurado.  La recolección comienza cuando las vainas tiernas alcanzan los 10 cm de largo y las secas 15 cm, se deben recolectar con las dos manos, con una coger la planta y con la otra la vaina para evitar hacerle daño a la planta. La recolección constante estimula el crecimiento de las vainas. Cuando aparecen protuberancias en las vainas es porque se ha dejado madurar más de lo recomendado. Una vez terminada la cosecha es aconsejable cortar la parte aérea de la planta y dejar las raíces para que los futuros cultivos aprovechen el nitrógeno fijado. <br/>  Es recomendable asociarla con el maíz porque le es útil para enfilarse. ');
         $fix9->setTranslatableLocale('es');
         $manager->persist($fix9);
         
         $fix10->setName('Maiz');
-        $fix10->setDescription('Chard');
+        $fix10->setDescription('Es una planta de verano, anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta vigorosa con un tallo erguido, rígido y hueco de crecimiento rápido, compuesto por tres capas. Sus hojas son anchas y alargadas. Las flores masculinas están agrupadas en panículos terminales  y  las femeninas son axilares agrupadas en densas espigas envueltas en brácteas membranosas, son polinizadas por el viento. En cada mazorca, parte comestible de la planta, se ven las filas de granos, cuyo número puede variar de ocho a treinta. A cada grano le corresponde un largo hilo sedoso que sobresale por el extremo de la mazorca. El tallo de la planta está rematado en el extremo por una gran panoja de pequeñas flores masculinas; cuando el polen ha sido aventado, se vuelven secas y de color pardo. <br/> Es rico en hidratos de carbono y fibra, es una buena fuente de energía. Contiene algo de vitaminas B y C. <br/> Existen seis variedades principales: dentado, duro, blando, o harinoso, dulce, reventón y envainado.  <br/> Planta de temperaturas cálidas poco resistente al frio y exigente en riego. Necesita profundidad para desarrollar sus raíces.   <br/>  La recolección comienza 20 días después de la aparición de los primeros pelos de maíz cuando estos se han secado. Los granos deben estar tiernos, debe salir líquido lechoso cuando se pinchan con la uña. Las mazorcas se deben cosechar con la mano con un rápido y firme empujón hacia abajo.  Una vez terminada la cosecha es aconsejable retirar la planta para evitar que sigan absorbiendo los nutrientes de la tierra.  <br/>  Es recomendable asociarla con leguminosas trepadoras como las judías para que le sirva de soporte. ');
         $fix10->setTranslatableLocale('es');
         $manager->persist($fix10); 
         
         $fix11->setName('Melón');
-        $fix11->setDescription('Chard');
+        $fix11->setDescription('Es una planta de verano, anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta enredadera de crecimiento muy rápido. Sus flores son amarillas y pueden ser masculinas, femeninas o hermafroditas. Las flores masculinas nacen primero y en grupo en las axilas de las hojas, las flores femeninas y hermafroditas nacen solitarias. El tallo está compuesto de nudos de los que brotan zarcillos, flores y hojas de las que se desprenden a su vez nuevos tallos. Las hojas y los tallos tienen un tacto áspero debido a la presencia de pelos. Los frutos son de gran tamaño, provistos de una corteza dura y presentan formas y colores variables. Las semillas que tiene en su interior son de color crema y están envueltas en una masa gelatinosa <br/> Es rico en azúcares, vitaminas A, C y ácidos orgánicos. Tiene propiedades antioxidantes. <br/> Existen variedades según la época de siembra: Redondos: cantalupos y Galia: no son tan exigentes en temperatura , tienen ciclos más cortos y se cultivan en climas fríos donde el verano es más corto. Ovalados: Piel verde de sapo o amarilla llamas o melones canarios: necesitan veranos más largos. <br/> Planta de clima cálido, muy sensible al frio. La luminosidad es determinante para la fecundación de las flores y la absorción de elementos nutritivos. Es  aconsejable juntar los  tallos ya que ayuda a ventilar las hojas disminuyendo el riesgo del ataque de hongos y acelera la maduración de los frutos. Una vez se ha completado la formación de los frutos es recomendable disminuir el riego para conseguir frutos más dulces. <br/> La recolección comienza cuando los frutos están maduros, no cuando han alcanzado un tamaño determinado. Si el fruto está maduro aparece una grieta o cicatriz en el extremo donde se inserta el pedúnculo y se separa fácilmente del tallo. <br/> Debido a su gran tamaño es recomendable asociarla con plantas de ciclo corto. ');
         $fix11->setTranslatableLocale('es');
         $manager->persist($fix11); 
         
         $fix12->setName('Pepino');
-        $fix12->setDescription('Chard');
+        $fix12->setDescription('Es una planta de verano,  anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/>  Planta herbácea trepadora con un sistema radical muy potente. Tiene un tallo grueso, anguloso y espinoso, del cual nacen zarcillos que permiten que la planta se enfile. Las hojas son grandes, de color verde oscuro, cubiertas por pelos muy finos. Las flores son amarillas en forma de campana. El fruto es alargado de forma cilíndrica, de piel verde, la pulpa es acuosa de color blanco y las semillas están repartidas en su interior a lo largo del fruto. <br/>  Es rico en proteínas, minerales (potasio, sodio y fósforo) y  vitamina C. Es un excelente diurético natural por su alto contenido de agua. <br/>  Existen variedades según el fruto: Tipo Francés, tipo español o cortos y tipo holandés. <br/>  Planta de crecimiento rápido, con elevados requerimientos de humedad que no soporta las heladas. Los pepinos van adquiriendo un peso importante a medida que van creciendo, por lo que es conveniente atar los tallos principales a soportes colocados en posición vertical. <br/>  Si los frutos se recolectan cuando tienen menos de 15 cm de longitud se obtendrán pepinillos, ideales para encurtidos. Es aconsejable recolectarlos cuando estén bien formados y no esperar a que se vuelvan de color amarillo ya que esto es signo de que están formando semillas y hará que la planta pare su desarrollo y por lo tanto la producción. La cosecha dura todo el verano hasta que la planta acaba todos los nutrientes o las bajas temperaturas afectan su crecimiento. <br/>  Es recomendable asociarla con el maíz para que pueda enfilarse. Evitar plantarla con tomates o patatas.');
         $fix12->setTranslatableLocale('es');
         $manager->persist($fix12); 
 
         $fix13->setName('Pimiento');
-        $fix13->setDescription('Chard');
+        $fix13->setDescription('Es una planta de verano, plurianual aunque muchas veces se cultiva como  anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta herbácea. Sus flores son pequeñas, blancas, formadas por cinco pétalos y crecen en racimos. Su fruto es una baya hueca cuya forma y color dependen de la variedad. En su interior tiene una semillas pequeñas de color blanco. <br/> Es rico en vitamina C, A, E, B6, carotenoides y ácido fólico. Alto contenido de antioxidantes. <br/> Existen variedades según su sabor: Pimientos dulces: verdes, rojos, amarillos y Pimientos picantes: guindillas, bichos. <br/> Planta que le gusta el calor, la luz y el suelo fértil. Cuando alcanza un estado de desarrollo es aconsejable ponerle tutores  para evitar que los tallos se doblen o se rompan por el peso de los frutos. Se puede podar para limitar el número de brotes. <br/> Es recomendable recolectar algunos pimientos verdes para aumentar la producción de flores y frutos. Los demás dejarlos madurar hasta que se vuelvan rojos o amarillos. El fruto debe cortarse, no arrancarse y dejarle 2 o 3 centímetros de tallo. <br/> Es recomendable asociarla con plantas de ciclo corto para que convivan al comienzo del cultivo. ');
         $fix13->setTranslatableLocale('es');
         $manager->persist($fix13); 
 
@@ -1430,27 +1430,27 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix19);
 
         $fix20->setName('Lechuga');
-        $fix20->setDescription('Chard');
+        $fix20->setDescription('Es una planta de primavera- otoño, anual, de ciclo corto y se puede hacer plantel o siembra directa. <br/> Planta de crecimiento rápido, formada por numerosas hojas grandes blandas que forman una roseta, con tallo corto, cilíndrico y ramificado. Sus flores son amarillas. <br/> Es rica en vitaminas  B, A , potasio y calcio. <br/> Existen variedades según el tipo de hoja: Lechuga Romana o larga: de hojas grandes y alargadas; Hoja de roble: tiernas y rizadas; Batavia: tiene hojas arrizadas; Trocadreo: hojas lisas; Iceberg: forma de ovillo, muy densa. <br/> Planta que se adapta  a la mayoría de condiciones climáticas, por esto es uno de los cultivos más populares en los balcones y terrazas. Con las altas temperaturas las hojas pueden tener amargo y se forma el tallo donde se producen flores, el cual se alarga rápidamente (espigar). La semilla de la lechuga no resiste un almacenamiento prolongado por esto es recomendable obtener nuevas semillas cada vez que se quiera sembrar. <br/> Se puede recolectar la planta completa o por hojas a medida que se va consumiendo.  <br/> Como es una planta de ciclo corto es recomendable asociarla con plantas de ciclo largo, para que cuando estos hayan crecido la lechuga ya se haya cosechado. ');
         $fix20->setTranslatableLocale('es');
         $manager->persist($fix20);
 
         $fix21->setName('Patata');
-        $fix21->setDescription('Chard');
+        $fix21->setDescription('Es una planta de primavera - otoño, anual, de ciclo largo y de siembra directa. <br/> Planta herbácea de hojas alternas, compuestas, con pelos en la superficie y dispuestas en forma de espiral en los tallos. Las flores son hermafroditas, de color blanco, formadas por cinco pétalos.  Los tubérculos, donde se almacenan los nutrientes, son redondeados y carnosos. <br/> Es rica en hidratos de carbono, magnesio, potasio, vitamina B y C. <br/> Existen variedades según el color de la piel: rojo, amarillo o blanco. Y según el color de la carne: amarillo o blanco.  <br/> Hortaliza de clima fresco, poco resistente a las heladas. Los riegos deben ser frecuentes, pero en los sitios calurosos es aconsejable disminuirlos para evitar que se dañen los tubérculos. Su semilla es la propia patata de la cual pueden crecer de 6 a 12 tubérculos. No se deben plantar tubérculos enfermos o defectuosos. <br/> Las patatas tempranas se recolectan cuando las primeras flores comiencen a abrirse. Las otras variedades se recolectan cuando la parte aérea de la planta se marchita. Los tubérculos se deben dejar al sol un día para que se sequen y la piel se endurezca. Si se dejan mas de este tiempo tomarán un color verde y se volverán amargas y venenosas por la solanina. Una vez terminada la cosecha se recomienda dejar descansar la tierra dos semanas para que la solanina, toxina de las solanáceas, no afecte las futuras plantaciones. <br/> Es recomendable asociarla con plantas de ciclo corto para que convivan al comienzo de la plantación. ');
         $fix21->setTranslatableLocale('es');
         $manager->persist($fix21);
 
-        $fix22->setName('Rabano');
-        $fix22->setDescription('Chard');
+        $fix22->setName('Rábano');
+        $fix22->setDescription('Es una planta de primavera - otoño, anual, de ciclo corto y de siembra directa. <br/> Planta formada por un tallo corto del cual nacen pequeñas hojas de color verde intenso que forman una roseta.  Las flores están compuestas de cuatro pétalos y se agrupan en racimos. El fruto es la raíz gruesa, carnosa, de pulpa blanca y piel de colores vistosos y sabor picante debido a la presencia de aceite de mostaza en su composición. <br/> Es rico en hierro y vitamina C. <br/> Existen variedades según el tamaño del fruto: raíces grandes: rábanos invernales, de color negro, blanco, rojo o rojo y blanco. Raíces pequeñas: rábanos estivales. <br/> Planta de raíz de fácil cultivo, que no ocupa mucho espacio y crece con gran rapidez. Se adapta a cualquier tipo de clima y de suelo.  Necesita riego constante para evitar que los frutos se vuelvan duros y fibrosos. <br/> Durante el verano es aconsejable no dejar pasar el tiempo de la cosecha porque las raíces adquieren un tamaño excesivo y un sabor picante. Si llueve se rajan y después se ahuecan. Se cosecha manualmente arrancando la planta completa. <br/> Debido a su tamaño y a la duración de su ciclo se puede asociar con plantas de ciclo largo. Las esquinas libres son un buen sitio para sembrarlos. ');
         $fix22->setTranslatableLocale('es');
         $manager->persist($fix22);
 
         $fix23->setName('Remolacha');
-        $fix23->setDescription('Chard');
+        $fix23->setDescription('Es una planta de primavera - otoño, bianual aunque muchas veces se cultiva como  anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/>  Planta formada por diversos tallos angulares,  rojizos y delgados. Sus hojas verdes son grandes, ovales y tienen el nervio central de color rojo. Las flores son pequeñas y verdosas agrupadas en una espiga. La raíz es esférica, bulbosa y carnosa, aunque en algunas variedades puede ser alargada o plana, su sabor el dulce. Las hojas y la raíz son comestibles.  <br/>  Es rica en : potasio, ácido fólico, fibra, azúcar. <br/>  Existen variedades según la forma de la raíz: alargadas, redondas o aplanadas. Según el uso: para la alimentación humana, pienso para ganado y para la producción de Azúcar. <br/>  Planta de cultivo fácil, de clima fresco y templado que tolera bien las heladas. Con temperaturas superiores a los 25ºC se forman anillos blancos en la raíz y baja el contenido de azúcar. Es poco exigente en nutrientes. Sus raíces son superficiales, por lo que se adapta bien a los cultivos en macetas. Tardan mucho en germinar por lo que es aconsejable dejar en remojo las semillas antes de sembrarlas. <br/>  La planta se recolecta completa, cortar las hojas de las remolachas dejando una pulgada de tallos en la raíz. Si se deja más del tiempo necesario se vuelve fibrosa y menos dulce. <br/>  Es incompatible con la acelga y espinaca. ');
         $fix23->setTranslatableLocale('es');
         $manager->persist($fix23);
 
         $fix24->setName('Rúcula');
-        $fix24->setDescription('Chard');
+        $fix24->setDescription('Es una planta de verano, aunque muchas veces se cultiva como  anual, de ciclo corto y de siembra directa. <br/> Planta silvestre, ramosa  muy común que se adapta a todos los suelos. Sus hojas verdes oscuras son pequeñas y  redondas agrupadas en forman de rosa. Sus flores son blancas formadas por cuatro pétalos. Su sabor es fuerte, ligeramente picante y amargo. Es aconsejable controlar su crecimiento para que no invada el huerto. <br/> Es rica en vitamina C, potasio, hierro. <br/> Existen dos variedades: silvestres y cultivadas. <br/> Planta fácil de cultivar que crece rápidamente. Es bastante resistente al frío y tiene tendencia a florecer rápidamente con las altas temperaturas. El exceso de calor y el sol hacen que el gusto sea excesivamente amargo. <br/> Antes de recolectarla es conveniente regar abundantemente unos días antes para conseguir hojas tiernas. Se puede cosechar la planta completa o hacerlo a medida que se van consumiendo cosechando las hojas exteriores. <br/> Como es una planta de ciclo corto y tolera bien la sombra es recomendable asociarla con plantas de ciclo mas largo. ');
         $fix24->setTranslatableLocale('es');
         $manager->persist($fix24);
 
@@ -1465,7 +1465,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix26);
 
         $fix27->setName('Nabo');
-        $fix27->setDescription('Chard');
+        $fix27->setDescription('Es una planta de otoño - invierno, bienal aunque muchas veces se cultiva como  anual, de ciclo corto y de siembra directa. <br/> Planta formada por hojas grandes de color verde azulado y bordes dentados. Sus flores son de color amarillo brillante compuestas por 4 pétalos. El fruto comestible es la raíz, pivotante, carnosa, bulbosa, de carne blanca o amarillenta, cubierta por una piel fina y de sabor dulce o picante. <br/> Es rico en vitamina C y fibra. <br/> Existen variedades según la forma: alargados y redondos. Y el color: blancos, rojos o negros. <br/> Planta de cultivo fácil, de rápido crecimiento, de clima templado y exigente en riego. Con el calor se vuelven duros, fibrosos y dan semillas. <br/> Se deben recolectar cuando su diámetro aún no sobrepasa el de una pelota de tenis para evitar que se dañe la calidad para el consumo no (a mayor tamaño menos calidad para el consumo). <br/> Es recomendable asociarla con plantas de ciclo largo para que convivan al comienzo del cultivo.');
         $fix27->setTranslatableLocale('es');
         $manager->persist($fix27);
 
@@ -1505,7 +1505,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix34);
 		
 		$fix35->setName('Alcachofa');
-        $fix35->setDescription('Es una planta de primavera-invierno,  plurianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de tallos gruesos, rectos, acanalados y ramificados que superan el metro de altura. Sus hojas son grandes con los nervios centrales muy marcados, cubiertas de pelos suaves y blanquecinos que le dan un aspecto pálido. Sus flores son de tipo terminal en forma de rosetón, muy gruesas, recubiertas por escamas membranosas y carnosas en la base, que son la parte comestible de la planta. <br/> Es rica en vitamina B y hierro. Tiene propiedades diuréticas, depurativas y medicinales. <br/> Existen variedades según la forma: esférica u oval,  según el tamaño y color del capítulo: verde o violeta. <br/> Necesita pasar frío para iniciar la formación de los frutos: la flor. No resiste las heladas ni las altas temperaturas, produciendo frutos con sabor amargo y aspecto poco atractivo. <br/> La recolección es escalonada según van estando apunto las flores. ');
+        $fix35->setDescription('Es una planta de primavera-invierno,  plurianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de tallos gruesos, rectos, acanalados y ramificados que superan el metro de altura. Sus hojas son grandes con los nervios centrales muy marcados, cubiertas de pelos suaves y blanquecinos que le dan un aspecto pálido. Sus flores son de tipo terminal en forma de rosetón, muy gruesas, recubiertas por escamas membranosas y carnosas en la base, que son la parte comestible de la planta. <br/> Es rica en vitamina B y hierro. Tiene propiedades diuréticas, depurativas y medicinales. <br/> Existen variedades según la forma: esférica u oval,  según el tamaño y color del capítulo: verde o violeta. <br/> Necesita pasar frío para iniciar la formación de los frutos: la flor. No resiste las heladas ni las altas temperaturas, produciendo frutos con sabor amargo y aspecto poco atractivo. <br/> La recolección es escalonada según van estando apunto las flores. La primera flor en nacer es la flor madre, la cual se debe cosechar cuando han comenzado a salir las otras flores de la planta para no parar la producción. ');
         $fix35->setTranslatableLocale('es');
         $manager->persist($fix35);
 		
