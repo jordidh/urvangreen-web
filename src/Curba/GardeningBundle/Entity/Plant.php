@@ -160,9 +160,8 @@ class Plant implements \Gedmo\Translatable\Translatable
     private $salinityToleranceType;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PlantCare")
-     * @ORM\JoinColumn(name="plant_care_id", referencedColumnName="id")
-     */
+     * @ORM\ManyToMany(targetEntity="PlantCare", mappedBy="plants")
+     **/
     private $plantCare;
 
     /**
@@ -201,6 +200,7 @@ class Plant implements \Gedmo\Translatable\Translatable
         $this->crops = new \Doctrine\Common\Collections\ArrayCollection();
         $this->cropPeriods = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pests = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->plantCare = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -714,19 +714,19 @@ class Plant implements \Gedmo\Translatable\Translatable
     }
 
     /**
-     * Set plantCare
+     * Add plantCare
      *
      * @param Curba\GardeningBundle\Entity\PlantCare $plantCare
      */
-    public function setPlantCare(\Curba\GardeningBundle\Entity\PlantCare $plantCare)
+    public function addPlantCare(\Curba\GardeningBundle\Entity\PlantCare $plantCare)
     {
-        $this->plantCare = $plantCare;
+        $this->plantsCare[] = $plantCare;
     }
 
     /**
      * Get plantCare
      *
-     * @return Curba\GardeningBundle\Entity\PlantCare 
+     * @return Doctrine\Common\Collections\Collection 
      */
     public function getPlantCare()
     {

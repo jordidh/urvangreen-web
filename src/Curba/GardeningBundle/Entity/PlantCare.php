@@ -81,8 +81,9 @@ class PlantCare implements \Gedmo\Translatable\Translatable
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="Plant", mappedBy="plant_care")
-     */
+     * @ORM\ManyToMany(targetEntity="Plant", inversedBy="plant_care")
+     * @ORM\JoinTable(name="plantcares_plants")
+     **/
     private $plants;
     
     /**
@@ -364,5 +365,10 @@ class PlantCare implements \Gedmo\Translatable\Translatable
     public function __toString()
     {
        return $this->getName();
+    }
+    
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

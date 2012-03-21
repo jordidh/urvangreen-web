@@ -4,6 +4,7 @@ namespace Curba\GardeningBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+//use Curba\GardeningBundle\Entity\Plant;
 
 /**
  * Curba\GardeningBundle\Entity\Crop
@@ -394,7 +395,27 @@ class Crop
         return $this->history;
     }
 
-    public function asArray()
+     /**
+     * GetVolume in liters
+     *
+     * @return decimal
+     */
+    public function getVolume()
+    {
+        return $this->plant->getSoilVolume();
+    }
+    
+    /**
+     * GetArea in meters2
+     *
+     * @return decimal
+     */
+    public function getArea()
+    {
+        return $this->plant->getWidthSpacing() * $this->plant->getHeightSpacing() / 1000000;
+    }
+    
+   public function asArray()
     {
         /*
         $initialCropPeriodId = null;

@@ -58,18 +58,12 @@ class ActionType implements \Gedmo\Translatable\Translatable
      * this is not a mapped field of entity metadata, just a simple property
      */
     private $locale;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Action", mappedBy="action_type")
-     */
-    private $actions;
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->plants = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->actions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -160,28 +154,7 @@ class ActionType implements \Gedmo\Translatable\Translatable
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-    
-    /**
-     * Add actions
-     *
-     * @param Curba\GardeningBundle\Entity\Action $actions
-     */
-    public function addActions(\Curba\GardeningBundle\Entity\Action $actions)
-    {
-        $this->actions[] = $actions;
-    }
-
-    /**
-     * Get actions
-     *
-     * @return Doctrine\Common\Collections\Collection
-     */
-    public function getActions()
-    {
-        return $this->actions;
-    }
-    
+    }   
         
     /**
      * Set valueUnitType

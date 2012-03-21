@@ -393,6 +393,26 @@ class Zone
         return $this->crops;
     }
     
+    /**
+     * GetVolume in liters
+     *
+     * @return decimal
+     */
+    public function getVolume()
+    {
+        return abs(($this->finalPointY - $this->initialPointY) * ($this->finalPointX - $this->initialPointX) * $this->depth) / 1000000;
+    }
+    
+    /**
+     * GetArea in meters2
+     *
+     * @return decimal
+     */
+    public function getArea()
+    {
+        return abs(($this->finalPointY - $this->initialPointY) * ($this->finalPointX - $this->initialPointX)) / 1000000;
+    }
+    
     public function __toString()
     {
        return $this->getName();

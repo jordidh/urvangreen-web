@@ -132,6 +132,14 @@ class CropPeriodTypeFixtures extends AbstractFixture implements OrderedFixtureIn
 
         $manager->flush();
 
+        //Reference to make a relation with StationFixtures
+        $this->addReference('crop_period_type-1', $fix1);
+        $this->addReference('crop_period_type-2', $fix2);
+        $this->addReference('crop_period_type-3', $fix3);
+        $this->addReference('crop_period_type-4', $fix4);
+        $this->addReference('crop_period_type-5', $fix5);
+        $this->addReference('crop_period_type-6', $fix6);
+        $this->addReference('crop_period_type-7', $fix7);
     }
     
     public function getOrder()

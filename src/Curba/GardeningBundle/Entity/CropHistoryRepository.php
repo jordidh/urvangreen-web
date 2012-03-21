@@ -23,8 +23,8 @@ class CropHistoryRepository extends EntityRepository
             ->where('c.crop = :crop')
             ->andWhere('c.crop_period_type = :periodType')
             ->orderBy('c.instanceDate DESC')
-            ->setParameter('crop', $cropId, \Doctrine\DBAL\Types\Type::INTEGER)
-            ->setParameter('periodType', $periodType, \Doctrine\DBAL\Types\Type::INTEGER)
+            ->setParameter('crop', $crop->getId(), \Doctrine\DBAL\Types\Type::INTEGER)
+            ->setParameter('periodType', $periodType->getId(), \Doctrine\DBAL\Types\Type::INTEGER)
             ->getQuery();
 
         return $query->getFirstResult();

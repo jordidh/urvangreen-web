@@ -39,7 +39,7 @@ class CropHistory
     
 
     /**
-     * @ORM\Column(name="instance_date", type="date", nullable=false)
+     * @ORM\Column(name="instance_date", type="datetime", nullable=false)
      */
     private $instanceDate;
 

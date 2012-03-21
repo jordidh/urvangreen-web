@@ -101,6 +101,8 @@ class GardenController extends Controller
         {
             $zone = array();
             $zone[] = $currentZone;
+            $consumedArea = 0;
+            $consumedVolume = 0;
             
             $crops = array();
             $currentCrops = $zoneRepository->getCurrentCrops($currentZone->getId());
@@ -112,8 +114,12 @@ class GardenController extends Controller
                 $crop[] = $currentCrop;
                 $crop[] = $currentActions;
                 $crops[] = $crop;
+                $consumedArea = $consumedArea + $currentCrop->getArea();
+                $consumedVolume = $consumedVolume + $currentCrop->getVolume();
             }
             $zone[] = $crops;
+            $zone[] = $consumedArea;
+            $zone[] = $consumedVolume;
             
             $zonesAndCropsAndActions[] = $zone;
         }

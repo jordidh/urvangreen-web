@@ -1520,6 +1520,45 @@ $fix37 = new Plant();
         $manager->persist($fix37);
 		
         $manager->flush();
+        
+        //Reference to make a relation with StationFixtures
+        $this->addReference('plant-1', $fix1);
+        $this->addReference('plant-2', $fix2);
+        $this->addReference('plant-3', $fix3);
+        $this->addReference('plant-4', $fix4);
+        $this->addReference('plant-5', $fix5);
+        $this->addReference('plant-6', $fix6);
+        $this->addReference('plant-7', $fix7);
+        $this->addReference('plant-8', $fix8);
+        $this->addReference('plant-9', $fix9);
+        $this->addReference('plant-10', $fix10);
+        $this->addReference('plant-11', $fix11);
+        $this->addReference('plant-12', $fix12);
+        $this->addReference('plant-13', $fix13);
+        $this->addReference('plant-14', $fix14);
+        $this->addReference('plant-15', $fix15);
+        $this->addReference('plant-16', $fix16);
+        $this->addReference('plant-17', $fix17);
+        $this->addReference('plant-18', $fix18);
+        $this->addReference('plant-19', $fix19);
+        $this->addReference('plant-20', $fix20);
+        $this->addReference('plant-21', $fix21);
+        $this->addReference('plant-22', $fix22);
+        $this->addReference('plant-23', $fix23);
+        $this->addReference('plant-24', $fix24);
+        $this->addReference('plant-25', $fix25);
+        $this->addReference('plant-26', $fix26);
+        $this->addReference('plant-27', $fix27);
+        $this->addReference('plant-28', $fix28);
+        $this->addReference('plant-29', $fix29);
+        $this->addReference('plant-30', $fix30);
+        $this->addReference('plant-31', $fix31);
+        $this->addReference('plant-32', $fix32);
+        $this->addReference('plant-33', $fix33);
+        $this->addReference('plant-34', $fix34);
+        $this->addReference('plant-35', $fix35);
+        $this->addReference('plant-36', $fix36);
+        $this->addReference('plant-37', $fix37);
     }
 
     public function getOrder()

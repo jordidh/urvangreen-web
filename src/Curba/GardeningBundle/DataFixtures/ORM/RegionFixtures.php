@@ -38,6 +38,9 @@ class RegionFixtures extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($fix1);
         
         $manager->flush();
+        
+        //Reference to make a relation with StationFixtures
+        $this->addReference('region-1', $fix1);
     }
     
     public function getOrder()

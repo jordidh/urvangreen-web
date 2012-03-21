@@ -7,19 +7,27 @@
     <h1>Garden {{ garden.name }}</h1>
     {% for zone in zonesAndCropsAndActions %}
         <h2>Zone {{ zone[0] }}</h2>
+        
+        <p>
+            Zone Area {{ zone[0].getArea()|number_format(2) }} m2, Volume {{ zone[0].getVolume()|number_format(2) }} l
+            -> 
+            Consumed Area {{ zone[2]|number_format(2) }} m2, Volume {{ zone[3]|number_format(2) }} l
+        </p>
 
         <table class="plant">
             <tr>
                 <th class="plant">Crop</th>
-                <th class="plant">Plantation date</th>
-                <th class="plant">Num. plants</th>
+                <th class="plant">Plants</th>
+                <th class="plant">Area</th>
+                <th class="plant">Volume</th>
                 <th class="plant">Do</th>
             </tr>
             {% for crop in zone[1] %}
             <tr>
                 <th>{{ crop[0] }}</th>
-                <td>{{ crop[0].getInitialRealDate()|date("Y-M-d") }}</td>
-                <td>{{ crop[0].getNumPlants() }}</td>
+                <td>{{ crop[0].getNumPlants()|number_format(0) }}</td>
+                <td>{{ crop[0].getArea()|number_format(2) }}</td>
+                <td>{{ crop[0].getVolume()|number_format(2) }}</td>
                 <td>
                     <a href="{{ path('garden_harvest', { 'id': crop[0].id }) }}">Harvest</a> |
                     <a href="{{ path('garden_watering', { 'id': crop[0].id }) }}">Watering</a> |
@@ -30,6 +38,7 @@
                 {% for action in crop[1] %}
                 <tr>
                     <th></th>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td>{{ action.getInstanceDate()|date("Y-M-d H:i:s") }} {{ action.getActionType() }} {{ action.description }}: {{ action.value }} {{ action.valueUnit }}</td>

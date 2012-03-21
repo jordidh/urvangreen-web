@@ -81,11 +81,6 @@ class Pest implements \Gedmo\Translatable\Translatable
     private $plants;
     
     /**
-     * @ORM\OneToMany(targetEntity="Action", mappedBy="pest")
-     */
-    private $actions;
-    
-    /**
      * @Gedmo\Locale
      * Used locale to override Translation listener`s locale
      * this is not a mapped field of entity metadata, just a simple property
@@ -97,7 +92,6 @@ class Pest implements \Gedmo\Translatable\Translatable
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->plants = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->actions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -308,26 +302,6 @@ class Pest implements \Gedmo\Translatable\Translatable
     public function getPlants()
     {
         return $this->plants;
-    }
-    
-    /**
-     * Add actions
-     *
-     * @param Curba\GardeningBundle\Entity\Action $actions
-     */
-    public function addActions(\Curba\GardeningBundle\Entity\Action $actions)
-    {
-        $this->actions[] = $actions;
-    }
-
-    /**
-     * Get actions
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getActions()
-    {
-        return $this->actions;
     }
     
     public function __toString()
