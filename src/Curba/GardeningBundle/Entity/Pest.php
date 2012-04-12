@@ -24,6 +24,11 @@ class Pest implements \Gedmo\Translatable\Translatable
     private $id;
     
     /**
+     * @ORM\Column(type="string", length="20", unique=true)
+     */
+    private $code;
+    
+    /**
      * @Gedmo\Translatable
      * @ORM\Column(type="string", length="255", unique=true)
      */
@@ -36,16 +41,15 @@ class Pest implements \Gedmo\Translatable\Translatable
     private $description;
     
     /**
-     * @Gedmo\Translatable
-     * @ORM\Column(type="string", length="1000", nullable=true)
+     * @ORM\ManyToMany(targetEntity="Symptom", mappedBy="pests")
      */
-    protected $symptom;
+    protected $symptoms;
 
     /**
      * @Gedmo\Translatable
      * @ORM\Column(type="string", length="1000", nullable=true)
      */
-    protected $consequence;
+    protected $prevention;
     
     /**
      * @Gedmo\Translatable
@@ -92,6 +96,7 @@ class Pest implements \Gedmo\Translatable\Translatable
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->plants = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->symptoms = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -102,6 +107,26 @@ class Pest implements \Gedmo\Translatable\Translatable
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Set code
+     *
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string 
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**
@@ -145,43 +170,43 @@ class Pest implements \Gedmo\Translatable\Translatable
     }
 
     /**
-     * Set symptom
+     * Add symptoms
      *
-     * @param string $symptom
+     * @param Curba\GardeningBundle\Entity\Symptom $symptoms
      */
-    public function setSymptom($symptom)
+    public function addSymptom($symptoms)
     {
-        $this->symptom = $symptom;
+        $this->symptoms[] = $symptoms;
     }
 
     /**
-     * Get symptom
+     * Get symptoms
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getSymptoms()
+    {
+        return $this->symptoms;
+    }
+    
+    /**
+     * Set prevention
+     *
+     * @param string $prevention
+     */
+    public function setPrevention($prevention)
+    {
+        $this->prevention = $prevention;
+    }
+
+    /**
+     * Get prevention
      *
      * @return string 
      */
-    public function getSymptom()
+    public function getPrevention()
     {
-        return $this->symptom;
-    }
-
-    /**
-     * Set consequence
-     *
-     * @param string $consequence
-     */
-    public function setConsequence($consequence)
-    {
-        $this->consequence = $consequence;
-    }
-
-    /**
-     * Get consequence
-     *
-     * @return string 
-     */
-    public function getConsequence()
-    {
-        return $this->consequence;
+        return $this->prevention;
     }
 
     /**

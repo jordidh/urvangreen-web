@@ -102,6 +102,21 @@ class Plant implements \Gedmo\Translatable\Translatable
     private $temperatureMaximum;
 
     /**
+     * @ORM\Column(type="integer", name="days_to_germinate", nullable=true)
+     */
+    private $daysToGerminate;
+
+    /**
+     * @ORM\Column(type="integer", name="days_to_transplant", nullable=true)
+     */
+    private $daysToTransplant;
+
+    /**
+     * @ORM\Column(type="integer", name="days_to_harvest", nullable=true)
+     */
+    private $daysToHarvest;
+    
+    /**
      * @ORM\Column(type="datetime", name="created_at")
      */
     private $createdAt;
@@ -513,6 +528,66 @@ class Plant implements \Gedmo\Translatable\Translatable
         return $this->temperatureMaximum;
     }
 
+    /**
+     * Set daysToGerminate
+     *
+     * @param integer $daysToGerminate
+     */
+    public function setDaysToGerminate($daysToGerminate)
+    {
+        $this->daysToGerminate = $daysToGerminate;
+    }
+
+    /**
+     * Get daysToGerminate
+     *
+     * @return integer
+     */
+    public function getDaysToGerminate()
+    {
+        return $this->daysToGerminate;
+    }
+
+    /**
+     * Set daysToTransplant
+     *
+     * @param integer $daysToTransplant
+     */
+    public function setDaysToTransplant($daysToTransplant)
+    {
+        $this->daysToTransplant = $daysToTransplant;
+    }
+
+    /**
+     * Get daysToTransplant
+     *
+     * @return integer
+     */
+    public function getDaysToTransplant()
+    {
+        return $this->daysToTransplant;
+    }
+
+    /**
+     * Set daysToHarvest
+     *
+     * @param integer $daysToHarvest
+     */
+    public function setDaysToHarvest($daysToHarvest)
+    {
+        $this->daysToHarvest = $daysToHarvest;
+    }
+
+    /**
+     * Get daysToHarvest
+     *
+     * @return integer
+     */
+    public function getDaysToHarvest()
+    {
+        return $this->daysToHarvest;
+    }
+    
     /**
      * Set createdAt
      *

@@ -47,6 +47,11 @@ class CreateAlertsCommand extends ContainerAwareCommand
                 //For each zone get all crops
                 foreach($garden->getCrops() as $crop)
                 {
+                    $alertRepository = $em->getRepository('CurbaGardeningBundle:Alert');
+                    
+                    $alertRepository->createAlerts($crop);
+
+                    /*
                     //Get all plantCares
                     $plantCares = $crop->getPlant()->getPlantCares();
                     
@@ -72,6 +77,8 @@ class CreateAlertsCommand extends ContainerAwareCommand
                             }
                         }
                     }
+                     * 
+                     */
                 }
             }
         }

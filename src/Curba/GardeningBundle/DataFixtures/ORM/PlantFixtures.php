@@ -40,6 +40,8 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix1->setTemperatureMaximum(30);
         $fix1->setFrostResistanceType($manager->merge($this->getReference('frost-resistance-type-2')));
         $fix1->setSalinityToleranceType($manager->merge($this->getReference('salinity-tolerance-type-2')));
+        //  $fix1->addPlantCare($plantCare);
+        //$fix1->addPests($pests);
         $fix1->setTranslatableLocale('en');
         $manager->persist($fix1);
 
@@ -495,7 +497,7 @@ class PlantFixtures extends AbstractFixture implements OrderedFixtureInterface
         $fix16->setClimateType($manager->merge($this->getReference('climate-type-1')));
         $fix16->setIrrigationType($manager->merge($this->getReference('irrigation-type-3')));
         $fix16->setFertilizerType($manager->merge($this->getReference('fertilizer-type-3')));
-        $fix16->setLifeCicleType($manager->merge($this->getReference('life-cicle-type-1')));
+        $fix16->setLifeCicleType($manager->merge($this->getReference('life-cicle-type-3')));
         $fix16->setRootDepth(300);
         $fix16->setPlantHeight(1000);
         $fix16->setSeedDepth(10);
@@ -1340,7 +1342,7 @@ $fix37 = new Plant();
         $manager->persist($fix1);
 
         $fix2->setName('Perejil');
-        $fix2->setDescription('Julivert');
+        $fix2->setDescription('Es una planta de primavera - otoño, bianual aunque muchas veces se cultiva como anual, de ciclo corto y se puede hacer plantel o siembra directa. <br/> Planta aromática herbácea con multitud de tallos verdes estirados, angulosos y ramificados. Sus pequeñas hojas de color verde oscuro, de forma triangular están partidas en tres gajos dentados con bordes dentados irregulares. Sus flores son de color amarillo o verde y están agrupadas en umbelas. <br/> Es rica en vitaminas A, B1, B2, C y D. <br/> Existen variedades según la forma de las hojas: Hojas planas: tiene un sabor más fuerte y persistente.Hojas rizadas: tiene un sabor más suave, casi dulce. <br/> Planta de clima cálido, sensible al frío, que crece bien a pleno sol pero prefiere un poco de sombra. Crece en cualquier tipo de suelo que tenga humedad constante ya que no tolera la falta de agua. Tiene un crecimiento muy rápido. <br/> Es aconsejable recolectar constantemente para tener siempre hojas frescas. Se debe comenzar por las hojas más grandes, manteniendo la planta todo el año hasta que florezca. <br/> Es recomendable asociarla con el tomate. Evitar que conviva con el apio, la lechuga y la zanahoria.');
         $fix2->setTranslatableLocale('es');
         $manager->persist($fix2);
         
@@ -1350,7 +1352,7 @@ $fix37 = new Plant();
         $manager->persist($fix3);
         
         $fix4->setName('Albahaca');
-        $fix4->setDescription('Chard');
+        $fix4->setDescription('Es una planta de verano, anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta aromática herbácea frondosa compuesta por tallos erectos ramificados. Las hojas suaves son ovaladas, opuestas, anchas, ligeramente dentadas, con glándulas de aceite. Las flores son blancas y están dispuestas en espigas alargadas en la parte superior de los tallos. <br/> Es rica en Vitamina C. Contiene un aceite esencial rico en metilcavicol, linalol, cineol, eugenol, saponinas y otras sustancias. <br/> Existen variedades según la forma de la hoja: Hoja fina y Hoja ancha: se utiliza para elaboración de pesto. <br/> Planta rústica que crece bien en terrenos simples , bien asoleados y bien regados. Con el objetivo de mantener la forma redonda,  mantener el grado óptimo del sabor y aroma de las hojas y retardar la floración es aconsejable despuntar los extremos de los tallos. Para alargar su ciclo se deben controlar la floraciones ya que una vez desarrolladas se seca la planta. <br/> Se puede recoletar escalonadamente a medida que se va consumiendo o arrancar la planta completa. Si se le cortan las ramas vuelve a bortar con fuerza y podremos tener varias cosechas. <br/> El aroma de sus hojas tiene efectos repelentes sobre algunos insectos, por esto se recomienda cultivarla en el huerto para ayudar a repeler algunas plagas.');
         $fix4->setTranslatableLocale('es');
         $manager->persist($fix4);
         
@@ -1405,12 +1407,12 @@ $fix37 = new Plant();
         $manager->persist($fix14); 
 
         $fix15->setName('Sandia');
-        $fix15->setDescription('Chard');
+        $fix15->setDescription('Es una planta de verano, anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta herbácea rastrera o trepadora con tallos verdes provistos de zarcillos. Sus hojas verdes son grandes compuestas por cinco lóbulos profundos. Sus flores son amarillas, axilares, grandes y unisexuales. El fruto es de un gran tamaño casi esférico, carnoso y jugoso. La piel es lisa de color verde en dos o más tonos, la pulpa es de color rojo, de sabor dulce y tiene semillas de color negro, marrón o blanco. <br/> Tiene un alto contenido de agua por lo que es refrescante y depurativa. <br/> Existen variedades según la forma del fruto: redondo o alargado. Según el color de la corteza: verde, verde oscuro, gris o blanca con rayas grises. <br/> Planta de ciclo muy largo que en zonas de climas frescos con veranos cortos puede que no alcance a desarrollarse en su totalidad produciendo frutos pequeños. Es exigente en abono, riego y volumen de tierra por lo que el recipiente de cultivo debe tener un buen tamaño.  Es aconsejable ayudar a polinizar las flores para obtener más frutos. <br/> La recolección comienza cuando el fruto ha madurado. Existen diversas formas de comprobarlo: sonido hueco al golpearla con los dedos, poder rayar la piel fácilmente con la uña, marchitamiento del zarcillo más próximo al área de contacto entre la fruta y el pedúnculo. <br/> Debido a la duración de su ciclo y a su tamaño es recomendable asociarla con plantas de ciclo corto o plantarla en un recipiente sola.');
         $fix15->setTranslatableLocale('es');
         $manager->persist($fix15); 
 
         $fix16->setName('Tomate');
-        $fix16->setDescription('Chard');
+        $fix16->setDescription('Es una planta de verano, plurianual aunque muchas veces se cultiva como anual, de ciclo largo y se puede hacer plantel o siembra directa. <br/> Planta de tallos poco ramificados, delgados, frágiles y ásperos debido a los pelos finos que lo cubren. Sus hojas son alternas de bordes dentados, compuestas por 7 o 9 foliolos. Sus flores son amarillas, en forma de estrella y crecen agrupadas en ramilletes laterales, de los cuales nacen los frutos. Su fruto es una baya de tonos rojos y amarillentos, con un sabor ligeramente ácido, con numerosas semillas semirendondas y aplanadas. Tiene un olor característico debido a los pelos con glándulas que cubren  todas las partes verdes de la planta. <br/> Es rico en vitamina A y C. Es una fuente de antioxidantes. <br/> Existen infinidad de variedades según los colores, formas, tamaños y usos: Tomates para ensalada: grandes, planos, redondos y de carne dura pero jugosa. Tomates para sopas y sofritos: tiernos y acuosos. Tomates de colgar: variedad mediterránea que se cosecha en verano y se guardan frescos durante el otoño-invierno. Tomates alargados: en forma de pera, para embotar y hacer conservas. <br/> Planta de clima cálido que necesita mucho sol, exigente en materia orgánica y riego. Le gusta tener las raíces calientes, por lo que es aconsejable quitar las hojas inferiores para que la tierra reciba suficiente sol. Cuando la planta comienza a crecer se le debe poner una guía para ayudar a sostener los tallos porque son muy débiles. Aparte de ponerle tutores requiere más tareas como: podar, deshojar y aclarar. <br/> Los frutos se deben recolectar maduros, si hay riesgo de heladas es aconsejable recolectarlos verdes y dejarlos madurar en el interior. La recolección es escalonada y larga, la planta producirá frutos hasta terminar los nutrientes o hasta que el frío lo permita. <br/> Es recomendable asociarla con plantas de ciclos cortos. ');
         $fix16->setTranslatableLocale('es');
         $manager->persist($fix16);
 
@@ -1455,7 +1457,7 @@ $fix37 = new Plant();
         $manager->persist($fix24);
 
         $fix25->setName('Zanahoria');
-        $fix25->setDescription('Chard');
+        $fix25->setDescription('Es una planta de primavera - otoño, bianual aunque muchas veces se cultiva como anual, de ciclo largo y de siembra directa. <br/> Planta compuesta por un tallo pequeño y comprimido en forma de disco del cual nacen los largos peciolos de las hojas (en el primer año) y las flores (en el segundo año). Las hojas son pequeñas, alternas, compuestas y están divididas en numerosos segmentos muy angostos. Sus flores son blancas y están dispuestas en pequeñas umbelas. La parte comestible es la raíz carnosa, lisa, de color naranja con textura leñosa. <br/> Es rica en caroteno, fibra, azúcar, vitaminas A,B y C. <br/> Existen variedades según la forma de la raíz: cilíndricas, cónicas o redondas. <br/> Planta rústica de clima templado sensible a la sequedad del suelo y exigente en materia orgánica. Si el marco de plantación  es muy pequeño, saldrán zanahorias más pequeñas, si se planta en recipientes con poca profundidad se obtendrán zanahorias torcidas o bifurcadas, pero en los dos casos con buen sabor.  <br/> Se cosecha la planta completa. Es aconsejable no dejar pasar la etapa de madurez porque saldrán raíces con menos sabor y pueden tener una base con tallos resistentes que necesitan ser quitados. Para evitar atraer la mosca de la zanahoria se deben recolectar en orden no al azar. <br/> Es recomendable asociarla con puerros o cebollas para prevenir el ataque de la mosca de la zanahoria.');
         $fix25->setTranslatableLocale('es');
         $manager->persist($fix25);
 
@@ -1520,8 +1522,8 @@ $fix37 = new Plant();
         $manager->persist($fix37);
 		
         $manager->flush();
-        
-        //Reference to make a relation with StationFixtures
+		
+		 //Reference to make a relation with StationFixtures
         $this->addReference('plant-1', $fix1);
         $this->addReference('plant-2', $fix2);
         $this->addReference('plant-3', $fix3);
@@ -1563,6 +1565,6 @@ $fix37 = new Plant();
 
     public function getOrder()
     {
-        return 2; // the order in which fixtures will be loaded
+        return 3; // the order in which fixtures will be loaded
     }
 }

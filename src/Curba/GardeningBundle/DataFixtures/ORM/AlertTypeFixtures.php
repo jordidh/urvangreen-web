@@ -27,13 +27,13 @@ class AlertTypeFixtures extends AbstractFixture implements OrderedFixtureInterfa
         $fix3->setDescription('Prune');
         $fix3->setTranslatableLocale('en');
         $manager->persist($fix3);
-/*
-        $fix4 = new ActionType();
-        $fix4->setName('');
-        $fix4->setDescription('');
+
+        $fix4 = new AlertType();
+        $fix4->setName('Transplant');
+        $fix4->setDescription('Transplant');
         $fix4->setTranslatableLocale('en');
         $manager->persist($fix4);
-*/
+
         $manager->flush();
 
 
@@ -52,6 +52,11 @@ class AlertTypeFixtures extends AbstractFixture implements OrderedFixtureInterfa
         $fix3->setDescription('Poda');
         $fix3->setTranslatableLocale('ca');
         $manager->persist($fix3);
+
+        $fix4->setName('Transplantament');
+        $fix4->setDescription('Transplantament');
+        $fix4->setTranslatableLocale('ca');
+        $manager->persist($fix4);
 
         $manager->flush();
 
@@ -72,6 +77,11 @@ class AlertTypeFixtures extends AbstractFixture implements OrderedFixtureInterfa
         $fix3->setTranslatableLocale('es');
         $manager->persist($fix3);
 
+        $fix4->setName('Transplantamiento');
+        $fix4->setDescription('Transplantamiento');
+        $fix4->setTranslatableLocale('es');
+        $manager->persist($fix4);
+
         $manager->flush();
 
         
@@ -79,7 +89,7 @@ class AlertTypeFixtures extends AbstractFixture implements OrderedFixtureInterfa
         $this->addReference('alert-type-1', $fix1);
         $this->addReference('alert-type-2', $fix2);
         $this->addReference('alert-type-3', $fix3);
-        //$this->addReference('action-type-4', $fix4);
+        $this->addReference('alert-type-4', $fix4);
     }
     
     public function getOrder()
